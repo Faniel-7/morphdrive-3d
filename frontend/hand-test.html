@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MorphDrive 3D - Polygonal Hand Scanner</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      background: #050b16;
+      color: #dffaff;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      position: absolute;
+      top: 18px;
+      left: 22px;
+      z-index: 5;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: 3px;
+      color: #54eaff;
+    }
+
+    p {
+      color: #7898b5;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    #scanner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #webcam {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+      opacity: 0.25;
+    }
+
+    #three-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    #three-container canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #start-camera {
+      position: absolute;
+      z-index: 10;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 14px 28px;
+      border: 1px solid #35dfff;
+      border-radius: 6px;
+      background: #082b40;
+      color: #72edff;
+      font-size: 14px;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+
+    #status {
+      position: absolute;
+      z-index: 5;
+      right: 22px;
+      top: 22px;
+      color: #55eaff;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>MORPHDRIVE 3D</h1>
+    <p>POLYGONAL BIOMETRIC HAND SCANNER</p>
+  </header>
+
+  <div id="status">SYSTEM STANDBY</div>
+
+  <main id="scanner">
+    <video id="webcam" autoplay playsinline muted></video>
+    <div id="three-container"></div>
+  </main>
+
+  <button id="start-camera">INITIALIZE HAND SCANNER</button>
+
+  <script type="module" src="/src/hand-test.js"></script>
+</body>
+</html>
