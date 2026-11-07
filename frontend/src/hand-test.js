@@ -1,11 +1,14 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
-import { HandLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
+import {
+  HandLandmarker,
+  FilesetResolver
+} from '@mediapipe/tasks-vision';
 
 // ============================================================
-// MORPHDRIVE 3D — HAND TRACKING
-// Anatomical GLB + cyan holographic wireframe.
+// MORPHDRIVE 3D — ANATOMICAL HAND TRACKING
+// Two-hand tracking + GLB rig + cyan holographic wireframe.
 // ============================================================
 
 const video = document.querySelector('#webcam');
@@ -19,47 +22,62 @@ if (!video || !container || !startButton || !status) {
 
 video.muted = true;
 video.playsInline = true;
-video.style.opacity = '0';
-video.style.pointerEvents = 'none';
+
+// ============================================================
+// SETTINGS
+// ============================================================
 
 const SETTINGS = {
   maxHands: 2,
+
   cameraZ: 35,
   cameraFov: 35,
   modelHeight: 12,
 
-  // Exponential smoothing time constants, in seconds.
+  // Smoothing time constants in seconds.
   positionTime: 0.045,
-  rotationTime: 0.055,
-  landmarkTime: 0.025,
-  boneTime: 0.035,
-  scaleTime: 0.075,
+  rotationTime: 0.065,
+  imageTime: 0.035,
+  landmarkTime: 0.035,
+  boneTime: 0.055,
+  scaleTime: 0.085,
 
   scaleMin: 0.45,
   scaleMax: 2.5,
 
-  // Cap CPU detection near 25 Hz.
+  // IMPORTANT:
+  // No artificial horizontal or vertical spreading.
+  // Both simulated hand centers use the same camera mapping.
+  positionSpreadX: 1.0,
+  positionSpreadY: 1.0,
+
+  // MediaPipe detection: approximately 25 detections/second.
   detectionInterval: 40,
 
-  // Lightweight settings for Intel HD 5500.
+  // Lightweight rendering for Intel HD 5500.
   pixelRatio: 1,
-  renderMaxFps: 60,
+  renderMaxFps: 30,
 
-  lostHandGraceMs: 220,
+  lostHandGraceMs: 250,
 
-  // Keep the model inside the viewport.
-  viewportMargin: 0.06,
-
-  // Keep enabled while we diagnose camera framing.
+  // Keep the camera preview visible.
   showCameraPreview: true
 };
+
+// ============================================================
+// THREE.JS SCENE
+// ============================================================
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x020711);
 
 const camera = new THREE.PerspectiveCamera(
-  SETTINGS.cameraFov, 1, 0.1, 200
+  SETTINGS.cameraFov,
+  1,
+  0.1,
+  200
 );
+
 camera.position.set(0, 0, SETTINGS.cameraZ);
 camera.lookAt(0, 0, 0);
 
@@ -70,21 +88,33 @@ const renderer = new THREE.WebGLRenderer({
 });
 
 renderer.setPixelRatio(
-  Math.min(window.devicePixelRatio || 1, SETTINGS.pixelRatio)
+  Math.min(
+    window.devicePixelRatio || 1,
+    SETTINGS.pixelRatio
+  )
 );
+
 renderer.outputColorSpace = THREE.SRGBColorSpace;
-renderer.domElement.style.cssText =
-  'position:absolute;inset:0;display:block;width:100%;height:100%;';
+
+renderer.domElement.style.cssText = [
+  'position:absolute',
+  'inset:0',
+  'display:block',
+  'width:100%',
+  'height:100%'
+].join(';');
 
 container.replaceChildren(renderer.domElement);
 
 function resize() {
   const rect = container.getBoundingClientRect();
+
   const width = Math.max(1, rect.width);
   const height = Math.max(1, rect.height);
 
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
+
   renderer.setSize(width, height, false);
 }
 
@@ -98,11 +128,17 @@ resize();
 let previewCanvas = null;
 let previewContext = null;
 let previewWrapper = null;
+
 let latestImageLandmarks = [];
 let lastPreviewDraw = 0;
 
 function createCameraPreview() {
-  if (!SETTINGS.showCameraPreview || previewWrapper) return;
+  if (
+    !SETTINGS.showCameraPreview ||
+    previewWrapper
+  ) {
+    return;
+  }
 
   previewWrapper = document.createElement('div');
   previewWrapper.id = 'morphdrive-camera-preview';
@@ -123,6 +159,7 @@ function createCameraPreview() {
   ].join(';');
 
   const previewLabel = document.createElement('div');
+
   previewLabel.textContent = 'LIVE CAMERA • MIRRORED';
 
   previewLabel.style.cssText = [
@@ -143,7 +180,7 @@ function createCameraPreview() {
     'inset:0',
     'width:100%',
     'height:100%',
-    'object-fit:cover',
+    'object-fit:fill',
     'transform:scaleX(-1)',
     'opacity:1',
     'display:block',
@@ -151,82 +188,142 @@ function createCameraPreview() {
   ].join(';');
 
   previewCanvas = document.createElement('canvas');
+
   previewCanvas.width = 640;
   previewCanvas.height = 480;
 
-  previewCanvas.style.cssText =
-    'position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;';
+  previewCanvas.style.cssText = [
+    'position:absolute',
+    'inset:0',
+    'width:100%',
+    'height:100%',
+    'z-index:1',
+    'pointer-events:none'
+  ].join(';');
 
   previewContext = previewCanvas.getContext('2d');
 
-  previewWrapper.append(video, previewCanvas, previewLabel);
+  previewWrapper.append(
+    video,
+    previewCanvas,
+    previewLabel
+  );
+
   document.body.appendChild(previewWrapper);
+}
+
+function synchronizePreviewSize() {
+  if (
+    !previewCanvas ||
+    !video.videoWidth ||
+    !video.videoHeight
+  ) {
+    return;
+  }
+
+  previewCanvas.width = video.videoWidth;
+  previewCanvas.height = video.videoHeight;
+
+  previewWrapper.style.aspectRatio =
+    `${video.videoWidth}/${video.videoHeight}`;
 }
 
 function drawCameraPreview(now = 0) {
   if (!previewContext || !previewCanvas) return;
+
   if (now - lastPreviewDraw < 45) return;
 
   lastPreviewDraw = now;
 
   const ctx = previewContext;
-  ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+
+  const width = previewCanvas.width;
+  const height = previewCanvas.height;
+
+  ctx.clearRect(0, 0, width, height);
 
   ctx.save();
 
   // Camera guide.
   ctx.strokeStyle = 'rgba(85,220,255,.45)';
-  ctx.lineWidth = 2;
-  ctx.setLineDash([9, 8]);
-  ctx.strokeRect(32, 48, 576, 392);
+  ctx.lineWidth = Math.max(1, width / 320);
+
+  ctx.setLineDash([
+    width * 0.014,
+    width * 0.012
+  ]);
+
+  ctx.strokeRect(
+    width * 0.05,
+    height * 0.10,
+    width * 0.90,
+    height * 0.82
+  );
+
   ctx.setLineDash([]);
 
   ctx.fillStyle = 'rgba(100,220,255,.7)';
-  ctx.font = '16px monospace';
-  ctx.fillText('KEEP HANDS INSIDE FRAME', 42, 70);
+  ctx.font = `${Math.max(10, width * 0.025)}px monospace`;
+
+  ctx.fillText(
+    'KEEP HANDS INSIDE FRAME',
+    width * 0.065,
+    height * 0.145
+  );
 
   const connections = [
-    [0,1],[1,2],[2,3],[3,4],
-    [0,5],[5,6],[6,7],[7,8],
-    [0,9],[9,10],[10,11],[11,12],
-    [0,13],[13,14],[14,15],[15,16],
-    [0,17],[17,18],[18,19],[19,20],
-    [5,9],[9,13],[13,17]
+    [0, 1], [1, 2], [2, 3], [3, 4],
+    [0, 5], [5, 6], [6, 7], [7, 8],
+    [0, 9], [9, 10], [10, 11], [11, 12],
+    [0, 13], [13, 14], [14, 15], [15, 16],
+    [0, 17], [17, 18], [18, 19], [19, 20],
+    [5, 9], [9, 13], [13, 17]
   ];
 
   for (const hand of latestImageLandmarks) {
     ctx.strokeStyle = 'rgba(22,207,255,.9)';
-    ctx.lineWidth = 3;
+    ctx.lineWidth = Math.max(1.5, width / 220);
+
     ctx.beginPath();
 
     for (const [a, b] of connections) {
-      const ax = (1 - hand[a].x) * previewCanvas.width;
-      const ay = hand[a].y * previewCanvas.height;
-      const bx = (1 - hand[b].x) * previewCanvas.width;
-      const by = hand[b].y * previewCanvas.height;
+      const ax = (1 - hand[a].x) * width;
+      const ay = hand[a].y * height;
+
+      const bx = (1 - hand[b].x) * width;
+      const by = hand[b].y * height;
 
       ctx.moveTo(ax, ay);
       ctx.lineTo(bx, by);
     }
 
     ctx.stroke();
+
     ctx.fillStyle = '#baf7ff';
 
     for (const point of hand) {
       ctx.beginPath();
+
       ctx.arc(
-        (1 - point.x) * previewCanvas.width,
-        point.y * previewCanvas.height,
-        4,
+        (1 - point.x) * width,
+        point.y * height,
+        Math.max(2, width / 160),
         0,
         Math.PI * 2
       );
+
       ctx.fill();
     }
   }
 
   ctx.restore();
 }
+
+createCameraPreview();
+
+// ============================================================
+// MATERIALS AND LOADERS
+// ============================================================
 
 const cyanMaterial = new THREE.MeshBasicMaterial({
   color: 0x16cfff,
@@ -239,8 +336,13 @@ const cyanMaterial = new THREE.MeshBasicMaterial({
 
 const loader = new GLTFLoader();
 
+// ============================================================
+// GLOBAL STATE
+// ============================================================
+
 let originalHandScene = null;
 let handModelReady = false;
+
 let handLandmarker = null;
 let cameraStream = null;
 
@@ -256,37 +358,53 @@ let detectionFrame = null;
 
 const handInstances = new Map();
 
-createCameraPreview();
+// ============================================================
+// HAND RIG
+// ============================================================
 
-// ============================================================
-// HAND RIG MAP
-// ============================================================
+// IMPORTANT:
+// The GLB hierarchy contains four bones for each finger:
+// metacarpal -> proximal -> middle -> distal.
+//
+// MediaPipe landmarks map to these bones as follows:
+//
+// Wrist -> MCP       = metacarpal
+// MCP -> PIP         = proximal
+// PIP -> DIP         = middle
+// DIP -> fingertip   = distal
+//
+// The thumb has an additional trapezium bone.
 
 const FINGER_SEGMENTS = [
-  ['index_meta', 0, 5],
-  ['index_prox', 5, 6],
-  ['index_midd', 6, 7],
-  ['index_dist', 7, 8],
+  // INDEX
+  ['index_meta', 0, 5, 'index_prox'],
+  ['index_prox', 5, 6, 'index_midd'],
+  ['index_midd', 6, 7, 'index_dist'],
+  ['index_dist', 7, 8, null],
 
-  ['midd_meta', 0, 9],
-  ['midd_prox', 9, 10],
-  ['midd_midd', 10, 11],
-  ['midd_dist', 11, 12],
+  // MIDDLE
+  ['midd_meta', 0, 9, 'midd_prox'],
+  ['midd_prox', 9, 10, 'midd_midd'],
+  ['midd_midd', 10, 11, 'midd_dist'],
+  ['midd_dist', 11, 12, null],
 
-  ['ring_meta', 0, 13],
-  ['ring_prox', 13, 14],
-  ['ring_midd', 14, 15],
-  ['ring_dist', 15, 16],
+  // RING
+  ['ring_meta', 0, 13, 'ring_prox'],
+  ['ring_prox', 13, 14, 'ring_midd'],
+  ['ring_midd', 14, 15, 'ring_dist'],
+  ['ring_dist', 15, 16, null],
 
-  ['pinky_meta', 0, 17],
-  ['pinky_prox', 17, 18],
-  ['pinky_midd', 18, 19],
-  ['pinky_dist', 19, 20],
+  // PINKY
+  ['pinky_meta', 0, 17, 'pinky_prox'],
+  ['pinky_prox', 17, 18, 'pinky_midd'],
+  ['pinky_midd', 18, 19, 'pinky_dist'],
+  ['pinky_dist', 19, 20, null],
 
-  ['thumb_trapez', 0, 1],
-  ['thumb_meta', 1, 2],
-  ['thumb_prox', 2, 3],
-  ['thumb_dist', 3, 4]
+  // THUMB
+  ['thumb_trapez', 0, 1, 'thumb_meta'],
+  ['thumb_meta', 1, 2, 'thumb_prox'],
+  ['thumb_prox', 2, 3, 'thumb_dist'],
+  ['thumb_dist', 3, 4, null]
 ];
 
 const REQUIRED_BONES = [
@@ -318,19 +436,12 @@ const REQUIRED_BONES = [
   'thumb_dist'
 ];
 
-const V3_Y = new THREE.Vector3(0, 1, 0);
+// ============================================================
+// MATH HELPERS
+// ============================================================
 
-const _vA = new THREE.Vector3();
-const _vB = new THREE.Vector3();
-const _vC = new THREE.Vector3();
-
-const _qA = new THREE.Quaternion();
-const _qB = new THREE.Quaternion();
-
-const _mA = new THREE.Matrix4();
-
-function clamp01(value) {
-  return Math.max(0, Math.min(1, value));
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
 }
 
 function smoothingAlpha(deltaSeconds, timeConstant) {
@@ -341,33 +452,30 @@ function smoothingAlpha(deltaSeconds, timeConstant) {
   );
 }
 
-function validVector(v) {
-  return Number.isFinite(v.x) &&
-    Number.isFinite(v.y) &&
-    Number.isFinite(v.z) &&
-    v.lengthSq() > 1e-10;
+function validVector(vector) {
+  return (
+    Number.isFinite(vector.x) &&
+    Number.isFinite(vector.y) &&
+    Number.isFinite(vector.z) &&
+    vector.lengthSq() > 1e-10
+  );
 }
 
 // ============================================================
 // COORDINATE CONVERSION
 // ============================================================
 
-// Convert MediaPipe world coordinates into the Three.js convention.
 function worldPoint(point) {
-  // Convert MediaPipe coordinates to Three.js using a proper
-  // rotation (determinant +1), not a three-axis reflection.
   return new THREE.Vector3(
     -point.x,
     -point.y,
-    point.z
+    -point.z
   );
 }
 
 function imageCenter(landmarks) {
-  // Palm anchor: wrist plus the four MCP joints.
-  // X is mirrored for selfie-style display.
-  // Y is inverted once because image coordinates grow downward.
   const ids = [0, 5, 9, 13, 17];
+
   const center = new THREE.Vector2();
 
   for (const id of ids) {
@@ -378,33 +486,44 @@ function imageCenter(landmarks) {
   return center.multiplyScalar(1 / ids.length);
 }
 
-function directionBetween(
-  points,
-  start,
-  end,
-  target = new THREE.Vector3()
-) {
+function normalizedHandCenter(landmarks) {
+  const center = imageCenter(landmarks);
+
+  return {
+    x: center.x,
+    y: center.y
+  };
+}
+
+function directionBetween(points, start, end) {
   const a = worldPoint(points[start]);
   const b = worldPoint(points[end]);
 
-  target.subVectors(b, a);
+  const direction = b.sub(a);
 
-  if (target.lengthSq() > 1e-10) {
-    target.normalize();
+  if (direction.lengthSq() > 1e-10) {
+    direction.normalize();
   }
 
-  return target;
+  return direction;
 }
 
 // ============================================================
 // PALM ORIENTATION
 // ============================================================
 
-function makeFrame(across, up, previousQuaternion = null) {
+function makeFrame(
+  across,
+  up,
+  previousQuaternion = null
+) {
   const xAxis = across.clone();
   const yInput = up.clone();
 
-  if (!validVector(xAxis) || !validVector(yInput)) {
+  if (
+    !validVector(xAxis) ||
+    !validVector(yInput)
+  ) {
     return null;
   }
 
@@ -415,18 +534,14 @@ function makeFrame(across, up, previousQuaternion = null) {
     -yInput.dot(xAxis)
   );
 
-  // Edge-on hands can make these axes nearly parallel.
-  // Reject unreliable frames instead of producing sudden rotations.
   if (yAxis.lengthSq() < 2.5e-3) {
     return null;
   }
 
   yAxis.normalize();
 
-  const zAxis = new THREE.Vector3().crossVectors(
-    xAxis,
-    yAxis
-  );
+  const zAxis = new THREE.Vector3()
+    .crossVectors(xAxis, yAxis);
 
   if (zAxis.lengthSq() < 2.5e-3) {
     return null;
@@ -448,9 +563,10 @@ function makeFrame(across, up, previousQuaternion = null) {
     .setFromRotationMatrix(matrix)
     .normalize();
 
-  // q and -q represent the same rotation.
-  // Keep quaternion interpolation continuous.
-  if (previousQuaternion && result.dot(previousQuaternion) < 0) {
+  if (
+    previousQuaternion &&
+    result.dot(previousQuaternion) < 0
+  ) {
     result.set(
       -result.x,
       -result.y,
@@ -462,7 +578,10 @@ function makeFrame(across, up, previousQuaternion = null) {
   return result;
 }
 
-function getObservedPalmFrame(points, previousQuaternion) {
+function getObservedPalmFrame(
+  points,
+  previousQuaternion = null
+) {
   const wrist = worldPoint(points[0]);
   const indexBase = worldPoint(points[5]);
   const middleBase = worldPoint(points[9]);
@@ -479,9 +598,12 @@ function getObservedPalmFrame(points, previousQuaternion) {
 }
 
 function getViewSize() {
-  const height = 2 * SETTINGS.cameraZ *
+  const height = 2 *
+    SETTINGS.cameraZ *
     Math.tan(
-      THREE.MathUtils.degToRad(SETTINGS.cameraFov / 2)
+      THREE.MathUtils.degToRad(
+        SETTINGS.cameraFov / 2
+      )
     );
 
   return {
@@ -491,19 +613,22 @@ function getViewSize() {
 }
 
 // ============================================================
-// CREATE A TRACKED HAND
+// CREATE TRACKED HAND
 // ============================================================
+
 function createHandInstance(side) {
   if (!originalHandScene) return null;
 
   const root = new THREE.Group();
   root.visible = false;
+
   scene.add(root);
 
   const modelContainer = new THREE.Group();
   root.add(modelContainer);
 
   const model = SkeletonUtils.clone(originalHandScene);
+
   modelContainer.add(model);
 
   const bones = {};
@@ -514,27 +639,39 @@ function createHandInstance(side) {
     }
 
     if (object.isMesh || object.isSkinnedMesh) {
-      object.material = cyanMaterial.clone();
+      if (Array.isArray(object.material)) {
+        object.material = object.material.map(
+          () => cyanMaterial.clone()
+        );
+      } else {
+        object.material = cyanMaterial.clone();
+      }
+
       object.frustumCulled = false;
     }
   });
 
   const missing = REQUIRED_BONES.filter(
-    (name) => !bones[name]
+    name => !bones[name]
   );
 
-  if (missing.length) {
+  if (missing.length > 0) {
     console.error(
       `${side} hand model is missing bones:`,
       missing
     );
 
     root.removeFromParent();
+
     return null;
   }
 
-  // Normalize the downloaded model.
+  // ----------------------------------------------------------
+  // NORMALIZE MODEL
+  // ----------------------------------------------------------
+
   const bounds = new THREE.Box3().setFromObject(model);
+
   const size = bounds.getSize(new THREE.Vector3());
   const center = bounds.getCenter(new THREE.Vector3());
 
@@ -549,11 +686,14 @@ function createHandInstance(side) {
     largestDimension <= 0
   ) {
     console.error('Invalid hand GLB dimensions.');
+
     root.removeFromParent();
+
     return null;
   }
 
-  const baseScale = SETTINGS.modelHeight / largestDimension;
+  const baseScale =
+    SETTINGS.modelHeight / largestDimension;
 
   model.scale.setScalar(baseScale);
 
@@ -563,96 +703,118 @@ function createHandInstance(side) {
     -center.z * baseScale
   );
 
-  // The source GLB is a right-hand reference.
-  // Reflect only the left-hand copy.
   if (side === 'Left') {
     modelContainer.scale.x = -1;
   }
 
   root.updateMatrixWorld(true);
 
-  // ==========================================================
+  // ----------------------------------------------------------
   // SAVE REST-POSE BONE DIRECTIONS
-  // ==========================================================
+  // ----------------------------------------------------------
 
   const restBones = {};
 
-  for (const [boneName, startIndex, endIndex] of FINGER_SEGMENTS) {
+  for (const [
+    boneName,
+    startIndex,
+    endIndex,
+    nextBoneName
+  ] of FINGER_SEGMENTS) {
     const bone = bones[boneName];
 
-    const segmentIndex = FINGER_SEGMENTS.findIndex(
-      (entry) => entry[0] === boneName
-    );
-
-    const following = FINGER_SEGMENTS[segmentIndex + 1];
-
-    const fingerGroup =
-      boneName.startsWith('midd_') ? 'midd' :
-      boneName.startsWith('index_') ? 'index' :
-      boneName.startsWith('ring_') ? 'ring' :
-      boneName.startsWith('pinky_') ? 'pinky' :
-      'thumb';
-
-    const isTerminal = boneName.endsWith('_dist');
+    const inverseBoneWorld = bone.matrixWorld
+      .clone()
+      .invert();
 
     let restDirectionLocal;
 
-    if (
-      !isTerminal &&
-      following &&
-      following[0].startsWith(fingerGroup + '_')
-    ) {
-      const childBone = bones[following[0]];
-
-      const boneWorld = bone.matrixWorld.clone().invert();
+    if (nextBoneName) {
+      const childBone = bones[nextBoneName];
 
       const childWorldPosition = new THREE.Vector3();
+
       childBone.getWorldPosition(childWorldPosition);
 
-      const childLocalPosition =
-        childWorldPosition.applyMatrix4(boneWorld);
+      restDirectionLocal = childWorldPosition
+        .applyMatrix4(inverseBoneWorld)
+        .normalize();
 
-      restDirectionLocal = childLocalPosition.normalize();
     } else {
-      // Terminal phalanx direction follows the model's local +Y axis.
-      restDirectionLocal = V3_Y.clone();
+      const parentWorldPosition = new THREE.Vector3();
+      const boneWorldPosition = new THREE.Vector3();
+
+      bone.parent.getWorldPosition(parentWorldPosition);
+      bone.getWorldPosition(boneWorldPosition);
+
+      const forwardWorld = boneWorldPosition
+        .sub(parentWorldPosition);
+
+      restDirectionLocal = forwardWorld
+        .transformDirection(inverseBoneWorld)
+        .normalize();
+    }
+
+    if (!validVector(restDirectionLocal)) {
+      console.error(
+        `Invalid rest direction for ${boneName}`
+      );
+
+      root.removeFromParent();
+
+      return null;
     }
 
     restBones[boneName] = {
       restQuaternion: bone.quaternion.clone(),
-      restDirectionLocal: restDirectionLocal.clone(),
-      smoothedQuaternion: bone.quaternion.clone(),
+
+      restDirectionLocal:
+        restDirectionLocal.clone(),
+
+      smoothedQuaternion:
+        bone.quaternion.clone(),
+
       initialized: false,
+
       startIndex,
       endIndex
     };
   }
 
-  // ==========================================================
+  // ----------------------------------------------------------
   // PALM-CENTRED MODEL ALIGNMENT
-  // ==========================================================
+  // ----------------------------------------------------------
 
   const rootInverse = root.matrixWorld.clone().invert();
 
-  const rootPoint = (object) => {
-    const p = new THREE.Vector3();
+  function rootPoint(object) {
+    const point = new THREE.Vector3();
 
-    object.getWorldPosition(p);
+    object.getWorldPosition(point);
 
-    return p.applyMatrix4(rootInverse);
-  };
+    return point.applyMatrix4(rootInverse);
+  }
 
-  const wristPosition = rootPoint(bones.radius_ulna);
-  const indexPosition = rootPoint(bones.index_prox);
-  const middlePosition = rootPoint(bones.midd_prox);
-  const ringPosition = rootPoint(bones.ring_prox);
-  const pinkyPosition = rootPoint(bones.pinky_prox);
+  const wristPosition = rootPoint(
+    bones.radius_ulna
+  );
 
-  // The tracked screen point is the palm anchor:
-  // wrist + four MCP joints.
-  //
-  // The model's bounding-box centre is NOT the palm centre.
-  // Move the model so the palm anchor becomes the root origin.
+  const indexPosition = rootPoint(
+    bones.index_prox
+  );
+
+  const middlePosition = rootPoint(
+    bones.midd_prox
+  );
+
+  const ringPosition = rootPoint(
+    bones.ring_prox
+  );
+
+  const pinkyPosition = rootPoint(
+    bones.pinky_prox
+  );
+
   const palmAnchor = wristPosition.clone()
     .add(indexPosition)
     .add(middlePosition)
@@ -664,21 +826,36 @@ function createHandInstance(side) {
 
   root.updateMatrixWorld(true);
 
-  // Re-read the anchor-relative positions after moving the model.
-  const anchoredRootInverse = root.matrixWorld.clone().invert();
+  // Re-read the anchor-relative positions.
 
-  const anchoredPoint = (object) => {
-    const p = new THREE.Vector3();
+  const anchoredRootInverse =
+    root.matrixWorld.clone().invert();
 
-    object.getWorldPosition(p);
+  function anchoredPoint(object) {
+    const point = new THREE.Vector3();
 
-    return p.applyMatrix4(anchoredRootInverse);
-  };
+    object.getWorldPosition(point);
 
-  const anchoredWrist = anchoredPoint(bones.radius_ulna);
-  const anchoredIndex = anchoredPoint(bones.index_prox);
-  const anchoredMiddle = anchoredPoint(bones.midd_prox);
-  const anchoredPinky = anchoredPoint(bones.pinky_prox);
+    return point.applyMatrix4(
+      anchoredRootInverse
+    );
+  }
+
+  const anchoredWrist = anchoredPoint(
+    bones.radius_ulna
+  );
+
+  const anchoredIndex = anchoredPoint(
+    bones.index_prox
+  );
+
+  const anchoredMiddle = anchoredPoint(
+    bones.midd_prox
+  );
+
+  const anchoredPinky = anchoredPoint(
+    bones.pinky_prox
+  );
 
   const restPalmFrame = makeFrame(
     anchoredPinky.clone().sub(anchoredIndex),
@@ -691,6 +868,7 @@ function createHandInstance(side) {
     );
 
     root.removeFromParent();
+
     return null;
   }
 
@@ -698,7 +876,22 @@ function createHandInstance(side) {
     anchoredPinky
   );
 
-  const anchoredBounds = new THREE.Box3().setFromObject(model);
+  if (
+    !Number.isFinite(restPalmWidth) ||
+    restPalmWidth < 0.001
+  ) {
+    console.error(
+      `Invalid ${side} hand palm width.`
+    );
+
+    root.removeFromParent();
+
+    return null;
+  }
+
+  const anchoredBounds = new THREE.Box3()
+    .setFromObject(model);
+
   const anchoredSize = anchoredBounds.getSize(
     new THREE.Vector3()
   );
@@ -711,9 +904,11 @@ function createHandInstance(side) {
 
   const instance = {
     side,
+
     root,
     model,
     modelContainer,
+
     bones,
     restBones,
 
@@ -722,6 +917,8 @@ function createHandInstance(side) {
     handRadius,
 
     smoothedWorld: null,
+    smoothedImage: null,
+
     lastObservedFrame: null,
 
     position: new THREE.Vector3(),
@@ -733,6 +930,7 @@ function createHandInstance(side) {
     rotationReady: false,
     scaleReady: false,
 
+    lastImageCenter: null,
     lastSeen: 0
   };
 
@@ -757,10 +955,10 @@ function smoothWorldLandmarks(instance, input, dt) {
   }
 
   if (!instance.smoothedWorld) {
-    instance.smoothedWorld = input.map((p) => ({
-      x: p.x,
-      y: p.y,
-      z: p.z
+    instance.smoothedWorld = input.map(point => ({
+      x: point.x,
+      y: point.y,
+      z: point.z
     }));
 
     return instance.smoothedWorld;
@@ -783,26 +981,71 @@ function smoothWorldLandmarks(instance, input, dt) {
   return instance.smoothedWorld;
 }
 
-// ============================================================
+function smoothImageLandmarks(instance, input, dt) {
+  if (!input || input.length !== 21) {
+    return null;
+  }
+
+  if (!instance.smoothedImage) {
+    instance.smoothedImage = input.map(point => ({
+      x: point.x,
+      y: point.y,
+      z: point.z
+    }));
+
+    return instance.smoothedImage;
+  }
+
+  const alpha = smoothingAlpha(
+    dt,
+    SETTINGS.imageTime
+  );
+
+  for (let i = 0; i < 21; i++) {
+    const current = instance.smoothedImage[i];
+    const target = input[i];
+
+    current.x += (target.x - current.x) * alpha;
+    current.y += (target.y - current.y) * alpha;
+    current.z += (target.z - current.z) * alpha;
+  }
+
+  return instance.smoothedImage;
+}
+
 // ============================================================
 // HAND POSITION AND SCALE
 // ============================================================
 
-function updateHandPosition(instance, imageLandmarks, dt) {
+function updateHandPosition(
+  instance,
+  imageLandmarks,
+  dt
+) {
   const center = imageCenter(imageLandmarks);
   const view = getViewSize();
 
-  // Map the palm anchor directly to the camera view.
-  // Do not clamp by the complete 3D hand radius:
-  // that reduces the movement range and can pull two hands
-  // toward the centre when they are far apart.
+  // IMPORTANT:
+  // Direct mapping from the mirrored camera image to the
+  // Three.js viewing plane.
+  //
+  // There is no artificial horizontal expansion.
+  // If the two real hand centers move apart by a given
+  // screen-space distance, their simulated centers move
+  // apart by the corresponding scene-space distance.
+  //
+  // Both hands use this exact same mapping.
+
   const target = new THREE.Vector3(
     (center.x - 0.5) * view.width,
     (center.y - 0.5) * view.height,
     0
   );
 
-  // Estimate real palm width from the MCP landmarks.
+  // Estimate palm width from the index and pinky MCPs.
+  // This controls model size, not the distance between
+  // the two simulated hand centers.
+
   const dx =
     (imageLandmarks[5].x - imageLandmarks[17].x) *
     view.width;
@@ -816,6 +1059,7 @@ function updateHandPosition(instance, imageLandmarks, dt) {
   const targetScale = THREE.MathUtils.clamp(
     observedPalmWidth /
       Math.max(instance.restPalmWidth, 0.001),
+
     SETTINGS.scaleMin,
     SETTINGS.scaleMax
   );
@@ -840,6 +1084,7 @@ function updateHandPosition(instance, imageLandmarks, dt) {
   }
 
   instance.root.position.copy(instance.position);
+
   instance.root.scale.setScalar(instance.scale);
 }
 
@@ -847,45 +1092,35 @@ function updateHandPosition(instance, imageLandmarks, dt) {
 // PALM ROTATION
 // ============================================================
 
-function updatePalmRotation(instance, worldLandmarks, dt) {
+function updatePalmRotation(
+  instance,
+  worldLandmarks,
+  dt
+) {
   const observedFrame = getObservedPalmFrame(
     worldLandmarks,
-    instance.lastObservedFrame ||
-      (instance.rotationReady ? instance.rotation : null)
+    instance.lastObservedFrame
   );
 
-  // If the palm is too edge-on, keep the last reliable orientation.
   if (!observedFrame) return;
-
-  if (
-    instance.lastObservedFrame &&
-    observedFrame.dot(instance.lastObservedFrame) < 0
-  ) {
-    observedFrame.set(
-      -observedFrame.x,
-      -observedFrame.y,
-      -observedFrame.z,
-      -observedFrame.w
-    );
-  }
 
   instance.lastObservedFrame = observedFrame.clone();
 
-  const targetRotation = observedFrame.multiply(
-    instance.restPalmFrame.clone().invert()
-  ).normalize();
+  const targetRotation = observedFrame
+    .multiply(
+      instance.restPalmFrame.clone().invert()
+    )
+    .normalize();
 
   if (!instance.rotationReady) {
     instance.rotation.copy(targetRotation);
     instance.rotationReady = true;
   } else {
-    // Slightly slower orientation filtering helps when the palm
-    // is viewed edge-on and its landmarks become less stable.
     instance.rotation.slerp(
       targetRotation,
       smoothingAlpha(
         dt,
-        SETTINGS.rotationTime * 1.35
+        SETTINGS.rotationTime
       )
     );
   }
@@ -897,9 +1132,61 @@ function updatePalmRotation(instance, worldLandmarks, dt) {
 // FINGER BONE RETARGETING
 // ============================================================
 
-// Retarget each bone using its parent's inverse WORLD MATRIX.
-// This avoids decomposing a world quaternion beneath a reflected
-// left-hand model, where a negative scale can cause problems.
+function makeStableSwing(
+  restDirection,
+  targetDirection
+) {
+  const dot = clamp(
+    restDirection.dot(targetDirection),
+    -1,
+    1
+  );
+
+  const maximumAngle =
+    THREE.MathUtils.degToRad(150);
+
+  const angle = Math.acos(dot);
+
+  const swing = new THREE.Quaternion();
+
+  if (angle <= maximumAngle) {
+    swing.setFromUnitVectors(
+      restDirection,
+      targetDirection
+    );
+
+    return swing;
+  }
+
+  const axis = new THREE.Vector3()
+    .crossVectors(
+      restDirection,
+      targetDirection
+    );
+
+  if (axis.lengthSq() < 1e-8) {
+    axis.crossVectors(
+      restDirection,
+      new THREE.Vector3(0, 0, 1)
+    );
+
+    if (axis.lengthSq() < 1e-8) {
+      axis.crossVectors(
+        restDirection,
+        new THREE.Vector3(1, 0, 0)
+      );
+    }
+  }
+
+  axis.normalize();
+
+  swing.setFromAxisAngle(
+    axis,
+    maximumAngle
+  );
+
+  return swing;
+}
 
 function updateFingerBone(
   instance,
@@ -912,35 +1199,47 @@ function updateFingerBone(
   const bone = instance.bones[boneName];
   const rest = instance.restBones[boneName];
 
-  if (!bone || !rest || !bone.parent) return;
+  if (
+    !bone ||
+    !rest ||
+    !bone.parent
+  ) {
+    return;
+  }
 
   const targetWorldDirection = directionBetween(
     points,
     start,
-    end,
-    _vA
+    end
   );
 
-  if (!validVector(targetWorldDirection)) return;
+  if (!validVector(targetWorldDirection)) {
+    return;
+  }
 
-  // Convert the observed direction into the current parent's
-  // local coordinate system.
+  // Convert the observed direction into the current
+  // parent-bone coordinate system.
+
   bone.parent.updateWorldMatrix(true, false);
 
-  const parentInverse = _mA.copy(
-    bone.parent.matrixWorld
-  ).invert();
+  const parentInverse = bone.parent.matrixWorld
+    .clone()
+    .invert();
 
-  const targetParentDirection = _vB
-    .copy(targetWorldDirection)
-    .transformDirection(parentInverse)
-    .normalize();
+  const targetParentDirection =
+    targetWorldDirection
+      .clone()
+      .transformDirection(parentInverse)
+      .normalize();
 
-  // Rest direction in the parent's local coordinate system.
-  const restParentDirection = _vC
-    .copy(rest.restDirectionLocal)
-    .applyQuaternion(rest.restQuaternion)
-    .normalize();
+  // Restore the original GLB bone direction in parent space.
+  // This preserves the original rig orientation.
+
+  const restParentDirection =
+    rest.restDirectionLocal
+      .clone()
+      .applyQuaternion(rest.restQuaternion)
+      .normalize();
 
   if (
     !validVector(targetParentDirection) ||
@@ -949,14 +1248,12 @@ function updateFingerBone(
     return;
   }
 
-  // Rotate the rest direction onto the measured direction.
-  const swing = _qA.setFromUnitVectors(
+  const swing = makeStableSwing(
     restParentDirection,
     targetParentDirection
   );
 
-  const desiredLocal = _qB
-    .copy(swing)
+  const desiredLocal = swing
     .multiply(rest.restQuaternion);
 
   if (!rest.initialized) {
@@ -965,18 +1262,40 @@ function updateFingerBone(
   } else {
     rest.smoothedQuaternion.slerp(
       desiredLocal,
-      smoothingAlpha(dt, SETTINGS.boneTime)
+      smoothingAlpha(
+        dt,
+        SETTINGS.boneTime
+      )
     );
   }
 
-  bone.quaternion.copy(rest.smoothedQuaternion);
+  bone.quaternion.copy(
+    rest.smoothedQuaternion
+  );
+
   bone.updateMatrix();
+
+  // Update child matrices so the next finger segment
+  // uses the already-updated parent transformation.
+
   bone.updateWorldMatrix(false, true);
 }
 
-function updateAllFingerBones(instance, points, dt) {
-  // Parent segments are processed before their child segments.
-  for (const [boneName, start, end] of FINGER_SEGMENTS) {
+function updateAllFingerBones(
+  instance,
+  points,
+  dt
+) {
+  // The segment list is deliberately ordered from the
+  // palm outward toward each fingertip.
+  //
+  // Parent bones are updated before their children.
+
+  for (const [
+    boneName,
+    start,
+    end
+  ] of FINGER_SEGMENTS) {
     updateFingerBone(
       instance,
       boneName,
@@ -1007,35 +1326,50 @@ function updateTrackedHand(
 
   if (!instance) return;
 
-  const smoothed = smoothWorldLandmarks(
-    instance,
-    worldLandmarks,
-    dt
-  );
-
-  if (!smoothed) return;
-
-  instance.lastSeen = now;
-  instance.root.visible = true;
-
-  updateHandPosition(
+  const smoothedImage = smoothImageLandmarks(
     instance,
     imageLandmarks,
     dt
   );
 
+  const smoothedWorld = smoothWorldLandmarks(
+    instance,
+    worldLandmarks,
+    dt
+  );
+
+  if (!smoothedImage || !smoothedWorld) {
+    return;
+  }
+
+  instance.lastSeen = now;
+
+  instance.lastImageCenter =
+    normalizedHandCenter(imageLandmarks);
+
+  instance.root.visible = true;
+
+  // 1. Screen position and scale.
+  updateHandPosition(
+    instance,
+    smoothedImage,
+    dt
+  );
+
+  // 2. Rotate the whole palm.
   updatePalmRotation(
     instance,
-    smoothed,
+    smoothedWorld,
     dt
   );
 
-  // Update the root before retargeting individual finger bones.
+  // 3. Update the root transformation.
   instance.root.updateMatrixWorld(true);
 
+  // 4. Retarget the complete finger skeleton.
   updateAllFingerBones(
     instance,
-    smoothed,
+    smoothedWorld,
     dt
   );
 
@@ -1043,53 +1377,11 @@ function updateTrackedHand(
 }
 
 // ============================================================
-
-// ============================================================
-// HANDEDNESS
+// MEDIAPIPE INITIALIZATION
 // ============================================================
 
-// The webcam video sent to MediaPipe is unmirrored.
-// The camera preview is mirrored using CSS.
-// Therefore, swap MediaPipe's handedness label for the
-// mirrored 3D presentation.
-function readHandSide(result, index) {
-  const category =
-    result.handednesses?.[index]?.[0]?.categoryName ??
-    result.handedness?.[index]?.[0]?.categoryName;
-
-  if (category === 'Left') return 'Right';
-  if (category === 'Right') return 'Left';
-
-  return null;
-}
-
-// ============================================================
-// INITIALIZE 3D HAND MODEL
-// ============================================================
-
-async function loadHandModel() {
-  if (handModelReady) return;
-
-  status.textContent = 'Loading 3D hand model...';
-
-  const gltf = await loader.loadAsync(
-    '/models/hand/hand.glb'
-  );
-
-  originalHandScene = gltf.scene;
-  handModelReady = true;
-
-  console.info('3D hand model loaded.');
-}
-
-// ============================================================
-// INITIALIZE MEDIAPIPE
-// ============================================================
-
-async function initializeHandLandmarker() {
-  if (handLandmarker) return;
-
-  status.textContent = 'Initializing hand tracking...';
+async function initializeMediaPipe() {
+  status.textContent = 'INITIALIZING MEDIAPIPE...';
 
   const vision = await FilesetResolver.forVisionTasks(
     'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.2.2/wasm'
@@ -1099,11 +1391,7 @@ async function initializeHandLandmarker() {
     vision,
     {
       baseOptions: {
-        modelAssetPath:
-          '/models/mediapipe/hand_landmarker.task',
-
-        // CPU is the safer fallback for this laptop's
-        // older integrated graphics.
+        modelAssetPath: '/models/mediapipe/hand_landmarker.task',
         delegate: 'CPU'
       },
 
@@ -1116,149 +1404,175 @@ async function initializeHandLandmarker() {
     }
   );
 
-  console.info('MediaPipe hand tracker initialized.');
+  console.info('MediaPipe initialized.');
 }
 
 // ============================================================
-// CAMERA
+// HANDEDNESS AND HAND ASSOCIATION
 // ============================================================
 
-async function startCamera() {
-  if (cameraStream) return;
+function readHandSide(result, index) {
+  const groups =
+    result.handednesses ||
+    result.handedness;
 
-  if (!navigator.mediaDevices?.getUserMedia) {
-    throw new Error(
-      'Camera access is unavailable. Use localhost or HTTPS.'
-    );
+  const category =
+    groups?.[index]?.[0]?.categoryName;
+
+  if (
+    category !== 'Left' &&
+    category !== 'Right'
+  ) {
+    return null;
   }
 
-  cameraStream = await navigator.mediaDevices.getUserMedia({
-    audio: false,
-
-    video: {
-      facingMode: 'user',
-      width: { ideal: 640 },
-      height: { ideal: 480 },
-      frameRate: { ideal: 30, max: 30 }
-    }
-  });
-
-  video.srcObject = cameraStream;
-
-  await video.play();
-
-  if (SETTINGS.showCameraPreview) {
-    createCameraPreview();
-  }
-
-  console.info('Camera started.');
+  return category === 'Left'
+    ? 'Right'
+    : 'Left';
 }
 
-// ============================================================
-// UPDATE TRACKING STATUS
-// ============================================================
-
-function updateTrackingStatus(now) {
-  let trackedCount = 0;
-
-  for (const instance of handInstances.values()) {
-    const age = now - instance.lastSeen;
-
-    if (age <= SETTINGS.lostHandGraceMs) {
-      trackedCount++;
-    } else {
-      instance.root.visible = false;
-    }
+function distanceBetweenCenters(a, b) {
+  if (!a || !b) {
+    return Infinity;
   }
 
-  if (trackedCount === 2) {
-    status.textContent = 'BOTH HANDS TRACKED';
-  } else if (trackedCount === 1) {
-    status.textContent = 'ONE HAND TRACKED';
-  } else {
-    status.textContent = 'SHOW YOUR HANDS TO THE CAMERA';
-  }
+  return Math.hypot(
+    a.x - b.x,
+    a.y - b.y
+  );
 }
 
-// ============================================================
-// PROCESS MEDIAPIPE RESULTS
-// ============================================================
+function assignHandSide(
+  result,
+  index,
+  imageLandmarks,
+  usedSides,
+  now
+) {
+  const classifiedSide = readHandSide(
+    result,
+    index
+  );
 
-function processHandResults(result, now, dt) {
-  const imageHands = result.landmarks || [];
-  const worldHands = result.worldLandmarks || [];
+  const otherSide =
+    classifiedSide === 'Left'
+      ? 'Right'
+      : 'Left';
 
-  latestImageLandmarks = imageHands;
+  const currentCenter =
+    normalizedHandCenter(imageLandmarks);
 
-  for (let i = 0; i < imageHands.length; i++) {
-    const imageLandmarks = imageHands[i];
-    const worldLandmarks = worldHands[i];
+  if (
+    classifiedSide &&
+    !usedSides.has(classifiedSide)
+  ) {
+    const candidateInstance =
+      handInstances.get(classifiedSide);
+
+    const otherInstance =
+      handInstances.get(otherSide);
+
+    const candidateIsRecent =
+      candidateInstance &&
+      now - candidateInstance.lastSeen < 450;
+
+    const otherIsRecent =
+      otherInstance &&
+      now - otherInstance.lastSeen < 450;
 
     if (
-      !imageLandmarks ||
-      imageLandmarks.length !== 21 ||
-      !worldLandmarks ||
-      worldLandmarks.length !== 21
+      !candidateIsRecent &&
+      otherIsRecent &&
+      otherInstance.lastImageCenter
+    ) {
+      const otherDistance = distanceBetweenCenters(
+        currentCenter,
+        otherInstance.lastImageCenter
+      );
+
+      if (otherDistance < 0.30) {
+        return otherSide;
+      }
+    }
+
+    return classifiedSide;
+  }
+
+  // Duplicate or missing handedness:
+  // associate with the closest available recent track.
+
+  let bestSide = null;
+  let bestDistance = Infinity;
+
+  for (const side of ['Left', 'Right']) {
+    if (usedSides.has(side)) continue;
+
+    const instance = handInstances.get(side);
+
+    if (
+      !instance ||
+      !instance.lastImageCenter ||
+      now - instance.lastSeen > 450
     ) {
       continue;
     }
 
-    const side = readHandSide(result, i);
-
-    if (!side) continue;
-
-    updateTrackedHand(
-      side,
-      imageLandmarks,
-      worldLandmarks,
-      dt,
-      now
+    const distance = distanceBetweenCenters(
+      currentCenter,
+      instance.lastImageCenter
     );
+
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestSide = side;
+    }
   }
 
-  updateTrackingStatus(now);
+  if (bestSide) {
+    return bestSide;
+  }
+
+  if (
+    classifiedSide &&
+    !usedSides.has(classifiedSide)
+  ) {
+    return classifiedSide;
+  }
+
+  return ['Left', 'Right'].find(
+    side => !usedSides.has(side)
+  ) || null;
 }
 
 // ============================================================
-// DETECTION LOOP
+// PROCESS CAMERA FRAME
 // ============================================================
 
-function detectionLoop(now) {
-  if (!running) return;
-
-  detectionFrame = requestAnimationFrame(detectionLoop);
-
+function processDetection(now) {
   if (
+    !running ||
+    detectionBusy ||
     !handLandmarker ||
-    video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA ||
-    detectionBusy
+    video.readyState < 2
   ) {
     return;
   }
 
-  if (now - lastDetectionTime < SETTINGS.detectionInterval) {
-    return;
-  }
-
-  // Avoid processing the same video frame more than once.
   if (video.currentTime === lastVideoTime) {
     return;
   }
 
-  lastDetectionTime = now;
-  lastVideoTime = video.currentTime;
+  if (
+    now - lastDetectionTime <
+    SETTINGS.detectionInterval
+  ) {
+    return;
+  }
 
   detectionBusy = true;
 
-  const dt = Math.min(
-    SETTINGS.detectionInterval / 1000,
-    Math.max(
-      0.001,
-      (now - (detectionLoop.previousTime || now)) / 1000
-    )
-  );
-
-  detectionLoop.previousTime = now;
+  lastVideoTime = video.currentTime;
+  lastDetectionTime = now;
 
   try {
     const result = handLandmarker.detectForVideo(
@@ -1266,157 +1580,417 @@ function detectionLoop(now) {
       now
     );
 
-    processHandResults(result, now, dt);
+    const imageResults =
+      result.landmarks || [];
+
+    const worldResults =
+      result.worldLandmarks || [];
+
+    const visibleSides = new Set();
+
+    latestImageLandmarks = imageResults;
+
+    drawCameraPreview(now);
+
+    for (
+      let i = 0;
+      i < imageResults.length;
+      i++
+    ) {
+      const imageLandmarks = imageResults[i];
+      const worldLandmarks = worldResults[i];
+
+      if (
+        !imageLandmarks ||
+        !worldLandmarks ||
+        imageLandmarks.length !== 21 ||
+        worldLandmarks.length !== 21
+      ) {
+        continue;
+      }
+
+      const side = assignHandSide(
+        result,
+        i,
+        imageLandmarks,
+        visibleSides,
+        now
+      );
+
+      if (!side) continue;
+
+      if (visibleSides.has(side)) {
+        continue;
+      }
+
+      visibleSides.add(side);
+
+      const instance = handInstances.get(side);
+
+      const previousTime =
+        instance?.lastSeen || now;
+
+      const dt = clamp(
+        (now - previousTime) / 1000,
+        0.001,
+        0.12
+      );
+
+      updateTrackedHand(
+        side,
+        imageLandmarks,
+        worldLandmarks,
+        dt,
+        now
+      );
+    }
+
+    // Hide a hand only after its grace period expires.
+
+    for (const [
+      side,
+      instance
+    ] of handInstances) {
+      if (
+        !visibleSides.has(side) &&
+        now - instance.lastSeen >
+          SETTINGS.lostHandGraceMs
+      ) {
+        instance.root.visible = false;
+      }
+    }
+
+    if (visibleSides.size === 2) {
+      status.textContent = 'BOTH HANDS TRACKED';
+
+    } else if (visibleSides.size === 1) {
+      status.textContent =
+        `${[...visibleSides][0].toUpperCase()} HAND TRACKED`;
+
+    } else {
+      status.textContent =
+        'SHOW ONE OR BOTH HANDS';
+    }
+
   } catch (error) {
-    console.error('Hand detection error:', error);
+    console.error(
+      'Hand detection error:',
+      error
+    );
+
+    status.textContent =
+      'TRACKING ERROR — CHECK CONSOLE';
+
   } finally {
     detectionBusy = false;
   }
-
-  drawCameraPreview(now);
 }
 
 // ============================================================
-// RENDER LOOP
+// VIDEO FRAME SCHEDULER
 // ============================================================
 
-function renderLoop(now) {
+function scheduleDetection() {
   if (!running) return;
 
-  renderFrame = requestAnimationFrame(renderLoop);
+  if (
+    'requestVideoFrameCallback' in
+    HTMLVideoElement.prototype
+  ) {
+    detectionFrame =
+      video.requestVideoFrameCallback((now) => {
+        processDetection(now);
+        scheduleDetection();
+      });
 
-  const frameInterval = 1000 / SETTINGS.renderMaxFps;
+  } else {
+    detectionFrame =
+      requestAnimationFrame((now) => {
+        processDetection(now);
+        scheduleDetection();
+      });
+  }
+}
 
-  if (now - lastRenderTime < frameInterval) {
+// ============================================================
+// THREE.JS RENDER LOOP
+// ============================================================
+
+function render(now = 0) {
+  if (!running) {
+    renderFrame = null;
     return;
   }
 
-  lastRenderTime = now;
+  const frameInterval =
+    1000 / SETTINGS.renderMaxFps;
 
-  renderer.render(scene, camera);
+  if (
+    now - lastRenderTime >= frameInterval
+  ) {
+    renderer.render(scene, camera);
+
+    lastRenderTime = now;
+  }
+
+  drawCameraPreview(now);
+
+  renderFrame = requestAnimationFrame(render);
+}
+
+function startRendering() {
+  if (renderFrame !== null) {
+    return;
+  }
+
+  lastRenderTime = 0;
+
+  renderFrame = requestAnimationFrame(render);
 }
 
 // ============================================================
-// START TRACKING
+// LOAD ANATOMICAL HAND MODEL
 // ============================================================
 
-async function startTracking() {
+status.textContent =
+  'LOADING ANATOMICAL HAND MODEL...';
+
+loader.load(
+  '/models/hand/hand.glb',
+
+  (gltf) => {
+    originalHandScene = gltf.scene;
+    handModelReady = true;
+
+    status.textContent =
+      '3D HAND READY — INITIALIZE CAMERA';
+
+    console.info(
+      'Anatomical hand GLB loaded.'
+    );
+  },
+
+  undefined,
+
+  (error) => {
+    console.error(
+      'Could not load /models/hand/hand.glb:',
+      error
+    );
+
+    status.textContent =
+      'ERROR: COULD NOT LOAD HAND MODEL';
+  }
+);
+
+// ============================================================
+// START CAMERA
+// ============================================================
+
+async function startCamera() {
   if (running) return;
 
-  startButton.disabled = true;
-  status.textContent = 'Preparing MorphDrive 3D...';
-
   try {
-    await loadHandModel();
-    await initializeHandLandmarker();
-    await startCamera();
+    startButton.disabled = true;
+    startButton.textContent = 'INITIALIZING...';
+
+    if (!handModelReady) {
+      status.textContent =
+        'WAITING FOR 3D HAND MODEL...';
+
+      startButton.disabled = false;
+      startButton.textContent =
+        'INITIALIZE HAND SCANNER';
+
+      return;
+    }
+
+    if (!handLandmarker) {
+      await initializeMediaPipe();
+    }
+
+    status.textContent =
+      'REQUESTING CAMERA...';
+
+    cameraStream =
+      await navigator.mediaDevices.getUserMedia({
+        audio: false,
+
+        video: {
+          facingMode: 'user',
+
+          width: {
+            ideal: 640,
+            min: 480
+          },
+
+          height: {
+            ideal: 480,
+            min: 360
+          },
+
+          frameRate: {
+            ideal: 24,
+            max: 30
+          }
+        }
+      });
+
+    createCameraPreview();
+
+    video.srcObject = cameraStream;
+
+    await new Promise((resolve, reject) => {
+      if (video.readyState >= 2) {
+        resolve();
+        return;
+      }
+
+      const onReady = () => {
+        cleanup();
+        resolve();
+      };
+
+      const onError = () => {
+        cleanup();
+
+        reject(
+          new Error(
+            'The webcam video stream did not become ready.'
+          )
+        );
+      };
+
+      const cleanup = () => {
+        video.removeEventListener(
+          'loadeddata',
+          onReady
+        );
+
+        video.removeEventListener(
+          'error',
+          onError
+        );
+      };
+
+      video.addEventListener(
+        'loadeddata',
+        onReady,
+        { once: true }
+      );
+
+      video.addEventListener(
+        'error',
+        onError,
+        { once: true }
+      );
+    });
+
+    await video.play();
+
+    synchronizePreviewSize();
 
     running = true;
 
-    lastDetectionTime = -Infinity;
     lastVideoTime = -1;
-    lastRenderTime = 0;
+    lastDetectionTime = -Infinity;
 
-    detectionLoop.previousTime = 0;
-
-    status.textContent = 'SHOW YOUR HANDS TO THE CAMERA';
-
-    detectionFrame = requestAnimationFrame(detectionLoop);
-    renderFrame = requestAnimationFrame(renderLoop);
-
-    console.info('MorphDrive 3D hand tracking started.');
-  } catch (error) {
-    console.error('Could not start hand tracking:', error);
+    startButton.style.display = 'none';
 
     status.textContent =
-      `ERROR: ${error.message || 'Could not start camera.'}`;
+      'PLACE YOUR HANDS INSIDE THE CAMERA GUIDE';
 
-    if (cameraStream) {
-      cameraStream.getTracks().forEach((track) => {
-        track.stop();
-      });
+    startRendering();
+    scheduleDetection();
 
-      cameraStream = null;
-      video.srcObject = null;
-    }
+  } catch (error) {
+    console.error(
+      'Hand scanner startup failed:',
+      error
+    );
 
-    running = false;
+    status.textContent =
+      `STARTUP ERROR: ${error.message}`;
+
     startButton.disabled = false;
+    startButton.textContent = 'TRY AGAIN';
+
+    cameraStream?.getTracks().forEach(
+      track => track.stop()
+    );
+
+    cameraStream = null;
   }
 }
 
+startButton.addEventListener(
+  'click',
+  startCamera
+);
+
 // ============================================================
-// STOP TRACKING
+// CLEANUP
 // ============================================================
 
-function stopTracking() {
-  running = false;
+function disposeMaterial(material) {
+  if (!material) return;
 
-  if (detectionFrame !== null) {
-    cancelAnimationFrame(detectionFrame);
-    detectionFrame = null;
+  if (Array.isArray(material)) {
+    material.forEach(item => item.dispose());
+  } else {
+    material.dispose();
   }
+}
+
+window.addEventListener('pagehide', () => {
+  running = false;
 
   if (renderFrame !== null) {
     cancelAnimationFrame(renderFrame);
     renderFrame = null;
   }
 
-  if (cameraStream) {
-    cameraStream.getTracks().forEach((track) => {
-      track.stop();
-    });
+  if (detectionFrame !== null) {
+    if (
+      video.cancelVideoFrameCallback &&
+      'requestVideoFrameCallback' in
+        HTMLVideoElement.prototype
+    ) {
+      video.cancelVideoFrameCallback(
+        detectionFrame
+      );
+    } else {
+      cancelAnimationFrame(detectionFrame);
+    }
 
-    cameraStream = null;
+    detectionFrame = null;
   }
 
-  video.srcObject = null;
+  cameraStream?.getTracks().forEach(
+    track => track.stop()
+  );
+
+  cameraStream = null;
+
+  handLandmarker?.close();
+  handLandmarker = null;
 
   for (const instance of handInstances.values()) {
-    instance.root.visible = false;
+    instance.root.removeFromParent();
+
+    instance.model.traverse((object) => {
+      if (object.isMesh || object.isSkinnedMesh) {
+        disposeMaterial(object.material);
+      }
+    });
   }
 
-  latestImageLandmarks = [];
+  handInstances.clear();
 
-  if (previewContext && previewCanvas) {
-    previewContext.clearRect(
-      0,
-      0,
-      previewCanvas.width,
-      previewCanvas.height
-    );
-  }
-
-  status.textContent = 'CAMERA STOPPED';
-  startButton.disabled = false;
-}
-
-// ============================================================
-// EVENT LISTENERS
-// ============================================================
-
-startButton.addEventListener('click', () => {
-  startTracking();
-});
-
-window.addEventListener('beforeunload', () => {
-  stopTracking();
-
-  if (handLandmarker) {
-    handLandmarker.close();
-    handLandmarker = null;
-  }
-
+  cyanMaterial.dispose();
   renderer.dispose();
+
+  if (previewWrapper) {
+    previewWrapper.remove();
+  }
 });
-
-// ============================================================
-// INITIAL STATE
-// ============================================================
-
-status.textContent = 'READY — START CAMERA';
-startButton.disabled = false;
-
-renderer.render(scene, camera);
-
-console.info('MorphDrive 3D hand tracking script loaded.');
