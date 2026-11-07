@@ -552,3 +552,71 @@ button {
   background: #0b2a43;
   border-color: #168fe9;
 }
+
+.hand-controls {
+  position: absolute;
+  z-index: 5;
+  left: 12px;
+  bottom: 48px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  max-width: calc(100% - 24px);
+  pointer-events: auto;
+}
+
+#start-hand-control {
+  border: 1px solid rgba(22, 207, 255, .65);
+  border-radius: 5px;
+  padding: 7px 10px;
+  background: rgba(3, 23, 40, .94);
+  color: #8cecff;
+  font: 9px 'Roboto Mono', monospace;
+  letter-spacing: .04em;
+}
+
+#start-hand-control:hover {
+  background: rgba(0, 105, 155, .45);
+  box-shadow: 0 0 12px rgba(22, 207, 255, .2);
+}
+
+#start-hand-control:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+#hand-status,
+#hover-status {
+  padding: 6px 8px;
+  border: 1px solid rgba(22, 207, 255, .22);
+  border-radius: 4px;
+  background: rgba(2, 10, 20, .82);
+  color: #79cce9;
+  font: 8px 'Roboto Mono', monospace;
+  letter-spacing: .02em;
+}
+
+#hover-status {
+  color: #b4d7ec;
+}
+
+.view-label {
+  left: auto;
+  right: 12px;
+}
+
+.axis-cube,
+.view-label {
+  pointer-events: none;
+}
+
+#hand-orientation {
+  padding: 6px 8px;
+  border: 1px solid rgba(22, 207, 255, .22);
+  border-radius: 4px;
+  background: rgba(2, 10, 20, .82);
+  color: #a9f4ff;
+  font: 8px 'Roboto Mono', monospace;
+  letter-spacing: .02em;
+}
