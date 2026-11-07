@@ -1,12 +1,8 @@
-
 import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
-// ============================================
-// MORPHDRIVE 3D - MAIN INTERFACE
-// ============================================
+import { createHandController } from './hand-controller.js';
 
 document.querySelector('#app').innerHTML = `
 <div class="cockpit">
@@ -29,8 +25,6 @@ document.querySelector('#app').innerHTML = `
   </header>
 
   <main class="workspace">
-
-    <!-- LEFT MODEL BROWSER -->
 
     <aside class="browser panel">
 
@@ -69,8 +63,6 @@ document.querySelector('#app').innerHTML = `
       </nav>
 
     </aside>
-
-    <!-- CENTER VIEWPORT -->
 
     <section class="center">
 
@@ -120,6 +112,13 @@ document.querySelector('#app').innerHTML = `
           View <span>⌄</span>
         </div>
 
+        <div class="hand-controls">
+          <button id="start-hand-control" type="button">ENABLE HAND CONTROL</button>
+          <span id="hand-status">3D HAND INITIALIZING...</span>
+          <span id="hand-orientation">HAND: WAITING</span>
+          <span id="hover-status">Hover over a vehicle part</span>
+        </div>
+
         <div class="viewport-footer">
 
           <div class="view-tools">
@@ -145,8 +144,6 @@ document.querySelector('#app').innerHTML = `
         </div>
       </div>
     </section>
-
-    <!-- RIGHT PROPERTIES PANEL -->
 
     <aside class="properties panel">
 
@@ -217,8 +214,6 @@ document.querySelector('#app').innerHTML = `
         </div>
 
       </div>
-
-      <!-- MATERIAL AND APPEARANCE CUSTOMIZER -->
 
       <div class="property-section appearance-section">
 
@@ -297,10 +292,6 @@ document.querySelector('#app').innerHTML = `
 </div>
 `;
 
-// ============================================
-// THREE.JS SCENE
-// ============================================
-
 const viewport = document.querySelector('#viewport');
 
 const scene = new THREE.Scene();
@@ -347,9 +338,11 @@ controls.target.set(0, 0.8, 0);
 controls.minDistance = 3;
 controls.maxDistance = 18;
 
-// ============================================
-// LIGHTING
-// ============================================
+const handController = createHandController({
+  scene,
+  camera,
+  viewport
+});
 
 scene.add(
   new THREE.HemisphereLight(
@@ -376,10 +369,6 @@ const blueLight = new THREE.PointLight(
 blueLight.position.set(-4, 2, -3);
 scene.add(blueLight);
 
-// ============================================
-// ENGINEERING FLOOR
-// ============================================
-
 const floor = new THREE.GridHelper(
   30,
   30,
@@ -403,10 +392,6 @@ ground.rotation.x = -Math.PI / 2;
 ground.position.y = -0.04;
 scene.add(ground);
 
-// ============================================
-// VEHICLE VARIABLES
-// ============================================
-
 let vehicle = null;
 
 let originalMaterials = [];
@@ -419,9 +404,147 @@ let triangleTotal = 0;
 let partTotal = 0;
 let materialTotal = 0;
 
-// ============================================
-// LOAD GLB VEHICLE
-// ============================================
+const raycaster = new THREE.Raycaster();
+const pointerNdc = new THREE.Vector2();
+let pointerActive = false;
+let hoveredMesh = null;
+let hoveredOriginalMaterial = null;
+let hoveredHighlightMaterial = null;
+
+function restoreHoveredMesh() {
+  if (!hoveredMesh) return;
+
+  hoveredMesh.material = hoveredOriginalMaterial;
+
+  if (Array.isArray(hoveredHighlightMaterial)) {
+    hoveredHighlightMaterial.forEach(material => material.dispose());
+  } else {
+    hoveredHighlightMaterial?.dispose();
+  }
+
+  hoveredMesh = null;
+  hoveredOriginalMaterial = null;
+  hoveredHighlightMaterial = null;
+}
+
+function setHoveredMesh(mesh) {
+  if (mesh === hoveredMesh) return;
+
+  restoreHoveredMesh();
+
+  if (!mesh) {
+    document.querySelector('#hover-status').textContent =
+      'Hover over a vehicle part';
+    return;
+  }
+
+  hoveredMesh = mesh;
+  hoveredOriginalMaterial = mesh.material;
+
+  if (Array.isArray(mesh.material)) {
+    hoveredHighlightMaterial = mesh.material.map(material => {
+      const clone = material.clone();
+
+      if (clone.emissive) {
+        clone.emissive.set(0x00cfff);
+        clone.emissiveIntensity = 0.85;
+      } else if (clone.color) {
+        clone.color.lerp(new THREE.Color(0x00cfff), 0.35);
+      }
+
+      return clone;
+    });
+  } else {
+    hoveredHighlightMaterial = mesh.material.clone();
+
+    if (hoveredHighlightMaterial.emissive) {
+      hoveredHighlightMaterial.emissive.set(0x00cfff);
+      hoveredHighlightMaterial.emissiveIntensity = 0.85;
+    } else if (hoveredHighlightMaterial.color) {
+      hoveredHighlightMaterial.color.lerp(
+        new THREE.Color(0x00cfff),
+        0.35
+      );
+    }
+  }
+
+  mesh.material = hoveredHighlightMaterial;
+
+  let label = mesh.name || 'Vehicle component';
+  let parent = mesh.parent;
+
+  while (
+    parent &&
+    parent !== vehicle &&
+    (!label || /^mesh|object|primitive/i.test(label))
+  ) {
+    if (parent.name) label = parent.name;
+    parent = parent.parent;
+  }
+
+  document.querySelector('#hover-status').textContent =
+    `HOVER: ${label.replace(/[_-]+/g, ' ')}`;
+}
+
+function updateVehicleHover() {
+  if (!vehicle) return;
+
+  camera.updateMatrixWorld();
+
+  const trackedHands = handController.getTrackedHands();
+  const testPoints = [];
+
+  if (trackedHands.length) {
+    for (const position of trackedHands) {
+      const projected = position.clone().project(camera);
+
+      if (
+        projected.x >= -1 && projected.x <= 1 &&
+        projected.y >= -1 && projected.y <= 1
+      ) {
+        testPoints.push(
+          new THREE.Vector2(projected.x, projected.y)
+        );
+      }
+    }
+  } else if (pointerActive) {
+    testPoints.push(pointerNdc);
+  }
+
+  let nearestHit = null;
+
+  for (const point of testPoints) {
+    raycaster.setFromCamera(point, camera);
+
+    const hits = raycaster.intersectObject(vehicle, true);
+    const hit = hits.find(item => item.object.isMesh);
+
+    if (hit && (!nearestHit || hit.distance < nearestHit.distance)) {
+      nearestHit = hit;
+    }
+  }
+
+  setHoveredMesh(nearestHit?.object || null);
+}
+
+renderer.domElement.addEventListener('pointermove', event => {
+  const rect = renderer.domElement.getBoundingClientRect();
+
+  pointerNdc.set(
+    ((event.clientX - rect.left) / rect.width) * 2 - 1,
+    -((event.clientY - rect.top) / rect.height) * 2 + 1
+  );
+
+  pointerActive = true;
+});
+
+renderer.domElement.addEventListener('pointerleave', () => {
+  pointerActive = false;
+
+  if (!handController.getTrackedHands().length) {
+    setHoveredMesh(null);
+  }
+});
 
 const loader = new GLTFLoader();
 
@@ -431,8 +554,6 @@ loader.load(
   (gltf) => {
 
     vehicle = gltf.scene;
-
-    // Calculate model dimensions.
 
     const box = new THREE.Box3().setFromObject(vehicle);
 
@@ -444,8 +565,7 @@ loader.load(
       size.y,
       size.z
     );
-
-    const scale = 5 / maxDimension;
+        const scale = 5 / maxDimension;
 
     vehicle.scale.setScalar(scale);
 
@@ -454,8 +574,6 @@ loader.load(
       -box.min.y * scale,
       -center.z * scale
     );
-
-    // Collect mesh and material information.
 
     const materialRecords = new Map();
 
@@ -510,8 +628,6 @@ loader.load(
       object.castShadow = true;
       object.receiveShadow = true;
 
-      // Save initial position for exploded view.
-
       object.userData.originalPosition =
         object.position.clone();
 
@@ -519,10 +635,6 @@ loader.load(
 
     originalMaterials = [...materialRecords.values()];
     materialTotal = originalMaterials.length;
-
-    // ========================================
-    // IDENTIFY EXTERIOR BODY PAINT MATERIALS
-    // ========================================
 
     const bodyKeywords = [
       'body',
@@ -585,8 +697,6 @@ loader.load(
 
     });
 
-    // Fallback for models with generic material names.
-
     if (paintMaterials.length === 0) {
 
       paintMaterials = originalMaterials.filter((entry) => {
@@ -626,22 +736,14 @@ loader.load(
       }))
     );
 
-    // Add vehicle to the scene.
-
     scene.add(vehicle);
-
-    // Set initial camera position.
 
     controls.target.set(0, 1, 0);
     camera.position.set(7, 4.2, 8);
     controls.update();
 
-    // Update loading status.
-
     document.querySelector('#loading')
       .classList.add('hidden');
-
-    // Update vehicle statistics.
 
     document.querySelector('#parts-count').textContent =
       partTotal.toLocaleString();
@@ -654,8 +756,6 @@ loader.load(
 
     document.querySelector('#triangle-count').textContent =
       `Triangles: ${Math.round(triangleTotal).toLocaleString()}`;
-
-    // Enable appearance controls after loading.
 
     updatePaint();
 
@@ -679,10 +779,6 @@ loader.load(
   }
 );
 
-// ============================================
-// RESET CAMERA
-// ============================================
-
 document.querySelector('#reset').addEventListener(
   'click',
   () => {
@@ -695,10 +791,6 @@ document.querySelector('#reset').addEventListener(
 
   }
 );
-
-// ============================================
-// WIREFRAME MODE
-// ============================================
 
 document.querySelector('#wireframe').addEventListener(
   'click',
@@ -732,10 +824,6 @@ document.querySelector('#wireframe').addEventListener(
 
   }
 );
-
-// ============================================
-// EXPLODED VIEW
-// ============================================
 
 document.querySelector('#explode').addEventListener(
   'click',
@@ -781,10 +869,6 @@ document.querySelector('#explode').addEventListener(
   }
 );
 
-// ============================================
-// FULLSCREEN
-// ============================================
-
 document.querySelector('#fullscreen').addEventListener(
   'click',
   () => {
@@ -802,10 +886,6 @@ document.querySelector('#fullscreen').addEventListener(
   }
 );
 
-// ============================================
-// PROPERTIES PANEL
-// ============================================
-
 document.querySelector('#close-properties')
   .addEventListener('click', () => {
 
@@ -813,10 +893,6 @@ document.querySelector('#close-properties')
       .classList.toggle('collapsed');
 
   });
-
-// ============================================
-// MODEL BROWSER SELECTION
-// ============================================
 
 document.querySelectorAll('.assembly').forEach(
   (button) => {
@@ -834,10 +910,6 @@ document.querySelectorAll('.assembly').forEach(
   }
 );
 
-// ============================================
-// CAR APPEARANCE CUSTOMIZER
-// ============================================
-
 const colorPicker =
   document.querySelector('#body-color');
 
@@ -852,8 +924,6 @@ const metallicSlider =
 
 const roughnessSlider =
   document.querySelector('#roughness-value');
-
-// Update the selected body paint.
 
 function updatePaint() {
 
@@ -889,8 +959,6 @@ function updatePaint() {
 
   });
 
-  // Update displayed values.
-
   colorValue.textContent =
     colorPicker.value.toUpperCase();
 
@@ -902,28 +970,20 @@ function updatePaint() {
 
 }
 
-// Color picker.
-
 colorPicker.addEventListener(
   'input',
   updatePaint
 );
-
-// Metallic slider.
 
 metallicSlider.addEventListener(
   'input',
   updatePaint
 );
 
-// Roughness slider.
-
 roughnessSlider.addEventListener(
   'input',
   updatePaint
 );
-
-// Paint finish presets.
 
 finishPicker.addEventListener(
   'change',
@@ -953,8 +1013,6 @@ finishPicker.addEventListener(
   }
 );
 
-// Restore original vehicle materials.
-
 document.querySelector('#reset-appearance')
   .addEventListener('click', () => {
 
@@ -963,21 +1021,15 @@ document.querySelector('#reset-appearance')
       const mat = entry.material;
 
       if (entry.originalColor && mat.color) {
-
         mat.color.copy(entry.originalColor);
-
       }
 
       if (entry.originalMetalness !== undefined) {
-
         mat.metalness = entry.originalMetalness;
-
       }
 
       if (entry.originalRoughness !== undefined) {
-
         mat.roughness = entry.originalRoughness;
-
       }
 
       mat.wireframe = entry.originalWireframe;
@@ -985,8 +1037,6 @@ document.querySelector('#reset-appearance')
       mat.needsUpdate = true;
 
     });
-
-    // Restore customizer defaults.
 
     colorPicker.value = '#087de0';
 
@@ -1003,18 +1053,12 @@ document.querySelector('#reset-appearance')
     document.querySelector('#roughness-number')
       .textContent = '25%';
 
-    // Reset wireframe button state.
-
     wireframe = false;
 
     document.querySelector('#wireframe')
       .classList.remove('active');
 
   });
-
-// ============================================
-// RESIZE HANDLING
-// ============================================
 
 function resize() {
 
@@ -1035,18 +1079,20 @@ const observer = new ResizeObserver(resize);
 
 observer.observe(viewport);
 
-// ============================================
-// RENDER LOOP
-// ============================================
-
 function animate() {
 
   requestAnimationFrame(animate);
 
   controls.update();
+  updateVehicleHover();
 
   renderer.render(scene, camera);
 
 }
 
 animate();
+
+window.addEventListener('pagehide', () => {
+  handController.stop();
+  restoreHoveredMesh();
+});
