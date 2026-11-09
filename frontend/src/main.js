@@ -18,11 +18,63 @@ document.querySelector('#app').innerHTML = `
     <div class="top-actions">
       <span>Project: NDX-2025-001</span>
       <button title="Search">⌕</button>
-      <button title="Help">?</button>
+      <button id="help-toggle" type="button" title="Help" aria-label="Open help">?</button>
       <button title="Notifications">♧</button>
       <button class="profile">◉ <small>EN⌄</small></button>
     </div>
   </header>
+
+  <section id="help-panel" class="help-panel hidden" role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <div class="help-dialog">
+      <div class="help-panel-header">
+        <div>
+          <span class="help-eyebrow">MORPHDRIVE 3D</span>
+          <h2 id="help-title">Controls &amp; Guide</h2>
+        </div>
+        <button id="help-close" type="button" aria-label="Close help">×</button>
+      </div>
+
+      <div class="help-content">
+        <section class="help-section">
+          <h3>VIEWPORT NAVIGATION</h3>
+          <div class="help-row"><span>Rotate view</span><kbd>Left-click + drag</kbd></div>
+          <div class="help-row"><span>Pan view</span><kbd>Right-click + drag</kbd></div>
+          <div class="help-row"><span>Zoom</span><kbd>Mouse wheel</kbd></div>
+          <div class="help-row"><span>Restore camera</span><kbd>Reset button ↻</kbd></div>
+        </section>
+
+        <section class="help-section">
+          <h3>MODEL TOOLS</h3>
+          <div class="help-row"><span>Exploded view</span><kbd>♧ Explode</kbd></div>
+          <div class="help-row"><span>Wireframe display</span><kbd>▧ Wireframe</kbd></div>
+          <div class="help-row"><span>Fullscreen viewport</span><kbd>⛶ Fullscreen</kbd></div>
+        </section>
+
+        <section class="help-section">
+          <h3>APPEARANCE</h3>
+          <p>Use the Properties panel to customize the vehicle's appearance.</p>
+          <ul>
+            <li>Choose a body color.</li>
+            <li>Select Glossy, Metallic, or Matte finish.</li>
+            <li>Adjust metallic and roughness values.</li>
+            <li>Use Restore Original to reset the appearance.</li>
+          </ul>
+        </section>
+
+        <section class="help-section">
+          <h3>HAND INTERACTION</h3>
+          <p>Press <strong>ENABLE HAND CONTROL</strong> to activate webcam-based hand tracking.</p>
+          <p>Move your tracked hand to interact with vehicle parts. The status indicators show tracking and orientation information.</p>
+          <p class="help-note">Hand interaction is experimental and requires camera permission.</p>
+        </section>
+      </div>
+
+      <div class="help-panel-footer">
+        <span>MORPHDRIVE 3D</span>
+        <span>USER GUIDE · 01</span>
+      </div>
+    </div>
+  </section>
 
   <main class="workspace">
 
@@ -294,6 +346,38 @@ document.querySelector('#app').innerHTML = `
 
 const viewport = document.querySelector('#viewport');
 
+const helpPanel = document.querySelector('#help-panel');
+const helpToggle = document.querySelector('#help-toggle');
+const helpClose = document.querySelector('#help-close');
+
+function openHelp() {
+  helpPanel.classList.remove('hidden');
+  helpClose.focus();
+}
+
+function closeHelp() {
+  helpPanel.classList.add('hidden');
+  helpToggle.focus();
+}
+
+helpToggle.addEventListener('click', openHelp);
+helpClose.addEventListener('click', closeHelp);
+
+document.addEventListener('pointerdown', event => {
+  if (
+    !helpPanel.classList.contains('hidden') &&
+    !helpPanel.contains(event.target)
+  ) {
+    closeHelp();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !helpPanel.classList.contains('hidden')) {
+    closeHelp();
+  }
+});
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#020914');
 
@@ -337,6 +421,9 @@ controls.dampingFactor = 0.06;
 controls.target.set(0, 0.8, 0);
 controls.minDistance = 3;
 controls.maxDistance = 18;
+
+const orientationStatus =
+  document.querySelector('#hand-orientation');
 
 const handController = createHandController({
   scene,
@@ -545,7 +632,6 @@ renderer.domElement.addEventListener('pointerleave', () => {
     setHoveredMesh(null);
   }
 });
-
 const loader = new GLTFLoader();
 
 loader.load(
@@ -565,7 +651,8 @@ loader.load(
       size.y,
       size.z
     );
-        const scale = 5 / maxDimension;
+
+    const scale = 5 / maxDimension;
 
     vehicle.scale.setScalar(scale);
 
