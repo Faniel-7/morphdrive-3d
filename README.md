@@ -114,6 +114,12 @@ The current milestone focuses on real-time hand detection, 3D anatomical hand vi
 
 The larger vehicle interaction system is planned as the next major development stage.
 
+## User Guide
+
+For instructions on navigating the 3D vehicle viewer, using model tools, customizing vehicle appearance, and activating hand interaction, see:
+
+[ MorphDrive 3D Controls Guide ](docs/controls.md)
+
 ## Project Goal
 
 The long-term goal is to create an interactive 3D vehicle exploration environment where users can use natural hand gestures to inspect, disassemble, manipulate, and reassemble vehicle components.
