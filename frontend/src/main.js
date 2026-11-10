@@ -576,25 +576,23 @@ function setHoveredMesh(mesh) {
 function updateVehicleHover() {
   if (!vehicle) return;
 
-  camera.updateMatrixWorld();
+  camera.updateMatrixWorld(true);
 
-  const trackedHands = handController.getTrackedHands();
+  // Hand pointers use the same normalized device coordinates as the mouse.
+  const trackedPointers = handController.getTrackedPointers();
   const testPoints = [];
 
-  if (trackedHands.length) {
-    for (const position of trackedHands) {
-      const projected = position.clone().project(camera);
-
-      if (
-        projected.x >= -1 && projected.x <= 1 &&
-        projected.y >= -1 && projected.y <= 1
-      ) {
-        testPoints.push(
-          new THREE.Vector2(projected.x, projected.y)
-        );
-      }
+  for (const point of trackedPointers) {
+    if (
+      point.x >= -1 && point.x <= 1 &&
+      point.y >= -1 && point.y <= 1
+    ) {
+      testPoints.push(point);
     }
-  } else if (pointerActive) {
+  }
+
+  // If no fingertip is currently inside the viewport, keep mouse hover usable.
+  if (testPoints.length === 0 && pointerActive) {
     testPoints.push(pointerNdc);
   }
 
@@ -998,7 +996,7 @@ document.querySelectorAll('.assembly').forEach(
 );
 
 const colorPicker =
-  document.querySelector('#body-color');
+  document.querySelector('#body-color');document.querySelector('#body-color');
 
 const colorValue =
   document.querySelector('#color-value');
