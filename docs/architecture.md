@@ -2,17 +2,19 @@
 
 ## 1. Introduction
 
-MorphDrive 3D combines computer vision and real-time 3D graphics to create a gesture-controlled vehicle interaction environment.
+MorphDrive 3D is an interactive computer vision and 3D graphics project designed to translate natural hand movements into real-time interactions within a 3D vehicle environment.
 
-The system is designed to interpret natural hand movements through a webcam and translate them into interactions inside a Three.js 3D scene.
+The application uses a webcam to capture hand movements, MediaPipe to detect and track hand landmarks, and Three.js to visualize and manipulate 3D objects.
+
+The architecture is designed to support future interaction features, including vehicle component selection, disassembly, manipulation, and reassembly.
 
 ## 2. System Components
 
-### Computer Vision — MediaPipe
+### 2.1 Computer Vision — MediaPipe
 
-MediaPipe Tasks Vision provides real-time hand landmark detection.
+MediaPipe Tasks Vision provides real-time hand landmark detection and tracking.
 
-The hand landmark model identifies 21 key points for each detected hand, including:
+The hand landmarker identifies 21 landmarks for each detected hand:
 
 - Wrist
 - Thumb joints
@@ -21,84 +23,96 @@ The hand landmark model identifies 21 key points for each detected hand, includi
 - Ring finger joints
 - Pinky finger joints
 
-The system is configured to detect up to two hands.
+The system is configured to detect up to two hands simultaneously.
 
-### 3D Rendering — Three.js
+The detected landmarks provide the positional and structural information needed to calculate hand movement and drive the 3D hand visualization.
 
-Three.js is responsible for:
+### 2.2 3D Rendering — Three.js
 
-- Creating the 3D scene.
-- Managing the camera and renderer.
-- Loading 3D GLB models.
+Three.js manages the application's interactive 3D environment.
+
+Its responsibilities include:
+
+- Creating and managing the 3D scene.
+- Configuring the camera and renderer.
+- Loading 3D models in GLB format.
 - Displaying the anatomical hand model.
 - Updating object positions and rotations.
-- Rendering the scene in real time.
+- Rendering the scene continuously.
 
-### 3D Hand Model
+### 2.3 3D Hand Model
 
-The project uses a rigged GLB hand model.
+The project uses a rigged GLB hand model containing a skeletal structure with 21 bones corresponding to the anatomical hand structure.
 
-Its skeletal structure contains 21 bones corresponding to the anatomical hand structure.
+MediaPipe hand landmarks provide the tracking data used to calculate finger directions and update the corresponding 3D bone transformations.
 
-The detected MediaPipe landmarks are used to calculate finger directions and update the corresponding 3D bones.
+This process connects the detected hand movement to the animated 3D hand model.
 
-### Vehicle Models
+### 2.4 Vehicle Models
 
-Vehicle models are loaded as GLB assets.
+Vehicle models are loaded as GLB assets and displayed within the Three.js environment.
 
-The initial vehicle asset is a generic sedan. Additional vehicle models can be introduced as the interaction system develops.
+The initial vehicle asset is a generic sedan. The architecture is intended to accommodate additional vehicle models as development progresses.
 
 ## 3. Processing Pipeline
 
-The intended processing pipeline is:
+The hand-tracking and visualization pipeline follows these stages:
 
 1. Capture video frames from the webcam.
-2. Pass frames to the MediaPipe hand landmarker.
+2. Pass the frames to the MediaPipe hand landmarker.
 3. Detect hand landmarks and handedness.
 4. Retrieve normalized image landmarks and 3D world landmarks.
-5. Convert landmark coordinates into the Three.js coordinate system.
+5. Convert landmark coordinates into the application's Three.js coordinate system.
 6. Calculate palm position and orientation.
 7. Map finger landmark directions to the rigged hand skeleton.
-8. Update the 3D hand transforms.
+8. Update the 3D hand transformations.
 9. Render the updated scene.
+
+This pipeline connects webcam input, computer vision processing, 3D transformation calculations, and real-time visualization.
 
 ## 4. Coordinate Systems
 
-MediaPipe provides two useful landmark representations:
+MediaPipe provides two landmark representations used by the application.
 
-**Image landmarks**
+### 4.1 Image Landmarks
 
-Normalized coordinates describing hand position in the camera image.
+Image landmarks contain normalized coordinates describing the position of each hand landmark within the camera image.
 
-These coordinates are useful for positioning the 3D hand relative to the camera view.
+They are useful for determining hand position relative to the camera view and mapping detected movement into the 3D environment.
 
-**World landmarks**
+### 4.2 World Landmarks
 
-Three-dimensional landmark coordinates describing the hand's spatial structure.
+World landmarks provide three-dimensional coordinates describing the spatial structure of the detected hand.
 
-These coordinates are useful for estimating palm orientation and finger directions.
+They are useful for estimating palm orientation, finger directions, and the relative spatial arrangement of hand landmarks.
 
-The application converts these coordinates into a consistent Three.js coordinate convention before applying transformations.
+### 4.3 Coordinate Conversion
+
+The application converts the detected landmark coordinates into a consistent Three.js coordinate convention before applying transformations to the 3D hand model.
+
+This conversion is important because the coordinate representations used by computer vision and 3D rendering systems are not necessarily identical.
 
 ## 5. Performance Considerations
 
-The project targets accessible hardware, including systems with integrated graphics.
+MorphDrive 3D is designed with accessible hardware in mind, including computers with integrated graphics.
 
-Current optimization considerations include:
+The main performance considerations include:
 
-- Limiting renderer pixel ratio.
+- Limiting the renderer's pixel ratio.
 - Disabling unnecessary antialiasing.
-- Limiting hand detection frequency.
+- Controlling hand detection frequency.
 - Avoiding duplicate video-frame processing.
 - Reusing Three.js objects and temporary vectors.
 - Applying smoothing to reduce sudden movement.
-- Keeping the 3D scene lightweight.
+- Keeping the 3D scene and loaded assets lightweight.
 
-Actual performance depends on the device, browser, camera resolution, and scene complexity.
+Actual performance depends on the device, browser, camera resolution, tracking workload, and scene complexity.
 
 ## 6. Current Development Stage
 
-The current development focuses on:
+Current development focuses on establishing the core computer vision and 3D visualization functionality.
+
+The current development areas include:
 
 - Webcam integration.
 - Real-time hand landmark detection.
@@ -107,11 +121,11 @@ The current development focuses on:
 - Finger movement retargeting.
 - Palm position and orientation tracking.
 
-The complete gesture-controlled vehicle disassembly and reassembly workflow is a planned development objective, not yet a completed feature.
+The complete gesture-controlled vehicle disassembly and reassembly workflow remains a planned development objective.
 
 ## 7. Planned System Expansion
 
-Future development is expected to introduce:
+Future development is expected to extend the system with:
 
 - Gesture recognition for vehicle interaction.
 - Selection of individual vehicle components.
@@ -119,6 +133,8 @@ Future development is expected to introduce:
 - Interactive vehicle disassembly.
 - Component reassembly.
 - Support for different vehicle types.
+
+These additions will build upon the existing hand-tracking and 3D rendering architecture.
 
 ## 8. Technology Overview
 
@@ -134,4 +150,4 @@ Future development is expected to introduce:
 
 ---
 
-*MorphDrive 3D — Natural hand interaction for 3D vehicle exploration.*
+*MorphDrive 3D — Bringing natural hand interaction into 3D vehicle exploration.*
