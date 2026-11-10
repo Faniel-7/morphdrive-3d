@@ -6,9 +6,6 @@ import {
   FilesetResolver
 } from '@mediapipe/tasks-vision';
 
-const orientationStatus =
-  document.querySelector('#hand-orientation');
-
 export function createHandController({ scene, camera, viewport }) {
   const video = document.createElement('video');
   const orientationStatus =
@@ -41,6 +38,7 @@ export function createHandController({ scene, camera, viewport }) {
     pixelRatio: 1,
     renderMaxFps: 30,
     lostHandGraceMs: 250,
+    reacquireResetMs: 420,
     showCameraPreview: true
   };
 
@@ -53,6 +51,7 @@ let previewContext = null;
 let previewWrapper = null;
 
 let latestImageLandmarks = [];
+let latestHandLabels = [];
 let lastPreviewDraw = 0;
 
 function createCameraPreview() {
@@ -236,6 +235,18 @@ function drawCameraPreview(now = 0) {
 
       ctx.fill();
     }
+
+    const center = imageCenter(hand);
+    const handLabel = latestHandLabels[latestImageLandmarks.indexOf(hand)] || 'HAND';
+    const labelX = clamp(center.x * width, 8, width - 110);
+    const labelY = clamp(center.y * height - 18, 28, height - 8);
+
+    ctx.font = `bold ${Math.max(11, width * 0.027)}px monospace`;
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(2,7,17,.82)';
+    ctx.fillRect(labelX - 4, labelY - 13, 108, 18);
+    ctx.fillStyle = '#baf7ff';
+    ctx.fillText(handLabel, labelX, labelY);
   }
 
   ctx.restore();
@@ -243,6 +254,8 @@ function drawCameraPreview(now = 0) {
 
 createCameraPreview();
 
+// Same material as the standalone hand-preview test: clean cyan topology,
+// with no lighting-dependent shading that would change its appearance.
 const cyanMaterial = new THREE.MeshBasicMaterial({
   color: 0x16cfff,
   wireframe: true,
@@ -342,8 +355,12 @@ function validVector(vector) {
 }
 
 function worldPoint(point) {
+  // MediaPipe world landmarks use image-style axes: +X right, +Y down,
+  // and +Z away from the camera. Three.js camera-local space uses +X
+  // right, +Y up, and +Z toward the camera. A 180-degree X rotation
+  // converts between them without introducing a reflection.
   return new THREE.Vector3(
-    -point.x,
+    point.x,
     -point.y,
     -point.z
   );
@@ -580,39 +597,29 @@ function createHandInstance(side) {
   ] of FINGER_SEGMENTS) {
     const bone = bones[boneName];
 
-    const inverseBoneWorld = bone.matrixWorld
-      .clone()
-      .invert();
-
-    let restDirectionLocal;
+    // Build the rest direction entirely from the rig's LOCAL hierarchy.
+    // Do not derive it from matrixWorld: the left-hand clone uses a mirrored
+    // parent scale, and converting that reflected world matrix back into a
+    // quaternion loses the reflection. That mismatch twists the left fingers.
+    let restParentDirection;
 
     if (nextBoneName) {
       const childBone = bones[nextBoneName];
 
-      const childWorldPosition = new THREE.Vector3();
-
-      childBone.getWorldPosition(childWorldPosition);
-
-      restDirectionLocal = childWorldPosition
-        .applyMatrix4(inverseBoneWorld)
+      // childBone.position is expressed in this bone's local coordinates.
+      // Rotate it into this bone's parent coordinates.
+      restParentDirection = childBone.position
+        .clone()
+        .applyQuaternion(bone.quaternion)
         .normalize();
-
     } else {
-      const parentWorldPosition = new THREE.Vector3();
-      const boneWorldPosition = new THREE.Vector3();
-
-      bone.parent.getWorldPosition(parentWorldPosition);
-      bone.getWorldPosition(boneWorldPosition);
-
-      const forwardWorld = boneWorldPosition
-        .sub(parentWorldPosition);
-
-      restDirectionLocal = forwardWorld
-        .transformDirection(inverseBoneWorld)
+      // Terminal phalanx: its own offset is already in parent-local space.
+      restParentDirection = bone.position
+        .clone()
         .normalize();
     }
 
-    if (!validVector(restDirectionLocal)) {
+    if (!validVector(restParentDirection)) {
       console.error(
         `Invalid rest direction for ${boneName}`
       );
@@ -625,8 +632,7 @@ function createHandInstance(side) {
     restBones[boneName] = {
       restQuaternion: bone.quaternion.clone(),
 
-      restDirectionLocal:
-        restDirectionLocal.clone(),
+      restParentDirection: restParentDirection.clone(),
 
       smoothedQuaternion:
         bone.quaternion.clone(),
@@ -917,8 +923,25 @@ function updateHandPosition(
 
  instance.root.position.copy(instance.position);
 
+// Convert the normalized MediaPipe fingertip to the same NDC space
+// used by Three.js Raycaster.setFromCamera(). X is mirrored to match
+// the live camera preview and the displayed 3D hand.
 const indexTip = imageLandmarks[8];
+const targetHoverNdc = new THREE.Vector2(
+  1 - (indexTip.x * 2),
+  1 - (indexTip.y * 2)
+);
 
+if (!instance.hoverNdc) {
+  instance.hoverNdc = targetHoverNdc;
+} else {
+  instance.hoverNdc.lerp(
+    targetHoverNdc,
+    smoothingAlpha(dt, SETTINGS.positionTime)
+  );
+}
+
+// Preserve the previous world-space fingertip position API.
 const hoverTarget = camera.localToWorld(
   new THREE.Vector3(
     (0.5 - indexTip.x) * view.width,
@@ -964,8 +987,7 @@ function updatePalmRotation(
   if (!instance.rotationReady) {
     instance.rotation.copy(targetRotation);
     instance.rotationReady = true;
-  } else {
-    instance.rotation.slerp(
+  } else {instance.rotation.slerp(
       targetRotation,
       smoothingAlpha(
         dt,
@@ -987,50 +1009,29 @@ function makeStableSwing(
     1
   );
 
-  const maximumAngle =
-    THREE.MathUtils.degToRad(150);
-
-  const angle = Math.acos(dot);
-
-  const swing = new THREE.Quaternion();
-
-  if (angle <= maximumAngle) {
-    swing.setFromUnitVectors(
+  // Do not clamp finger motion to an arbitrary maximum angle. That clamp
+  // prevented strongly curled fingers from reaching their observed pose.
+  if (dot > -0.9995) {
+    return new THREE.Quaternion().setFromUnitVectors(
       restDirection,
       targetDirection
-    );
-
-    return swing;
+    ).normalize();
   }
 
-  const axis = new THREE.Vector3()
-    .crossVectors(
-      restDirection,
-      targetDirection
-    );
+  // At exactly 180 degrees the cross product has no stable axis. Choose a
+  // deterministic axis perpendicular to the rest direction instead.
+  const axis = Math.abs(restDirection.x) < 0.8
+    ? new THREE.Vector3(1, 0, 0)
+    : new THREE.Vector3(0, 1, 0);
 
-  if (axis.lengthSq() < 1e-8) {
-    axis.crossVectors(
-      restDirection,
-      new THREE.Vector3(0, 0, 1)
-    );
+  axis.addScaledVector(
+    restDirection,
+    -axis.dot(restDirection)
+  ).normalize();
 
-    if (axis.lengthSq() < 1e-8) {
-      axis.crossVectors(
-        restDirection,
-        new THREE.Vector3(1, 0, 0)
-      );
-    }
-  }
-
-  axis.normalize();
-
-  swing.setFromAxisAngle(
-    axis,
-    maximumAngle
-  );
-
-  return swing;
+  return new THREE.Quaternion()
+    .setFromAxisAngle(axis, Math.PI)
+    .normalize();
 }
 
 function updateFingerBone(
@@ -1075,10 +1076,7 @@ function updateFingerBone(
       .normalize();
 
   const restParentDirection =
-    rest.restDirectionLocal
-      .clone()
-      .applyQuaternion(rest.restQuaternion)
-      .normalize();
+    rest.restParentDirection.clone().normalize();
 
   if (
     !validVector(targetParentDirection) ||
@@ -1153,6 +1151,26 @@ function updateTrackedHand(
 
   if (!instance) return;
 
+  const trackingGap = instance.lastSeen
+    ? now - instance.lastSeen
+    : Infinity;
+
+  if (trackingGap > SETTINGS.reacquireResetMs) {
+    instance.smoothedImage = null;
+    instance.smoothedWorld = null;
+    instance.lastObservedFrame = null;
+    instance.positionReady = false;
+    instance.rotationReady = false;
+    instance.scaleReady = false;
+    instance.hoverNdc = null;
+    instance.hoverPosition = null;
+
+    for (const rest of Object.values(instance.restBones)) {
+      rest.initialized = false;
+      rest.smoothedQuaternion.copy(rest.restQuaternion);
+    }
+  }
+
   const smoothedImage = smoothImageLandmarks(
     instance,
     imageLandmarks,
@@ -1200,16 +1218,22 @@ if (palmFrame) {
   const facingScore = palmNormal.z * sideSign;
 
   if (Math.abs(facingScore) < 0.22) {
-    orientationStatus.textContent =
-      `${side.toUpperCase()} HAND: EDGE-ON`;
+    if (orientationStatus) {
+      orientationStatus.textContent =
+        `${side.toUpperCase()} HAND: EDGE-ON`;
+    }
   } else if (facingScore > 0) {
     instance.palmFacing = true;
-    orientationStatus.textContent =
-      `${side.toUpperCase()} HAND: PALM`;
+    if (orientationStatus) {
+      orientationStatus.textContent =
+        `${side.toUpperCase()} HAND: PALM`;
+    }
   } else {
     instance.palmFacing = false;
-    orientationStatus.textContent =
-      `${side.toUpperCase()} HAND: BACK`;
+    if (orientationStatus) {
+      orientationStatus.textContent =
+        `${side.toUpperCase()} HAND: BACK`;
+    }
   }
 }
 
@@ -1253,23 +1277,28 @@ async function initializeMediaPipe() {
 }
 
 function readHandSide(result, index) {
+  // MediaPipe Tasks Hand Landmarker (the @mediapipe/tasks-vision API used
+  // here) reports the SUBJECT'S anatomical handedness for an unmirrored
+  // input frame. Our video element is passed directly to detectForVideo();
+  // CSS mirroring is applied only to the preview, after inference.
+  // Therefore, do NOT swap these labels. Swapping them makes a real right
+  // hand create the mirrored left-hand hologram.
   const groups =
     result.handednesses ||
     result.handedness;
 
-  const category =
-    groups?.[index]?.[0]?.categoryName;
+  const category = groups?.[index]?.[0];
+  const side = category?.categoryName;
 
-  if (
-    category !== 'Left' &&
-    category !== 'Right'
-  ) {
+  if (side !== 'Left' && side !== 'Right') {
     return null;
   }
 
-  return category === 'Left'
-    ? 'Right'
-    : 'Left';
+  const score = Number.isFinite(category.score)
+    ? category.score
+    : 0;
+
+  return { side, score };
 }
 
 function distanceBetweenCenters(a, b) {
@@ -1290,55 +1319,23 @@ function assignHandSide(
   usedSides,
   now
 ) {
-  const classifiedSide = readHandSide(
-    result,
-    index
-  );
+  const classification = readHandSide(result, index);
+  const currentCenter = normalizedHandCenter(imageLandmarks);
+  const confidenceThreshold = 0.55;
 
-  const otherSide =
-    classifiedSide === 'Left'
-      ? 'Right'
-      : 'Left';
-
-  const currentCenter =
-    normalizedHandCenter(imageLandmarks);
-
+  // A confident MediaPipe label is the identity source of truth.
+  // Never replace it with a screen-position guess.
   if (
-    classifiedSide &&
-    !usedSides.has(classifiedSide)
+    classification &&
+    classification.score >= confidenceThreshold
   ) {
-    const candidateInstance =
-      handInstances.get(classifiedSide);
-
-    const otherInstance =
-      handInstances.get(otherSide);
-
-    const candidateIsRecent =
-      candidateInstance &&
-      now - candidateInstance.lastSeen < 450;
-
-    const otherIsRecent =
-      otherInstance &&
-      now - otherInstance.lastSeen < 450;
-
-    if (
-      !candidateIsRecent &&
-      otherIsRecent &&
-      otherInstance.lastImageCenter
-    ) {
-      const otherDistance = distanceBetweenCenters(
-        currentCenter,
-        otherInstance.lastImageCenter
-      );
-
-      if (otherDistance < 0.30) {
-        return otherSide;
-      }
-    }
-
-    return classifiedSide;
+    return usedSides.has(classification.side)
+      ? null
+      : classification.side;
   }
 
+  // If the label is weak or missing, preserve the previous identity by
+  // matching this detection to the closest recently tracked hand.
   let bestSide = null;
   let bestDistance = Infinity;
 
@@ -1366,21 +1363,25 @@ function assignHandSide(
     }
   }
 
-  if (bestSide) {
+  if (bestSide && bestDistance < 0.35) {
     return bestSide;
   }
 
+  // If this is a new hand and the classifier supplied a usable label,
+  // retain that label even when its confidence is below the threshold.
   if (
-    classifiedSide &&
-    !usedSides.has(classifiedSide)
+    classification &&
+    !usedSides.has(classification.side)
   ) {
-    return classifiedSide;
+    return classification.side;
   }
 
+  // Last-resort fallback only when MediaPipe supplied no usable label.
   return ['Left', 'Right'].find(
     side => !usedSides.has(side)
   ) || null;
 }
+
 function processDetection(now) {
   if (
     !running ||
@@ -1422,6 +1423,12 @@ function processDetection(now) {
     const visibleSides = new Set();
 
     latestImageLandmarks = imageResults;
+    latestHandLabels = imageResults.map((_, index) => {
+      const classification = readHandSide(result, index);
+      return classification
+        ? `${classification.side.toUpperCase()} ${Math.round(classification.score * 100)}%`
+        : 'HAND';
+    });
 
     drawCameraPreview(now);
 
@@ -1744,6 +1751,7 @@ function stop() {
   );
 
   cameraStream = null;
+  video.srcObject = null;
 
   handLandmarker?.close();
   handLandmarker = null;
@@ -1760,13 +1768,29 @@ function stop() {
 
   handInstances.clear();
 
-  cyanMaterial.dispose();
-
   if (previewWrapper) {
     previewWrapper.remove();
+    previewWrapper = null;
+    previewCanvas = null;
+    previewContext = null;
   }
+
+  latestImageLandmarks = [];
+  latestHandLabels = [];
+  lastPreviewDraw = 0;
+
+  startButton.disabled = false;
+  startButton.textContent = 'INITIALIZE HAND SCANNER';
+  startButton.style.display = '';
 }
 
+function getTrackedPointers() {
+  return [...handInstances.values()]
+    .filter(instance => instance.root.visible && instance.hoverNdc)
+    .map(instance => instance.hoverNdc.clone());
+}
+
+// Keep the world-position accessor available for other project code.
 function getTrackedHands() {
   return [...handInstances.values()]
     .filter(instance => instance.root.visible)
@@ -1778,6 +1802,7 @@ function getTrackedHands() {
 return {
   start: startCamera,
   stop,
+  getTrackedPointers,
   getTrackedHands,
   getStatus: () => status.textContent
 };
