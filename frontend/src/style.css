@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
 
 :root {
@@ -779,8 +780,8 @@ button {
   }
 }
 
-
 /* Accessibility and interaction polish */
+
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
@@ -809,5 +810,82 @@ button:disabled {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+}
+
+/* =========================================
+   CAMERA PREVIEW LAYOUT FIX
+   Move camera preview away from Properties
+========================================= */
+
+.viewport {
+  isolation: isolate;
+}
+
+/* Common camera preview element names */
+#camera-preview,
+.camera-preview,
+.hand-camera-preview,
+#hand-camera-preview {
+  position: absolute !important;
+  z-index: 6 !important;
+  left: 12px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 54px !important;
+  width: 180px !important;
+  max-width: 28% !important;
+  height: auto !important;
+  max-height: 135px !important;
+  object-fit: cover;
+  border: 1px solid rgba(22, 207, 255, .65);
+  border-radius: 6px;
+  background: #020711;
+  box-shadow: 0 0 14px rgba(0, 140, 240, .18);
+}
+
+/* Common camera preview wrappers */
+#camera-container,
+.camera-container,
+.hand-camera-container {
+  position: absolute !important;
+  z-index: 6 !important;
+  left: 12px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 54px !important;
+  width: 180px !important;
+  max-width: 28% !important;
+  overflow: hidden;
+  border: 1px solid rgba(22, 207, 255, .65);
+  border-radius: 6px;
+  background: #020711;
+}
+
+/* Video inside a camera wrapper */
+#camera-container video,
+.camera-container video,
+.hand-camera-container video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 135px;
+  object-fit: cover;
+}
+
+/* Smaller camera preview on narrow screens */
+@media (max-width: 700px) {
+  #camera-preview,
+  .camera-preview,
+  .hand-camera-preview,
+  #hand-camera-preview,
+  #camera-container,
+  .camera-container,
+  .hand-camera-container {
+    left: 8px !important;
+    right: auto !important;
+    bottom: 48px !important;
+    width: 125px !important;
+    max-width: 35% !important;
   }
 }
