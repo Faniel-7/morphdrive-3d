@@ -1,7 +1,7 @@
 import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { createVehicleManager } from './vehicle-manager.js';
+import { createVehicleManager } from '../vehicle-manager.js';
 import { createHandController } from './hand-controller.js';
 
 document.querySelector('#app').innerHTML = `
