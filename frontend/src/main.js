@@ -1,7 +1,7 @@
 import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { createVehicleManager } from './vehicle-manager.js';
 import { createHandController } from './hand-controller.js';
 
 document.querySelector('#app').innerHTML = `
@@ -85,9 +85,22 @@ document.querySelector('#app').innerHTML = `
         <span class="blue">⛶</span>
       </div>
 
-      <div class="model-name">
-        ⬡ &nbsp;Vehicle_Concept_v12
+      <div class="model-name" id="active-model-heading">
+        <span class="model-name-symbol">⬡</span>
+        <span id="active-model-name">Sedan</span>
         <span>›</span>
+      </div>
+
+      <div class="vehicle-library">
+        <label for="vehicle-select">VEHICLE MODEL</label>
+        <select id="vehicle-select" aria-label="Choose a vehicle model">
+          <option value="sedan">Sedan · Default model</option>
+        </select>
+        <div class="vehicle-library-actions">
+          <button id="import-vehicle" type="button">＋ Import GLB</button>
+          <input id="vehicle-file" type="file" accept=".glb,model/gltf-binary" hidden>
+        </div>
+        <small id="vehicle-library-status">1 model available · Import a GLB to add another</small>
       </div>
 
       <div class="section-label">Assemblies</div>
@@ -155,9 +168,8 @@ document.querySelector('#app').innerHTML = `
           <span>LOADING VEHICLE MODEL</span>
         </div>
 
-        <div id="model-error" class="model-error hidden">
-          Could not load sedan.glb.
-          Check that your file is in public/models/.
+        <div id="model-error" class="model-error hidden" role="alert">
+          Could not load this vehicle. Check that the GLB file is valid and try again.
         </div>
 
         <div class="view-label">
@@ -210,12 +222,12 @@ document.querySelector('#app').innerHTML = `
 
         <div class="property-row">
           <span>Name</span>
-          <span>Vehicle_Concept_v12</span>
+          <span id="property-model-name">Sedan</span>
         </div>
 
         <div class="property-row">
           <span>Type</span>
-          <span>Assembly</span>
+          <span id="property-model-type">Car</span>
         </div>
 
         <div class="property-row">
@@ -344,6 +356,62 @@ document.querySelector('#app').innerHTML = `
 </div>
 `;
 
+const vehicleLibraryStyles = document.createElement('style');
+vehicleLibraryStyles.textContent = `
+  .vehicle-library {
+    display: grid;
+    gap: 7px;
+    padding: 12px 13px 14px;
+    border-bottom: 1px solid rgba(100, 160, 210, .13);
+  }
+  .vehicle-library > label {
+    color: #79a9c9;
+    font: 10px/1.2 monospace;
+    letter-spacing: .11em;
+  }
+  .vehicle-library select {
+    width: 100%;
+    min-width: 0;
+    padding: 8px 9px;
+    color: #d9efff;
+    background: rgba(4, 17, 32, .92);
+    border: 1px solid rgba(54, 186, 255, .28);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .vehicle-library-actions { display: flex; }
+  #import-vehicle {
+    width: 100%;
+    padding: 8px 10px;
+    color: #8bdfff;
+    background: rgba(0, 145, 220, .10);
+    border: 1px solid rgba(54, 186, 255, .3);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    line-height: 1.2;
+  }
+  #import-vehicle:hover:not(:disabled) {
+    background: rgba(0, 145, 220, .2);
+    border-color: rgba(54, 186, 255, .65);
+  }
+  #import-vehicle:disabled, #vehicle-select:disabled {
+    opacity: .55;
+    cursor: wait;
+  }
+  #vehicle-library-status {
+    color: #7792a8;
+    font-family: inherit;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  #active-model-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+`;
+document.head.append(vehicleLibraryStyles);
+
 const viewport = document.querySelector('#viewport');
 
 const helpPanel = document.querySelector('#help-panel');
@@ -392,11 +460,14 @@ camera.position.set(7, 4.2, 8);
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
-  alpha: false
+  alpha: false,
+  powerPreference: 'low-power'
 });
 
+// Keep rendering lightweight on integrated GPUs while retaining enough
+// resolution for a clear vehicle preview.
 renderer.setPixelRatio(
-  Math.min(window.devicePixelRatio, 1.5)
+  Math.min(window.devicePixelRatio || 1, 1.25)
 );
 
 renderer.setSize(
@@ -493,6 +564,15 @@ let materialTotal = 0;
 
 const raycaster = new THREE.Raycaster();
 const pointerNdc = new THREE.Vector2();
+const hoverTestPoints = [];
+const hoverRaycastHits = [];
+const previousHoverPointers = [];
+
+const HOVER_UPDATE_INTERVAL = 1000 / 30;
+const HOVER_POINTER_EPSILON_SQ = 0.000004;
+
+let lastHoverUpdate = -Infinity;
+let hoverDirty = true;
 let pointerActive = false;
 let hoveredMesh = null;
 let hoveredOriginalMaterial = null;
@@ -573,36 +653,77 @@ function setHoveredMesh(mesh) {
     `HOVER: ${label.replace(/[_-]+/g, ' ')}`;
 }
 
-function updateVehicleHover() {
+function updateVehicleHover(now, cameraChanged = false) {
   if (!vehicle) return;
 
-  camera.updateMatrixWorld(true);
+  // Sample tracked pointers at 30 Hz rather than allocating and raycasting
+  // on every render frame. Mouse movement refreshes immediately; camera
+  // movement is checked at the same 30 Hz limit.
+  if (
+    !hoverDirty &&
+    now - lastHoverUpdate < HOVER_UPDATE_INTERVAL
+  ) {
+    return;
+  }
 
-  // Hand pointers use the same normalized device coordinates as the mouse.
   const trackedPointers = handController.getTrackedPointers();
-  const testPoints = [];
+  hoverTestPoints.length = 0;
 
   for (const point of trackedPointers) {
     if (
       point.x >= -1 && point.x <= 1 &&
       point.y >= -1 && point.y <= 1
     ) {
-      testPoints.push(point);
+      hoverTestPoints.push(point);
     }
   }
 
+  let pointersChanged =
+    hoverTestPoints.length !== previousHoverPointers.length;
+
+  if (!pointersChanged) {
+    for (let i = 0; i < hoverTestPoints.length; i++) {
+      if (
+        hoverTestPoints[i].distanceToSquared(previousHoverPointers[i]) >
+        HOVER_POINTER_EPSILON_SQ
+      ) {
+        pointersChanged = true;
+        break;
+      }
+    }
+  }
+
+  if (pointersChanged) {
+    previousHoverPointers.length = 0;
+
+    for (const point of hoverTestPoints) {
+      previousHoverPointers.push(point.clone());
+    }
+  }
+
+  lastHoverUpdate = now;
+
+  if (!hoverDirty && !cameraChanged && !pointersChanged) {
+    return;
+  }
+
+  hoverDirty = false;
+  camera.updateMatrixWorld(true);
+
   // If no fingertip is currently inside the viewport, keep mouse hover usable.
-  if (testPoints.length === 0 && pointerActive) {
-    testPoints.push(pointerNdc);
+  if (hoverTestPoints.length === 0 && pointerActive) {
+    hoverTestPoints.push(pointerNdc);
   }
 
   let nearestHit = null;
 
-  for (const point of testPoints) {
+  for (const point of hoverTestPoints) {
     raycaster.setFromCamera(point, camera);
 
-    const hits = raycaster.intersectObject(vehicle, true);
-    const hit = hits.find(item => item.object.isMesh);
+    hoverRaycastHits.length = 0;
+    raycaster.intersectObject(vehicle, true, hoverRaycastHits);
+
+    const hit = hoverRaycastHits.find(item => item.object.isMesh);
 
     if (hit && (!nearestHit || hit.distance < nearestHit.distance)) {
       nearestHit = hit;
@@ -621,248 +742,271 @@ renderer.domElement.addEventListener('pointermove', event => {
   );
 
   pointerActive = true;
+  hoverDirty = true;
 });
 
 renderer.domElement.addEventListener('pointerleave', () => {
   pointerActive = false;
+  hoverDirty = true;
 
   if (!handController.getTrackedHands().length) {
     setHoveredMesh(null);
   }
 });
-const loader = new GLTFLoader();
+const loadingPanel = document.querySelector('#loading');
+const loadingMessage = document.querySelector('#loading span:last-child');
+const modelError = document.querySelector('#model-error');
+const vehicleSelect = document.querySelector('#vehicle-select');
+const importVehicleButton = document.querySelector('#import-vehicle');
+const vehicleFileInput = document.querySelector('#vehicle-file');
+const vehicleLibraryStatus = document.querySelector('#vehicle-library-status');
+const activeModelName = document.querySelector('#active-model-name');
 
-loader.load(
-  '/models/sedan.glb',
+let vehicleManager;
 
-  (gltf) => {
+function setVehicleLoading(isLoading, message = 'LOADING VEHICLE MODEL...') {
+  loadingPanel.classList.toggle('hidden', !isLoading);
+  modelError.classList.add('hidden');
+  loadingMessage.textContent = message;
+  vehicleSelect.disabled = isLoading;
+  importVehicleButton.disabled = isLoading;
+}
 
-    vehicle = gltf.scene;
+function updateVehicleCatalogOptions(selectedId = '') {
+  const models = vehicleManager.getCatalog();
+  vehicleSelect.replaceChildren();
 
-    const box = new THREE.Box3().setFromObject(vehicle);
+  for (const model of models) {
+    const option = document.createElement('option');
+    option.value = model.id;
+    option.textContent = `${model.name} · ${model.type}`;
+    vehicleSelect.append(option);
+  }
 
-    const size = box.getSize(new THREE.Vector3());
-    const center = box.getCenter(new THREE.Vector3());
+  if (selectedId) vehicleSelect.value = selectedId;
+  vehicleLibraryStatus.textContent =
+    `${models.length} model${models.length === 1 ? '' : 's'} available · Import a GLB to add another`;
+}
 
-    const maxDimension = Math.max(
-      size.x,
-      size.y,
-      size.z
-    );
+function resetVehicleInteractionState() {
+  restoreHoveredMesh();
+  exploded = false;
+  wireframe = false;
+  document.querySelector('#explode').classList.remove('active');
+  document.querySelector('#wireframe').classList.remove('active');
+  hoverTestPoints.length = 0;
+  previousHoverPointers.length = 0;
+  hoverDirty = true;
+}
 
-    const scale = 5 / maxDimension;
+function initializeVehicle(root, model) {
+  vehicle = root;
+  resetVehicleInteractionState();
 
-    vehicle.scale.setScalar(scale);
+  triangleTotal = 0;
+  partTotal = 0;
+  materialTotal = 0;
+  originalMaterials = [];
+  paintMaterials = [];
 
-    vehicle.position.set(
-      -center.x * scale,
-      -box.min.y * scale,
-      -center.z * scale
-    );
+  const materialRecords = new Map();
 
-    const materialRecords = new Map();
+  vehicle.traverse(object => {
+    if (!object.isMesh) return;
 
-    vehicle.traverse((object) => {
+    partTotal++;
+    const geometry = object.geometry;
 
-      if (!object.isMesh) return;
+    if (geometry?.index) {
+      triangleTotal += geometry.index.count / 3;
+    } else if (geometry?.attributes?.position) {
+      triangleTotal += geometry.attributes.position.count / 3;
+    }
 
-      partTotal++;
+    const materials = Array.isArray(object.material)
+      ? object.material
+      : object.material
+        ? [object.material]
+        : [];
 
-      const geometry = object.geometry;
-
-      if (geometry.index) {
-        triangleTotal += geometry.index.count / 3;
-      } else if (geometry.attributes.position) {
-        triangleTotal +=
-          geometry.attributes.position.count / 3;
+    for (const material of materials) {
+      if (!materialRecords.has(material)) {
+        materialRecords.set(material, {
+          material,
+          originalColor: material.color ? material.color.clone() : null,
+          originalMetalness: material.metalness,
+          originalRoughness: material.roughness,
+          originalWireframe: material.wireframe,
+          meshNames: [],
+          materialName: (material.name || '').toLowerCase()
+        });
       }
 
-      const materials = Array.isArray(object.material)
-        ? object.material
-        : [object.material];
-
-      materials.forEach((mat) => {
-
-        if (!materialRecords.has(mat)) {
-
-          materialRecords.set(mat, {
-            material: mat,
-
-            originalColor: mat.color
-              ? mat.color.clone()
-              : null,
-
-            originalMetalness: mat.metalness,
-            originalRoughness: mat.roughness,
-            originalWireframe: mat.wireframe,
-
-            meshNames: [],
-            materialName: (mat.name || '').toLowerCase()
-          });
-
-        }
-
-        const record = materialRecords.get(mat);
-
-        record.meshNames.push(
-          (object.name || '').toLowerCase()
-        );
-
-      });
-
-      object.castShadow = true;
-      object.receiveShadow = true;
-
-      object.userData.originalPosition =
-        object.position.clone();
-
-    });
-
-    originalMaterials = [...materialRecords.values()];
-    materialTotal = originalMaterials.length;
-
-    const bodyKeywords = [
-      'body',
-      'paint',
-      'exterior',
-      'shell',
-      'bonnet',
-      'hood',
-      'door',
-      'fender',
-      'bumper',
-      'carbody'
-    ];
-
-    const excludedKeywords = [
-      'glass',
-      'window',
-      'tire',
-      'tyre',
-      'rubber',
-      'wheel',
-      'rim',
-      'light',
-      'lamp',
-      'chrome',
-      'trim',
-      'interior',
-      'seat',
-      'dashboard',
-      'steering',
-      'brake',
-      'caliper'
-    ];
-
-    function isExcluded(entry) {
-
-      const name = [
-        entry.materialName,
-        ...entry.meshNames
-      ].join(' ');
-
-      return excludedKeywords.some(
-        keyword => name.includes(keyword)
+      materialRecords.get(material).meshNames.push(
+        (object.name || '').toLowerCase()
       );
-
     }
 
-    paintMaterials = originalMaterials.filter((entry) => {
+    object.castShadow = true;
+    object.receiveShadow = true;
+    object.userData.originalPosition = object.position.clone();
+  });
 
-      const name = [
-        entry.materialName,
-        ...entry.meshNames
-      ].join(' ');
+  originalMaterials = [...materialRecords.values()];
+  materialTotal = originalMaterials.length;
 
-      return (
-        bodyKeywords.some(keyword => name.includes(keyword)) &&
-        !isExcluded(entry) &&
-        entry.material.color
-      );
+  const bodyKeywords = [
+    'body', 'paint', 'exterior', 'shell', 'bonnet', 'hood',
+    'door', 'fender', 'bumper', 'carbody'
+  ];
 
-    });
+  const excludedKeywords = [
+    'glass', 'window', 'tire', 'tyre', 'rubber', 'wheel',
+    'rim', 'light', 'lamp', 'chrome', 'trim', 'interior',
+    'seat', 'dashboard', 'steering', 'brake', 'caliper'
+  ];
 
-    if (paintMaterials.length === 0) {
-
-      paintMaterials = originalMaterials.filter((entry) => {
-
-        const mat = entry.material;
-
-        if (
-          !mat.color ||
-          mat.transparent ||
-          mat.opacity < 0.95
-        ) {
-          return false;
-        }
-
-        if (isExcluded(entry)) return false;
-
-        const color = mat.color;
-
-        const brightness =
-          (color.r + color.g + color.b) / 3;
-
-        return brightness > 0.12;
-
-      });
-
-    }
-
-    console.log(
-      'MorphDrive: Vehicle loaded successfully.'
-    );
-
-    console.log(
-      'MorphDrive: Detected paint materials:',
-      paintMaterials.map(entry => ({
-        material: entry.material.name,
-        meshes: entry.meshNames
-      }))
-    );
-
-    scene.add(vehicle);
-
-    controls.target.set(0, 1, 0);
-    camera.position.set(7, 4.2, 8);
-    controls.update();
-
-    document.querySelector('#loading')
-      .classList.add('hidden');
-
-    document.querySelector('#parts-count').textContent =
-      partTotal.toLocaleString();
-
-    document.querySelector('#triangles-value').textContent =
-      Math.round(triangleTotal).toLocaleString();
-
-    document.querySelector('#materials-count').textContent =
-      materialTotal.toLocaleString();
-
-    document.querySelector('#triangle-count').textContent =
-      `Triangles: ${Math.round(triangleTotal).toLocaleString()}`;
-
-    updatePaint();
-
-  },
-
-  undefined,
-
-  (error) => {
-
-    console.error(
-      'MorphDrive: Vehicle loading failed:',
-      error
-    );
-
-    document.querySelector('#loading')
-      .classList.add('hidden');
-
-    document.querySelector('#model-error')
-      .classList.remove('hidden');
-
+  function isExcluded(entry) {
+    const name = [entry.materialName, ...entry.meshNames].join(' ');
+    return excludedKeywords.some(keyword => name.includes(keyword));
   }
-);
+
+  paintMaterials = originalMaterials.filter(entry => {
+    const name = [entry.materialName, ...entry.meshNames].join(' ');
+    return bodyKeywords.some(keyword => name.includes(keyword)) &&
+      !isExcluded(entry) && entry.material.color;
+  });
+
+  if (paintMaterials.length === 0) {
+    paintMaterials = originalMaterials.filter(entry => {
+      const material = entry.material;
+      if (!material.color || material.transparent || material.opacity < 0.95) {
+        return false;
+      }
+      if (isExcluded(entry)) return false;
+      const color = material.color;
+      const brightness = (color.r + color.g + color.b) / 3;
+      return brightness > 0.12;
+    });
+  }
+
+  activeModelName.textContent = model.name;
+  document.querySelector('#property-model-name').textContent = model.name;
+  document.querySelector('#property-model-type').textContent = model.type;
+  document.querySelector('#parts-count').textContent = partTotal.toLocaleString();
+  document.querySelector('#triangles-value').textContent =
+    Math.round(triangleTotal).toLocaleString();
+  document.querySelector('#materials-count').textContent =
+    materialTotal.toLocaleString();
+  document.querySelector('#triangle-count').textContent =
+    `Triangles: ${Math.round(triangleTotal).toLocaleString()}`;
+  document.querySelector('#hover-status').textContent =
+    'Hover over a vehicle part';
+
+  controls.target.set(0, 1, 0);
+  camera.position.set(7, 4.2, 8);
+  controls.update();
+  hoverDirty = true;
+
+  updatePaint();
+
+  console.info(`MorphDrive: ${model.name} loaded.`, {
+    parts: partTotal,
+    triangles: Math.round(triangleTotal),
+    materials: materialTotal,
+    paintMaterials: paintMaterials.length
+  });
+}
+
+vehicleManager = createVehicleManager({
+  scene,
+  targetSize: 5,
+  onBeforeReplace: () => {
+    resetVehicleInteractionState();
+  },
+  onProgress: (event, model) => {
+    if (event.phase === 'start') {
+      setVehicleLoading(true, `LOADING ${model.name.toUpperCase()}...`);
+      return;
+    }
+
+    if (event.phase === 'complete') {
+      loadingMessage.textContent = `${model.name.toUpperCase()} READY`;
+      return;
+    }
+
+    if (event.lengthComputable && event.total > 0) {
+      const percent = Math.round((event.loaded / event.total) * 100);
+      loadingMessage.textContent = `LOADING ${model.name.toUpperCase()} ${percent}%`;
+    } else {
+      loadingMessage.textContent = `LOADING ${model.name.toUpperCase()}...`;
+    }
+  }
+});
+
+vehicleManager.registerModel({
+  id: 'sedan',
+  name: 'Sedan',
+  type: 'Car',
+  url: '/models/sedan.glb'
+});
+
+async function activateVehicle(id) {
+  try {
+    const result = await vehicleManager.loadModel(id);
+    initializeVehicle(result.root, result.model);
+    updateVehicleCatalogOptions(result.model.id);
+    setVehicleLoading(false);
+  } catch (error) {
+    if (error?.name === 'AbortError') return;
+
+    console.error('MorphDrive: Vehicle loading failed:', error);
+    loadingPanel.classList.add('hidden');
+    modelError.textContent = error?.message
+      ? `Could not load vehicle: ${error.message}`
+      : 'Could not load this vehicle. Check that the GLB file is valid and try again.';
+    modelError.classList.remove('hidden');
+    vehicleSelect.value = vehicleManager.getActiveModel()?.id || 'sedan';
+    vehicleSelect.disabled = false;
+    importVehicleButton.disabled = false;
+  }
+}
+
+vehicleSelect.addEventListener('change', event => {
+  activateVehicle(event.currentTarget.value);
+});
+
+importVehicleButton.addEventListener('click', () => {
+  vehicleFileInput.click();
+});
+
+vehicleFileInput.addEventListener('change', async event => {
+  const file = event.currentTarget.files?.[0];
+  if (!file) return;
+
+  try {
+    setVehicleLoading(true, `IMPORTING ${file.name.toUpperCase()}...`);
+    const result = await vehicleManager.importFile(file);
+    initializeVehicle(result.root, result.model);
+    updateVehicleCatalogOptions(result.model.id);
+    setVehicleLoading(false);
+  } catch (error) {
+    if (error?.name === 'AbortError') return;
+
+    console.error('MorphDrive: Vehicle import failed:', error);
+    loadingPanel.classList.add('hidden');
+    modelError.textContent = error?.message || 'Could not import this GLB file.';
+    modelError.classList.remove('hidden');
+    vehicleSelect.disabled = false;
+    importVehicleButton.disabled = false;
+  } finally {
+    // Allow selecting the same file again after a failed import.
+    vehicleFileInput.value = '';
+  }
+});
+
+updateVehicleCatalogOptions('sedan');
+activateVehicle('sedan');
 
 document.querySelector('#reset').addEventListener(
   'click',
@@ -996,7 +1140,7 @@ document.querySelectorAll('.assembly').forEach(
 );
 
 const colorPicker =
-  document.querySelector('#body-color');document.querySelector('#body-color');
+  document.querySelector('#body-color');
 
 const colorValue =
   document.querySelector('#color-value');
@@ -1156,7 +1300,12 @@ function resize() {
 
   camera.updateProjectionMatrix();
 
+  renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio || 1, 1.25)
+  );
+
   renderer.setSize(width, height);
+  hoverDirty = true;
 
 }
 
@@ -1164,12 +1313,12 @@ const observer = new ResizeObserver(resize);
 
 observer.observe(viewport);
 
-function animate() {
+function animate(now = 0) {
 
   requestAnimationFrame(animate);
 
-  controls.update();
-  updateVehicleHover();
+  const cameraChanged = controls.update();
+  updateVehicleHover(now, cameraChanged);
 
   renderer.render(scene, camera);
 
@@ -1177,7 +1326,52 @@ function animate() {
 
 animate();
 
-window.addEventListener('pagehide', () => {
+function disposeSceneResources(root) {
+  const geometries = new Set();
+  const materials = new Set();
+  const textures = new Set();
+
+  root.traverse((object) => {
+    if (object.geometry) {
+      geometries.add(object.geometry);
+    }
+
+    const objectMaterials = Array.isArray(object.material)
+      ? object.material
+      : object.material
+        ? [object.material]
+        : [];
+
+    for (const material of objectMaterials) {
+      if (!material) continue;
+
+      materials.add(material);
+
+      for (const value of Object.values(material)) {
+        if (value?.isTexture) {
+          textures.add(value);
+        }
+      }
+    }
+  });
+
+  for (const texture of textures) texture.dispose();
+  for (const material of materials) material.dispose();
+  for (const geometry of geometries) geometry.dispose();
+}
+
+window.addEventListener('pagehide', (event) => {
   handController.stop();
   restoreHoveredMesh();
-});
+
+  // Do not destroy the renderer when the browser is placing this page
+  // into the back-forward cache; the page may be restored.
+  if (event.persisted) return;
+
+  observer.disconnect();
+  controls.dispose();
+  vehicleManager.dispose();
+  disposeSceneResources(scene);
+  renderer.dispose();
+  renderer.domElement.remove();
+}, { once: true });
