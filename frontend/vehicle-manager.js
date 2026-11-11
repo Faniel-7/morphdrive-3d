@@ -1,10 +1,13 @@
-import { Box3 } from 'three';
+
+import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 /**
- * Loads, normalizes, swaps, and disposes vehicle models for MorphDrive 3D.
- * Built-in models are registered by URL; local imports are restricted to GLB
- * because a standalone .gltf file may depend on external .bin/texture files.
+ * Loads, normalizes, swaps, imports, and disposes vehicle models.
+ *
+ * Built-in models are registered by URL.
+ * User imports are restricted to GLB files so external dependencies
+ * from standalone glTF files do not cause missing-asset problems.
  */
 export function createVehicleManager({
   scene,
@@ -12,8 +15,12 @@ export function createVehicleManager({
   onProgress = () => {},
   targetSize = 5
 }) {
-  if (!scene) {
-    throw new Error('VehicleManager requires a Three.js scene.');
+  if (!scene?.isScene && !scene?.isObject3D) {
+    throw new Error('VehicleManager requires a valid Three.js scene or group.');
+  }
+
+  if (!Number.isFinite(targetSize) || targetSize <= 0) {
+    throw new Error('VehicleManager targetSize must be a positive number.');
   }
 
   const loader = new GLTFLoader();
@@ -25,16 +32,33 @@ export function createVehicleManager({
   let loadSequence = 0;
   let disposed = false;
 
-  function disposeModelResources(root) {
-    if (!root) return;
+  function notifyProgress(event, model) {
+    try {
+      onProgress(event, model);
+    } catch (error) {
+      console.warn('VehicleManager progress callback failed:', error);
+    }
+  }
 
+  function notifyBeforeReplace(previousRoot, nextRoot) {
+    try {
+      onBeforeReplace(previousRoot, nextRoot);
+    } catch (error) {
+      console.warn('VehicleManager replacement callback failed:', error);
+    }
+  }
+
+  function collectResources(root) {
     const geometries = new Set();
     const materials = new Set();
     const textures = new Set();
     const skeletons = new Set();
 
     root.traverse(object => {
-      if (object.geometry) geometries.add(object.geometry);
+      if (object.geometry) {
+        geometries.add(object.geometry);
+      }
+
       if (object.isSkinnedMesh && object.skeleton) {
         skeletons.add(object.skeleton);
       }
@@ -47,26 +71,80 @@ export function createVehicleManager({
 
       for (const material of objectMaterials) {
         if (!material) continue;
+
         materials.add(material);
 
         for (const value of Object.values(material)) {
-          if (value?.isTexture) textures.add(value);
+          if (value?.isTexture) {
+            textures.add(value);
+          } else if (Array.isArray(value)) {
+            for (const item of value) {
+              if (item?.isTexture) textures.add(item);
+            }
+          }
+        }
+
+        if (material.uniforms) {
+          for (const uniform of Object.values(material.uniforms)) {
+            const value = uniform?.value;
+
+            if (value?.isTexture) {
+              textures.add(value);
+            } else if (Array.isArray(value)) {
+              for (const item of value) {
+                if (item?.isTexture) textures.add(item);
+              }
+            }
+          }
         }
       }
     });
 
-    for (const texture of textures) texture.dispose();
-    for (const material of materials) material.dispose();
-    for (const geometry of geometries) geometry.dispose();
-    for (const skeleton of skeletons) skeleton.dispose();
+    return { geometries, materials, textures, skeletons };
   }
 
-  function normalizeModel(root) {
-    root.updateMatrixWorld(true);
+  function disposeModelResources(root) {
+    if (!root) return;
 
-    const bounds = new Box3().setFromObject(root);
-    const size = bounds.getSize();
-    const center = bounds.getCenter();
+    const resources = collectResources(root);
+
+    for (const texture of resources.textures) {
+      texture.dispose();
+    }
+
+    for (const material of resources.materials) {
+      material.dispose();
+    }
+
+    for (const geometry of resources.geometries) {
+      geometry.dispose();
+    }
+
+    for (const skeleton of resources.skeletons) {
+      skeleton.dispose();
+    }
+  }
+
+  /**
+   * Uses a wrapper group so the original GLTF scene transforms
+   * are preserved instead of being overwritten.
+   */
+  function normalizeModel(gltfScene, modelName) {
+    const wrapper = new THREE.Group();
+    wrapper.name = `${modelName || 'Vehicle'}_Normalized`;
+    wrapper.add(gltfScene);
+
+    wrapper.updateMatrixWorld(true);
+
+    const bounds = new THREE.Box3().setFromObject(wrapper);
+
+    if (bounds.isEmpty()) {
+      throw new Error('The selected vehicle contains no visible 3D geometry.');
+    }
+
+    const size = bounds.getSize(new THREE.Vector3());
+    const center = bounds.getCenter(new THREE.Vector3());
+
     const largestDimension = Math.max(size.x, size.y, size.z);
 
     if (!Number.isFinite(largestDimension) || largestDimension <= 0) {
@@ -74,18 +152,27 @@ export function createVehicleManager({
     }
 
     const scale = targetSize / largestDimension;
-    root.scale.multiplyScalar(scale);
-    root.position.set(
+
+    wrapper.scale.setScalar(scale);
+
+    wrapper.position.set(
       -center.x * scale,
       -bounds.min.y * scale,
       -center.z * scale
     );
-    root.updateMatrixWorld(true);
+
+    wrapper.updateMatrixWorld(true);
+
+    return wrapper;
   }
 
   function registerModel(model) {
     if (!model?.id || !model?.name || !model?.url) {
       throw new Error('A vehicle model requires an id, name, and URL.');
+    }
+
+    if (disposed) {
+      throw new Error('VehicleManager has been disposed.');
     }
 
     catalog.set(model.id, {
@@ -105,46 +192,70 @@ export function createVehicleManager({
     return activeModel ? { ...activeModel } : null;
   }
 
-  async function loadSource(model, url, revokeUrlAfterLoad = false) {
-    if (disposed) throw new Error('VehicleManager has been disposed.');
+  async function loadSource(model, url) {
+    if (disposed) {
+      throw new Error('VehicleManager has been disposed.');
+    }
 
     const requestId = ++loadSequence;
-    onProgress({ phase: 'start', loaded: 0, total: 0 }, model);
+
+    notifyProgress(
+      { phase: 'start', loaded: 0, total: 0 },
+      model
+    );
 
     let gltf;
+
     try {
       gltf = await loader.loadAsync(url, event => {
-        if (requestId !== loadSequence) return;
-        onProgress(event, model);
+        if (requestId !== loadSequence || disposed) return;
+
+        notifyProgress(event, model);
       });
     } catch (error) {
-      if (revokeUrlAfterLoad) URL.revokeObjectURL(url);
       throw error;
     }
 
-    const root = gltf.scene;
+    const gltfScene = gltf.scene;
 
     if (requestId !== loadSequence || disposed) {
-      disposeModelResources(root);
-      if (revokeUrlAfterLoad) URL.revokeObjectURL(url);
+      disposeModelResources(gltfScene);
+
       const error = new Error('Vehicle loading was superseded.');
       error.name = 'AbortError';
       throw error;
     }
 
+    let nextRoot;
+
     try {
-      normalizeModel(root);
+      nextRoot = normalizeModel(gltfScene, model.name);
     } catch (error) {
-      disposeModelResources(root);
-      if (revokeUrlAfterLoad) URL.revokeObjectURL(url);
+      disposeModelResources(gltfScene);
+      throw error;
+    }
+
+    if (requestId !== loadSequence || disposed) {
+      disposeModelResources(nextRoot);
+
+      const error = new Error('Vehicle loading was superseded.');
+      error.name = 'AbortError';
       throw error;
     }
 
     const previousRoot = activeRoot;
-    onBeforeReplace(previousRoot, root);
 
-    scene.add(root);
-    activeRoot = root;
+    notifyBeforeReplace(previousRoot, nextRoot);
+
+    try {
+      scene.add(nextRoot);
+    } catch (error) {
+      disposeModelResources(nextRoot);
+      throw error;
+    }
+
+    // Commit the new active vehicle only after it has been added.
+    activeRoot = nextRoot;
     activeModel = { ...model };
 
     if (previousRoot) {
@@ -152,34 +263,66 @@ export function createVehicleManager({
       disposeModelResources(previousRoot);
     }
 
-    if (revokeUrlAfterLoad) URL.revokeObjectURL(url);
+    notifyProgress(
+      { phase: 'complete', loaded: 1, total: 1 },
+      model
+    );
 
-    onProgress({ phase: 'complete', loaded: 1, total: 1 }, model);
-    return { root, model: { ...model }, animations: gltf.animations || [] };
+    return {
+      root: nextRoot,
+      model: { ...model },
+      animations: gltf.animations || []
+    };
   }
 
   async function loadModel(id) {
+    if (disposed) {
+      throw new Error('VehicleManager has been disposed.');
+    }
+
     const model = catalog.get(id);
-    if (!model) throw new Error(`Vehicle model "${id}" is not registered.`);
-    return loadSource(model, model.url, false);
+
+    if (!model) {
+      throw new Error(`Vehicle model "${id}" is not registered.`);
+    }
+
+    return loadSource(model, model.url);
   }
 
   async function importFile(file) {
-    if (!file) throw new Error('No vehicle file was selected.');
+    if (disposed) {
+      throw new Error('VehicleManager has been disposed.');
+    }
+
+    if (!file) {
+      throw new Error('No vehicle file was selected.');
+    }
 
     const extension = file.name.split('.').pop()?.toLowerCase();
+
     if (extension !== 'glb') {
-      throw new Error('Please import a .glb file. Standalone .gltf files may need external assets.');
+      throw new Error(
+        'Please import a .glb file. Standalone .gltf files may require external assets.'
+      );
     }
 
     if (file.size === 0) {
       throw new Error('The selected GLB file is empty.');
     }
 
-    const safeName = file.name.replace(/\.glb$/i, '').replace(/[_-]+/g, ' ').trim() || 'Imported vehicle';
-    const id = `imported-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+    const safeName = file.name
+      .replace(/\.glb$/i, '')
+      .replace(/[_-]+/g, ' ')
+      .trim() || 'Imported vehicle';
+
+    const id = `imported-${Date.now()}-${Math.random()
+      .toString(36)
+      .slice(2, 7)}`;
+
     const url = URL.createObjectURL(file);
+
     importedUrls.add(url);
+
     const model = {
       id,
       name: safeName,
@@ -189,8 +332,14 @@ export function createVehicleManager({
     };
 
     try {
-      const result = await loadSource(model, url, false);
+      const result = await loadSource(model, url);
+
+      if (disposed) {
+        throw new Error('VehicleManager has been disposed.');
+      }
+
       catalog.set(id, model);
+
       return result;
     } catch (error) {
       URL.revokeObjectURL(url);
@@ -201,6 +350,7 @@ export function createVehicleManager({
 
   function dispose() {
     if (disposed) return;
+
     disposed = true;
     loadSequence++;
 
@@ -210,8 +360,12 @@ export function createVehicleManager({
       activeRoot = null;
     }
 
-    for (const url of importedUrls) URL.revokeObjectURL(url);
+    for (const url of importedUrls) {
+      URL.revokeObjectURL(url);
+    }
+
     importedUrls.clear();
+    catalog.clear();
     activeModel = null;
   }
 
