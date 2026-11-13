@@ -2,7 +2,9 @@
 
 **An interactive computer vision system for controlling, disassembling, manipulating, and reassembling 3D vehicles using real-time hand gestures.**
 
-MorphDrive 3D is a computer vision and 3D interaction project that explores a more natural way to interact with virtual vehicles. By combining real-time hand tracking with interactive 3D visualization, the project aims to let users explore, manipulate, disassemble, and reassemble vehicle models through hand gestures.
+MorphDrive 3D is a computer vision and 3D interaction project that explores a more natural way to interact with virtual vehicles.
+
+By combining real-time hand tracking with interactive 3D visualization, the project aims to let users explore, manipulate, disassemble, and reassemble vehicle models through hand gestures.
 
 The project is being developed as a lightweight web-based application using JavaScript, Three.js, and MediaPipe.
 
@@ -10,7 +12,7 @@ The project is being developed as a lightweight web-based application using Java
 
 ## Project Overview
 
-Traditional 3D applications often rely on a mouse and keyboard for interacting with virtual objects. MorphDrive 3D explores an alternative approach: using natural hand movements to control objects inside a 3D environment.
+Traditional 3D applications often rely on a mouse and keyboard to interact with virtual objects. MorphDrive 3D explores an alternative approach: using natural hand movements to interact with objects inside a 3D environment.
 
 The project combines:
 
@@ -20,14 +22,14 @@ The project combines:
 - Three.js for rendering and interacting with 3D vehicle models.
 - Gesture-based interaction as the foundation for future vehicle manipulation.
 
-The current development stage focuses on establishing reliable hand tracking and connecting it with the 3D environment.
+The current development stage focuses on refining hand tracking, improving the 3D visualization, and connecting hand movement with the 3D environment.
 
 ## Current Features
 
 ### Hand Tracking and Visualization
 
 - Real-time webcam-based hand detection.
-- Detection of up to two hands.
+- Support for detecting up to two hands.
 - 21 hand landmarks per detected hand using MediaPipe.
 - 3D anatomical hand model using a rigged GLB asset.
 - Three.js-based 3D hand visualization.
@@ -43,9 +45,10 @@ The current development stage focuses on establishing reliable hand tracking and
 - Vehicle appearance customization.
 - Interactive model viewing controls.
 - Hand-tracking integration with the 3D environment.
+- Model inspection tools, including wireframe display.
 - Help panel and user controls guide.
 
-*Note: Hand tracking and vehicle interaction are still being refined. Full gesture-controlled vehicle disassembly and reassembly are planned features.*
+**Development note:** Hand tracking and vehicle interaction are still being refined. Full gesture-controlled vehicle disassembly, independent component manipulation, and reassembly are planned features rather than completed functionality.
 
 ## Planned Features
 
@@ -97,7 +100,7 @@ morphdrive-3d/
 └── README.md
 ```
 
-*The structure above highlights the main project directories and files. Additional configuration and dependency files are omitted for readability.*
+*This structure highlights the main project directories and files. Additional configuration and dependency files are omitted for readability.*
 
 ## Requirements
 
@@ -105,13 +108,13 @@ To run the current frontend application, you need:
 
 - Node.js
 - npm
-- A working webcam
+- A working webcam for hand interaction
 - A modern browser with WebGL support
 - Git
 
 A dedicated GPU is not required for the prototype, although performance depends on the computer's CPU and graphics hardware.
 
-**Hardware note:** MorphDrive 3D is being developed with lightweight hardware in mind. Performance optimizations are important, especially for real-time webcam processing and 3D rendering.
+**Hardware consideration:** MorphDrive 3D is being developed with lightweight hardware in mind. Performance optimization is important, particularly for real-time webcam processing and 3D rendering.
 
 ## Installation
 
@@ -151,7 +154,7 @@ Open the local URL displayed in the terminal by Vite.
 
 Allow webcam access when prompted by your browser.
 
-**Important:** Webcam access requires a secure context, such as `localhost` or an HTTPS connection.
+**Important:** Webcam access requires a secure context, such as `localhost` during development or an HTTPS connection when deployed.
 
 ## User Guide
 
@@ -161,12 +164,9 @@ For instructions on navigating the 3D vehicle viewer, using model tools, customi
 
 ## Development Status
 
-<details>
-<summary>Current development milestone</summary>
-
 MorphDrive 3D is under active development.
 
-The current milestone focuses on:
+### Current Development Focus
 
 - Improving real-time hand detection.
 - Refining two-hand tracking and hand identity.
@@ -176,8 +176,6 @@ The current milestone focuses on:
 - Improving application performance and interaction responsiveness.
 
 The larger vehicle disassembly, component manipulation, and reassembly system remains part of the planned development roadmap.
-
-</details>
 
 ## Project Goals
 
