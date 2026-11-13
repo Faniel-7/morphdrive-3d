@@ -14,7 +14,7 @@ Use your mouse to explore the 3D vehicle model.
 | Restore the default camera view | Select **Reset View** |
 | Enter or exit fullscreen | Select **Fullscreen** |
 
-**Tip:** Use rotation and zoom together to inspect the vehicle from different angles.
+**Tip:** Combine rotation and zoom to inspect the vehicle from different angles.
 
 ## 2. Model Tools
 
@@ -26,27 +26,27 @@ The model toolbar provides controls for viewing and inspecting the vehicle.
 | **Reset View** | Restores the default camera position and viewing angle. |
 | **Fullscreen** | Expands the application viewport to fullscreen. |
 
-> **Note:** Vehicle disassembly and individual component manipulation are planned features and are not documented here as currently available controls.
+**Note:** Vehicle disassembly and individual component manipulation are planned features, not currently available controls.
 
 ## 3. Material and Appearance
 
-The Properties panel allows users to customize the vehicle's visual appearance.
+The Properties panel provides options for customizing the vehicle's visual appearance.
 
 | Setting | Description |
 |---|---|
 | **Body Color** | Changes the vehicle's body color. |
 | **Paint Finish** | Selects a Glossy, Metallic, or Matte appearance. |
 | **Metallic** | Adjusts the metallic property of the vehicle material. |
-| **Roughness** | Controls how smooth or rough the material surface appears. |
+| **Roughness** | Controls the surface's smoothness and reflectivity. |
 | **Restore Original** | Restores the original material appearance. |
 
 ### Understanding Material Settings
 
-- **Metallic:** Higher values produce a more metallic-looking surface.
-- **Roughness:** Lower values create smoother, more reflective surfaces. Higher values produce a rougher, less reflective appearance.
-- **Paint Finish:** Provides different predefined surface appearances.
+- **Metallic:** Higher values give the surface a more metallic appearance.
+- **Roughness:** Lower values create smoother, more reflective surfaces. Higher values create rougher, less reflective surfaces.
+- **Paint Finish:** Applies predefined material appearances.
 
-Changes are intended to provide visual customization without modifying the original 3D model geometry.
+These settings customize the vehicle's appearance without changing its original geometry.
 
 ## 4. Hand Interaction
 
@@ -57,14 +57,14 @@ MorphDrive 3D uses webcam-based hand tracking powered by MediaPipe.
 1. Select **Enable Hand Control**.
 2. Allow camera access when your browser requests permission.
 3. Position your hand within the webcam's field of view.
-4. Keep your hand visible and adequately illuminated.
+4. Keep your hand visible and ensure the surrounding area is adequately illuminated.
 5. Use the tracked hand to interact with supported viewport elements.
 
 ### Tracking Information
 
-The interface displays hand-tracking status and orientation information to help users understand whether their hand is being detected.
+The interface displays hand-tracking status and orientation information to help users understand whether their hands are being detected.
 
-**Important:** Hand interaction is experimental. Tracking quality depends on camera quality, lighting conditions, hand visibility, and system performance. Available interactions may vary as development continues.
+**Important:** Hand interaction is experimental. Tracking quality depends on camera quality, lighting conditions, hand visibility, and system performance. Available interactions may change as development continues.
 
 ## 5. Troubleshooting
 
@@ -85,12 +85,32 @@ The interface displays hand-tracking status and orientation information to help 
 - A secure context for webcam access, normally `localhost` during development or an HTTPS deployment.
 - Adequate lighting for reliable hand tracking.
 
+A dedicated graphics card is not required for the prototype, although performance depends on the computer's CPU and graphics hardware.
+
 ## 7. Development Status
 
 MorphDrive 3D is an actively developed project.
 
-The current application focuses on interactive 3D vehicle viewing, appearance customization, viewport controls, and webcam-based hand tracking.
+The current application focuses on:
 
-Planned capabilities include multi-vehicle support, component selection, exploded-view disassembly, gesture-based component manipulation, and vehicle reassembly.
+- Interactive 3D vehicle viewing.
+- Vehicle appearance customization.
+- Viewport navigation and model inspection.
+- Webcam-based hand tracking.
+- 3D anatomical hand visualization.
 
-As these capabilities are implemented and tested, this guide will be updated to include their controls and instructions.
+Planned capabilities include:
+
+- Multi-vehicle support.
+- Gesture-based vehicle selection.
+- Component selection.
+- Exploded-view vehicle disassembly.
+- Independent component movement and rotation.
+- Gesture-controlled component manipulation.
+- Interactive vehicle reassembly.
+
+As these capabilities are implemented and tested, this guide will be updated with their controls and instructions.
+
+---
+
+*MorphDrive 3D — Bringing natural hand interaction into 3D vehicle exploration.*
