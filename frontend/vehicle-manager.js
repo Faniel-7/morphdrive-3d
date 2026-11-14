@@ -39,7 +39,9 @@ export function createVehicleManager({
   // ERROR HELPERS
   // --------------------------------------------------
 
-  function createAbortError(message = 'Vehicle loading was superseded.') {
+  function createAbortError(
+    message = 'Vehicle loading was superseded.'
+  ) {
     const error = new Error(message);
     error.name = 'AbortError';
     return error;
@@ -96,17 +98,35 @@ export function createVehicleManager({
       };
     }
 
-    function collectTexture(value) {
-      if (value?.isTexture) {
+    function collectTexture(value, visited = new WeakSet()) {
+      if (!value || typeof value !== 'object') {
+        return;
+      }
+
+      if (value.isTexture) {
         textures.add(value);
         return;
       }
 
+      if (visited.has(value)) return;
+      visited.add(value);
+
       if (Array.isArray(value)) {
         for (const item of value) {
-          if (item?.isTexture) {
-            textures.add(item);
-          }
+          collectTexture(item, visited);
+        }
+        return;
+      }
+
+      // Only inspect plain objects, such as uniform structures.
+      const prototype = Object.getPrototypeOf(value);
+
+      if (
+        prototype === Object.prototype ||
+        prototype === null
+      ) {
+        for (const item of Object.values(value)) {
+          collectTexture(item, visited);
         }
       }
     }
@@ -151,25 +171,40 @@ export function createVehicleManager({
     };
   }
 
-  function disposeModelResources(root) {
+  /**
+   * Disposes resources belonging to root.
+   *
+   * Resources also used by preserveRoot are protected.
+   * This prevents accidental disposal of shared resources.
+   */
+  function disposeModelResources(root, preserveRoot = null) {
     if (!root) return;
 
     const resources = collectResources(root);
+    const protectedResources = collectResources(preserveRoot);
 
     for (const texture of resources.textures) {
-      texture.dispose();
+      if (!protectedResources.textures.has(texture)) {
+        texture.dispose();
+      }
     }
 
     for (const material of resources.materials) {
-      material.dispose();
+      if (!protectedResources.materials.has(material)) {
+        material.dispose();
+      }
     }
 
     for (const geometry of resources.geometries) {
-      geometry.dispose();
+      if (!protectedResources.geometries.has(geometry)) {
+        geometry.dispose();
+      }
     }
 
     for (const skeleton of resources.skeletons) {
-      skeleton.dispose();
+      if (!protectedResources.skeletons.has(skeleton)) {
+        skeleton.dispose();
+      }
     }
   }
 
@@ -228,6 +263,7 @@ export function createVehicleManager({
 
     wrapper.scale.setScalar(scale);
 
+    // Preserve the original centering and ground alignment.
     wrapper.position.set(
       -center.x * scale,
       -bounds.min.y * scale,
@@ -306,6 +342,8 @@ export function createVehicleManager({
       model
     );
 
+    ensureActiveRequest(requestId);
+
     let gltf;
 
     try {
@@ -320,8 +358,6 @@ export function createVehicleManager({
         notifyProgress(event, model);
       });
     } catch (error) {
-      // A failed older request must not interfere with
-      // the vehicle selected by a newer request.
       if (
         disposed ||
         requestId !== loadSequence
@@ -332,10 +368,17 @@ export function createVehicleManager({
       throw error;
     }
 
-    // Check again after asynchronous loading.
-    ensureActiveRequest(requestId);
-
     const gltfScene = gltf?.scene;
+
+    // A request may become outdated while GLTFLoader is working.
+    // Release its resources instead of leaving them in memory.
+    if (
+      disposed ||
+      requestId !== loadSequence
+    ) {
+      disposeModelResources(gltfScene, activeRoot);
+      throw createAbortError();
+    }
 
     if (!gltfScene?.isObject3D) {
       throw new Error(
@@ -351,39 +394,47 @@ export function createVehicleManager({
         model.name
       );
     } catch (error) {
-      disposeModelResources(gltfScene);
+      disposeModelResources(gltfScene, activeRoot);
       throw error;
     }
 
-    // Check before replacing the currently active vehicle.
+    // Check again before touching the active vehicle.
     if (
       disposed ||
       requestId !== loadSequence
     ) {
-      disposeModelResources(nextRoot);
+      disposeModelResources(nextRoot, activeRoot);
       throw createAbortError();
     }
 
     const previousRoot = activeRoot;
 
-    // Reset interaction state before replacing the old vehicle.
+    // Reset hover and other replacement-related state.
     notifyBeforeReplace(previousRoot, nextRoot);
+
+    // The callback itself could have triggered another load.
+    ensureActiveRequest(requestId);
 
     try {
       scene.add(nextRoot);
     } catch (error) {
-      disposeModelResources(nextRoot);
+      nextRoot.removeFromParent();
+      disposeModelResources(nextRoot, previousRoot);
       throw error;
     }
 
-    // Commit the new vehicle only after it has been added.
+    // Commit the new vehicle after successful insertion.
     activeRoot = nextRoot;
     activeModel = { ...model };
 
-    // Remove and release the previous vehicle.
+    // Remove the previous vehicle and protect any shared resources.
     if (previousRoot) {
       previousRoot.removeFromParent();
-      disposeModelResources(previousRoot);
+
+      disposeModelResources(
+        previousRoot,
+        nextRoot
+      );
     }
 
     notifyProgress(
@@ -504,7 +555,7 @@ export function createVehicleManager({
       );
     }
 
-    // Validate the actual file contents, not just its extension.
+    // Validate before creating a URL or starting a model load.
     await validateGlbFile(file);
 
     if (disposed) {
@@ -516,6 +567,7 @@ export function createVehicleManager({
     const safeName = file.name
       .replace(/\.glb$/i, '')
       .replace(/[_-]+/g, ' ')
+      .replace(/\s+/g, ' ')
       .trim() || 'Imported vehicle';
 
     const id = `imported-${Date.now()}-${Math.random()
@@ -548,7 +600,7 @@ export function createVehicleManager({
 
       return result;
     } catch (error) {
-      // Failed or superseded imports must release their URLs.
+      // Failed and superseded imports release their URLs.
       URL.revokeObjectURL(url);
       importedUrls.delete(url);
 
