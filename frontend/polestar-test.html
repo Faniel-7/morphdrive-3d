@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MorphDrive 3D - Polestar Test</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #020711;
+            color: #e8f1ff;
+            font-family: Arial, sans-serif;
+        }
+
+        #viewer {
+            position: fixed;
+            inset: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #panel {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            width: 290px;
+            max-height: calc(100vh - 32px);
+            overflow-y: auto;
+            padding: 18px;
+            border: 1px solid rgba(100, 170, 255, 0.25);
+            border-radius: 12px;
+            background: rgba(3, 12, 28, 0.91);
+            backdrop-filter: blur(12px);
+        }
+
+        h2 {
+            margin: 0 0 6px;
+            font-size: 19px;
+        }
+
+        p {
+            color: #91a8c5;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .section {
+            margin-top: 18px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(130, 170, 220, 0.18);
+        }
+
+        .section-title {
+            margin-bottom: 9px;
+            color: #65b9ff;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        button {
+            width: 100%;
+            margin: 4px 0;
+            padding: 10px;
+            border: 1px solid rgba(90, 160, 255, 0.25);
+            border-radius: 7px;
+            background: rgba(25, 65, 115, 0.35);
+            color: #e8f1ff;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        button:hover {
+            background: rgba(35, 105, 180, 0.55);
+        }
+
+        #status {
+            margin-top: 12px;
+            color: #7fd5ff;
+            font-size: 12px;
+            overflow-wrap: anywhere;
+        }
+
+        #details {
+            color: #a8bdd7;
+            font-size: 11px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        #help {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: rgba(3, 12, 28, 0.8);
+            color: #a8bdd7;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <div id="viewer"></div>
+
+    <aside id="panel">
+        <h2>MorphDrive 3D</h2>
+        <p>Polestar 3 — isolated vehicle inspection</p>
+
+        <div class="section">
+            <div class="section-title">Vehicle animations</div>
+            <button data-clip="door_open">Open doors</button>
+            <button data-clip="door_close">Close doors</button>
+            <button data-clip="trunk_open">Open boot</button>
+            <button data-clip="trunk_close">Close boot</button>
+            <button data-clip="Doors_Open_Hold4_Close_Hold4">Full door and boot sequence</button>
+            <button id="stop-animation">Stop animation</button>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Component testing</div>
+            <button id="explode">Explode vehicle anchors</button>
+            <button id="restore">Restore vehicle</button>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Model information</div>
+            <div id="details">Waiting for model...</div>
+        </div>
+
+        <div id="status">Loading vehicle...</div>
+    </aside>
+
+    <div id="help">Drag: Rotate · Scroll: Zoom · Right-click drag: Pan</div>
+
+    <script type="module" src="/src/polestar-test.js"></script>
+</body>
+</html>
