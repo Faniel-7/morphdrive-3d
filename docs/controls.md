@@ -26,7 +26,7 @@ The model toolbar provides controls for viewing and inspecting the vehicle.
 | **Reset View** | Restores the default camera position and viewing angle. |
 | **Fullscreen** | Expands the application viewport to fullscreen. |
 
-**Note:** Vehicle disassembly and individual component manipulation are planned features, not currently available controls.
+**Development note:** Vehicle disassembly and independent component manipulation are not yet available as controls in the main application.
 
 ## 3. Material and Appearance
 
@@ -58,15 +58,29 @@ MorphDrive 3D uses webcam-based hand tracking powered by MediaPipe.
 2. Allow camera access when your browser requests permission.
 3. Position your hand within the webcam's field of view.
 4. Keep your hand visible and ensure the surrounding area is adequately illuminated.
-5. Use the tracked hand to interact with supported viewport elements.
+5. Use the tracked hand to interact with the features currently supported by the application.
 
 ### Tracking Information
 
 The interface displays hand-tracking status and orientation information to help users understand whether their hands are being detected.
 
-**Important:** Hand interaction is experimental. Tracking quality depends on camera quality, lighting conditions, hand visibility, and system performance. Available interactions may change as development continues.
+**Important:** Hand interaction is experimental. Tracking quality depends on camera quality, lighting conditions, hand visibility, and system performance. Hand detection, identity tracking, and interaction responsiveness are still being refined.
 
-## 5. Troubleshooting
+## 5. Experimental Vehicle Testing
+
+The project includes a separate Polestar 3 test page for experimenting with vehicle animations and component-anchor movement.
+
+This page is intended for development and testing. It is separate from the main application and does not mean that gesture-controlled vehicle disassembly is already available.
+
+To open the test page while the Vite development server is running, visit:
+
+`http://localhost:5173/polestar-test.html`
+
+The test page provides controls for trying the available door and boot animations, testing the vehicle's component anchors, and restoring the original arrangement.
+
+**Note:** The test page and its interactions should be considered experimental until they have been tested and validated.
+
+## 6. Troubleshooting
 
 | Problem | Suggested solution |
 |---|---|
@@ -76,8 +90,9 @@ The interface displays hand-tracking status and orientation information to help 
 | Vehicle does not respond to hover | Check that the model has loaded and move the pointer over its visible surface. |
 | Vehicle is difficult to inspect | Use the mouse wheel to zoom and drag to rotate the view. |
 | Camera view becomes confusing | Select **Reset View**. |
+| Polestar test page does not load | Confirm that the Vite development server is running and that the model asset is available at its expected path. |
 
-## 6. Browser and System Requirements
+## 7. Browser and System Requirements
 
 - A modern browser with WebGL support.
 - A webcam for hand interaction.
@@ -87,7 +102,7 @@ The interface displays hand-tracking status and orientation information to help 
 
 A dedicated graphics card is not required for the prototype, although performance depends on the computer's CPU and graphics hardware.
 
-## 7. Development Status
+## 8. Development Status
 
 MorphDrive 3D is an actively developed project.
 
@@ -98,10 +113,12 @@ The current application focuses on:
 - Viewport navigation and model inspection.
 - Webcam-based hand tracking.
 - 3D anatomical hand visualization.
+- Vehicle model management and experimentation.
+
+Experimental development work also includes testing vehicle models with named component anchors and built-in animations.
 
 Planned capabilities include:
 
-- Multi-vehicle support.
 - Gesture-based vehicle selection.
 - Component selection.
 - Exploded-view vehicle disassembly.
