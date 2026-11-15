@@ -4,44 +4,55 @@
 
 MorphDrive 3D is a computer vision and 3D interaction project that explores a more natural way to interact with virtual vehicles.
 
-By combining real-time hand tracking with interactive 3D visualization, the project aims to let users explore, manipulate, disassemble, and reassemble vehicle models through hand gestures.
+By combining real-time hand tracking with interactive 3D visualization, the project aims to allow users to explore, manipulate, disassemble, and reassemble different 3D vehicle models through natural hand gestures.
 
-The project is being developed as a lightweight web-based application using JavaScript, Three.js, and MediaPipe.
+Built as a lightweight web-based application, MorphDrive 3D combines JavaScript, Three.js, and MediaPipe to bring computer vision and interactive 3D environments together.
 
 ---
 
 ## Project Overview
 
-Traditional 3D applications often rely on a mouse and keyboard to interact with virtual objects. MorphDrive 3D explores an alternative approach: using natural hand movements to interact with objects inside a 3D environment.
+Traditional 3D applications often rely on a mouse and keyboard to interact with virtual objects. MorphDrive 3D explores an alternative approach by introducing natural hand movements as an interaction method.
 
-The project combines:
+The system combines:
 
-- Computer vision for real-time hand detection.
-- Hand landmark tracking for interpreting hand movement.
-- 3D hand visualization for representing detected hands.
-- Three.js for rendering and interacting with 3D vehicle models.
-- Vehicle model management for organizing and loading 3D vehicle assets.
-- Gesture-based interaction as the foundation for future vehicle manipulation.
+- Real-time computer vision and hand detection.
+- Hand landmark tracking and movement interpretation.
+- 3D anatomical hand visualization.
+- Three.js-powered 3D rendering and interaction.
+- Vehicle model loading and management.
+- Experimental vehicle component and animation testing.
+- A foundation for gesture-based 3D manipulation.
 
-The current development stage focuses on refining hand tracking, improving 3D visualization, managing vehicle models, and connecting hand movement with the 3D environment.
+The current development focuses on improving hand tracking, refining 3D hand visualization, optimizing the vehicle environment, and establishing reliable connections between hand movements and virtual objects.
 
 ## Current Features
 
-### Hand Tracking and Visualization
+### 1. Hand Tracking and Visualization
+
+MorphDrive 3D uses MediaPipe Tasks Vision to detect and track hands through a webcam.
+
+Implemented capabilities include:
 
 - Real-time webcam-based hand detection.
 - MediaPipe hand landmark tracking.
-- 21 hand landmarks per detected hand.
+- 21 landmarks per detected hand.
+- Support for tracking left and right hands.
 - 3D anatomical hand model using a rigged GLB asset.
 - Three.js-based 3D hand visualization.
 - Holographic-style hand visualization.
 - Finger-bone mapping for 3D hand movement.
 - Hand position and orientation tracking.
 - Camera preview with detected hand landmarks.
+- Left/right hand hologram assignment correction.
 
-Hand tracking and visualization are still being refined. Reliable two-hand tracking and consistent hand identity are ongoing development areas.
+The hand tracking system is still under active refinement. Consistent tracking, natural movement, hand identity stability, and reliable simultaneous two-hand interaction remain important development areas.
 
-### 3D Vehicle Environment
+### 2. Interactive 3D Vehicle Environment
+
+The application includes a Three.js-powered environment for loading and exploring 3D vehicle models.
+
+Implemented capabilities include:
 
 - Interactive 3D vehicle viewer.
 - GLB vehicle model loading.
@@ -49,34 +60,54 @@ Hand tracking and visualization are still being refined. Reliable two-hand track
 - Interactive model viewing controls.
 - Hand-tracking integration with the 3D environment.
 - Model inspection tools, including wireframe display.
-- Vehicle-management logic in a separate module.
-- Help panel and user controls guide.
+- Separate vehicle-management logic.
+- Application help panel and user controls guide.
 
-### Experimental Vehicle Testing
+### 3. Experimental Vehicle Testing
 
-A separate Polestar 3 test page has been added for experimenting with a vehicle model that contains named component anchors and built-in animation clips.
+A separate Polestar 3 development page has been introduced to experiment with a vehicle model containing named component anchors and built-in animation clips.
 
-The test page is designed to explore:
+The experimental environment explores:
 
-- Opening and closing the vehicle doors.
+- Opening and closing vehicle doors.
 - Opening and closing the boot.
 - Playing available vehicle animation clips.
 - Testing component-anchor movement.
 - Restoring the vehicle's original arrangement.
 
-This is an isolated development test. It is not yet integrated into the main application, and its presence does not mean that complete vehicle disassembly or independent component manipulation has been implemented.
+**Important:** This is an isolated development environment. It is not yet integrated into the main application. Testing animated components does not mean that complete vehicle disassembly or independent component manipulation has been implemented.
+
+---
 
 ## Planned Features
 
+The following capabilities represent the next major development milestones:
+
+### Hand Interaction
+- More reliable two-hand tracking.
+- Improved hand identity consistency.
+- Smoother and more natural hand movement.
+- Improved hand orientation and positioning.
+- Gesture recognition and interaction states.
+- Gesture-based vehicle selection.
+
+### Vehicle Interaction
 - Support for multiple vehicle models.
-- Natural gesture-based vehicle selection.
 - Interactive vehicle disassembly.
 - Individual vehicle component selection.
 - Independent component movement and rotation.
 - Gesture-controlled component manipulation.
 - Interactive vehicle reassembly.
-- Improved gesture recognition and interaction controls.
-- More advanced 3D interaction capabilities.
+- More advanced 3D object interaction.
+
+### Performance and Optimization
+- Improved real-time tracking responsiveness.
+- Lightweight 3D rendering.
+- Optimized vehicle model loading.
+- Efficient computer vision processing.
+- Better performance on computers without dedicated GPUs.
+
+---
 
 ## Technology Stack
 
@@ -90,6 +121,8 @@ This is an isolated development test. It is not yet integrated into the main app
 | Vite | Frontend development server |
 | Python | Supporting computer vision development |
 | Git and GitHub | Version control and project hosting |
+
+---
 
 ## Project Structure
 
@@ -127,6 +160,8 @@ morphdrive-3d/
 
 *This structure highlights the main project directories and files. Additional files and model assets may be present.*
 
+---
+
 ## Requirements
 
 To run the current frontend application, you need:
@@ -139,7 +174,9 @@ To run the current frontend application, you need:
 
 A dedicated GPU is not required for the prototype, although performance depends on the computer's CPU and graphics hardware.
 
-**Hardware consideration:** MorphDrive 3D is being developed with lightweight hardware in mind. Performance optimization is important, particularly for real-time webcam processing and 3D rendering.
+**Hardware consideration:** MorphDrive 3D is being developed with lightweight hardware in mind. Performance optimization is an important part of the development process, particularly for simultaneous webcam processing and 3D rendering.
+
+---
 
 ## Installation
 
@@ -167,6 +204,8 @@ cd frontend
 npm install
 ```
 
+---
+
 ## Running the Project
 
 Start the development server:
@@ -181,50 +220,67 @@ Allow webcam access when prompted by your browser.
 
 **Important:** Webcam access requires a secure context, such as `localhost` during development or an HTTPS connection when deployed.
 
+---
+
 ## Experimental Polestar Test
 
-To open the separate Polestar 3 development test page, start the Vite server and visit:
+To access the separate Polestar 3 development environment, start the Vite server and visit:
 
 ```text
 http://localhost:5173/polestar-test.html
 ```
 
-This page is intended for testing the Polestar model's available animations and component anchors. It is separate from the main application.
+This page is intended for testing the Polestar model's available animations and component anchors.
+
+It is separate from the main application and is primarily used for experimenting with vehicle component behavior.
+
+---
 
 ## User Guide
 
 For instructions on navigating the 3D vehicle viewer, using model tools, customizing vehicle appearance, and activating hand interaction, see:
 
-[**MorphDrive 3D Controls Guide**](docs/controls.md)
+**[MorphDrive 3D Controls Guide](docs/controls.md)**
+
+---
 
 ## Development Status
 
-MorphDrive 3D is under active development.
+<em>Active development — prototype stage.</em>
+
+MorphDrive 3D is currently focused on establishing a stable foundation for natural hand-based interaction with 3D vehicle models.
 
 ### Current Development Focus
 
 - Improving real-time hand detection.
-- Refining two-hand tracking and hand identity.
+- Refining simultaneous two-hand tracking.
+- Maintaining consistent left/right hand assignment.
 - Improving 3D anatomical hand visualization.
-- Refining hand position and orientation tracking.
+- Refining hand positioning and orientation.
+- Improving hand movement smoothness and responsiveness.
 - Improving vehicle model loading and management.
 - Testing vehicle models with built-in animations and component anchors.
-- Connecting detected hand movements to the 3D environment.
-- Improving application performance and interaction responsiveness.
+- Connecting tracked hand movements to the 3D environment.
+- Improving overall application performance.
 
-The larger vehicle disassembly, component manipulation, and reassembly system remains part of the planned development roadmap.
+The complete vehicle disassembly, independent component manipulation, and reassembly system remain major development milestones rather than finished features.
+
+---
 
 ## Project Goals
 
-The long-term goal is to create an interactive 3D vehicle exploration environment where users can:
+The long-term vision of MorphDrive 3D is to create an interactive 3D vehicle exploration environment where users can:
 
 1. Select and explore different vehicle models.
 2. Disassemble vehicles into individual components.
-3. Select specific parts using hand gestures.
-4. Move and rotate components naturally in 3D space.
-5. Reassemble vehicles through interactive gestures.
+3. Select specific vehicle parts using natural hand gestures.
+4. Move and rotate individual components in 3D space.
+5. Interact with vehicle components through intuitive gestures.
+6. Reassemble vehicles through interactive hand movements.
 
-By combining computer vision with real-time 3D interaction, MorphDrive 3D aims to make vehicle exploration more intuitive, interactive, and accessible.
+By combining computer vision, 3D visualization, and natural interaction, MorphDrive 3D aims to make virtual vehicle exploration more intuitive, engaging, and accessible.
+
+---
 
 ## Author
 
@@ -234,4 +290,4 @@ GitHub: [https://github.com/Faniel-7](https://github.com/Faniel-7)
 
 ---
 
-*MorphDrive 3D — Bringing natural hand interaction into 3D vehicle exploration.*
+**MorphDrive 3D — Bringing natural hand interaction into 3D vehicle exploration.**
