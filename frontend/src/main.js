@@ -6,6 +6,7 @@
     import './showroom/showroom.css';
     import { createShowroom } from './showroom/showroom.js';
     import { VEHICLE_CATALOG } from './showroom/vehicle-catalog.js';
+    import { createExplosionManager } from './vehicle-explosion/explosion-manager.js';
 
     document.querySelector('#app').innerHTML = `
     <div class="cockpit">
@@ -653,6 +654,9 @@ scene.add(showroomStage);
     let showroomMode = true;
 let activePreviewId = null;
 
+    let activeVehicleId = null;
+    let explosionManager = null;
+
     let originalMaterials = [];
     let paintMaterials = [];
 
@@ -901,17 +905,50 @@ let activePreviewId = null;
     }
 
     function initializeVehicle(root, model) {
-      console.log('INITIALIZE VEHICLE FUNCTION STARTED');
-      vehicle = root;
-      resetVehicleInteractionState();
+  console.log('INITIALIZE VEHICLE FUNCTION STARTED');
 
-      triangleTotal = 0;
-      partTotal = 0;
-      materialTotal = 0;
-      originalMaterials = [];
-      paintMaterials = [];
+  // Restore the previous non-Sedan vehicle before replacing it.
+  if (explosionManager) {
+    explosionManager.dispose();
+    explosionManager = null;
+  }
 
-      const materialRecords = new Map();
+  vehicle = root;
+  exploded = false;
+
+  resetVehicleInteractionState();
+
+  document.querySelector('#explode')?.classList.remove('active');
+
+  // The Sedan retains its original, specialized explosion system.
+  // All other vehicles use the reusable explosion manager.
+  if (activeVehicleId && activeVehicleId !== 'sedan') {
+    explosionManager = createExplosionManager({
+      root: vehicle,
+      vehicleId: activeVehicleId,
+      distanceFactor: 0.16
+    });
+
+    console.info(
+      'MorphDrive: Explosion manager initialized.',
+      explosionManager.getStatus()
+    );
+
+    console.info(
+      'MorphDrive: Available configured components:',
+      explosionManager.getAvailableParts()
+    );
+  }
+
+  triangleTotal = 0;
+  partTotal = 0;
+  materialTotal = 0;
+  originalMaterials = [];
+  paintMaterials = [];
+
+  const materialRecords = new Map();
+
+
 
       vehicle.traverse(object => {
         if (!object.isMesh) return;
@@ -955,104 +992,7 @@ let activePreviewId = null;
       });
 
 
-      
-  console.log('========== FRONT COMPONENT POSITION ANALYSIS ==========');
-
-
-  const frontComponentNames = [
-    'engine-protector_29',
-    'engine-transmission_30',
-    'frame-front_34',
-    'suspension-front_79',
-    'engine-parts_28',
-    'bumper-front_8',
-    'honeycomb-grill-pattern_58',
-    'bumper-front-grill-frame_9',
-    'hood_60'
-  ];
-
-
-  vehicle.updateMatrixWorld(true);
-
-
-// TEMPORARY: Identify rear vehicle components.
-const rearContainer = vehicle.getObjectByName('carBody_119');
-
-if (rearContainer) {
-  const vehicleBounds = new THREE.Box3().setFromObject(vehicle);
-  const vehicleCenter = vehicleBounds.getCenter(new THREE.Vector3());
-
-  const rearParts = rearContainer.children
-    .filter(part => {
-      let hasMesh = false;
-      part.traverse(child => {
-        if (child.isMesh) hasMesh = true;
-      });
-      return hasMesh;
-    })
-    .map(part => {
-      const bounds = new THREE.Box3().setFromObject(part);
-      const center = bounds.getCenter(new THREE.Vector3());
-      const size = bounds.getSize(new THREE.Vector3());
-
-      return {
-        name: part.name,
-        x: center.x.toFixed(3),
-        y: center.y.toFixed(3),
-        z: center.z.toFixed(3),
-        dimensions: size.toArray().map(v => v.toFixed(2)).join(', ')
-      };
-    })
-    .filter(part => Number(part.z) < vehicleCenter.z - 0.5)
-    .sort((a, b) => Number(a.z) - Number(b.z));
-
-  console.table(rearParts);
-}
-
-
-
-
-  vehicle.traverse((object) => {
-    if (!frontComponentNames.includes(object.name)) return;
-
-    const bounds = new THREE.Box3().setFromObject(object);
-    const center = bounds.getCenter(new THREE.Vector3());
-    const size = bounds.getSize(new THREE.Vector3());
-
-    let meshCount = 0;
-
-    object.traverse(child => {
-      if (child.isMesh) meshCount++;
-    });
-
-    console.log({
-      name: object.name,
-      worldPosition: object.getWorldPosition(new THREE.Vector3()).toArray(),
-      boundsCenter: center.toArray(),
-      dimensions: size.toArray(),
-      meshCount
-    });
-
-
-  object.traverse((child) => {
-    if (!child.isMesh) return;
-
-    const meshBounds = new THREE.Box3().setFromObject(child);
-    const meshCenter = meshBounds.getCenter(new THREE.Vector3());
-
-    console.log('ACTUAL CHILD MESH:', {
-      component: object.name,
-      meshName: child.name,
-      localPosition: child.position.toArray(),
-      worldPosition: child.getWorldPosition(new THREE.Vector3()).toArray(),
-      geometryCenter: meshCenter.toArray(),
-      hasOriginalPosition: !!child.userData.originalPosition
-    });
-  });
-
-  });
-
-  console.log('========== END POSITION ANALYSIS ==========');
+  // -------------------------------------------------
 
 
       originalMaterials = [...materialRecords.values()];
@@ -1161,6 +1101,7 @@ async function activateVehicle(id) {
   try {
     const result = await vehicleManager.loadModel(id);
 
+    activeVehicleId = id;
     initializeVehicle(result.root, result.model);
     updateVehicleCatalogOptions(result.model.id);
     setVehicleLoading(false);
@@ -1363,35 +1304,57 @@ backToShowroomButton.addEventListener('click', () => {
       }
     );
 
-    document.querySelector('#wireframe').addEventListener(
-      'click',
-      (event) => {
+    document.querySelector('#explode').addEventListener(
+  'click',
+  (event) => {
+    if (!vehicle) return;
 
-        if (!vehicle) return;
+    // --------------------------------------------------
+    // NON-SEDAN VEHICLES: USE THE REUSABLE EXPLOSION MANAGER
+    // --------------------------------------------------
 
-        wireframe = !wireframe;
-
-        vehicle.traverse((object) => {
-
-          if (!object.isMesh) return;
-
-          const materials = Array.isArray(object.material)
-            ? object.material
-            : [object.material];
-
-          materials.forEach((mat) => {
-
-            mat.wireframe = wireframe;
-            mat.needsUpdate = true;
-
-          });
-
-        });
-
-        event.currentTarget.classList.toggle(
-          'active',
-          wireframe
+    if (activeVehicleId !== 'sedan') {
+      if (!explosionManager) {
+        console.warn(
+          'Explode: No explosion manager is available for this vehicle.'
         );
+        return;
+      }
+
+      const status = explosionManager.getStatus();
+
+      const result = status.exploded
+        ? explosionManager.assemble()
+        : explosionManager.explode();
+
+      if (!result.success) {
+        console.warn('MorphDrive explosion:', result.reason);
+
+        if (result.missingNames) {
+          console.warn('Configured names:', result.missingNames);
+        }
+
+        return;
+      }
+
+      event.currentTarget.classList.toggle(
+        'active',
+        result.exploded
+      );
+
+      hoverDirty = true;
+
+      console.log(
+        `MorphDrive: ${result.exploded ? 'EXPLODED' : 'ASSEMBLED'}`,
+        result
+      );
+
+      return;
+    }
+
+    // --------------------------------------------------
+    // SEDAN: handled by the dedicated listener below.
+    // --------------------------------------------------
 
       }
     );
@@ -1402,6 +1365,9 @@ backToShowroomButton.addEventListener('click', () => {
     'click',
     (event) => {
       if (!vehicle) return;
+
+      // The original component-by-component explosion is Sedan-only.
+      if (activeVehicleId !== 'sedan') return;
 
       const frontComponents = new Set([
         'engine-protector_29',
