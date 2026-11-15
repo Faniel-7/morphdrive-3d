@@ -1,12 +1,12 @@
 # MorphDrive 3D
 
-**An interactive computer vision system for controlling, disassembling, manipulating, and reassembling 3D vehicles using real-time hand gestures.**
+**An interactive computer vision system for exploring, controlling, disassembling, manipulating, and reassembling 3D vehicles using natural hand gestures.**
 
-MorphDrive 3D is a computer vision and 3D interaction project that explores a more natural way to interact with virtual vehicles.
+MorphDrive 3D is a computer vision and interactive 3D visualization project that explores a more natural way to interact with virtual vehicles.
 
-By combining real-time hand tracking with interactive 3D visualization, the project aims to allow users to explore, manipulate, disassemble, and reassemble different 3D vehicle models through natural hand gestures.
+By combining real-time hand tracking, 3D visualization, and gesture-based interaction, the project aims to let users explore different vehicle models, manipulate their components, and eventually disassemble and reassemble complete vehicles using natural hand movements.
 
-Built as a lightweight web-based application, MorphDrive 3D combines JavaScript, Three.js, and MediaPipe to bring computer vision and interactive 3D environments together.
+Built as a web-based application, MorphDrive 3D combines JavaScript, Three.js, and MediaPipe to bring computer vision and interactive 3D environments together.
 
 ---
 
@@ -14,21 +14,23 @@ Built as a lightweight web-based application, MorphDrive 3D combines JavaScript,
 
 Traditional 3D applications often rely on a mouse and keyboard to interact with virtual objects. MorphDrive 3D explores an alternative approach by introducing natural hand movements as an interaction method.
 
-The system combines:
+The project brings together:
 
 - Real-time computer vision and hand detection.
 - Hand landmark tracking and movement interpretation.
 - 3D anatomical hand visualization.
 - Three.js-powered 3D rendering and interaction.
+- A multi-vehicle 3D showroom.
 - Vehicle model loading and management.
-- Experimental vehicle component and animation testing.
-- A foundation for gesture-based 3D manipulation.
+- Vehicle appearance customization.
+- Experimental vehicle component analysis and explosion functionality.
+- A foundation for gesture-controlled 3D manipulation.
 
-The current development focuses on improving hand tracking, refining 3D hand visualization, optimizing the vehicle environment, and establishing reliable connections between hand movements and virtual objects.
+The current development focuses on improving hand tracking, refining the 3D hand visualization, expanding vehicle interaction, and establishing reliable connections between hand movements and virtual objects.
 
 ## Current Features
 
-### 1. Hand Tracking and Visualization
+### 1. Real-Time Hand Tracking and Visualization
 
 MorphDrive 3D uses MediaPipe Tasks Vision to detect and track hands through a webcam.
 
@@ -37,35 +39,65 @@ Implemented capabilities include:
 - Real-time webcam-based hand detection.
 - MediaPipe hand landmark tracking.
 - 21 landmarks per detected hand.
-- Support for tracking left and right hands.
-- 3D anatomical hand model using a rigged GLB asset.
+- Left and right hand identification.
+- A rigged 3D anatomical hand model using a GLB asset.
 - Three.js-based 3D hand visualization.
 - Holographic-style hand visualization.
 - Finger-bone mapping for 3D hand movement.
 - Hand position and orientation tracking.
 - Camera preview with detected hand landmarks.
-- Left/right hand hologram assignment correction.
 
-The hand tracking system is still under active refinement. Consistent tracking, natural movement, hand identity stability, and reliable simultaneous two-hand interaction remain important development areas.
+**Development status:** Hand tracking and 3D visualization are implemented, but orientation, movement stability, hand identity consistency, and simultaneous two-hand tracking are still being refined.
 
-### 2. Interactive 3D Vehicle Environment
+### 2. Interactive 3D Vehicle Showroom
 
-The application includes a Three.js-powered environment for loading and exploring 3D vehicle models.
+The application includes a Three.js-powered showroom for loading and exploring different vehicle models.
 
-Implemented capabilities include:
+The vehicle catalog currently contains 16 models across five categories:
 
-- Interactive 3D vehicle viewer.
-- GLB vehicle model loading.
+| Category | Available models |
+|---|---|
+| Cars | Sedan, Lamborghini Urus Performante, Ford F-150 Raptor, Lamborghini Centenario, Polestar 3, Skoda Elroq |
+| Motorcycles | BMW S1000 RR, Honda CBR650R, Kawasaki Ninja H2, Sports Bike |
+| Aircraft | Airbus A320, Boeing 787, Sukhoi Su-57 |
+| Helicopters | AH-64E Apache Guardian, Realistic Helicopter |
+| Trucks | MAN TGX |
+
+Implemented showroom capabilities include:
+
+- Vehicle catalog and category-based selection.
+- GLB 3D model loading.
+- Interactive 3D vehicle viewing.
 - Vehicle appearance customization.
-- Interactive model viewing controls.
-- Hand-tracking integration with the 3D environment.
-- Model inspection tools, including wireframe display.
-- Separate vehicle-management logic.
-- Application help panel and user controls guide.
+- Wireframe visualization.
+- Vehicle inspection and management tools.
+- Integration with the hand-tracking environment.
+- Application help panel and controls guide.
 
-### 3. Experimental Vehicle Testing
+Not every vehicle currently has the same level of component-level interaction. Functionality depends on the structure and organization of each 3D model.
 
-A separate Polestar 3 development page has been introduced to experiment with a vehicle model containing named component anchors and built-in animation clips.
+### 3. Experimental Vehicle Component Interaction
+
+MorphDrive 3D includes an experimental vehicle component system designed to support vehicle disassembly and reassembly.
+
+The current development includes:
+
+- Vehicle-specific component configuration.
+- Named component and assembly identification.
+- Component hierarchy analysis.
+- Detection of renderable component assemblies.
+- Experimental component explosion logic.
+- Component position preservation.
+- Restoration of component positions during assembly.
+- A specialized existing explosion workflow for the Sedan.
+
+The system is being developed to support different vehicle models while preserving their original structure.
+
+**Important:** Component explosion and reassembly are still under active development and require further testing. Not every vehicle currently has a verified component configuration. Full gesture-controlled component selection, independent rotation, and manipulation are not yet complete.
+
+### 4. Experimental Polestar 3 Environment
+
+A separate Polestar 3 development page is available for experimenting with a vehicle model containing named component anchors and built-in animation clips.
 
 The experimental environment explores:
 
@@ -75,36 +107,41 @@ The experimental environment explores:
 - Testing component-anchor movement.
 - Restoring the vehicle's original arrangement.
 
-**Important:** This is an isolated development environment. It is not yet integrated into the main application. Testing animated components does not mean that complete vehicle disassembly or independent component manipulation has been implemented.
+This environment is separate from the main application and is primarily intended for testing vehicle animation and component behavior.
 
 ---
 
 ## Planned Features
 
-The following capabilities represent the next major development milestones:
+The following capabilities represent the next major development milestones.
 
 ### Hand Interaction
-- More reliable two-hand tracking.
+
+- More reliable simultaneous two-hand tracking.
 - Improved hand identity consistency.
 - Smoother and more natural hand movement.
 - Improved hand orientation and positioning.
 - Gesture recognition and interaction states.
-- Gesture-based vehicle selection.
+- Gesture-based vehicle and component selection.
+- More accurate hand-to-object interaction.
 
 ### Vehicle Interaction
-- Support for multiple vehicle models.
-- Interactive vehicle disassembly.
+
+- Reliable component explosion across supported vehicle models.
 - Individual vehicle component selection.
 - Independent component movement and rotation.
 - Gesture-controlled component manipulation.
 - Interactive vehicle reassembly.
 - More advanced 3D object interaction.
+- Improved support for different vehicle structures.
 
 ### Performance and Optimization
+
 - Improved real-time tracking responsiveness.
 - Lightweight 3D rendering.
 - Optimized vehicle model loading.
 - Efficient computer vision processing.
+- Reduced CPU and memory usage.
 - Better performance on computers without dedicated GPUs.
 
 ---
@@ -136,21 +173,28 @@ morphdrive-3d/
 │   ├── public/
 │   │   └── models/
 │   │       ├── cars/
+│   │       ├── motorcycles/
+│   │       ├── aircraft/
+│   │       ├── helicopters/
 │   │       ├── hand/
 │   │       │   └── hand.glb
 │   │       ├── mediapipe/
 │   │       │   └── hand_landmarker.task
 │   │       └── sedan.glb
 │   ├── src/
-│   │   ├── hand-controller.js
+│   │   ├── showroom/
+│   │   │   ├── showroom.js
+│   │   │   ├── showroom.css
+│   │   │   └── vehicle-catalog.js
+│   │   ├── vehicle-explosion/
+│   │   │   ├── explosion-config.js
+│   │   │   ├── explosion-manager.js
+│   │   │   └── vehicle-analyzer.js
 │   │   ├── main.js
-│   │   ├── polestar-test.js
+│   │   ├── hand-controller.js
 │   │   └── style.css
-│   ├── hand-preview.html
-│   ├── hand-test.html
 │   ├── index.html
 │   ├── polestar-test.html
-│   ├── vehicle-manager.js
 │   ├── package.json
 │   └── package-lock.json
 ├── tests/
@@ -158,7 +202,7 @@ morphdrive-3d/
 └── README.md
 ```
 
-*This structure highlights the main project directories and files. Additional files and model assets may be present.*
+*This is a simplified overview of the main project structure. Additional files, development pages, and model assets may be present.*
 
 ---
 
@@ -166,15 +210,15 @@ morphdrive-3d/
 
 To run the current frontend application, you need:
 
-- Node.js
-- npm
-- A working webcam for hand interaction
-- A modern browser with WebGL support
-- Git
+- Node.js.
+- npm.
+- A working webcam for hand interaction.
+- A modern browser with WebGL support.
+- Git.
 
 A dedicated GPU is not required for the prototype, although performance depends on the computer's CPU and graphics hardware.
 
-**Hardware consideration:** MorphDrive 3D is being developed with lightweight hardware in mind. Performance optimization is an important part of the development process, particularly for simultaneous webcam processing and 3D rendering.
+**Hardware consideration:** MorphDrive 3D is being developed with lightweight hardware in mind. Performance optimization is an important part of the development process, particularly when running webcam-based computer vision and 3D rendering simultaneously.
 
 ---
 
@@ -220,6 +264,14 @@ Allow webcam access when prompted by your browser.
 
 **Important:** Webcam access requires a secure context, such as `localhost` during development or an HTTPS connection when deployed.
 
+### Production Build
+
+To generate a production build:
+
+```bash
+npm run build
+```
+
 ---
 
 ## Experimental Polestar Test
@@ -238,7 +290,7 @@ It is separate from the main application and is primarily used for experimenting
 
 ## User Guide
 
-For instructions on navigating the 3D vehicle viewer, using model tools, customizing vehicle appearance, and activating hand interaction, see:
+For instructions on navigating the 3D vehicle showroom, using model tools, customizing vehicle appearance, and activating hand interaction, see:
 
 **[MorphDrive 3D Controls Guide](docs/controls.md)**
 
@@ -246,9 +298,9 @@ For instructions on navigating the 3D vehicle viewer, using model tools, customi
 
 ## Development Status
 
-<em>Active development — prototype stage.</em>
+**Active development — prototype stage.**
 
-MorphDrive 3D is currently focused on establishing a stable foundation for natural hand-based interaction with 3D vehicle models.
+MorphDrive 3D is currently focused on establishing a reliable foundation for natural hand-based interaction with 3D vehicle models.
 
 ### Current Development Focus
 
@@ -258,12 +310,13 @@ MorphDrive 3D is currently focused on establishing a stable foundation for natur
 - Improving 3D anatomical hand visualization.
 - Refining hand positioning and orientation.
 - Improving hand movement smoothness and responsiveness.
+- Expanding vehicle showroom functionality.
 - Improving vehicle model loading and management.
-- Testing vehicle models with built-in animations and component anchors.
+- Developing and validating vehicle component explosion logic.
 - Connecting tracked hand movements to the 3D environment.
 - Improving overall application performance.
 
-The complete vehicle disassembly, independent component manipulation, and reassembly system remain major development milestones rather than finished features.
+The complete gesture-controlled vehicle disassembly, independent component manipulation, and reassembly system remain major development milestones rather than finished features.
 
 ---
 
