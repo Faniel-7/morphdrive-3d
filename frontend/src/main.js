@@ -3,6 +3,9 @@
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { createVehicleManager } from '../vehicle-manager.js';
     import { createHandController } from './hand-controller.js';
+    import './showroom/showroom.css';
+    import { createShowroom } from './showroom/showroom.js';
+    import { VEHICLE_CATALOG } from './showroom/vehicle-catalog.js';
 
     document.querySelector('#app').innerHTML = `
     <div class="cockpit">
@@ -414,6 +417,16 @@
 
     const viewport = document.querySelector('#viewport');
 
+    const cockpit = document.querySelector('.cockpit');
+
+const backToShowroomButton = document.createElement('button');
+backToShowroomButton.id = 'back-to-showroom';
+backToShowroomButton.type = 'button';
+backToShowroomButton.className = 'showroom-back-button';
+backToShowroomButton.textContent = '← SHOWROOM';
+
+document.querySelector('.top-actions').prepend(backToShowroomButton);
+
     const helpPanel = document.querySelector('#help-panel');
     const helpToggle = document.querySelector('#help-toggle');
     const helpClose = document.querySelector('#help-close');
@@ -591,7 +604,54 @@ for (const fill of fillLights) {
     ground.position.y = -0.04;
     scene.add(ground);
 
+    const showroomStage = new THREE.Group();
+
+const stageBase = new THREE.Mesh(
+  new THREE.CylinderGeometry(3.3, 3.55, 0.22, 48),
+  new THREE.MeshStandardMaterial({
+    color: 0x071a2b,
+    metalness: 0.82,
+    roughness: 0.3,
+    emissive: 0x03182b,
+    emissiveIntensity: 0.7
+  })
+);
+
+stageBase.position.y = -0.18;
+stageBase.receiveShadow = true;
+showroomStage.add(stageBase);
+
+const stageTopRing = new THREE.Mesh(
+  new THREE.TorusGeometry(3.28, 0.025, 8, 64),
+  new THREE.MeshBasicMaterial({
+    color: 0x168fff,
+    transparent: true,
+    opacity: 0.8
+  })
+);
+
+stageTopRing.rotation.x = Math.PI / 2;
+stageTopRing.position.y = -0.045;
+showroomStage.add(stageTopRing);
+
+const stageInnerRing = new THREE.Mesh(
+  new THREE.TorusGeometry(2.95, 0.012, 6, 64),
+  new THREE.MeshBasicMaterial({
+    color: 0x56bdff,
+    transparent: true,
+    opacity: 0.38
+  })
+);
+
+stageInnerRing.rotation.x = Math.PI / 2;
+stageInnerRing.position.y = -0.04;
+showroomStage.add(stageInnerRing);
+
+scene.add(showroomStage);
+
     let vehicle = null;
+    let showroomMode = true;
+let activePreviewId = null;
 
     let originalMaterials = [];
     let paintMaterials = [];
@@ -1087,33 +1147,44 @@ if (rearContainer) {
       }
     });
 
-    vehicleManager.registerModel({
-      id: 'sedan',
-      name: 'Sedan',
-      type: 'Car',
-      url: '/models/sedan.glb'
-    });
+    for (const model of VEHICLE_CATALOG) {
+  vehicleManager.registerModel({
+    id: model.id,
+    name: model.name,
+    type: model.type,
+    url: model.url
+  });
+}
 
-    async function activateVehicle(id) {
-      try {
-        const result = await vehicleManager.loadModel(id);
-        initializeVehicle(result.root, result.model);
-        updateVehicleCatalogOptions(result.model.id);
-        setVehicleLoading(false);
-      } catch (error) {
-        if (error?.name === 'AbortError') return;
 
-        console.error('MorphDrive: Vehicle loading failed:', error);
-        loadingPanel.classList.add('hidden');
-        modelError.textContent = error?.message
-          ? `Could not load vehicle: ${error.message}`
-          : 'Could not load this vehicle. Check that the GLB file is valid and try again.';
-        modelError.classList.remove('hidden');
-        vehicleSelect.value = vehicleManager.getActiveModel()?.id || 'sedan';
-        vehicleSelect.disabled = false;
-        importVehicleButton.disabled = false;
-      }
-    }
+async function activateVehicle(id) {
+  try {
+    const result = await vehicleManager.loadModel(id);
+
+    initializeVehicle(result.root, result.model);
+    updateVehicleCatalogOptions(result.model.id);
+    setVehicleLoading(false);
+
+    return true;
+  } catch (error) {
+    if (error?.name === 'AbortError') return false;
+
+    console.error('MorphDrive: Vehicle loading failed:', error);
+    loadingPanel.classList.add('hidden');
+
+    modelError.textContent = error?.message
+      ? `Could not load vehicle: ${error.message}`
+      : 'Could not load this vehicle. Check that the GLB file is valid and try again.';
+
+    modelError.classList.remove('hidden');
+    vehicleSelect.value = vehicleManager.getActiveModel()?.id || 'sedan';
+    vehicleSelect.disabled = false;
+    importVehicleButton.disabled = false;
+
+    return false;
+  }
+}
+
 
     vehicleSelect.addEventListener('change', event => {
       activateVehicle(event.currentTarget.value);
@@ -1142,14 +1213,142 @@ if (rearContainer) {
         modelError.classList.remove('hidden');
         vehicleSelect.disabled = false;
         importVehicleButton.disabled = false;
+        return false;
       } finally {
         // Allow selecting the same file again after a failed import.
         vehicleFileInput.value = '';
       }
     });
 
-    updateVehicleCatalogOptions('sedan');
-    activateVehicle('sedan');
+    updateVehicleCatalogOptions();
+
+function setShowroomCamera() {
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.45;
+
+  if (!vehicle) {
+    controls.target.set(0, 1, 0);
+    camera.position.set(7, 4.2, 8);
+    controls.update();
+    return;
+  }
+
+  vehicle.updateMatrixWorld(true);
+
+  const bounds = new THREE.Box3().setFromObject(vehicle);
+  const center = bounds.getCenter(new THREE.Vector3());
+  const size = bounds.getSize(new THREE.Vector3());
+
+  const modelSize = Math.max(
+    size.x,
+    size.y,
+    size.z,
+    2
+  );
+
+  const distance = Math.max(7, modelSize * 1.75);
+
+  controls.target.copy(center);
+
+  camera.position.set(
+    center.x + distance * 1.25,
+    center.y + distance * 0.58,
+    center.z + distance * 1.35
+  );
+
+  controls.minDistance = Math.max(2, modelSize * 0.75);
+  controls.maxDistance = Math.max(18, modelSize * 5);
+
+  controls.update();
+}
+
+function setCockpitCamera() {
+  controls.autoRotate = false;
+  controls.minDistance = 3;
+  controls.maxDistance = 18;
+
+  controls.target.set(0, 1, 0);
+  camera.position.set(7, 4.2, 8);
+
+  controls.update();
+}
+
+const showroom = createShowroom({
+  vehicles: VEHICLE_CATALOG,
+
+  onPreview: async id => {
+    const loaded = await activateVehicle(id);
+
+    if (!loaded) return false;
+
+    activePreviewId = id;
+
+    if (showroomMode) {
+      setShowroomCamera();
+    }
+
+    return true;
+  },
+
+  onExplore: async id => {
+    if (activePreviewId !== id) {
+      const loaded = await activateVehicle(id);
+
+      if (!loaded) return false;
+
+      activePreviewId = id;
+    }
+
+    showroomMode = false;
+    showroomStage.visible = false;
+
+    showroom.hide();
+
+    cockpit.classList.remove('cockpit--hidden');
+    backToShowroomButton.hidden = false;
+
+    viewport.prepend(renderer.domElement);
+
+    setCockpitCamera();
+    resize();
+
+    return true;
+  }
+});
+
+const showroomPreviewHost = showroom.getPreviewHost();
+
+showroomPreviewHost.append(renderer.domElement);
+
+showroomMode = true;
+showroomStage.visible = true;
+
+cockpit.classList.add('cockpit--hidden');
+backToShowroomButton.hidden = true;
+
+backToShowroomButton.addEventListener('click', () => {
+  showroomMode = true;
+  showroomStage.visible = true;
+
+  showroomPreviewHost.append(renderer.domElement);
+
+  cockpit.classList.add('cockpit--hidden');
+  backToShowroomButton.hidden = true;
+
+  showroom.show();
+
+  setShowroomCamera();
+  resize();
+});resize
+
+cockpit.classList.add('cockpit--hidden');
+backToShowroomButton.hidden = true;
+
+backToShowroomButton.addEventListener('click', () => {
+  showroom.show();
+  cockpit.classList.add('cockpit--hidden');
+  backToShowroomButton.hidden = true;
+});
 
     document.querySelector('#reset').addEventListener(
       'click',
@@ -1606,42 +1805,45 @@ let otherMoved = 0;
 
       });
 
-    function resize() {
+ function resize() {
+  const renderHost = renderer.domElement.parentElement || viewport;
 
-      const width = viewport.clientWidth;
-      const height = viewport.clientHeight;
+  const width = renderHost.clientWidth;
+  const height = renderHost.clientHeight;
 
-      if (!width || !height) return;
+  if (!width || !height) return;
 
-      camera.aspect = width / height;
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
 
-      camera.updateProjectionMatrix();
+  renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio || 1, 1.25)
+  );
 
-      renderer.setPixelRatio(
-        Math.min(window.devicePixelRatio || 1, 1.25)
-      );
+  renderer.setSize(width, height);
+  hoverDirty = true;
+}
 
-      renderer.setSize(width, height);
-      hoverDirty = true;
+const observer = new ResizeObserver(resize);
 
-    }
+observer.observe(viewport);
+observer.observe(showroomPreviewHost);
 
-    const observer = new ResizeObserver(resize);
+function animate(now = 0) {
+  requestAnimationFrame(animate);
 
-    observer.observe(viewport);
+  const cameraChanged = controls.update();
 
-    function animate(now = 0) {
+  if (!showroomMode) {
+    updateVehicleHover(now, cameraChanged);
+  }
 
-      requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
 
-      const cameraChanged = controls.update();
-      updateVehicleHover(now, cameraChanged);
+animate();
 
-      renderer.render(scene, camera);
-
-    }
-
-    animate();
+    
 
     function disposeSceneResources(root) {
       const geometries = new Set();
