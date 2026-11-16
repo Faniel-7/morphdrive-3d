@@ -7,6 +7,10 @@
     import { createShowroom } from './showroom/showroom.js';
     import { VEHICLE_CATALOG } from './showroom/vehicle-catalog.js';
     import { createExplosionManager } from './vehicle-explosion/explosion-manager.js';
+import {
+  diagnoseSkinnedComponents,
+  createBoneMovementTester
+} from './vehicle-explosion/component-diagnostic.js';
 
     document.querySelector('#app').innerHTML = `
     <div class="cockpit">
@@ -923,6 +927,16 @@ let activePreviewId = null;
   // The Sedan retains its original, specialized explosion system.
   // All other vehicles use the reusable explosion manager.
   if (activeVehicleId && activeVehicleId !== 'sedan') {
+    console.group(`MorphDrive Component Diagnostic: ${activeVehicleId}`);
+    diagnoseSkinnedComponents(vehicle);
+
+    if (activeVehicleId === 'honda-cbr650r') {
+      window.__morphDriveBoneTest = createBoneMovementTester(vehicle);
+      console.info('Honda bone tester ready: window.__morphDriveBoneTest');
+    }
+
+    console.groupEnd();
+
     explosionManager = createExplosionManager({
       root: vehicle,
       vehicleId: activeVehicleId,
