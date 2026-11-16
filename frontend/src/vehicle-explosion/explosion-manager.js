@@ -5,7 +5,8 @@ import { getExplosionConfig } from './explosion-config.js';
 
 import {
   hasRenderableDescendant,
-  getObjectDepth
+  getObjectDepth,
+  discoverHierarchyCandidates
 } from './vehicle-analyzer.js';
 
 const ORIGINAL_POSITION_KEY =
@@ -23,7 +24,7 @@ function isDescendantOf(object, ancestor) {
 }
 
 function getNamedCandidates(root, configuredNames) {
-  const wantedNames = new Set(configuredNames);
+  const wantedNames = new Set(configuredNames || []);
   const matches = [];
 
   root.traverse(object => {
@@ -36,7 +37,6 @@ function getNamedCandidates(root, configuredNames) {
     }
   });
 
-  // Prefer the highest configured assembly in the hierarchy.
   matches.sort(
     (a, b) => getObjectDepth(a) - getObjectDepth(b)
   );
@@ -44,13 +44,51 @@ function getNamedCandidates(root, configuredNames) {
   const selected = [];
 
   for (const candidate of matches) {
-    const covered = selected.some(
-      existing =>
-        candidate === existing ||
-        isDescendantOf(candidate, existing)
+    const covered = selected.some(existing =>
+      candidate === existing ||
+      isDescendantOf(candidate, existing)
     );
 
     if (!covered) selected.push(candidate);
+  }
+
+  return selected;
+}
+
+/**
+ * Combine verified configured assemblies with automatically
+ * discovered assemblies, without selecting overlapping groups.
+ */
+function getExplosionCandidates(root, config) {
+  const configured = getNamedCandidates(
+    root,
+    config.parts
+  );
+
+  const selected = [...configured];
+
+  const discovered = discoverHierarchyCandidates(root, {
+    minMeshCount: 2,
+    minRelativeSize: 0.012,
+    maxRelativeSize: 0.92,
+    maxDepth: 12
+  });
+
+  for (const candidate of discovered) {
+    const object = candidate.object;
+
+    const overlaps = selected.some(existing =>
+      object === existing ||
+      isDescendantOf(object, existing) ||
+      isDescendantOf(existing, object)
+    );
+
+    if (!overlaps) {
+      selected.push(object);
+    }
+
+    // Prevent excessive fragmentation and movement.
+    if (selected.length >= 32) break;
   }
 
   return selected;
@@ -80,7 +118,9 @@ function getStableDirection(vector, index) {
     new THREE.Vector3(0, 0, -1)
   ];
 
-  return fallback[index % fallback.length].clone().normalize();
+  return fallback[index % fallback.length]
+    .clone()
+    .normalize();
 }
 
 function getExplosionDistance(root, factor) {
@@ -88,7 +128,9 @@ function getExplosionDistance(root, factor) {
 
   if (bounds.isEmpty()) return 1;
 
-  const diagonal = bounds.getSize(new THREE.Vector3()).length();
+  const diagonal = bounds.getSize(
+    new THREE.Vector3()
+  ).length();
 
   return Math.max(diagonal * factor, 0.35);
 }
@@ -127,12 +169,12 @@ export function createExplosionManager({
   }
 
   function getAvailableParts() {
-    if (config.strategy !== 'named-parts') return [];
+    if (config.strategy === 'legacy-sedan') return [];
 
     root.updateWorldMatrix(true, true);
 
-    return getNamedCandidates(root, config.parts).map(object => ({
-      name: object.name,
+    return getExplosionCandidates(root, config).map(object => ({
+      name: object.name || '(unnamed group)',
       type: object.type,
       depth: getObjectDepth(object),
       isMesh: Boolean(object.isMesh),
@@ -149,26 +191,24 @@ export function createExplosionManager({
       };
     }
 
-    if (config.strategy !== 'named-parts') {
+    if (config.strategy === 'legacy-sedan') {
       return {
         success: false,
         reason:
-          config.strategy === 'legacy-sedan'
-            ? 'The Sedan uses its existing specialized explosion handler.'
-            : 'This model needs a verified component strategy before it can be safely exploded.',
+          'The Sedan uses its existing specialized explosion handler.',
         ...getStatus()
       };
     }
 
     root.updateWorldMatrix(true, true);
 
-    selectedParts = getNamedCandidates(root, config.parts);
+    selectedParts = getExplosionCandidates(root, config);
 
     if (selectedParts.length === 0) {
       return {
         success: false,
-        reason: 'No configured component assemblies were found.',
-        missingNames: config.parts,
+        reason:
+          'No suitable component assemblies were discovered.',
         ...getStatus()
       };
     }
@@ -189,7 +229,10 @@ export function createExplosionManager({
       new THREE.Vector3()
     );
 
-    const distance = getExplosionDistance(root, distanceFactor);
+    const distance = getExplosionDistance(
+      root,
+      distanceFactor
+    );
 
     const movements = [];
 
