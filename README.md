@@ -23,7 +23,7 @@ The project brings together:
 - A multi-vehicle 3D showroom.
 - Vehicle model loading and management.
 - Vehicle appearance customization.
-- Experimental vehicle component analysis and explosion functionality.
+- Vehicle component analysis and experimental explosion functionality.
 - A foundation for gesture-controlled 3D manipulation.
 
 The current development focuses on improving hand tracking, refining the 3D hand visualization, expanding vehicle interaction, and establishing reliable connections between hand movements and virtual objects.
@@ -53,7 +53,7 @@ Implemented capabilities include:
 
 The application includes a Three.js-powered showroom for loading and exploring different vehicle models.
 
-The vehicle catalog currently contains 16 models across five categories:
+The current vehicle catalog contains 16 models across five categories:
 
 | Category | Available models |
 |---|---|
@@ -62,6 +62,8 @@ The vehicle catalog currently contains 16 models across five categories:
 | Aircraft | Airbus A320, Boeing 787, Sukhoi Su-57 |
 | Helicopters | AH-64E Apache Guardian, Realistic Helicopter |
 | Trucks | MAN TGX |
+
+Additional helicopter model assets are organized in separate asset directories for ongoing development and expansion.
 
 Implemented showroom capabilities include:
 
@@ -90,6 +92,7 @@ The current development includes:
 - Component position preservation.
 - Restoration of component positions during assembly.
 - A specialized existing explosion workflow for the Sedan.
+- Hierarchy-based component configuration for the Kawasaki Ninja H2.
 
 The system is being developed to support different vehicle models while preserving their original structure.
 
@@ -171,16 +174,19 @@ morphdrive-3d/
 │   └── controls.md
 ├── frontend/
 │   ├── public/
-│   │   └── models/
-│   │       ├── cars/
-│   │       ├── motorcycles/
-│   │       ├── aircraft/
-│   │       ├── helicopters/
-│   │       ├── hand/
-│   │       │   └── hand.glb
-│   │       ├── mediapipe/
-│   │       │   └── hand_landmarker.task
-│   │       └── sedan.glb
+│   │   ├── models/
+│   │   │   ├── cars/
+│   │   │   ├── motorcycles/
+│   │   │   ├── aircraft/
+│   │   │   ├── helicopters/
+│   │   │   ├── other-helicopters/
+│   │   │   ├── hand/
+│   │   │   │   └── hand.glb
+│   │   │   ├── mediapipe/
+│   │   │   │   └── hand_landmarker.task
+│   │   │   └── sedan.glb
+│   │   └── models.zip
+│   ├── scripts/
 │   ├── src/
 │   │   ├── showroom/
 │   │   │   ├── showroom.js
@@ -198,11 +204,12 @@ morphdrive-3d/
 │   ├── package.json
 │   └── package-lock.json
 ├── tests/
+├── vehicle-component-report-complete.txt
 ├── .gitignore
 └── README.md
 ```
 
-*This is a simplified overview of the main project structure. Additional files, development pages, and model assets may be present.*
+*This is a simplified overview of the main project structure. Additional files, development pages, model assets, and utility scripts may be present.*
 
 ---
 
