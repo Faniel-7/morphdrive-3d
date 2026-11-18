@@ -684,6 +684,28 @@ let activePreviewId = null;
     let hoverDirty = true;
     let pointerActive = false;
     let hoveredMesh = null;
+    // MORPHDRIVE: Kawasaki component collection
+window.kawasakiHoverReport = [];
+
+window.exportKawasakiHoverReport = function () {
+  const report = window.kawasakiHoverReport;
+
+  const blob = new Blob(
+    [JSON.stringify(report, null, 2)],
+    { type: 'application/json' }
+  );
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = 'kawasaki-hover-report.json';
+  link.click();
+
+  URL.revokeObjectURL(url);
+
+  console.log(`Exported ${report.length} hover records.`);
+};
     let hoveredOriginalMaterial = null;
     let hoveredHighlightMaterial = null;
 
@@ -715,6 +737,68 @@ let activePreviewId = null;
       }
 
       hoveredMesh = mesh;
+      if (activeVehicleId === 'kawasaki-ninja-h2') {
+  const hierarchy = [];
+  let current = mesh;
+
+  while (current && current !== vehicle) {
+    let meshCount = 0;
+
+    current.traverse(child => {
+      if (child.isMesh || child.isSkinnedMesh) meshCount++;
+    });
+
+    hierarchy.unshift({
+      name: current.name,
+      type: current.type,
+      uuid: current.uuid,
+      meshCount
+    });
+
+    current = current.parent;
+  }
+
+  window.kawasakiHoverReport.push({
+    time: new Date().toISOString(),
+    meshName: mesh.name,
+    meshUUID: mesh.uuid,
+    hierarchy
+  });
+}
+      // MORPHDRIVE: Detailed hovered-object hierarchy diagnostic.
+const hoverHierarchy = [];
+let currentObject = mesh;
+
+while (currentObject && currentObject !== vehicle) {
+  let meshCount = 0;
+
+  currentObject.traverse(child => {
+    if (child.isMesh || child.isSkinnedMesh) {
+      meshCount++;
+    }
+  });
+
+  hoverHierarchy.unshift({
+    name: currentObject.name || '(unnamed)',
+    type: currentObject.type,
+    uuid: currentObject.uuid,
+    meshCount,
+    visible: currentObject.visible
+  });
+
+  currentObject = currentObject.parent;
+}
+
+console.group(
+  `[MORPHDRIVE HOVER] ${mesh.name || 'Unnamed Mesh'}`
+);
+
+console.table(hoverHierarchy);
+
+console.log('Detected mesh:', mesh);
+console.log('Object hierarchy:', hoverHierarchy);
+
+console.groupEnd();
       hoveredOriginalMaterial = mesh.material;
 
       if (Array.isArray(mesh.material)) {
@@ -918,6 +1002,59 @@ let activePreviewId = null;
   }
 
   vehicle = root;
+
+  // TEMPORARY: Inspect every renderable mesh in the loaded vehicle.
+  window.inspectMorphDriveMeshes = function () {
+    if (!vehicle) {
+      console.warn('No vehicle is currently loaded.');
+      return [];
+    }
+
+    const records = [];
+
+    vehicle.updateMatrixWorld(true);
+
+    vehicle.traverse(object => {
+      if (!object.isMesh) return;
+
+      const ancestors = [];
+      let current = object;
+
+      while (current) {
+        ancestors.unshift(current.name || current.type);
+        current = current.parent;
+      }
+
+      let component = object;
+
+      while (
+        component.parent &&
+        component.parent !== vehicle &&
+        component.parent.name !== 'RootNode_2'
+      ) {
+        component = component.parent;
+      }
+
+      records.push({
+        mesh: object.name,
+        component: component.parent?.name === 'RootNode_2'
+          ? component.name
+          : component.name,
+        parent: object.parent?.name || '(none)',
+        skinned: object.isSkinnedMesh,
+        visible: object.visible,
+        vertices: object.geometry?.attributes?.position?.count || 0,
+        path: ancestors.join(' / ')
+      });
+    });
+
+    console.group('MorphDrive: Complete vehicle mesh inventory');
+    console.log('Total renderable meshes:', records.length);
+    console.table(records);
+    console.groupEnd();
+
+    return records;
+  };
   exploded = false;
 
   resetVehicleInteractionState();
@@ -936,6 +1073,13 @@ let activePreviewId = null;
     }
 
     console.groupEnd();
+
+    window.getMorphDriveExplosionStatus = function () {
+      return explosionManager?.getStatus() ?? null;
+    };
+
+    window.__morphDriveGetParts = () =>
+      explosionManager?.getAvailableParts() ?? [];
 
     explosionManager = createExplosionManager({
       root: vehicle,
