@@ -182,7 +182,7 @@ export const EXPLOSION_CONFIG = Object.freeze({
   },
 
   'airbus-a320': {
-    strategy: 'inspect-only',
+    strategy: 'a320-spatial',
     report: 'Airbus_A320_components.json',
     parts: []
   },
@@ -194,7 +194,7 @@ export const EXPLOSION_CONFIG = Object.freeze({
   },
 
   'sukhoi-su57': {
-    strategy: 'named-parts',
+    strategy: 'hierarchy-parts',
     report: 'Sukhoi_Su_57_components.json',
     parts: [
       'SU57-airframe_0',
@@ -231,7 +231,7 @@ export const EXPLOSION_CONFIG = Object.freeze({
   },
 
   'man-tgx': {
-    strategy: 'inspect-only',
+    strategy: 'man-tgx-components',
     report: 'MAN_TGX_2010_V8_components.json',
     parts: []
   }
