@@ -1,0 +1,142 @@
+MAN TGX 2010 V8 — COMPONENT HIERARCHY REPORT
+=================================================================
+Model: public/models/trucks/man_tgx_2010_v8__high-detail_semi-truck.glb
+GLB version: 2
+Scene nodes: 74
+Mesh definitions: 47
+Scenes: 1
+Nodes containing meshes: 47
+
+MESH DETAILS
+-----------------------------------------------------------------
+Node 4: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_dark_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_dark_0 | Vertices: 12487 | Triangles: 6401
+Node 5: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Back Trailor_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Back Trailor_0 | Vertices: 383 | Triangles: 183
+Node 6: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Metalic_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Metalic_0 | Vertices: 1249 | Triangles: 517
+Node 7: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Material_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Material_0 | Vertices: 3321 | Triangles: 1567
+Node 9: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Darker Most_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Darker Most_0 | Vertices: 4760 | Triangles: 2366
+Node 10: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Grey_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Grey_0 | Vertices: 9932 | Triangles: 4576
+Node 11: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Back Trailor_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Back Trailor_0 | Vertices: 308 | Triangles: 500
+Node 12: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_White Light_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_White Light_0 | Vertices: 44 | Triangles: 32
+Node 13: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Yellow Loght Black_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Yellow Loght Black_0 | Vertices: 16 | Triangles: 12
+Node 15: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.003_Material_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.003_Material_0 | Vertices: 712 | Triangles: 296
+Node 17: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.002_Metalic_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.002_Metalic_0 | Vertices: 1125 | Triangles: 541
+Node 19: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.004_dark_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.004_dark_0 | Vertices: 3955 | Triangles: 1928
+Node 21: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.005__0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.005__0 | Vertices: 91 | Triangles: 32
+Node 23: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.006_dark_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.006_dark_0 | Vertices: 614 | Triangles: 286
+Node 25: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.007__0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.007__0 | Vertices: 50 | Triangles: 20
+Node 27: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.008_Darker Most_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.008_Darker Most_0 | Vertices: 60 | Triangles: 36
+Node 29: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009_Material_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009_Material_0 | Vertices: 120 | Triangles: 56
+Node 30: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009_dark_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009_dark_0 | Vertices: 96 | Triangles: 40
+Node 32: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.010_dark_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.010_dark_0 | Vertices: 348 | Triangles: 160
+Node 34: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011_Material_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011_Material_0 | Vertices: 679 | Triangles: 344
+Node 35: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011_Grey_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011_Grey_0 | Vertices: 1023 | Triangles: 489
+Node 37: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012_Grey_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012_Grey_0 | Vertices: 1380 | Triangles: 654
+Node 38: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012_Material_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012_Material_0 | Vertices: 576 | Triangles: 284
+Node 40: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.013_Material_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.013_Material_0 | Vertices: 1037 | Triangles: 496
+Node 42: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.014_Material_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.014_Material_0 | Vertices: 231 | Triangles: 132
+Node 44: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015_Grey_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015_Grey_0 | Vertices: 3082 | Triangles: 1547
+Node 45: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015_Back Trailor_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015_Back Trailor_0 | Vertices: 2412 | Triangles: 1238
+Node 47: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.016_Metalic_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.016_Metalic_0 | Vertices: 439 | Triangles: 241
+Node 49: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.018_Glass_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.018_Glass_0 | Vertices: 393 | Triangles: 176
+Node 51: Cube_Darker Most_0 | Mesh: Cube_Darker Most_0 | Vertices: 722 | Triangles: 348
+Node 52: Cube_Red Light Back_0 | Mesh: Cube_Red Light Back_0 | Vertices: 12 | Triangles: 6
+Node 53: Cube_Yellow Loght Black_0 | Mesh: Cube_Yellow Loght Black_0 | Vertices: 12 | Triangles: 6
+Node 55: Cube.001_Yellow Loght Black_0 | Mesh: Cube.001_Yellow Loght Black_0 | Vertices: 48 | Triangles: 24
+Node 57: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017_Grey_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017_Grey_0 | Vertices: 214 | Triangles: 144
+Node 58: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017_Darker Most_0 | Mesh: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017_Darker Most_0 | Vertices: 60 | Triangles: 40
+Node 60: Object_3_Rims_0 | Mesh: Object_3_Rims_0 | Vertices: 2314 | Triangles: 2424
+Node 61: Object_3_Hubs_0 | Mesh: Object_3_Hubs_0 | Vertices: 6818 | Triangles: 3016
+Node 62: Object_3_Tyre_sidewalls_0 | Mesh: Object_3_Tyre_sidewalls_0 | Vertices: 1024 | Triangles: 1536
+Node 63: Object_3_Tyre_tread_0 | Mesh: Object_3_Tyre_tread_0 | Vertices: 272 | Triangles: 256
+Node 65: Object_3.001_Rims_0 | Mesh: Object_3.001_Rims_0 | Vertices: 552 | Triangles: 606
+Node 66: Object_3.001_Hubs_0 | Mesh: Object_3.001_Hubs_0 | Vertices: 2683 | Triangles: 1316
+Node 67: Object_3.001_Tyre_sidewalls_0 | Mesh: Object_3.001_Tyre_sidewalls_0 | Vertices: 256 | Triangles: 384
+Node 68: Object_3.001_Tyre_tread_0 | Mesh: Object_3.001_Tyre_tread_0 | Vertices: 68 | Triangles: 64
+Node 70: Object_3.002_Rims_0 | Mesh: Object_3.002_Rims_0 | Vertices: 552 | Triangles: 606
+Node 71: Object_3.002_Hubs_0 | Mesh: Object_3.002_Hubs_0 | Vertices: 2646 | Triangles: 1316
+Node 72: Object_3.002_Tyre_sidewalls_0 | Mesh: Object_3.002_Tyre_sidewalls_0 | Vertices: 256 | Triangles: 384
+Node 73: Object_3.002_Tyre_tread_0 | Mesh: Object_3.002_Tyre_tread_0 | Vertices: 68 | Triangles: 64
+
+Total mesh-node vertices: 69500
+Total mesh-node triangles: 37690
+
+COMPONENT HIERARCHY
+-----------------------------------------------------------------
+- Node 0: Sketchfab_model
+  - Node 1: Man truck.fbx
+    - Node 2: RootNode
+      - Node 3: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed
+        - Node 4: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_dark_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_dark_0; 12487 vertices; 6401 triangles]
+        - Node 5: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Back Trailor_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Back Trailor_0; 383 vertices; 183 triangles]
+        - Node 6: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Metalic_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Metalic_0; 1249 vertices; 517 triangles]
+        - Node 7: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Material_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed_Material_0; 3321 vertices; 1567 triangles]
+      - Node 8: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001
+        - Node 9: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Darker Most_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Darker Most_0; 4760 vertices; 2366 triangles]
+        - Node 10: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Grey_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Grey_0; 9932 vertices; 4576 triangles]
+        - Node 11: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Back Trailor_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Back Trailor_0; 308 vertices; 500 triangles]
+        - Node 12: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_White Light_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_White Light_0; 44 vertices; 32 triangles]
+        - Node 13: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Yellow Loght Black_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.001_Yellow Loght Black_0; 16 vertices; 12 triangles]
+      - Node 14: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.003
+        - Node 15: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.003_Material_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.003_Material_0; 712 vertices; 296 triangles]
+      - Node 16: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.002
+        - Node 17: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.002_Metalic_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.002_Metalic_0; 1125 vertices; 541 triangles]
+      - Node 18: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.004
+        - Node 19: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.004_dark_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.004_dark_0; 3955 vertices; 1928 triangles]
+      - Node 20: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.005
+        - Node 21: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.005__0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.005__0; 91 vertices; 32 triangles]
+      - Node 22: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.006
+        - Node 23: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.006_dark_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.006_dark_0; 614 vertices; 286 triangles]
+      - Node 24: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.007
+        - Node 25: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.007__0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.007__0; 50 vertices; 20 triangles]
+      - Node 26: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.008
+        - Node 27: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.008_Darker Most_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.008_Darker Most_0; 60 vertices; 36 triangles]
+      - Node 28: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009
+        - Node 29: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009_Material_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009_Material_0; 120 vertices; 56 triangles]
+        - Node 30: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009_dark_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.009_dark_0; 96 vertices; 40 triangles]
+      - Node 31: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.010
+        - Node 32: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.010_dark_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.010_dark_0; 348 vertices; 160 triangles]
+      - Node 33: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011
+        - Node 34: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011_Material_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011_Material_0; 679 vertices; 344 triangles]
+        - Node 35: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011_Grey_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.011_Grey_0; 1023 vertices; 489 triangles]
+      - Node 36: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012
+        - Node 37: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012_Grey_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012_Grey_0; 1380 vertices; 654 triangles]
+        - Node 38: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012_Material_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.012_Material_0; 576 vertices; 284 triangles]
+      - Node 39: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.013
+        - Node 40: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.013_Material_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.013_Material_0; 1037 vertices; 496 triangles]
+      - Node 41: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.014
+        - Node 42: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.014_Material_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.014_Material_0; 231 vertices; 132 triangles]
+      - Node 43: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015
+        - Node 44: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015_Grey_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015_Grey_0; 3082 vertices; 1547 triangles]
+        - Node 45: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015_Back Trailor_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.015_Back Trailor_0; 2412 vertices; 1238 triangles]
+      - Node 46: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.016
+        - Node 47: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.016_Metalic_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.016_Metalic_0; 439 vertices; 241 triangles]
+      - Node 48: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.018
+        - Node 49: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.018_Glass_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.018_Glass_0; 393 vertices; 176 triangles]
+      - Node 50: Cube
+        - Node 51: Cube_Darker Most_0 [MESH: Cube_Darker Most_0; 722 vertices; 348 triangles]
+        - Node 52: Cube_Red Light Back_0 [MESH: Cube_Red Light Back_0; 12 vertices; 6 triangles]
+        - Node 53: Cube_Yellow Loght Black_0 [MESH: Cube_Yellow Loght Black_0; 12 vertices; 6 triangles]
+      - Node 54: Cube.001
+        - Node 55: Cube.001_Yellow Loght Black_0 [MESH: Cube.001_Yellow Loght Black_0; 48 vertices; 24 triangles]
+      - Node 56: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017
+        - Node 57: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017_Grey_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017_Grey_0; 214 vertices; 144 triangles]
+        - Node 58: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017_Darker Most_0 [MESH: d75ac7d3-ea99-4386-8004-2b8b4d77a8ed.017_Darker Most_0; 60 vertices; 40 triangles]
+      - Node 59: Object_3
+        - Node 60: Object_3_Rims_0 [MESH: Object_3_Rims_0; 2314 vertices; 2424 triangles]
+        - Node 61: Object_3_Hubs_0 [MESH: Object_3_Hubs_0; 6818 vertices; 3016 triangles]
+        - Node 62: Object_3_Tyre_sidewalls_0 [MESH: Object_3_Tyre_sidewalls_0; 1024 vertices; 1536 triangles]
+        - Node 63: Object_3_Tyre_tread_0 [MESH: Object_3_Tyre_tread_0; 272 vertices; 256 triangles]
+      - Node 64: Object_3.001
+        - Node 65: Object_3.001_Rims_0 [MESH: Object_3.001_Rims_0; 552 vertices; 606 triangles]
+        - Node 66: Object_3.001_Hubs_0 [MESH: Object_3.001_Hubs_0; 2683 vertices; 1316 triangles]
+        - Node 67: Object_3.001_Tyre_sidewalls_0 [MESH: Object_3.001_Tyre_sidewalls_0; 256 vertices; 384 triangles]
+        - Node 68: Object_3.001_Tyre_tread_0 [MESH: Object_3.001_Tyre_tread_0; 68 vertices; 64 triangles]
+      - Node 69: Object_3.002
+        - Node 70: Object_3.002_Rims_0 [MESH: Object_3.002_Rims_0; 552 vertices; 606 triangles]
+        - Node 71: Object_3.002_Hubs_0 [MESH: Object_3.002_Hubs_0; 2646 vertices; 1316 triangles]
+        - Node 72: Object_3.002_Tyre_sidewalls_0 [MESH: Object_3.002_Tyre_sidewalls_0; 256 vertices; 384 triangles]
+        - Node 73: Object_3.002_Tyre_tread_0 [MESH: Object_3.002_Tyre_tread_0; 68 vertices; 64 triangles]
+
+TOP-LEVEL COMPONENT GROUPS
+-----------------------------------------------------------------
+Node 0: Sketchfab_model | Child nodes: 73 | Mesh nodes: 47
