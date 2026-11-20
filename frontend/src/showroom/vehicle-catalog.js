@@ -117,7 +117,7 @@ export const VEHICLE_CATALOG = Object.freeze([
     name: 'Realistic Helicopter',
     type: 'Helicopter',
     category: 'Helicopters',
-    url: '/models/other-helicopters/realistic_hellicopter.glb',
+    url: '/models/other-helicopters/realistic_helicopter_morphdrive.glb',
     description: 'A detailed helicopter model for exploring aircraft structures.'
   },
   {
