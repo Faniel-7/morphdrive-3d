@@ -133,16 +133,34 @@ export const EXPLOSION_CONFIG = Object.freeze({
   },
 
   'kawasaki-ninja-h2': {
-    strategy: 'named-parts',
+    strategy: 'hierarchy-parts',
     report: 'Kawasaki_Ninja_H2_components.json',
     parts: [
-      'Mesh_0153.rip_3',
-      'Mesh_0162.rip_5',
-      'Mesh_0023.rip_7',
-      'Mesh_0126.rip_9',
-      'Mesh_0016.rip_11',
-      'Mesh_0119.rip_13',
-      'Mesh_0039.rip_15'
+    'Mesh_0153rip_3',
+    'Mesh_0162rip_5',
+    'Mesh_0023rip_7',
+    'Mesh_0016rip_11',
+    'Mesh_0039rip_15',
+    'Mesh_0012rip_31',
+      'Mesh_0009rip_29',
+      'Mesh_0006rip_33',
+      'Mesh_0014rip_21',
+      '0002_Mesh_0170rip_61',
+      '0001_Mesh_0170rip_58',
+      '0000_Mesh_0170rip_52',
+      'Mesh_0018rip_50',
+      'Mesh_0000rip_41',
+      'Mesh_0005rip_35',
+      'Mesh_0119rip_13',
+      'Mesh_0010rip_25',
+      'Mesh_0178rip_19',
+      'Mesh_0007rip_37',
+      'Mesh_0017rip_17',
+      'Mesh_0004rip_39',
+      'Mesh_0001rip_27',
+      'Mesh_0126rip_9',
+      'Mesh_0123rip_23',
+      'Mesh_0166rip_44'
     ]
   },
 
@@ -197,9 +215,19 @@ export const EXPLOSION_CONFIG = Object.freeze({
   },
 
   'realistic-helicopter': {
-    strategy: 'inspect-only',
+    strategy: 'hierarchy-parts',
     report: 'Realistic_Helicopter_components.json',
-    parts: []
+    parts: [
+      'MorphDrive_Cockpit',
+      'MorphDrive_Cabin_Interior',
+      'MorphDrive_Fuselage',
+      'MorphDrive_Fuselage_Trim',
+      'MorphDrive_Engine_Transmission',
+      'MorphDrive_Main_Rotor',
+      'MorphDrive_Tail_Assembly',
+      'MorphDrive_Tail_Rotor',
+      'MorphDrive_Landing_Gear'
+    ]
   },
 
   'man-tgx': {
