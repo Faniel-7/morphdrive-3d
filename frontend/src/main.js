@@ -1065,11 +1065,18 @@ console.groupEnd();
   // All other vehicles use the reusable explosion manager.
   if (activeVehicleId && activeVehicleId !== 'sedan') {
     console.group(`MorphDrive Component Diagnostic: ${activeVehicleId}`);
-    diagnoseSkinnedComponents(vehicle);
+    const rigReport = diagnoseSkinnedComponents(vehicle);
 
     if (activeVehicleId === 'honda-cbr650r') {
+      window.__morphDriveHondaRigReport = rigReport;
       window.__morphDriveBoneTest = createBoneMovementTester(vehicle);
       console.info('Honda bone tester ready: window.__morphDriveBoneTest');
+    }
+
+    if (activeVehicleId === 'bmw-s1000rr') {
+      window.__morphDriveBMWRigReport = rigReport;
+      window.__morphDriveBMWBoneTest = createBoneMovementTester(vehicle);
+      console.info('BMW bone tester ready: window.__morphDriveBMWBoneTest');
     }
 
     console.groupEnd();
