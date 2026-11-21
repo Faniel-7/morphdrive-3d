@@ -4,6 +4,8 @@ import { getExplosionConfig } from './explosion-config.js';
 import { getA320ExplosionPlan } from './airbus-a320-explosion.js';
 import { getMANTGXExplosionPlan } from './man-tgx-explosion.js';
 import { getSukhoiSU57ExplosionPlan } from './sukhoi-su57-explosion.js';
+import { getHondaCBR650RExplosionPlan } from './honda-cbr650r-explosion.js';
+import { getBMWS1000RRExplosionPlan } from './bmw-s1000rr-explosion.js';
 
 import {
   getObjectDepth
@@ -11,6 +13,20 @@ import {
 
 const ORIGINAL_POSITION_KEY =
   '__morphDriveExplosionOriginalPosition';
+
+// Sports Bike-only offsets: each original GLB mesh gets its own position.
+const SPORTS_BIKE_EXPLOSION_OFFSETS = new Map([
+  ['Bike_Frame_Bike_Frame_0', [0, 0.35, 0]],
+  ['Suspension_Suspension_0', [-1.35, 0.65, 0.35]],
+  ['Wheels_Wheels_0', [1.45, 1.25, 0]],
+  ['Traction_Traction_0', [-1.25, 0.75, -0.85]],
+  ['Gearshift_Gearshift_0', [-1.55, 0.3, -1.15]],
+  ['Handlebar_Handlebar_0', [0, 1.45, 1.0]],
+  ['Chain_Chain_0', [1.35, 0.45, -1.0]],
+  ['Brakes_Brakes_0', [1.45, 0.55, 0.85]],
+  ['Brake_Lever_Break_Lever_0', [0, 1.2, -1.5]],
+  ['Bike068_Seat_0', [0, 1.35, -0.35]]
+]);
 
 /*
  * Three functional clusters and their individual components.
@@ -392,6 +408,8 @@ export function createExplosionManager({
   let activeA320Groups = [];
   let activeMANGroups = [];
   let activeSukhoiGroups = [];
+let activeHondaGroups = [];
+let activeBMWGroups = [];
 
   const isHelicopter =
     vehicleId === 'realistic-helicopter';
@@ -481,6 +499,57 @@ export function createExplosionManager({
       object.userData[ORIGINAL_POSITION_KEY] =
         object.position.clone();
     }
+  }
+
+  function correctSportsBikeWheelHeight() {
+    if (vehicleId !== 'sports-bike') return;
+
+    const wheelName = 'Wheels_Wheels_0';
+    const liftMarker = '__morphDriveSportsBikeWheelLifted';
+    const minimumHeight = 0.12;
+
+    let wheel = null;
+
+    root.traverse(object => {
+      if (object.name === wheelName) wheel = object;
+    });
+
+    if (!wheel || !wheel.parent || wheel.userData[liftMarker]) {
+      return;
+    }
+
+    root.updateWorldMatrix(true, true);
+
+    const bounds = new THREE.Box3().setFromObject(wheel);
+
+    if (bounds.isEmpty() || bounds.min.y >= minimumHeight) {
+      wheel.userData[liftMarker] = true;
+      return;
+    }
+
+    const liftAmount = minimumHeight - bounds.min.y;
+    const worldCenter = bounds.getCenter(new THREE.Vector3());
+    const parent = wheel.parent;
+
+    const localStart = parent.worldToLocal(worldCenter.clone());
+    const localEnd = parent.worldToLocal(
+      worldCenter.clone().add(
+        new THREE.Vector3(0, liftAmount, 0)
+      )
+    );
+
+    wheel.position.add(localEnd.sub(localStart));
+    wheel.userData[liftMarker] = true;
+
+    root.updateWorldMatrix(true, true);
+
+    const correctedBounds = new THREE.Box3().setFromObject(wheel);
+
+    console.log('[Sports Bike] Wheel floor correction:', {
+      liftAmount,
+      correctedMinimumY: correctedBounds.min.y,
+      wheelAboveSurface: correctedBounds.min.y >= minimumHeight - 0.001
+    });
   }
 
   function applyWorldOffset(object, worldOffset, movements) {
@@ -616,6 +685,9 @@ export function createExplosionManager({
       };
     }
 
+    correctSportsBikeWheelHeight();
+    root.updateWorldMatrix(true, true);
+
     const vehicleBounds = new THREE.Box3().setFromObject(root);
 
     if (vehicleBounds.isEmpty()) {
@@ -688,8 +760,14 @@ export function createExplosionManager({
         index
       );
 
-      const worldOffset =
-        direction.multiplyScalar(partDistance);
+      const sportsBikeOffset =
+        vehicleId === 'sports-bike'
+          ? SPORTS_BIKE_EXPLOSION_OFFSETS.get(object.name)
+          : null;
+
+      const worldOffset = sportsBikeOffset
+        ? new THREE.Vector3(...sportsBikeOffset)
+        : direction.multiplyScalar(partDistance);
 
       applyWorldOffset(object, worldOffset, movements);
     });
@@ -758,6 +836,82 @@ export function createExplosionManager({
     return {
       success: true,
       layout: 'standard-radial',
+      ...getStatus()
+    };
+  }
+
+
+  function explodeBMWS1000RR() {
+    root.updateWorldMatrix(true, true);
+
+    const plan = getBMWS1000RRExplosionPlan(root);
+
+    if (plan.length === 0) {
+      return {
+        success: false,
+        reason: 'No BMW S1000 RR explosion components were found.',
+        ...getStatus()
+      };
+    }
+
+    const movements = [];
+    activeBMWGroups = [];
+
+    for (const record of plan) {
+      const object = record.object;
+      if (!object.parent) continue;
+
+      if (!object.userData[ORIGINAL_POSITION_KEY]) {
+        object.userData[ORIGINAL_POSITION_KEY] = object.position.clone();
+      }
+
+      const worldPosition = object.getWorldPosition(
+        new THREE.Vector3()
+      );
+
+      const parent = object.parent;
+
+      const localStart = parent.worldToLocal(
+        worldPosition.clone()
+      );
+
+      const localEnd = parent.worldToLocal(
+        worldPosition.clone().add(
+          new THREE.Vector3(...record.offset)
+        )
+      );
+
+      movements.push({
+        object,
+        position: object.userData[ORIGINAL_POSITION_KEY]
+          .clone()
+          .add(localEnd.sub(localStart))
+      });
+
+      activeBMWGroups.push(object);
+    }
+
+    for (const movement of movements) {
+      movement.object.position.copy(movement.position);
+    }
+
+    root.updateWorldMatrix(true, true);
+
+    // Refresh only this BMW's skinned-mesh skeletons.
+    root.traverse(object => {
+      if (object.isSkinnedMesh && object.skeleton) {
+        object.skeleton.update();
+      }
+    });
+
+    selectedParts = [...activeBMWGroups];
+    exploded = true;
+
+    return {
+      success: true,
+      layout: 'bmw-s1000rr-rigged-assembly-explosion',
+      componentsSeparated: activeBMWGroups.length,
+      geometryObjectsMoved: movements.length,
       ...getStatus()
     };
   }
@@ -997,6 +1151,57 @@ export function createExplosionManager({
     };
   }
 
+
+  function explodeHondaCBR650R() {
+    const plan = getHondaCBR650RExplosionPlan(root);
+
+    if (plan.length !== 19) {
+      return {
+        success: false,
+        reason: `Expected 19 Honda component groups, found ${plan.length}.`,
+        ...getStatus()
+      };
+    }
+
+    activeHondaGroups = [];
+    selectedParts = [];
+
+    const movements = [];
+
+    for (const record of plan) {
+      for (const object of record.objects) {
+        if (!object.parent) continue;
+
+        activeHondaGroups.push(object);
+        selectedParts.push(object);
+
+        applyWorldOffset(object, record.offset, movements);
+      }
+    }
+
+    for (const movement of movements) {
+      movement.object.position.copy(movement.position);
+    }
+
+    root.updateWorldMatrix(true, true);
+    exploded = true;
+
+    console.log('[Honda CBR650R] Explosion completed:', {
+      componentsSeparated: plan.length,
+      objectsMoved: activeHondaGroups.length,
+      geometryObjectsMoved: movements.length
+    });
+
+    return {
+      success: true,
+      layout: 'honda-cbr650r-rigged-component-explosion',
+      componentsSeparated: plan.length,
+      objectsMoved: activeHondaGroups.length,
+      geometryObjectsMoved: movements.length,
+      ...getStatus()
+    };
+  }
+
   function explode() {
     if (exploded) {
       return {
@@ -1021,6 +1226,10 @@ export function createExplosionManager({
       return explodeHelicopter();
     }
 
+    if (vehicleId === 'bmw-s1000rr') {
+      return explodeBMWS1000RR();
+    }
+
     if (vehicleId === 'airbus-a320') {
       return explodeA320();
     }
@@ -1031,6 +1240,10 @@ export function createExplosionManager({
 
     if (vehicleId === 'sukhoi-su57') {
       return explodeSukhoiSU57();
+    }
+
+    if (vehicleId === 'honda-cbr650r') {
+      return explodeHondaCBR650R();
     }
 
     return explodeStandardVehicle();
@@ -1046,13 +1259,17 @@ export function createExplosionManager({
     }
 
     const objectsToRestore =
-      vehicleId === 'airbus-a320'
+      vehicleId === 'bmw-s1000rr'
+        ? activeBMWGroups
+        : vehicleId === 'airbus-a320'
         ? activeA320Groups
         : vehicleId === 'man-tgx'
           ? activeMANGroups
           : vehicleId === 'sukhoi-su57'
             ? activeSukhoiGroups
-            : selectedParts;
+            : vehicleId === 'honda-cbr650r'
+              ? activeHondaGroups
+              : selectedParts;
 
     for (const object of objectsToRestore) {
       const originalPosition =
@@ -1072,6 +1289,16 @@ export function createExplosionManager({
     activeHelicopterRecords = [];
     activeA320Groups = [];
     activeSukhoiGroups = [];
+    activeHondaGroups = [];
+    activeBMWGroups = [];
+
+    if (vehicleId === 'bmw-s1000rr') {
+      root.traverse(object => {
+        if (object.isSkinnedMesh && object.skeleton) {
+          object.skeleton.update();
+        }
+      });
+    }
 
     return {
       success: true,
@@ -1088,6 +1315,8 @@ export function createExplosionManager({
     activeHelicopterRecords = [];
     activeA320Groups = [];
     activeSukhoiGroups = [];
+    activeHondaGroups = [];
+    activeBMWGroups = [];
   }
 
   return {
