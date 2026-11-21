@@ -121,15 +121,54 @@ export const EXPLOSION_CONFIG = Object.freeze({
     strategy: 'named-parts',
     report: 'BMW_S1000_RR_components.json',
     parts: [
+      'bodyshell_41',
+      'engineblock_40',
+      'handlebars_21',
+      'forks_u_25',
+      'swingarm_30',
+      'cockpit_26',
+      'dials_10',
+      'interior_13',
+      'headlight_l_14',
+      'headlight_r_15',
+      'seat_f_16',
+      'seat_32',
+      'rear-seat_33',
+      'rear-frame_31',
+      'brakelight_l_39',
+      'extra_7_42',
+      'exhaust_1_34',
+      'exhaust_2_35',
+      'exhaust_3_36',
+      'exhaust_4_37',
+      'exhaust_5_38',
       'wheel_lf.child_78',
       'wheel_lr.child_79'
     ]
   },
 
   'honda-cbr650r': {
-    strategy: 'inspect-only',
+    strategy: 'honda-rigged-parts',
     report: 'Honda_CBR650R_components.json',
-    parts: []
+    parts: [
+      'bodyshell_32',
+      'enginecbr_33',
+      'swingarm_17',
+      'forks_u_28',
+      'handlebars_20',
+      'misc_a_35',
+      'misc_b_36',
+      'misc_g_37',
+      'misc_c_40',
+      'misc_d_30',
+      'taillight_l_29',
+      'taillight_r_31',
+      'extralight_1_9',
+      'extralight_2_10',
+      'headlight_l_7',
+      'headlight_r_8',
+      'dials_41'
+    ]
   },
 
   'kawasaki-ninja-h2': {
@@ -165,19 +204,19 @@ export const EXPLOSION_CONFIG = Object.freeze({
   },
 
   'sports-bike': {
-    strategy: 'named-parts',
+    strategy: 'hierarchy-parts',
     report: 'Sports_Bike_components.json',
     parts: [
-      'Bike_Frame',
-      'Suspension',
-      'Wheels',
-      'Traction',
-      'Gearshift',
-      'Handlebar',
-      'Chain',
-      'Brakes',
-      'Brake_Lever',
-      'Bike.068'
+      'Bike_Frame_Bike_Frame_0',
+      'Suspension_Suspension_0',
+      'Wheels_Wheels_0',
+      'Traction_Traction_0',
+      'Gearshift_Gearshift_0',
+      'Handlebar_Handlebar_0',
+      'Chain_Chain_0',
+      'Brakes_Brakes_0',
+      'Brake_Lever_Break_Lever_0',
+      'Bike068_Seat_0'
     ]
   },
 
