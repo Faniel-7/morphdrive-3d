@@ -1,0 +1,193 @@
+/**
+ * MorphDrive 3D — Shared First-Person Vehicle Camera
+ *
+ * One camera controller for all 16 supported vehicles.
+ * Vehicle-specific settings describe the longitudinal axis,
+ * forward direction, camera height, and driver-seat offset.
+ *
+ * All positions are calculated from the normalized vehicle bounds.
+ */
+
+const VEHICLE_COCKPIT_CONFIG = {
+  // Cars
+  sedan: {
+    axis: 'z', forward: -1, height: 0.68,
+    fromFront: 0.52, lateral: -0.035, lookAhead: 0.19
+  },
+  'urus-performante': {
+    axis: 'z', forward: -1, height: 0.66,
+    fromFront: 0.52, lateral: -0.035, lookAhead: 0.18
+  },
+  'ford-f150-raptor': {
+    axis: 'z', forward: -1, height: 0.66,
+    fromFront: 0.52, lateral: -0.035, lookAhead: 0.18
+  },
+  'lamborghini-centenario': {
+    axis: 'x', forward: -1, height: 0.68,
+    fromFront: 0.52, lateral: -0.035, lookAhead: 0.19
+  },
+  'polestar-3': {
+    axis: 'z', forward: -1, height: 0.67,
+    fromFront: 0.52, lateral: -0.035, lookAhead: 0.18
+  },
+  'skoda-elroq': {
+    axis: 'x', forward: -1, height: 0.66,
+    fromFront: 0.52, lateral: -0.035, lookAhead: 0.18
+  },
+
+  // Motorcycles
+  'bmw-s1000rr': {
+    axis: 'z', forward: -1, height: 0.76,
+    fromFront: 0.55, lateral: 0, lookAhead: 0.16
+  },
+  'honda-cbr650r': {
+    axis: 'z', forward: -1, height: 0.74,
+    fromFront: 0.55, lateral: 0, lookAhead: 0.16
+  },
+  'kawasaki-ninja-h2': {
+    axis: 'z', forward: -1, height: 0.74,
+    fromFront: 0.55, lateral: 0, lookAhead: 0.16
+  },
+  'sports-bike': {
+    axis: 'z', forward: -1, height: 0.72,
+    fromFront: 0.55, lateral: 0, lookAhead: 0.16
+  },
+
+  // Aircraft
+  'airbus-a320': {
+    axis: 'z', forward: -1, height: 0.58,
+    fromFront: 0.20, lateral: 0, lookAhead: 0.24
+  },
+  'boeing-787': {
+    axis: 'x', forward: -1, height: 0.58,
+    fromFront: 0.20, lateral: 0, lookAhead: 0.24
+  },
+  'sukhoi-su57': {
+    axis: 'x', forward: 1, height: 0.58,
+    fromFront: 0.27, lateral: 0, lookAhead: 0.20
+  },
+
+  // Helicopters
+  'apache-ah64e': {
+    axis: 'z', forward: 1, height: 0.58,
+    fromFront: 0.30, lateral: 0, lookAhead: 0.18
+  },
+  'realistic-helicopter': {
+    axis: 'z', forward: 1, height: 0.48,
+    fromFront: 0.55, lateral: 0, lookAhead: 0.16
+  },
+
+  // Truck
+  'man-tgx': {
+    axis: 'x', forward: -1, height: 0.66,
+    fromFront: 0.52, lateral: 0, lookAhead: 0.18
+  }
+};
+
+const DEFAULT_CONFIG = {
+  axis: 'z',
+  forward: -1,
+  height: 0.62,
+  fromFront: 0.5,
+  lateral: 0,
+  lookAhead: 0.18
+};
+
+export function createCockpitCamera({ THREE, camera, controls }) {
+  if (!THREE || !camera || !controls) {
+    throw new Error(
+      'Cockpit camera requires THREE, camera, and OrbitControls.'
+    );
+  }
+
+  const cameraPosition = new THREE.Vector3();
+  const lookTarget = new THREE.Vector3();
+  const center = new THREE.Vector3();
+  const size = new THREE.Vector3();
+
+  function enter(vehicle, vehicleId) {
+    if (!vehicle) {
+      console.warn('Cockpit camera: no vehicle is loaded.');
+      return false;
+    }
+
+    const config =
+      VEHICLE_COCKPIT_CONFIG[vehicleId] || DEFAULT_CONFIG;
+
+    vehicle.updateMatrixWorld(true);
+
+    const bounds = new THREE.Box3().setFromObject(vehicle);
+
+    if (bounds.isEmpty()) {
+      console.warn('Cockpit camera: vehicle bounds are empty.');
+      return false;
+    }
+
+    bounds.getCenter(center);
+    bounds.getSize(size);
+
+    const longitudinalLength = Math.max(
+      size[config.axis],
+      0.1
+    );
+
+    const verticalHeight = Math.max(size.y, 0.1);
+    const lateralAxis = config.axis === 'x' ? 'z' : 'x';
+    const lateralWidth = Math.max(size[lateralAxis], 0.1);
+
+    const frontCoordinate =
+      center[config.axis] +
+      config.forward * longitudinalLength * 0.5;
+
+    const longitudinalPosition =
+      frontCoordinate +
+      config.forward *
+        longitudinalLength *
+        config.fromFront;
+
+    const verticalPosition =
+      bounds.min.y + verticalHeight * config.height;
+
+    const lateralPosition =
+      center[lateralAxis] +
+      lateralWidth * config.lateral;
+
+    cameraPosition.copy(center);
+    cameraPosition[config.axis] = longitudinalPosition;
+    cameraPosition.y = verticalPosition;
+    cameraPosition[lateralAxis] = lateralPosition;
+
+    lookTarget.copy(cameraPosition);
+    lookTarget[config.axis] +=
+      config.forward *
+      longitudinalLength *
+      config.lookAhead;
+
+    controls.autoRotate = false;
+    controls.minDistance = 0.05;
+    controls.maxDistance = Math.max(8, longitudinalLength * 1.5);
+    controls.target.copy(lookTarget);
+
+    camera.position.copy(cameraPosition);
+    camera.lookAt(lookTarget);
+
+    controls.update();
+
+    console.info('MorphDrive: cockpit camera entered.', {
+      vehicleId,
+      axis: config.axis,
+      forward: config.forward,
+      cameraPosition: cameraPosition.toArray(),
+      lookTarget: lookTarget.toArray()
+    });
+
+    return true;
+  }
+
+  return {
+    enter,
+    getSupportedVehicles() {
+      return Object.keys(VEHICLE_COCKPIT_CONFIG);
+    }
+  };
+}
