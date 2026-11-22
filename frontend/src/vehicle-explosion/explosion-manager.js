@@ -411,6 +411,113 @@ export function createExplosionManager({
 let activeHondaGroups = [];
 let activeBMWGroups = [];
 
+  // Smooth transitions for vehicle explosion and assembly.
+  const EXPLOSION_ANIMATION_DURATION = 850;
+
+  let animationFrame = null;
+  let animationToken = 0;
+
+  function captureObjectPositions() {
+    const snapshot = [];
+
+    root.traverse(object => {
+      snapshot.push({
+        object,
+        position: object.position.clone()
+      });
+    });
+
+    return snapshot;
+  }
+
+  function cancelPositionAnimation() {
+    animationToken++;
+
+    if (
+      animationFrame !== null &&
+      typeof cancelAnimationFrame === 'function'
+    ) {
+      cancelAnimationFrame(animationFrame);
+    }
+
+    animationFrame = null;
+  }
+
+  function animatePositionChanges(startSnapshot, endSnapshot) {
+    if (typeof requestAnimationFrame !== 'function') return;
+
+    const startPositions = new Map(
+      startSnapshot.map(record => [record.object, record.position])
+    );
+
+    const transitions = [];
+
+    for (const record of endSnapshot) {
+      const start = startPositions.get(record.object);
+
+      if (!start) continue;
+
+      if (start.distanceToSquared(record.position) < 1e-8) {
+        continue;
+      }
+
+      transitions.push({
+        object: record.object,
+        start,
+        end: record.position.clone()
+      });
+    }
+
+    if (transitions.length === 0) return;
+
+    const token = ++animationToken;
+    const startTime = performance.now();
+
+    // Return objects to their starting positions before animating.
+    for (const item of transitions) {
+      item.object.position.copy(item.start);
+    }
+
+    root.updateWorldMatrix(true, true);
+
+    function updateFrame(now) {
+      if (token !== animationToken) return;
+
+      const progress = THREE.MathUtils.clamp(
+        (now - startTime) / EXPLOSION_ANIMATION_DURATION,
+        0,
+        1
+      );
+
+      // Smoothstep easing.
+      const eased = progress * progress * (3 - 2 * progress);
+
+      for (const item of transitions) {
+        item.object.position.lerpVectors(
+          item.start,
+          item.end,
+          eased
+        );
+      }
+
+      root.updateWorldMatrix(true, true);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(updateFrame);
+      } else {
+        for (const item of transitions) {
+          item.object.position.copy(item.end);
+        }
+
+        root.updateWorldMatrix(true, true);
+        animationFrame = null;
+      }
+    }
+
+    animationFrame = requestAnimationFrame(updateFrame);
+  }
+
+
   const isHelicopter =
     vehicleId === 'realistic-helicopter';
 
@@ -1202,7 +1309,7 @@ let activeBMWGroups = [];
     };
   }
 
-  function explode() {
+  function explodeImmediately() {
     if (exploded) {
       return {
         success: true,
@@ -1249,7 +1356,7 @@ let activeBMWGroups = [];
     return explodeStandardVehicle();
   }
 
-  function assemble() {
+  function assembleImmediately() {
     if (!exploded) {
       return {
         success: true,
@@ -1306,9 +1413,41 @@ let activeBMWGroups = [];
     };
   }
 
+
+  function runAnimatedTransition(operation) {
+    cancelPositionAnimation();
+
+    const startSnapshot = captureObjectPositions();
+    const result = operation();
+
+    if (
+      !result ||
+      !result.success ||
+      result.alreadyExploded ||
+      result.alreadyAssembled
+    ) {
+      return result;
+    }
+
+    const endSnapshot = captureObjectPositions();
+
+    animatePositionChanges(startSnapshot, endSnapshot);
+
+    return result;
+  }
+
+  function explode() {
+    return runAnimatedTransition(explodeImmediately);
+  }
+
+  function assemble() {
+    return runAnimatedTransition(assembleImmediately);
+  }
+
   function dispose() {
+    cancelPositionAnimation();
     if (exploded) {
-      assemble();
+      assembleImmediately();
     }
 
     selectedParts = [];
