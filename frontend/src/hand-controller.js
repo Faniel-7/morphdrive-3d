@@ -55,6 +55,10 @@ export function createHandController({ scene, camera, viewport }) {
   let previewContext = null;
   let previewWrapper = null;
   let latestImageLandmarks = [];
+  let latestGestureFrame = {
+    timestamp: 0,
+    hands: new Map()
+  };
   let lastPreviewDraw = 0;
 
   let originalHandScene = null;
@@ -971,6 +975,7 @@ export function createHandController({ scene, camera, viewport }) {
 
       const assignments = assignHandSides(result, imageResults, now);
       const visibleSides = new Set();
+      const gestureHands = new Map();
 
       for (let i = 0; i < imageResults.length; i++) {
         const imageLandmarks = imageResults[i];
@@ -983,6 +988,7 @@ export function createHandController({ scene, camera, viewport }) {
             visibleSides.has(side)) continue;
 
         visibleSides.add(side);
+        gestureHands.set(side, imageLandmarks);
 
         const instance = handInstances.get(side);
         const previousTime = instance?.lastSeen || now;
@@ -992,6 +998,11 @@ export function createHandController({ scene, camera, viewport }) {
           side, imageLandmarks, worldLandmarks, dt, now
         );
       }
+
+      latestGestureFrame = {
+        timestamp: now,
+        hands: gestureHands
+      };
 
       for (const [side, instance] of handInstances) {
         if (!visibleSides.has(side) &&
@@ -1188,6 +1199,10 @@ export function createHandController({ scene, camera, viewport }) {
       );
   }
 
+  function getGestureFrame() {
+    return latestGestureFrame;
+  }
+
   function getStatus() {
     return status.textContent;
   }
@@ -1239,6 +1254,10 @@ export function createHandController({ scene, camera, viewport }) {
     handInstances.clear();
 
     latestImageLandmarks = [];
+    latestGestureFrame = {
+      timestamp: 0,
+      hands: new Map()
+    };
 
     if (previewWrapper) {
       previewWrapper.remove();
@@ -1269,6 +1288,7 @@ export function createHandController({ scene, camera, viewport }) {
     dispose,
     getTrackedPointers,
     getTrackedHands,
+    getGestureFrame,
     getStatus
   };
 }
