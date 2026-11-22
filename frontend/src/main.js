@@ -1,12 +1,15 @@
     import './style.css';
     import * as THREE from 'three';
+import { createVehicleScanner } from './vehicle-scanning/vehicle-scanner.js';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { createVehicleManager } from '../vehicle-manager.js';
     import { createHandController } from './hand-controller.js';
+import { createGestureRecognizer } from './gesture-recognition.js';
     import './showroom/showroom.css';
     import { createShowroom } from './showroom/showroom.js';
     import { VEHICLE_CATALOG } from './showroom/vehicle-catalog.js';
     import { createExplosionManager } from './vehicle-explosion/explosion-manager.js';
+import { createCockpitCamera } from './cockpit-mode/cockpit-camera.js';
 import {
   diagnoseSkinnedComponents,
   createBoneMovementTester
@@ -18,17 +21,15 @@ import {
       <header class="topbar">
         <div class="brand">
           <span class="brand-mark">⬡</span>
-          <strong>NEODUSTRIA</strong>
+          <strong>MORPHDRIVE</strong>
         </div>
 
-        <div class="app-name">3D Design Cockpit</div>
+        <div class="app-name">3D Vehicle Studio</div>
 
         <div class="top-actions">
-          <span>Project: NDX-2025-001</span>
-          <button title="Search">⌕</button>
-          <button id="help-toggle" type="button" title="Help" aria-label="Open help">?</button>
-          <button title="Notifications">♧</button>
-          <button class="profile">◉ <small>EN⌄</small></button>
+          <button id="toggle-browser" class="topbar-action" type="button" title="Show or hide the vehicle browser" aria-expanded="true">Vehicles</button>
+          <button id="toggle-properties" class="topbar-action" type="button" title="Show or hide vehicle properties" aria-expanded="true">Properties</button>
+          <button id="help-toggle" class="topbar-action help-action" type="button" title="Show controls and help" aria-label="Open help">Help</button>
         </div>
       </header>
 
@@ -48,7 +49,8 @@ import {
               <div class="help-row"><span>Rotate view</span><kbd>Left-click + drag</kbd></div>
               <div class="help-row"><span>Pan view</span><kbd>Right-click + drag</kbd></div>
               <div class="help-row"><span>Zoom</span><kbd>Mouse wheel</kbd></div>
-              <div class="help-row"><span>Restore camera</span><kbd>Reset button ↻</kbd></div>
+              <div class="help-row"><span>Restore camera</span><kbd>Reset view</kbd></div>
+              <p>Adjust rotation, pan, and zoom sensitivity in the Properties panel.</p>
             </section>
 
             <section class="help-section">
@@ -89,8 +91,8 @@ import {
         <aside class="browser panel">
 
           <div class="panel-heading">
-            <span>MODEL BROWSER</span>
-            <span class="blue">⛶</span>
+            <span>VEHICLES</span>
+            <span class="panel-hint">MODEL LIBRARY</span>
           </div>
 
           <div class="model-name" id="active-model-heading">
@@ -111,51 +113,37 @@ import {
             <small id="vehicle-library-status">1 model available · Import a GLB to add another</small>
           </div>
 
-          <div class="section-label">Assemblies</div>
-
-          <nav class="assembly-list">
-            ${[
-              'Body_Structure',
-              'Chassis_System',
-              'Powertrain_System',
-              'Interior_System',
-              'Electrical_System',
-              'Cooling_System',
-              'Suspension_System',
-              'Braking_System',
-              'Wheels_Tires',
-              'Fasteners',
-              'Reference_Geometry'
-            ].map(name => `
-              <button class="assembly" data-name="${name}">
-                <span class="assembly-icon">⬡</span>
-                <span>${name}</span>
-                <span class="chevron">›</span>
-              </button>
-            `).join('')}
-          </nav>
-
         </aside>
 
         <section class="center">
 
-          <div class="viewport-toolbar panel">
-            <button class="tool active" title="Model">⬡</button>
-            <button class="tool" title="Rotate">◎</button>
-            <button class="tool" title="Orbit">◉</button>
-            <button class="tool" title="Pan">⊙</button>
-            <button class="tool" title="Zoom">⌕</button>
-            <button class="tool" id="explode" title="Exploded View">♧</button>
-            <button class="tool" id="wireframe" title="Wireframe">▧</button>
-            <button class="tool" title="Lighting">☼</button>
-            <button class="tool" id="reset" title="Reset View">↻</button>
-
-            <span class="toolbar-divider"></span>
-
-            <button class="tool" title="Settings">⚙</button>
-            <button class="tool" title="Measure">◎</button>
-            <button class="tool" title="Capture">▣</button>
-            <button class="tool" title="Tools">⌁</button>
+          <div class="viewport-toolbar panel" aria-label="Vehicle and camera tools">
+            <div class="toolbar-group">
+              <button class="tool tool-primary" id="explode" type="button" title="Toggle exploded view" aria-label="Toggle exploded view">
+                <span class="tool-icon">⤢</span><span class="tool-label">Explode</span>
+              </button>
+              <button class="tool tool-scan" id="scan-vehicle"
+                type="button"
+                title="Start vehicle scanning"
+                aria-label="Start vehicle scanning"
+                aria-pressed="false">
+                <span class="tool-icon">⌁</span>
+                <span class="tool-label">Scan</span>
+              </button>
+              <button class="tool" id="wireframe" type="button" title="Toggle wireframe display" aria-label="Toggle wireframe display">
+                <span class="tool-icon">▧</span><span class="tool-label">Wireframe</span>
+              </button>
+              <button class="tool" id="reset" type="button" title="Reset camera position and target" aria-label="Reset camera view">
+                <span class="tool-icon">↺</span><span class="tool-label">Reset view</span>
+              </button>
+              <button class="tool" id="front-seat" type="button"
+                title="Move camera to the driver's seat"
+                aria-label="Move camera to front seat"
+                aria-pressed="false">
+                <span class="tool-icon">◉</span><span class="tool-label">Front Seat</span>
+              </button>
+            </div>
+            <span class="toolbar-note">Drag to rotate · Right-drag to pan · Scroll to zoom</span>
           </div>
 
           <div class="viewport panel" id="viewport">
@@ -184,28 +172,19 @@ import {
               View <span>⌄</span>
             </div>
 
+            <div id="component-tooltip" class="component-tooltip" role="status" aria-live="polite" hidden></div>
+
             <div class="hand-controls">
               <button id="start-hand-control" type="button">ENABLE HAND CONTROL</button>
               <span id="hand-status">3D HAND INITIALIZING...</span>
               <span id="hand-orientation">HAND: WAITING</span>
+              <span id="gesture-status">GESTURE: WAITING</span>
               <span id="hover-status">Hover over a vehicle part</span>
             </div>
 
             <div class="viewport-footer">
 
-              <div class="view-tools">
-                <button title="Model view">⬡</button>
-                <button title="Pan">✥</button>
-                <button title="Settings">⚙</button>
-                <button title="Camera">▣</button>
-                <button title="Orbit">◉</button>
-                <button title="Explode">♧</button>
-                <button title="Measure">⌁</button>
-              </div>
-
               <div class="model-stats">
-                <span>Units: mm</span>
-                <span>Scale: 1:1</span>
                 <span id="triangle-count">Triangles: —</span>
               </div>
 
@@ -221,7 +200,7 @@ import {
 
           <div class="properties-heading">
             <span>PROPERTIES</span>
-            <button id="close-properties">×</button>
+            <button id="close-properties" type="button" title="Hide properties panel" aria-label="Hide properties panel">×</button>
           </div>
 
           <div class="property-section">
@@ -236,11 +215,6 @@ import {
             <div class="property-row">
               <span>Type</span>
               <span id="property-model-type">Car</span>
-            </div>
-
-            <div class="property-row">
-              <span>Units</span>
-              <span>Millimeters</span>
             </div>
 
           </div>
@@ -266,25 +240,29 @@ import {
 
           </div>
 
-          <div class="property-section">
 
-            <h4>Attributes</h4>
 
-            <div class="property-row">
-              <span>Variant</span>
-              <span>Base_Design</span>
+          <div class="property-section camera-settings-section">
+            <h4>Camera controls</h4>
+            <p class="camera-hint">Left-drag: rotate · Right-drag: pan · Wheel: zoom</p>
+
+            <div class="slider-heading">
+              <label class="appearance-label" for="camera-rotate-speed">Rotation speed</label>
+              <span id="camera-rotate-number">0.8×</span>
             </div>
+            <input class="appearance-slider" type="range" id="camera-rotate-speed" min="0.2" max="2.5" step="0.1" value="0.8">
 
-            <div class="property-row">
-              <span>Configuration</span>
-              <span>A</span>
+            <div class="slider-heading">
+              <label class="appearance-label" for="camera-pan-speed">Pan speed</label>
+              <span id="camera-pan-number">0.8×</span>
             </div>
+            <input class="appearance-slider" type="range" id="camera-pan-speed" min="0.2" max="2.5" step="0.1" value="0.8">
 
-            <div class="property-row">
-              <span>Revision</span>
-              <span>R12</span>
+            <div class="slider-heading">
+              <label class="appearance-label" for="camera-zoom-speed">Zoom speed</label>
+              <span id="camera-zoom-number">1.0×</span>
             </div>
-
+            <input class="appearance-slider" type="range" id="camera-zoom-speed" min="0.2" max="2.5" step="0.1" value="1.0">
           </div>
 
           <div class="property-section appearance-section">
@@ -465,12 +443,33 @@ document.querySelector('.top-actions').prepend(backToShowroomButton);
     });
 
     const scene = new THREE.Scene();
+
+    const scanButton = document.querySelector('#scan-vehicle');
+
+    const vehicleScanner = createVehicleScanner({
+      scene,
+      onStateChange: state => {
+        if (!scanButton) return;
+
+        const scanning = state === 'scanning';
+
+        scanButton.classList.toggle('active', scanning);
+        scanButton.setAttribute('aria-pressed', String(scanning));
+
+        scanButton.querySelector('.tool-label').textContent =
+          scanning ? 'Scanning...' : 'Scan';
+
+        scanButton.title = scanning
+          ? 'Stop vehicle scanning'
+          : 'Start vehicle scanning';
+      }
+    });
     scene.background = new THREE.Color('#020914');
 
     const camera = new THREE.PerspectiveCamera(
       38,
       viewport.clientWidth / viewport.clientHeight,
-      0.1,
+      0.01,
       1000
     );
 
@@ -508,8 +507,44 @@ document.querySelector('.top-actions').prepend(backToShowroomButton);
     controls.enableDamping = true;
     controls.dampingFactor = 0.06;
     controls.target.set(0, 0.8, 0);
-    controls.minDistance = 3;
+    // Allow the camera to move through the vehicle shell and into the cabin.
+    controls.minDistance = 0.05;
     controls.maxDistance = 18;
+    controls.enableRotate = true;
+    controls.enablePan = true;
+    controls.enableZoom = true;
+    controls.rotateSpeed = 1.15;
+    controls.panSpeed = 0.9;
+    controls.zoomSpeed = 1.0;
+    // Allow a full 360-degree orbit, including looking almost straight up/down.
+    controls.minPolarAngle = 0.001;
+    controls.maxPolarAngle = Math.PI - 0.001;
+    controls.minAzimuthAngle = -Infinity;
+    controls.maxAzimuthAngle = Infinity;
+    controls.screenSpacePanning = true;
+    controls.mouseButtons = {
+      LEFT: THREE.MOUSE.ROTATE,
+      MIDDLE: THREE.MOUSE.DOLLY,
+      RIGHT: THREE.MOUSE.PAN
+    };
+
+    // Camera sensitivity controls change only OrbitControls; they do not
+    // alter the vehicle, explosion system, or hand-tracking controller.
+    const cameraSpeedControls = [
+      { input: '#camera-rotate-speed', output: '#camera-rotate-number', property: 'rotateSpeed' },
+      { input: '#camera-pan-speed', output: '#camera-pan-number', property: 'panSpeed' },
+      { input: '#camera-zoom-speed', output: '#camera-zoom-number', property: 'zoomSpeed' }
+    ];
+
+    cameraSpeedControls.forEach(({ input, output, property }) => {
+      const slider = document.querySelector(input);
+      const valueLabel = document.querySelector(output);
+      slider.addEventListener('input', () => {
+        const value = Number(slider.value);
+        controls[property] = value;
+        valueLabel.textContent = `${value.toFixed(1)}×`;
+      });
+    });
 
     const orientationStatus =
       document.querySelector('#hand-orientation');
@@ -519,6 +554,28 @@ document.querySelector('.top-actions').prepend(backToShowroomButton);
       camera,
       viewport
     });
+
+    // Gesture recognition reuses landmarks from the existing MediaPipe
+    // detector. It does not create another camera or detector.
+    const gestureRecognizer = createGestureRecognizer({
+      holdDuration: 300
+    });
+    const gestureStatus = document.querySelector('#gesture-status');
+
+    const gestureActionState = {
+      previousStable: new Map(),
+      actionTimes: new Map(),
+      previousPalmCenter: null
+    };
+
+    function gestureActionReady(action, now, cooldown = 1000) {
+      const previous = gestureActionState.actionTimes.get(action) ?? -Infinity;
+
+      if (now - previous < cooldown) return false;
+
+      gestureActionState.actionTimes.set(action, now);
+      return true;
+    }
 
     scene.add(
       new THREE.HemisphereLight(
@@ -545,6 +602,10 @@ document.querySelector('.top-actions').prepend(backToShowroomButton);
     blueLight.position.set(-4, 2, -3);
     scene.add(blueLight);
 
+    // Soft underbody fill: placed just above the floor to lift dark lower surfaces.
+    const underbodyLight = new THREE.PointLight(0x4aaeff, 24, 11, 2);
+    underbodyLight.position.set(0, 0.38, 0);
+    scene.add(underbodyLight);
 
 // Additional neutral fill lighting from multiple directions.
 const fillLights = [
@@ -712,7 +773,10 @@ window.exportKawasakiHoverReport = function () {
     function restoreHoveredMesh() {
       if (!hoveredMesh) return;
 
-      hoveredMesh.material = hoveredOriginalMaterial;
+      hoveredMesh.material =
+        hoveredMesh === selectedInspectionMesh
+          ? selectedHighlightMaterial
+          : hoveredOriginalMaterial;
 
       if (Array.isArray(hoveredHighlightMaterial)) {
         hoveredHighlightMaterial.forEach(material => material.dispose());
@@ -725,14 +789,39 @@ window.exportKawasakiHoverReport = function () {
       hoveredHighlightMaterial = null;
     }
 
-    function setHoveredMesh(mesh) {
-      if (mesh === hoveredMesh) return;
+    const componentTooltip = document.querySelector('#component-tooltip');
+
+    function positionComponentTooltip(worldPoint) {
+      if (!componentTooltip || !worldPoint) {
+        if (componentTooltip) componentTooltip.hidden = true;
+        return;
+      }
+
+      const projected = worldPoint.clone().project(camera);
+      if (projected.z < -1 || projected.z > 1) {
+        componentTooltip.hidden = true;
+        return;
+      }
+
+      const x = (projected.x * 0.5 + 0.5) * viewport.clientWidth;
+      const y = (-projected.y * 0.5 + 0.5) * viewport.clientHeight;
+      componentTooltip.style.left = `${x}px`;
+      componentTooltip.style.top = `${y - 14}px`;
+      componentTooltip.hidden = false;
+    }
+
+    function setHoveredMesh(mesh, worldPoint = null) {
+      if (mesh === hoveredMesh) {
+        positionComponentTooltip(worldPoint);
+        return;
+      }
 
       restoreHoveredMesh();
 
       if (!mesh) {
         document.querySelector('#hover-status').textContent =
           'Hover over a vehicle part';
+        positionComponentTooltip(null);
         return;
       }
 
@@ -842,8 +931,11 @@ console.groupEnd();
         parent = parent.parent;
       }
 
+      const readableLabel = label.replace(/[_-]+/g, ' ');
       document.querySelector('#hover-status').textContent =
-        `HOVER: ${label.replace(/[_-]+/g, ' ')}`;
+        `HOVER: ${readableLabel}`;
+      componentTooltip.textContent = readableLabel;
+      positionComponentTooltip(worldPoint);
     }
 
     function updateVehicleHover(now, cameraChanged = false) {
@@ -923,7 +1015,7 @@ console.groupEnd();
         }
       }
 
-      setHoveredMesh(nearestHit?.object || null);
+      setHoveredMesh(nearestHit?.object || null, nearestHit?.point || null);
     }
 
     renderer.domElement.addEventListener('pointermove', event => {
@@ -1002,6 +1094,7 @@ console.groupEnd();
   }
 
   vehicle = root;
+  vehicleScanner.setVehicle(root);
 
   // TEMPORARY: Inspect every renderable mesh in the loaded vehicle.
   window.inspectMorphDriveMeshes = function () {
@@ -1362,21 +1455,52 @@ function setShowroomCamera() {
     center.z + distance * 1.35
   );
 
-  controls.minDistance = Math.max(2, modelSize * 0.75);
+  // Do not stop at the vehicle surface: allow close-up and interior exploration.
+  controls.minDistance = 0.05;
   controls.maxDistance = Math.max(18, modelSize * 5);
 
   controls.update();
 }
 
+const cockpitCamera = createCockpitCamera({
+  THREE,
+  camera,
+  controls
+});
+
 function setCockpitCamera() {
+  if (!vehicle || !activeVehicleId) {
+    console.warn('MorphDrive: cannot enter cockpit without an active vehicle.');
+    return false;
+  }
+
+  return cockpitCamera.enter(vehicle, activeVehicleId);
+}
+
+function setFreeExploreCamera() {
   controls.autoRotate = false;
-  controls.minDistance = 3;
-  controls.maxDistance = 18;
+  controls.minDistance = 0.05;
 
-  controls.target.set(0, 1, 0);
+  if (vehicle) {
+    vehicle.updateMatrixWorld(true);
+    const bounds = new THREE.Box3().setFromObject(vehicle);
+    const size = bounds.getSize(new THREE.Vector3());
+    controls.maxDistance = Math.max(18, size.length() * 5);
+  } else {
+    controls.maxDistance = 18;
+  }
+
   camera.position.set(7, 4.2, 8);
-
+  controls.target.set(0, 1, 0);
   controls.update();
+
+  const button = document.querySelector('#front-seat');
+  if (button) {
+    button.classList.remove('active');
+    button.setAttribute('aria-pressed', 'false');
+  }
+
+  return true;
 }
 
 const showroom = createShowroom({
@@ -1415,7 +1539,7 @@ const showroom = createShowroom({
 
     viewport.prepend(renderer.domElement);
 
-    setCockpitCamera();
+    setFreeExploreCamera();
     resize();
 
     return true;
@@ -1447,27 +1571,49 @@ backToShowroomButton.addEventListener('click', () => {
   resize();
 });resize
 
-cockpit.classList.add('cockpit--hidden');
-backToShowroomButton.hidden = true;
 
-backToShowroomButton.addEventListener('click', () => {
-  showroom.show();
-  cockpit.classList.add('cockpit--hidden');
-  backToShowroomButton.hidden = true;
-});
+    document.querySelector('#wireframe').addEventListener('click', () => {
+      if (!vehicle || !originalMaterials.length) return;
 
-    document.querySelector('#reset').addEventListener(
-      'click',
-      () => {
+      restoreHoveredMesh();
+      wireframe = !wireframe;
 
-        camera.position.set(7, 4.2, 8);
+      originalMaterials.forEach(entry => {
+        const material = entry.material;
+        if (!material) return;
+        material.wireframe = wireframe ? true : entry.originalWireframe;
+        material.needsUpdate = true;
+      });
 
-        controls.target.set(0, 1, 0);
+      const button = document.querySelector('#wireframe');
+      button.classList.toggle('active', wireframe);
+      button.setAttribute('aria-pressed', String(wireframe));
+      button.title = wireframe ? 'Turn wireframe off' : 'Turn wireframe on';
+      button.setAttribute('aria-label', button.title);
+      hoverDirty = true;
+    });
 
-        controls.update();
+    document.querySelector('#front-seat').addEventListener('click', () => {
+      if (!setCockpitCamera()) return;
 
+      const button = document.querySelector('#front-seat');
+      button.classList.add('active');
+      button.setAttribute('aria-pressed', 'true');
+    });
+
+    document.querySelector('#reset').addEventListener('click', () => {
+      setFreeExploreCamera();
+    });
+
+    scanButton?.addEventListener('click', () => {
+      if (!vehicle) return;
+
+      if (vehicleScanner.isActive()) {
+        vehicleScanner.stop();
+      } else {
+        vehicleScanner.start();
       }
-    );
+    });
 
     document.querySelector('#explode').addEventListener(
   'click',
@@ -1533,6 +1679,20 @@ backToShowroomButton.addEventListener('click', () => {
 
       // The original component-by-component explosion is Sedan-only.
       if (activeVehicleId !== 'sedan') return;
+
+      // Persistent animation state; also cancels an interrupted transition.
+      const sedanAnimationState = vehicle.userData.sedanExplosionAnimation ||
+        (vehicle.userData.sedanExplosionAnimation = {
+          frame: null,
+          token: 0
+        });
+
+      if (sedanAnimationState.frame !== null) {
+        cancelAnimationFrame(sedanAnimationState.frame);
+        sedanAnimationState.frame = null;
+      }
+
+      sedanAnimationState.token++;
 
       const frontComponents = new Set([
         'engine-protector_29',
@@ -1630,6 +1790,10 @@ backToShowroomButton.addEventListener('click', () => {
         new THREE.Vector3()
       );
 
+      const sedanStartPositions = new Map(
+        parts.map(part => [part, part.position.clone()])
+      );
+
       exploded = !exploded;
 
       let frontMoved = 0;
@@ -1723,6 +1887,55 @@ let otherMoved = 0;
         part.position.copy(targetLocalPosition);
       }
 
+
+      const sedanTargetPositions = parts.map(part => ({
+        part,
+        start: sedanStartPositions.get(part),
+        end: part.position.clone()
+      })).filter(item => item.start && item.start.distanceToSquared(item.end) > 1e-8);
+
+      // Return to the captured positions, then animate toward the existing targets.
+      for (const item of sedanTargetPositions) {
+        item.part.position.copy(item.start);
+      }
+
+      const animationToken = ++sedanAnimationState.token;
+      const animationStartTime = performance.now();
+      const SEDAN_EXPLOSION_ANIMATION_DURATION = 850;
+
+      function animateSedanExplosion(now) {
+        if (animationToken !== sedanAnimationState.token) return;
+
+        const progress = Math.min(
+          (now - animationStartTime) / SEDAN_EXPLOSION_ANIMATION_DURATION,
+          1
+        );
+
+        // Smoothstep easing.
+        const eased = progress * progress * (3 - 2 * progress);
+
+        for (const item of sedanTargetPositions) {
+          item.part.position.lerpVectors(item.start, item.end, eased);
+        }
+
+        vehicle.updateMatrixWorld(true);
+
+        if (progress < 1) {
+          sedanAnimationState.frame = requestAnimationFrame(animateSedanExplosion);
+        } else {
+          for (const item of sedanTargetPositions) {
+            item.part.position.copy(item.end);
+          }
+
+          vehicle.updateMatrixWorld(true);
+          sedanAnimationState.frame = null;
+        }
+      }
+
+      if (sedanTargetPositions.length) {
+        sedanAnimationState.frame = requestAnimationFrame(animateSedanExplosion);
+      }
+
       vehicle.updateMatrixWorld(true);
 
       event.currentTarget.classList.toggle('active', exploded);
@@ -1762,29 +1975,276 @@ let otherMoved = 0;
       }
     );
 
-    document.querySelector('#close-properties')
-      .addEventListener('click', () => {
+    const workspace = document.querySelector('.workspace');
+    const browserPanel = document.querySelector('.browser');
+    const propertiesPanel = document.querySelector('.properties');
+    const browserToggle = document.querySelector('#toggle-browser');
+    const propertiesToggle = document.querySelector('#toggle-properties');
 
-        document.querySelector('.properties')
-          .classList.toggle('collapsed');
+    // MORPHDRIVE: Engineering Inspection Mode
+    let selectedInspectionMesh = null;
+    let selectedOriginalMaterial = null;
+    let selectedHighlightMaterial = null;
 
+    function disposeInspectionMaterial(material) {
+      if (Array.isArray(material)) {
+        material.forEach(item => item?.dispose());
+      } else {
+        material?.dispose();
+      }
+    }
+
+    function createInspectionMaterial(original) {
+      const highlight = material => {
+        if (!material) return material;
+
+        const clone = material.clone();
+
+        if (clone.emissive) {
+          clone.emissive.set(0x00cfff);
+          clone.emissiveIntensity = 0.9;
+        } else if (clone.color) {
+          clone.color.lerp(new THREE.Color(0x00cfff), 0.55);
+        }
+
+        return clone;
+      };
+
+      return Array.isArray(original)
+        ? original.map(highlight)
+        : highlight(original);
+    }
+
+    const inspectionDetails = document.createElement('div');
+    inspectionDetails.id = 'inspection-details';
+    inspectionDetails.style.cssText = `
+      padding: 16px;
+      color: #dceaf5;
+      font-size: 12px;
+      line-height: 1.7;
+      overflow-y: auto;
+    `;
+
+    propertiesPanel.appendChild(inspectionDetails);
+
+    function inspectionRow(label, value) {
+      const row = document.createElement('div');
+      row.style.cssText = `
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(0,207,255,0.12);
+      `;
+
+      const name = document.createElement('span');
+      name.textContent = label;
+      name.style.color = '#8299aa';
+
+      const content = document.createElement('span');
+      content.textContent = String(value);
+      content.style.cssText = `
+        color: #e5f7ff;
+        text-align: right;
+        overflow-wrap: anywhere;
+        max-width: 65%;
+      `;
+
+      row.append(name, content);
+      return row;
+    }
+
+    function selectInspectionMesh(mesh) {
+      // Restore the previous selection without breaking the hover effect.
+      if (selectedInspectionMesh) {
+        if (hoveredMesh === selectedInspectionMesh) {
+          hoveredOriginalMaterial = selectedOriginalMaterial;
+        } else {
+          selectedInspectionMesh.material = selectedOriginalMaterial;
+        }
+
+        disposeInspectionMaterial(selectedHighlightMaterial);
+      }
+
+      selectedInspectionMesh = mesh;
+      selectedOriginalMaterial = null;
+      selectedHighlightMaterial = null;
+
+      if (!mesh) {
+        inspectionDetails.replaceChildren();
+        const message = document.createElement('p');
+        message.textContent = 'Click a vehicle component to inspect it.';
+        message.style.color = '#8299aa';
+        inspectionDetails.appendChild(message);
+        return;
+      }
+
+      selectedOriginalMaterial =
+        hoveredMesh === mesh ? hoveredOriginalMaterial : mesh.material;
+
+      selectedHighlightMaterial =
+        createInspectionMaterial(selectedOriginalMaterial);
+
+      mesh.material = selectedHighlightMaterial;
+
+      const box = new THREE.Box3().setFromObject(mesh);
+      const dimensions = new THREE.Vector3();
+      const position = new THREE.Vector3();
+
+      box.getSize(dimensions);
+      mesh.getWorldPosition(position);
+
+      const materials = Array.isArray(mesh.material)
+        ? mesh.material
+        : [mesh.material];
+
+      const materialNames = materials
+        .filter(Boolean)
+        .map(material => material.name || material.type || 'Unnamed material')
+        .join(', ') || 'Not available';
+
+      let meshCount = 0;
+      mesh.traverse(object => {
+        if (object.isMesh) meshCount++;
       });
 
-    document.querySelectorAll('.assembly').forEach(
-      (button) => {
+      const hierarchy = [];
+      let current = mesh;
 
-        button.addEventListener('click', () => {
-
-          document.querySelectorAll('.assembly').forEach(
-            item => item.classList.remove('selected')
-          );
-
-          button.classList.add('selected');
-
-        });
-
+      while (current) {
+        hierarchy.unshift(current.name || current.type || 'Unnamed object');
+        current = current.parent;
+        if (current === vehicle) {
+          hierarchy.unshift(current.name || 'Vehicle');
+          break;
+        }
       }
-    );
+
+      inspectionDetails.replaceChildren();
+
+      const heading = document.createElement('h3');
+      heading.textContent = mesh.name || 'Unnamed component';
+      heading.style.cssText = `
+        color: #00cfff;
+        font-size: 15px;
+        margin: 0 0 12px;
+        overflow-wrap: anywhere;
+      `;
+      inspectionDetails.appendChild(heading);
+
+      const addSection = title => {
+        const section = document.createElement('h4');
+        section.textContent = title;
+        section.style.cssText = `
+          color: #00cfff;
+          margin: 18px 0 6px;
+          font-size: 11px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        `;
+        inspectionDetails.appendChild(section);
+      };
+
+      addSection('Component Information');
+      inspectionDetails.append(
+        inspectionRow('Object type', mesh.type),
+        inspectionRow('Mesh type', mesh.isSkinnedMesh ? 'Skinned Mesh' : 'Mesh'),
+        inspectionRow('UUID', mesh.uuid),
+        inspectionRow('Mesh count', meshCount),
+        inspectionRow('Material', materialNames)
+      );
+
+      addSection('Dimensions (world units)');
+      inspectionDetails.append(
+        inspectionRow('Width (X)', dimensions.x.toFixed(3)),
+        inspectionRow('Height (Y)', dimensions.y.toFixed(3)),
+        inspectionRow('Depth (Z)', dimensions.z.toFixed(3))
+      );
+
+      addSection('World Position');
+      inspectionDetails.append(
+        inspectionRow('X', position.x.toFixed(3)),
+        inspectionRow('Y', position.y.toFixed(3)),
+        inspectionRow('Z', position.z.toFixed(3))
+      );
+
+      addSection('Hierarchy');
+      const hierarchyText = document.createElement('p');
+      hierarchyText.textContent = hierarchy.join('  ›  ');
+      hierarchyText.style.cssText = `
+        color: #b8d0df;
+        overflow-wrap: anywhere;
+        margin: 4px 0;
+      `;
+      inspectionDetails.appendChild(hierarchyText);
+
+      addSection('Direct Children');
+      const childrenText = document.createElement('p');
+      childrenText.textContent = mesh.children.length
+        ? mesh.children.map(child => child.name || child.type).join(', ')
+        : 'No child objects';
+      childrenText.style.cssText = `
+        color: #b8d0df;
+        overflow-wrap: anywhere;
+        margin: 4px 0;
+      `;
+      inspectionDetails.appendChild(childrenText);
+
+      // Open the existing Properties panel.
+      propertiesPanel.classList.remove('collapsed');
+      workspace.classList.remove('properties-collapsed');
+      propertiesToggle?.setAttribute('aria-expanded', 'true');
+
+      requestAnimationFrame(() => {
+        renderer.setSize(viewport.clientWidth, viewport.clientHeight);
+        camera.aspect = viewport.clientWidth / viewport.clientHeight;
+        camera.updateProjectionMatrix();
+      });
+    }
+
+    renderer.domElement.addEventListener('click', event => {
+      if (!vehicle || showroomMode) return;
+
+      const rect = renderer.domElement.getBoundingClientRect();
+
+      pointerNdc.set(
+        ((event.clientX - rect.left) / rect.width) * 2 - 1,
+        -((event.clientY - rect.top) / rect.height) * 2 + 1
+      );
+
+      camera.updateMatrixWorld(true);
+      raycaster.setFromCamera(pointerNdc, camera);
+
+      const hits = raycaster.intersectObject(vehicle, true);
+      const hit = hits.find(item => item.object.isMesh);
+
+      selectInspectionMesh(hit?.object || null);
+    });
+
+    function setPanelCollapsed(panel, workspaceClass, toggleButton) {
+      const isCollapsed = panel.classList.toggle('collapsed');
+      workspace.classList.toggle(workspaceClass, isCollapsed);
+      if (toggleButton) {
+        toggleButton.setAttribute('aria-expanded', String(!isCollapsed));
+      }
+      requestAnimationFrame(() => {
+        renderer.setSize(viewport.clientWidth, viewport.clientHeight);
+        camera.aspect = viewport.clientWidth / viewport.clientHeight;
+        camera.updateProjectionMatrix();
+      });
+    }
+
+    browserToggle.addEventListener('click', () => {
+      setPanelCollapsed(browserPanel, 'browser-collapsed', browserToggle);
+    });
+
+    propertiesToggle.addEventListener('click', () => {
+      setPanelCollapsed(propertiesPanel, 'properties-collapsed', propertiesToggle);
+    });
+
+    document.querySelector('#close-properties').addEventListener('click', () => {
+      setPanelCollapsed(propertiesPanel, 'properties-collapsed', propertiesToggle);
+    });
 
     const colorPicker =
       document.querySelector('#body-color');
@@ -1800,6 +2260,82 @@ let otherMoved = 0;
 
     const roughnessSlider =
       document.querySelector('#roughness-value');
+
+    // MORPHDRIVE: Premium preset paint palette.
+    const paintPalette = [
+      { name: 'Electric Blue', color: '#087DE0' },
+      { name: 'Midnight Blue', color: '#101D45' },
+      { name: 'Cyber Cyan', color: '#00D9FF' },
+      { name: 'Racing Red', color: '#E51B32' },
+      { name: 'Crimson', color: '#85152B' },
+      { name: 'Sunset Orange', color: '#FF6B20' },
+      { name: 'Golden Yellow', color: '#F5C542' },
+      { name: 'Emerald', color: '#087A55' },
+      { name: 'Lime Green', color: '#9BCB35' },
+      { name: 'Pearl White', color: '#E8EDF2' },
+      { name: 'Graphite', color: '#454B55' },
+      { name: 'Obsidian Black', color: '#111318' }
+    ];
+
+    const paletteHost =
+      colorPicker.closest('.color-control') || colorPicker.parentElement;
+
+    if (paletteHost && !document.querySelector('#morphdrive-paint-palette')) {
+      const paletteSection = document.createElement('section');
+      paletteSection.id = 'morphdrive-paint-palette';
+      paletteSection.className = 'md-palette-section';
+
+      const paletteHeading = document.createElement('div');
+      paletteHeading.className = 'md-palette-heading';
+
+      const paletteTitle = document.createElement('span');
+      paletteTitle.textContent = 'SIGNATURE COLORS';
+
+      const paletteCount = document.createElement('span');
+      paletteCount.textContent = '12 COLORS';
+
+      paletteHeading.append(paletteTitle, paletteCount);
+
+      const swatches = document.createElement('div');
+      swatches.className = 'md-paint-swatches';
+
+      paintPalette.forEach(preset => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'md-paint-swatch';
+        button.style.setProperty('--swatch-color', preset.color);
+        button.title = preset.name;
+        button.setAttribute('aria-label', `Apply ${preset.name}`);
+        button.setAttribute('aria-pressed', 'false');
+
+        button.addEventListener('click', () => {
+          colorPicker.value = preset.color;
+          colorPicker.dispatchEvent(new Event('input', { bubbles: true }));
+
+          swatches.querySelectorAll('.md-paint-swatch').forEach(item => {
+            item.setAttribute('aria-pressed', String(item === button));
+          });
+        });
+
+        swatches.appendChild(button);
+      });
+
+      paletteSection.append(paletteHeading, swatches);
+      paletteHost.insertAdjacentElement('afterend', paletteSection);
+    }
+
+    // Keep preset selection synchronized with the native color picker.
+    colorPicker.addEventListener('input', () => {
+      const selected = paintPalette.find(
+        preset => preset.color.toLowerCase() === colorPicker.value.toLowerCase()
+      );
+
+      document.querySelectorAll('.md-paint-swatch').forEach(button => {
+        const matches = selected && button.title === selected.name;
+        button.setAttribute('aria-pressed', String(Boolean(matches)));
+      });
+    });
+
 
     function updatePaint() {
 
@@ -1933,6 +2469,10 @@ let otherMoved = 0;
 
         document.querySelector('#wireframe')
           .classList.remove('active');
+        document.querySelector('#wireframe')
+          .setAttribute('aria-pressed', 'false');
+        document.querySelector('#wireframe')
+          .title = 'Turn wireframe on';
 
       });
 
@@ -1964,6 +2504,206 @@ function animate(now = 0) {
   requestAnimationFrame(animate);
 
   const cameraChanged = controls.update();
+  vehicleScanner.update(now);
+
+  // Process only newly detected hand frames, not every render frame.
+  const gestureFrame = handController.getGestureFrame();
+  const gestureResult = gestureRecognizer.update(gestureFrame);
+
+  if (gestureResult) {
+    const hands = Object.entries(gestureResult.hands);
+    const left = gestureResult.hands.Left;
+    const right = gestureResult.hands.Right;
+
+    const twoOpenPalms =
+      left?.stableGesture === 'OPEN_PALM' &&
+      right?.stableGesture === 'OPEN_PALM';
+
+    if (gestureStatus) {
+      if (twoOpenPalms && gestureResult.zoom) {
+        gestureStatus.textContent =
+          `TWO HANDS: ZOOM ${gestureResult.zoom.direction}`;
+      } else if (hands.length === 0) {
+        gestureStatus.textContent = 'GESTURE: SHOW HANDS';
+      } else {
+        gestureStatus.textContent = hands.map(([side, data]) => {
+          const name = data.stableGesture !== 'NONE'
+            ? data.stableGesture
+            : data.gesture;
+
+          const progress = Math.min(
+            100,
+            Math.round(data.heldFor / 300 * 100)
+          );
+
+          return `${side.toUpperCase()}: ${name} ${progress}%`;
+        }).join('  |  ');
+      }
+    }
+
+    if (vehicle && !showroomMode) {
+      const explodeButton = document.querySelector('#explode');
+
+      // ------------------------------------------------------
+      // ONE-SHOT GESTURE ACTIONS
+      // ------------------------------------------------------
+
+      for (const [side, data] of hands) {
+        const gesture = data.stableGesture;
+        const previous =
+          gestureActionState.previousStable.get(side) || 'NONE';
+
+        if (gesture !== previous && gesture !== 'NONE') {
+          if (
+            gesture === 'FIST' &&
+            gestureActionReady('explode', now, 1500)
+          ) {
+            explodeButton?.click();
+          }
+
+          if (
+            gesture === 'PEACE' &&
+            gestureActionReady('scan', now, 1200)
+          ) {
+            if (!vehicleScanner.isActive()) {
+              vehicleScanner.start();
+            }
+          }
+
+          if (
+            gesture === 'THUMBS_UP' &&
+            gestureActionReady('reset', now, 1800)
+          ) {
+            document.querySelector('#reset')?.click();
+          }
+
+          if (
+            gesture === 'OPEN_PALM' &&
+            explodeButton?.classList.contains('active') &&
+            gestureActionReady('assemble', now, 1500)
+          ) {
+            explodeButton.click();
+          }
+
+          // Select the component currently under the pointing fingertip.
+          if (
+            gesture === 'POINT' &&
+            gestureActionReady('select', now, 650)
+          ) {
+            const pointers = handController.getTrackedPointers();
+            const pointer = pointers[0];
+
+            if (pointer && raycaster && vehicle) {
+              camera.updateMatrixWorld(true);
+              raycaster.setFromCamera(pointer, camera);
+
+              const hits = raycaster.intersectObject(vehicle, true);
+              const hit = hits.find(item => item.object.isMesh);
+
+              if (hit) {
+                selectInspectionMesh(hit.object);
+                hoverDirty = true;
+              }
+            }
+          }
+        }
+
+        gestureActionState.previousStable.set(side, gesture);
+      }
+
+      // Clear the previous gesture state when a hand disappears.
+      for (const side of ['Left', 'Right']) {
+        if (!gestureResult.hands[side]) {
+          gestureActionState.previousStable.set(side, 'NONE');
+        }
+      }
+
+      // ------------------------------------------------------
+      // TWO-HAND ZOOM
+      // Both hands must hold open palms to activate zoom.
+      // ------------------------------------------------------
+
+      if (
+        twoOpenPalms &&
+        gestureResult.zoom &&
+        gestureResult.zoom.change > 0
+      ) {
+        const change = Math.min(gestureResult.zoom.change * 1.8, 0.08);
+
+        const factor = gestureResult.zoom.direction === 'IN'
+          ? 1 - change
+          : 1 + change;
+
+        const offset = camera.position.clone().sub(controls.target);
+        const nextDistance = Math.max(
+          controls.minDistance,
+          Math.min(controls.maxDistance, offset.length() * factor)
+        );
+
+        offset.setLength(nextDistance);
+        camera.position.copy(controls.target).add(offset);
+        controls.update();
+      }
+
+      // ------------------------------------------------------
+      // ONE-HAND OPEN-PALM CAMERA ROTATION
+      // Two open palms are reserved for zoom.
+      // ------------------------------------------------------
+
+      const rotatingSide = !twoOpenPalms
+        ? hands.find(([, data]) => data.stableGesture === 'OPEN_PALM')?.[0]
+        : null;
+
+      if (rotatingSide) {
+        const points = gestureFrame.hands.get(rotatingSide);
+
+        if (points?.length === 21) {
+          let centerX = 0;
+          let centerY = 0;
+
+          for (const id of [0, 5, 9, 13, 17]) {
+            centerX += 1 - points[id].x;
+            centerY += points[id].y;
+          }
+
+          centerX /= 5;
+          centerY /= 5;
+
+          const previous = gestureActionState.previousPalmCenter;
+
+          if (previous) {
+            const deltaX = centerX - previous.x;
+            const deltaY = centerY - previous.y;
+
+            if (Math.abs(deltaX) + Math.abs(deltaY) > 0.0015) {
+              const offset = camera.position.clone().sub(controls.target);
+              const spherical = new THREE.Spherical().setFromVector3(offset);
+
+              spherical.theta -= deltaX * 2.8;
+              spherical.phi = THREE.MathUtils.clamp(
+                spherical.phi + deltaY * 2.0,
+                controls.minPolarAngle,
+                controls.maxPolarAngle
+              );
+
+              camera.position.copy(controls.target).add(
+                offset.setFromSpherical(spherical)
+              );
+
+              controls.update();
+            }
+          }
+
+          gestureActionState.previousPalmCenter = {
+            x: centerX,
+            y: centerY
+          };
+        }
+      } else {
+        gestureActionState.previousPalmCenter = null;
+      }
+    }
+  }
 
   if (!showroomMode) {
     updateVehicleHover(now, cameraChanged);
