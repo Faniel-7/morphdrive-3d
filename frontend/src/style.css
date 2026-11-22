@@ -889,3 +889,420 @@ button:disabled {
     max-width: 35% !important;
   }
 }
+
+
+/* MorphDrive cockpit cleanup: focused controls, wider viewport, clear tooltips. */
+.topbar {
+  height: 44px;
+  min-height: 44px;
+  padding: 0 14px;
+  gap: 18px;
+}
+.brand strong { letter-spacing: .09em; }
+.app-name { font-size: 12px; color: #9fb5c9; }
+.top-actions { gap: 8px; }
+.topbar-action, .showroom-back-button {
+  min-height: 30px;
+  padding: 0 11px !important;
+  border: 1px solid #1a3851 !important;
+  border-radius: 5px;
+  background: #071522 !important;
+  color: #b9d4e8 !important;
+  font: 10px Inter, sans-serif !important;
+  transition: background .16s ease, border-color .16s ease, color .16s ease;
+}
+.topbar-action:hover, .showroom-back-button:hover {
+  border-color: #168fe9 !important;
+  background: #0a2238 !important;
+  color: #fff !important;
+}
+.workspace {
+  grid-template-columns: 218px minmax(0, 1fr) 258px;
+  gap: 9px;
+}
+.browser, .properties { border-radius: 8px; }
+.browser { padding: 12px; }
+.panel-heading, .properties-heading {
+  height: 32px;
+  padding: 0 3px;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+.panel-hint { color: #55738b; font: 8px 'Roboto Mono', monospace; }
+.model-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 12px;
+  padding: 11px 9px;
+  border: 1px solid #12324d;
+  border-radius: 6px;
+  font-size: 11px;
+}
+.model-name span { float: none; }
+.model-name span:last-child { margin-left: auto; }
+.vehicle-library { padding: 10px 2px 12px; }
+.vehicle-library > label { font-size: 9px; }
+.vehicle-library select { min-height: 36px; font-size: 11px; }
+#import-vehicle { min-height: 34px; font-size: 10px; }
+#vehicle-library-status { font-size: 9px; }
+.center { gap: 8px; }
+.viewport-toolbar {
+  min-height: 46px;
+  height: 46px;
+  padding: 5px 10px;
+  justify-content: space-between;
+  gap: 10px;
+}
+.toolbar-group { display: flex; align-items: center; gap: 6px; }
+.tool {
+  width: auto;
+  min-width: 36px;
+  height: 32px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: #a9c0d4;
+  background: transparent;
+  font-size: 11px;
+}
+.tool-icon { font-size: 15px; line-height: 1; }
+.tool-label { font-size: 10px; }
+.tool:hover, .tool.active {
+  color: #d8f1ff;
+  background: #0a2238;
+  border-color: #17476b;
+  box-shadow: none;
+}
+.tool-primary {
+  border-color: rgba(27, 151, 232, .45);
+  background: rgba(7, 140, 240, .13);
+  color: #8bd3ff;
+}
+.tool-primary:hover { background: rgba(7, 140, 240, .24); }
+.toolbar-note {
+  margin-left: auto;
+  color: #68849b;
+  font: 9px 'Roboto Mono', monospace;
+  white-space: nowrap;
+}
+.viewport { border-radius: 8px; }
+.viewport-footer { height: 36px; }
+.model-stats { gap: 18px; font-size: 9px; }
+.fullscreen { min-width: 30px; min-height: 28px; border-radius: 5px; }
+.fullscreen:hover { background: #0a2238; }
+.properties { padding: 11px 13px; }
+.properties-heading { margin-bottom: 8px; }
+.properties-heading button {
+  width: 27px; height: 27px; border: 1px solid #1b3b55;
+  border-radius: 5px; background: #071522; font-size: 17px;
+}
+.property-section { padding: 8px 2px 11px; margin-bottom: 7px; }
+.property-section h4 { font-size: 10px; margin-bottom: 9px; }
+.property-row { font-size: 10px; margin-bottom: 10px; }
+.camera-hint {
+  margin: 0 0 8px;
+  color: #718da5;
+  font-size: 9px;
+  line-height: 1.5;
+}
+.camera-settings-section .appearance-label { margin-top: 7px; }
+.camera-settings-section .appearance-slider { margin-bottom: 3px; }
+.camera-settings-section .slider-heading span { font-size: 9px; }
+/* Native title text remains as a fallback; these small hover labels are clearer. */
+.tool[title], .fullscreen[title], #close-properties[title] { position: relative; }
+.tool[title]:hover::after, .fullscreen[title]:hover::after,
+#close-properties[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  z-index: 30;
+  left: 50%;
+  top: calc(100% + 8px);
+  transform: translateX(-50%);
+  padding: 6px 8px;
+  border: 1px solid #24516f;
+  border-radius: 4px;
+  background: #061321;
+  color: #d5edff;
+  font: 9px Inter, sans-serif;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 5px 16px rgba(0,0,0,.35);
+}
+.workspace.browser-collapsed { grid-template-columns: minmax(0, 1fr) 258px; }
+.workspace.properties-collapsed { grid-template-columns: 218px minmax(0, 1fr); }
+.workspace.browser-collapsed.properties-collapsed { grid-template-columns: minmax(0, 1fr); }
+.browser.collapsed, .properties.collapsed { display: none !important; }
+#toggle-browser[aria-expanded="false"], #toggle-properties[aria-expanded="false"] {
+  color: #63bfff !important;
+  border-color: #1b6595 !important;
+  background: #09243a !important;
+}
+.hand-controls { gap: 7px; }
+#start-hand-control { min-height: 31px; padding: 7px 10px; font-size: 9px; }
+#hand-status, #hover-status, #hand-orientation { font-size: 8px; }
+
+@media (max-width: 1050px) {
+  .workspace { grid-template-columns: 190px minmax(0, 1fr) 230px; }
+  .workspace.browser-collapsed { grid-template-columns: minmax(0, 1fr) 230px; }
+  .workspace.properties-collapsed { grid-template-columns: 190px minmax(0, 1fr); }
+  .workspace.browser-collapsed.properties-collapsed { grid-template-columns: minmax(0, 1fr); }
+  .toolbar-note { display: none; }
+}
+@media (max-width: 700px) {
+  .topbar { flex-wrap: wrap; height: auto; min-height: 44px; padding: 7px 9px; }
+  .top-actions { gap: 5px; }
+  .topbar-action, .showroom-back-button { min-height: 28px; padding: 0 7px !important; }
+  .workspace { grid-template-columns: 1fr; }
+  .workspace.browser-collapsed, .workspace.properties-collapsed,
+  .workspace.browser-collapsed.properties-collapsed { grid-template-columns: 1fr; }
+  .browser.collapsed, .properties.collapsed { display: none !important; }
+  .viewport-toolbar { justify-content: flex-start; overflow-x: auto; }
+  .tool { flex: 0 0 auto; }
+  .model-stats { gap: 8px; }
+}
+
+@media (max-width: 700px) {
+  .top-actions button.topbar-action,
+  .top-actions button.showroom-back-button { display: inline-flex !important; }
+}
+
+
+/* MorphDrive readability and interaction refinement */
+:root {
+  font-family: Inter, Ubuntu, "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+}
+body, button, input, select, textarea {
+  font-family: Inter, Ubuntu, "Segoe UI", system-ui, sans-serif;
+}
+.brand { font-size: 12px; }
+.app-name { font-size: 14px; }
+.top-actions { font-size: 12px; }
+.top-actions button { font-size: 17px; }
+.profile small { font-size: 11px; }
+.panel-heading, .properties-heading { font-size: 12px; }
+.model-name { font-size: 13px; }
+.vehicle-library > label, .section-label { font-size: 12px; }
+.vehicle-library select { font-size: 13px; }
+#import-vehicle { font-size: 12px; }
+#vehicle-library-status { font-size: 11px; line-height: 1.45; }
+.tool { font-size: 13px; min-height: 36px; }
+.tool-icon { font-size: 17px; }
+.tool-label { font-size: 12px; }
+.toolbar-note { font-size: 11px; }
+.model-stats { font-size: 11px; }
+.property-section h4 { font-size: 13px; }
+.property-row { font-size: 12px; line-height: 1.5; }
+.camera-hint { font-size: 11px; }
+.camera-settings-section .slider-heading span { font-size: 11px; }
+#start-hand-control { font-size: 11px; min-height: 36px; }
+#hand-status, #hover-status, #hand-orientation { font-size: 10px; }
+.help-content, .help-row, .help-section p, .help-section li { font-size: 13px; }
+.help-section h3 { font-size: 12px; }
+
+/* Tool labels appear above the control being hovered, not underneath it. */
+.tool[title]:hover::after,
+.fullscreen[title]:hover::after,
+#close-properties[title]:hover::after {
+  top: auto;
+  bottom: calc(100% + 8px);
+  font-size: 11px;
+  padding: 7px 10px;
+}
+
+/* The component name follows the actual 3D raycast point. */
+.component-tooltip {
+  position: absolute;
+  z-index: 12;
+  transform: translate(-50%, -100%);
+  max-width: 230px;
+  padding: 7px 11px;
+  border: 1px solid rgba(54, 174, 255, .72);
+  border-radius: 6px;
+  background: rgba(3, 17, 31, .94);
+  color: #d9f2ff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .4), 0 0 14px rgba(15, 139, 231, .2);
+  font: 12px/1.3 Inter, Ubuntu, sans-serif;
+  font-weight: 600;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.component-tooltip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(54, 174, 255, .72);
+}
+.component-tooltip[hidden] { display: none !important; }
+
+/* Natural grab feedback makes free camera orbit easier to understand. */
+.three-canvas { cursor: grab; touch-action: none; }
+.three-canvas:active { cursor: grabbing; }
+.viewport-toolbar { position: relative; z-index: 5; overflow: visible; }
+
+@media (max-width: 1050px) {
+  .tool-label { font-size: 11px; }
+  .toolbar-note { font-size: 10px; }
+}
+.appearance-label { font-size: 12px; }
+#color-value, .slider-heading span { font-size: 11px; }
+#paint-finish { font-size: 12px; min-height: 34px; }
+.reset-appearance { font-size: 12px; min-height: 35px; }
+.color-control { min-height: 36px; }
+
+
+
+/* =========================================================
+   MORPHDRIVE — PREMIUM CUSTOMIZATION STUDIO
+   ========================================================= */
+
+.md-palette-section {
+  margin: 13px 0 17px;
+  padding: 12px;
+  background: linear-gradient(145deg, #0b1c2c, #07111e);
+  border: 1px solid rgba(55, 147, 198, 0.25);
+  border-radius: 9px;
+  box-shadow: inset 0 1px rgba(255,255,255,0.025);
+}
+
+.md-palette-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #dceeff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.15px;
+}
+
+.md-palette-heading span:last-child {
+  color: #5799bb;
+  font-size: 8px;
+  letter-spacing: 0.8px;
+}
+
+.md-paint-swatches {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.md-paint-swatch {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+  border: 2px solid rgba(190, 220, 240, 0.18);
+  border-radius: 50%;
+  background: var(--swatch-color);
+  cursor: pointer;
+  transition: transform 150ms ease, border-color 150ms ease,
+              box-shadow 150ms ease;
+}
+
+.md-paint-swatch:hover {
+  transform: scale(1.12);
+  border-color: #a9eaff;
+  box-shadow: 0 0 12px rgba(0, 207, 255, 0.35);
+}
+
+.md-paint-swatch[aria-pressed="true"] {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px #00cfff, 0 0 15px rgba(0, 207, 255, 0.55);
+  transform: scale(1.06);
+}
+
+.md-paint-swatch[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255,255,255,0.75);
+  border-radius: inherit;
+}
+
+.properties .color-control {
+  min-height: 38px;
+  border-radius: 7px;
+  border-color: rgba(55, 147, 198, 0.35);
+  background: #091827;
+}
+
+.properties #paint-finish {
+  min-height: 37px;
+  border-radius: 7px;
+  border-color: rgba(55, 147, 198, 0.35);
+  background: #091827;
+  font-size: 11px;
+}
+
+.properties .appearance-label {
+  margin-top: 13px;
+  color: #9bb6ca;
+  font-size: 10px;
+  letter-spacing: 0.35px;
+}
+
+.properties input[type="range"] {
+  accent-color: #00bce8;
+}
+
+@media (max-width: 900px) {
+  .md-paint-swatches {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+
+/* =========================================================
+   MORPHDRIVE — VEHICLE SCANNING CONTROL
+   ========================================================= */
+
+.tool-scan {
+  border-color: rgba(0, 217, 255, .35);
+  color: #55dcf5;
+  background: rgba(0, 190, 230, .09);
+}
+
+.tool-scan:hover,
+.tool-scan.active {
+  color: #d8fbff;
+  background: rgba(0, 205, 255, .2);
+  border-color: rgba(0, 220, 255, .8);
+  box-shadow: 0 0 12px rgba(0, 205, 255, .18);
+}
+
+.tool-scan.active .tool-icon {
+  animation: morphdrive-scan-pulse 1s ease-in-out infinite;
+}
+
+@keyframes morphdrive-scan-pulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
+
+
+/* MorphDrive gesture-recognition status */
+#gesture-status {
+  padding: 6px 8px;
+  border: 1px solid rgba(22, 207, 255, .28);
+  border-radius: 4px;
+  background: rgba(2, 10, 20, .86);
+  color: #65e5ff;
+  font-size: 9px;
+  letter-spacing: .5px;
+  font-family: inherit;
+  white-space: normal;
+}
