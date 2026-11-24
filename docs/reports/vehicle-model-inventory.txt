@@ -1,0 +1,185 @@
+MORPHDRIVE 3D — UNIVERSAL VEHICLE INVENTORY
+============================================
+Vehicles in catalog: 16
+
+[SUCCESS] Sedan (sedan)
+  Type: Car
+  File: models/sedan.glb
+  Size: 51.80 MB
+  Nodes: 262
+  Reachable nodes: 262
+  Meshes: 124
+  Materials: 23
+  Vertices: 79181
+  Triangles: 113191
+
+[SUCCESS] Lamborghini Urus Performante (urus-performante)
+  Type: Car
+  File: models/cars/2023-lamborghini-urus-performante/source/2023_lamborghini_urus_performante.glb
+  Size: 21.93 MB
+  Nodes: 2954
+  Reachable nodes: 2954
+  Meshes: 1472
+  Materials: 22
+  Vertices: 255642
+  Triangles: 317987
+
+[SUCCESS] Ford F-150 Raptor (ford-f150-raptor)
+  Type: Car
+  File: models/cars/ford-f-150-raptor/source/Sketchfab_2026_11_09_21_07_40.glb
+  Size: 70.02 MB
+  Nodes: 213
+  Reachable nodes: 213
+  Meshes: 142
+  Materials: 79
+  Vertices: 584116
+  Triangles: 639054
+
+[SUCCESS] Lamborghini Centenario (lamborghini-centenario)
+  Type: Car
+  File: models/cars/lamborghini_centenario_lp-770_interior_sdc.glb
+  Size: 41.25 MB
+  Nodes: 108
+  Reachable nodes: 108
+  Meshes: 81
+  Materials: 44
+  Vertices: 323586
+  Triangles: 325733
+
+[SUCCESS] Polestar 3 (polestar-3)
+  Type: Car
+  File: models/cars/polestar-3-2027/source/Polestar_3_2027_Dual_Motor.glb
+  Size: 25.26 MB
+  Nodes: 535
+  Reachable nodes: 535
+  Meshes: 456
+  Materials: 129
+  Vertices: 535378
+  Triangles: 756092
+
+[SUCCESS] Skoda Elroq (skoda-elroq)
+  Type: Car
+  File: models/cars/skoda-elroq-2025/source/Skoda_Elroq_Sketchfab.glb
+  Size: 39.08 MB
+  Nodes: 130
+  Reachable nodes: 130
+  Meshes: 124
+  Materials: 96
+  Vertices: 617385
+  Triangles: 570364
+
+[SUCCESS] BMW S1000 RR (bmw-s1000rr)
+  Type: Motorcycle
+  File: models/motorcycles/bmw_s1000_rr.glb
+  Size: 26.42 MB
+  Nodes: 203
+  Reachable nodes: 203
+  Meshes: 117
+  Materials: 74
+  Vertices: 264698
+  Triangles: 313174
+
+[SUCCESS] Honda CBR650R (honda-cbr650r)
+  Type: Motorcycle
+  File: models/motorcycles/honda_cbr650r.glb
+  Size: 28.35 MB
+  Nodes: 278
+  Reachable nodes: 278
+  Meshes: 114
+  Materials: 51
+  Vertices: 335886
+  Triangles: 366615
+
+[SUCCESS] Kawasaki Ninja H2 (kawasaki-ninja-h2)
+  Type: Motorcycle
+  File: models/motorcycles/kawasaki_ninja_h2_free.glb
+  Size: 8.64 MB
+  Nodes: 101
+  Reachable nodes: 101
+  Meshes: 35
+  Materials: 22
+  Vertices: 196704
+  Triangles: 226754
+
+[SUCCESS] Sports Bike (sports-bike)
+  Type: Motorcycle
+  File: models/motorcycles/sports_bike.glb
+  Size: 22.14 MB
+  Nodes: 23
+  Reachable nodes: 23
+  Meshes: 10
+  Materials: 10
+  Vertices: 79671
+  Triangles: 70709
+
+[SUCCESS] Airbus A320 (airbus-a320)
+  Type: Aircraft
+  File: models/aircraft/airbus_a320-200.glb
+  Size: 22.82 MB
+  Nodes: 438
+  Reachable nodes: 438
+  Meshes: 223
+  Materials: 60
+  Vertices: 465984
+  Triangles: 732032
+
+[SUCCESS] Boeing 787 (boeing-787)
+  Type: Aircraft
+  File: models/aircraft/boeing_787.glb
+  Size: 10.93 MB
+  Nodes: 2557
+  Reachable nodes: 2557
+  Meshes: 1912
+  Materials: 37
+  Vertices: 291090
+  Triangles: 261450
+
+[SUCCESS] Sukhoi Su-57 (sukhoi-su57)
+  Type: Aircraft
+  File: models/aircraft/sukhoi_su-57_felon_p_-_fighter_jet_-_free.glb
+  Size: 24.29 MB
+  Nodes: 19
+  Reachable nodes: 19
+  Meshes: 8
+  Materials: 4
+  Vertices: 40843
+  Triangles: 32179
+
+[SUCCESS] AH-64E Apache Guardian (apache-ah64e)
+  Type: Helicopter
+  File: models/helicopters/ah-64e_apache_guardian.glb
+  Size: 66.55 MB
+  Nodes: 756
+  Reachable nodes: 756
+  Meshes: 251
+  Materials: 36
+  Vertices: 555380
+  Triangles: 596880
+
+[SUCCESS] Realistic Helicopter (realistic-helicopter)
+  Type: Helicopter
+  File: models/other-helicopters/realistic_helicopter_morphdrive.glb
+  Size: 3.25 MB
+  Nodes: 37
+  Reachable nodes: 37
+  Meshes: 28
+  Materials: 21
+  Vertices: 79694
+  Triangles: 85162
+
+[SUCCESS] MAN TGX 2010 V8 (man-tgx)
+  Type: Truck
+  File: models/trucks/man_tgx_2010_v8__high-detail_semi-truck.glb
+  Size: 7.08 MB
+  Nodes: 74
+  Reachable nodes: 74
+  Meshes: 47
+  Materials: 15
+  Vertices: 69500
+  Triangles: 37690
+
+FINAL SUMMARY
+=============
+Successful: 16
+Failed: 0
+Total: 16
