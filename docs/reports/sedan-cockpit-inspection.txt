@@ -1,0 +1,1885 @@
+MORPHDRIVE 3D — SEDAN MODEL INSPECTION
+========================================
+File: public/models/sedan.glb
+GLB version: 2
+File size: 51.80 MB
+
+MODEL STRUCTURE
+Nodes: 262
+Meshes: 124
+Materials: 23
+Accessors: 700
+Textures: 23
+Images: 23
+Scenes: 1
+
+NODE AND MESH DETAILS
+---------------------
+
+Object_7 [Node 7]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / brake-caliper-front-l_0 / Object_7
+  Mesh: Object_0
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 174
+    Mode: 4
+    Vertex count: 178
+    Local minimum: -0.03122796304523945, -0.13912701606750488, -0.04439236968755722
+    Local maximum: 0.031227868050336838, 0.1314368098974228, 0.03693858161568642
+
+Object_9 [Node 9]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / brake-caliper-front-r_1 / Object_9
+  Mesh: Object_1
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 174
+    Mode: 4
+    Vertex count: 178
+    Local minimum: -0.03122796304523945, -0.13912701606750488, -0.04439236968755722
+    Local maximum: 0.031227868050336838, 0.1314368098974228, 0.03693858161568642
+
+Object_11 [Node 11]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / brake-caliper-rear-l_2 / Object_11
+  Mesh: Object_2
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 174
+    Mode: 4
+    Vertex count: 178
+    Local minimum: -0.03122796304523945, -0.13912701606750488, -0.04439236968755722
+    Local maximum: 0.031227868050336838, 0.1314368098974228, 0.03693858161568642
+
+Object_13 [Node 13]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / brake-caliper-rear-r_3 / Object_13
+  Mesh: Object_3
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 174
+    Mode: 4
+    Vertex count: 178
+    Local minimum: -0.03122796304523945, -0.13912701606750488, -0.04439236968755722
+    Local maximum: 0.031227868050336838, 0.1314368098974228, 0.03693858161568642
+
+Object_15 [Node 15]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / brake-disc-front-l_4 / Object_15
+  Mesh: Object_4
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 288
+    Mode: 4
+    Vertex count: 320
+    Local minimum: -0.07167338579893112, -0.1683516949415207, -0.16821356117725372
+    Local maximum: 0.038723185658454895, 0.16811463236808777, 0.16825272142887115
+
+Object_17 [Node 17]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / brake-disc-front-r_5 / Object_17
+  Mesh: Object_5
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 288
+    Mode: 4
+    Vertex count: 320
+    Local minimum: -0.07167338579893112, -0.1683516949415207, -0.16821356117725372
+    Local maximum: 0.038723185658454895, 0.16811463236808777, 0.16825272142887115
+
+Object_19 [Node 19]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / brake-disc-rear-l_6 / Object_19
+  Mesh: Object_6
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 288
+    Mode: 4
+    Vertex count: 320
+    Local minimum: -0.07167338579893112, -0.1683516949415207, -0.16821356117725372
+    Local maximum: 0.038723185658454895, 0.16811463236808777, 0.16825272142887115
+
+Object_21 [Node 21]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / brake-disc-rear-r_7 / Object_21
+  Mesh: Object_7
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 288
+    Mode: 4
+    Vertex count: 320
+    Local minimum: -0.07167338579893112, -0.1683516949415207, -0.16821356117725372
+    Local maximum: 0.038723185658454895, 0.16811463236808777, 0.16825272142887115
+
+Object_23 [Node 23]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / bumper-front_8 / Object_23
+  Mesh: Object_8
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 6916
+    Mode: 4
+    Vertex count: 4629
+    Local minimum: -0.957083523273468, -0.1804807186126709, -0.3799560070037842
+    Local maximum: 0.9570836424827576, 0.3228195905685425, 0.23003745079040527
+
+Object_25 [Node 25]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / bumper-front-grill-frame_9 / Object_25
+  Mesh: Object_9
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Plastic_ext_matt
+    Triangles: 880
+    Mode: 4
+    Vertex count: 802
+    Local minimum: -0.8203866481781006, -0.05329728126525879, -0.22115421295166016
+    Local maximum: 0.8203866481781006, 0.10883677005767822, 0.12674379348754883
+
+Object_27 [Node 27]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / bumper-rear_10 / Object_27
+  Mesh: Object_10
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 10220
+    Mode: 4
+    Vertex count: 6522
+    Local minimum: -0.9209600687026978, -0.2382500171661377, -0.31459569931030273
+    Local maximum: 0.9668558835983276, 0.3946629762649536, 0.5306986570358276
+
+Object_29 [Node 29]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / center-console_11 / Object_29
+  Mesh: Object_11
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 352
+    Mode: 4
+    Vertex count: 387
+    Local minimum: -0.17863377928733826, -0.259421169757843, -0.8243173360824585
+    Local maximum: 0.148904949426651, 0.13227784633636475, 0.6158334612846375
+
+Object_31 [Node 31]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / column-wheel_12 / Object_31
+  Mesh: Object_12
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 96
+    Mode: 4
+    Vertex count: 116
+    Local minimum: -0.07517673075199127, -0.4582443833351135, -0.24342983961105347
+    Local maximum: 0.07526830583810806, 0.16533280909061432, 0.6464948654174805
+
+Object_33 [Node 33]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / dashboard_13 / Object_33
+  Mesh: Object_13
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 784
+    Mode: 4
+    Vertex count: 710
+    Local minimum: -0.8677994608879089, -0.4174838662147522, -0.18106096982955933
+    Local maximum: 0.6419215798377991, 0.23668451607227325, 0.22550970315933228
+
+Object_35 [Node 35]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-front-interior-panel-l_14 / Object_35
+  Mesh: Object_14
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 396
+    Mode: 4
+    Vertex count: 243
+    Local minimum: -0.11371225118637085, -0.378623902797699, -0.5185799598693848
+    Local maximum: 0.086264967918396, 0.346653014421463, 0.5488630533218384
+
+Object_37 [Node 37]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-front-interior-panel-r_15 / Object_37
+  Mesh: Object_15
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 396
+    Mode: 4
+    Vertex count: 243
+    Local minimum: -0.08626502752304077, -0.378623902797699, -0.5185799598693848
+    Local maximum: 0.11371219158172607, 0.346653014421463, 0.5488630533218384
+
+Object_39 [Node 39]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-front-l_16 / Object_39
+  Mesh: Object_16
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 4032
+    Mode: 4
+    Vertex count: 2233
+    Local minimum: -0.21037328243255615, -0.4218224883079529, -0.5864629745483398
+    Local maximum: 0.09844940900802612, 0.728407621383667, 0.8371634483337402
+
+Object_41 [Node 41]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-front-r_17 / Object_41
+  Mesh: Object_17
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 4032
+    Mode: 4
+    Vertex count: 2233
+    Local minimum: -0.09844934940338135, -0.4218224883079529, -0.5864629745483398
+    Local maximum: 0.21037334203720093, 0.728407621383667, 0.8371634483337402
+
+Object_43 [Node 43]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-front-window-glass-l_18 / Object_43
+  Mesh: Object_18
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_ext-tinted
+    Triangles: 48
+    Mode: 4
+    Vertex count: 35
+    Local minimum: -0.08813536167144775, -0.17967906594276428, -0.41564470529556274
+    Local maximum: 0.06315499544143677, 0.22302940487861633, 0.5341210961341858
+
+Object_45 [Node 45]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-front-window-glass-r_19 / Object_45
+  Mesh: Object_19
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_ext-tinted
+    Triangles: 48
+    Mode: 4
+    Vertex count: 35
+    Local minimum: -0.06315499544143677, -0.17967906594276428, -0.41564470529556274
+    Local maximum: 0.08813536167144775, 0.22302940487861633, 0.5341210961341858
+
+Object_47 [Node 47]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-interior-panel-l_20 / Object_47
+  Mesh: Object_20
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 388
+    Mode: 4
+    Vertex count: 235
+    Local minimum: -0.10982716083526611, -0.40319591760635376, -0.6188517212867737
+    Local maximum: 0.08988058567047119, 0.3231968581676483, 0.4162658751010895
+
+Object_49 [Node 49]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-interior-panel-r_21 / Object_49
+  Mesh: Object_21
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 388
+    Mode: 4
+    Vertex count: 235
+    Local minimum: -0.08988052606582642, -0.40319591760635376, -0.6188517212867737
+    Local maximum: 0.10982722043991089, 0.3231968581676483, 0.4162658751010895
+
+Object_51 [Node 51]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-l_22 / Object_51
+  Mesh: Object_22
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 3133
+    Mode: 4
+    Vertex count: 1799
+    Local minimum: -0.19178932905197144, -0.5082074403762817, -0.7014722228050232
+    Local maximum: 0.11625158786773682, 0.6380209922790527, 0.5172110199928284
+
+Object_53 [Node 53]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-r_23 / Object_53
+  Mesh: Object_23
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 3156
+    Mode: 4
+    Vertex count: 1798
+    Local minimum: -0.11625146865844727, -0.5082073211669922, -0.7014722228050232
+    Local maximum: 0.19178950786590576, 0.6380209922790527, 0.5172110199928284
+
+Object_55 [Node 55]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-trim-glass-l_24 / Object_55
+  Mesh: Object_24
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_ext-tinted
+    Triangles: 18
+    Mode: 4
+    Vertex count: 16
+    Local minimum: -0.07653558254241943, -0.07253288477659225, -0.11460085213184357
+    Local maximum: 0.04288458824157715, 0.15096379816532135, 0.13500885665416718
+
+Object_57 [Node 57]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-trim-glass-r_25 / Object_57
+  Mesh: Object_25
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_ext-tinted
+    Triangles: 18
+    Mode: 4
+    Vertex count: 16
+    Local minimum: -0.042884647846221924, -0.07253288477659225, -0.11460085213184357
+    Local maximum: 0.07653552293777466, 0.15096379816532135, 0.13500885665416718
+
+Object_59 [Node 59]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-window-glass-l_26 / Object_59
+  Mesh: Object_26
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_ext-tinted
+    Triangles: 48
+    Mode: 4
+    Vertex count: 35
+    Local minimum: -0.08621281385421753, -0.16244500875473022, -0.39592453837394714
+    Local maximum: 0.07324671745300293, 0.201799213886261, 0.44375675916671753
+
+Object_61 [Node 61]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-window-glass-r_27 / Object_61
+  Mesh: Object_27
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_ext-tinted
+    Triangles: 48
+    Mode: 4
+    Vertex count: 35
+    Local minimum: -0.07324671745300293, -0.16244500875473022, -0.39592453837394714
+    Local maximum: 0.08621281385421753, 0.201799213886261, 0.44375675916671753
+
+Object_63 [Node 63]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / engine-parts_28 / Object_63
+  Mesh: Object_28
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: engine
+    Triangles: 566
+    Mode: 4
+    Vertex count: 1000
+    Local minimum: -0.7341949343681335, -0.3371111750602722, -0.3405228853225708
+    Local maximum: 1.2031362056732178, 0.3785306215286255, 0.5422155261039734
+
+Object_65 [Node 65]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / engine-protector_29 / Object_65
+  Mesh: Object_29
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: car-bottom
+    Triangles: 92
+    Mode: 4
+    Vertex count: 71
+    Local minimum: -0.4377894997596741, -0.03009168803691864, -0.6786744594573975
+    Local maximum: 0.4377894997596741, 0.04968203231692314, 0.613555371761322
+
+Object_67 [Node 67]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / engine-transmission_30 / Object_67
+  Mesh: Object_30
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: engine
+    Triangles: 60
+    Mode: 4
+    Vertex count: 90
+    Local minimum: -0.5378994941711426, -0.27568358182907104, -0.4822835326194763
+    Local maximum: 0.5378994941711426, 0.20562399923801422, 0.49760299921035767
+
+Object_69 [Node 69]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / escape-pipes_31 / Object_69
+  Mesh: Object_31
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 480
+    Mode: 4
+    Vertex count: 436
+    Local minimum: -0.5945648550987244, -0.13982218503952026, -1.3907493352890015
+    Local maximum: 0.4911462068557739, 0.2699042558670044, 2.6002321243286133
+
+Object_71 [Node 71]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / fender-front-l_32 / Object_71
+  Mesh: Object_32
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 2382
+    Mode: 4
+    Vertex count: 1390
+    Local minimum: -0.13890427350997925, -0.4550478756427765, -0.41530346870422363
+    Local maximum: 0.10474032163619995, 0.3216472864151001, 0.7360620498657227
+
+Object_73 [Node 73]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / fender-front-r_33 / Object_73
+  Mesh: Object_33
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 2382
+    Mode: 4
+    Vertex count: 1395
+    Local minimum: -0.10474032163619995, -0.4550478756427765, -0.41530346870422363
+    Local maximum: 0.13890427350997925, 0.3216472864151001, 0.7360620498657227
+
+Object_75 [Node 75]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / frame-front_34 / Object_75
+  Mesh: Object_34
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal-dark
+    Triangles: 676
+    Mode: 4
+    Vertex count: 746
+    Local minimum: -0.8958385586738586, -0.4114428162574768, -0.5815343856811523
+    Local maximum: 0.8958385586738586, 0.37824809551239014, 0.740882396697998
+
+Object_77 [Node 77]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / frame-middle_35 / Object_77
+  Mesh: Object_35
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: car-bottom
+    Triangles: 936
+    Mode: 4
+    Vertex count: 982
+    Local minimum: -0.9067622423171997, -0.36436957120895386, -1.14881432056427
+    Local maximum: 0.9067621231079102, 0.4546194076538086, 2.402843952178955
+
+Object_79 [Node 79]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / frame-rear_36 / Object_79
+  Mesh: Object_36
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: car-bottom
+    Triangles: 468
+    Mode: 4
+    Vertex count: 524
+    Local minimum: -0.8029670715332031, -0.24554502964019775, -0.38815438747406006
+    Local maximum: 0.8029670715332031, 0.14476937055587769, 1.1409649848937988
+
+Object_81 [Node 81]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-grill_37 / Object_81
+  Mesh: Object_37
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Chrome_-_Rough
+    Triangles: 976
+    Mode: 4
+    Vertex count: 605
+    Local minimum: -0.5273670554161072, -0.07214237004518509, -0.05457663536071777
+    Local maximum: 0.5273670554161072, 0.07649733126163483, 0.08466744422912598
+
+Object_83 [Node 83]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-seat_38 / Object_83
+  Mesh: Object_38
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 342
+    Mode: 4
+    Vertex count: 265
+    Local minimum: -0.2773853838443756, -0.12766163051128387, -0.36886435747146606
+    Local maximum: 0.27608931064605713, 0.13534052670001984, 0.2834479510784149
+
+Object_85 [Node 85]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-seat-backrest_39 / Object_85
+  Mesh: Object_39
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 740
+    Mode: 4
+    Vertex count: 516
+    Local minimum: -0.29713138937950134, -0.3401845097541809, -0.2771947383880615
+    Local maximum: 0.29660627245903015, 0.6065852642059326, 0.2134619504213333
+
+Object_87 [Node 87]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-seat-backrest--passenger_40 / Object_87
+  Mesh: Object_40
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 740
+    Mode: 4
+    Vertex count: 516
+    Local minimum: -0.29713138937950134, -0.3401845097541809, -0.2771947383880615
+    Local maximum: 0.29660627245903015, 0.6065852642059326, 0.2134619504213333
+
+Object_89 [Node 89]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-seat-passenger_41 / Object_89
+  Mesh: Object_41
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 342
+    Mode: 4
+    Vertex count: 265
+    Local minimum: -0.2773853838443756, -0.12766163051128387, -0.36886435747146606
+    Local maximum: 0.27608931064605713, 0.13534052670001984, 0.2834479510784149
+
+Object_91 [Node 91]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / glass-rear_42 / Object_91
+  Mesh: Object_42
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_ext-tinted
+    Triangles: 288
+    Mode: 4
+    Vertex count: 169
+    Local minimum: -0.6654987931251526, -0.13257861137390137, -0.36749839782714844
+    Local maximum: 0.6654987335205078, 0.17068147659301758, 0.4358789920806885
+
+Object_93 [Node 93]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlight-projector-l_43 / Object_93
+  Mesh: Object_43
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 396
+    Mode: 4
+    Vertex count: 217
+    Local minimum: -0.04440730810165405, -0.04394756630063057, -0.06818541139364243
+    Local maximum: 0.04423809051513672, 0.04394757002592087, 0.0384317971765995
+
+Object_95 [Node 95]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlight-projector-r_44 / Object_95
+  Mesh: Object_44
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 396
+    Mode: 4
+    Vertex count: 217
+    Local minimum: -0.04423809051513672, -0.04394756630063057, -0.06818541139364243
+    Local maximum: 0.04440730810165405, 0.04394757002592087, 0.0384317971765995
+
+Object_97 [Node 97]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlight-projector-trim-l_45 / Object_97
+  Mesh: Object_45
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 68
+    Mode: 4
+    Vertex count: 61
+    Local minimum: -0.05941969156265259, -0.05372308939695358, -0.06307806819677353
+    Local maximum: 0.030432939529418945, 0.04214496165513992, 0.07246062904596329
+
+Object_99 [Node 99]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlight-projector-trim-r_46 / Object_99
+  Mesh: Object_46
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 68
+    Mode: 4
+    Vertex count: 61
+    Local minimum: -0.030432939529418945, -0.05372308939695358, -0.06307806819677353
+    Local maximum: 0.05941969156265259, 0.04214496165513992, 0.07246062904596329
+
+Object_101 [Node 101]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-cover-l_47 / Object_101
+  Mesh: Object_47
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Clear
+    Triangles: 544
+    Mode: 4
+    Vertex count: 299
+    Local minimum: -0.17852118611335754, -0.08940240740776062, -0.23110666871070862
+    Local maximum: 0.19866526126861572, 0.08923251181840897, 0.15272757411003113
+
+Object_103 [Node 103]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-cover-r_48 / Object_103
+  Mesh: Object_48
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Clear
+    Triangles: 544
+    Mode: 4
+    Vertex count: 299
+    Local minimum: -0.19866514205932617, -0.08940240740776062, -0.23110666871070862
+    Local maximum: 0.17852118611335754, 0.08923251181840897, 0.15272757411003113
+
+Object_105 [Node 105]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-drl-l_50 / Object_105
+  Mesh: Object_49
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Clear_-_Bumps
+    Triangles: 304
+    Mode: 4
+    Vertex count: 173
+    Local minimum: -0.1055867075920105, -0.08184400945901871, -0.17734673619270325
+    Local maximum: 0.18133389949798584, 0.053803492337465286, 0.11715468764305115
+
+Object_107 [Node 107]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-drl.001_51 / Object_107
+  Mesh: Object_50
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Clear_-_Bumps
+    Triangles: 304
+    Mode: 4
+    Vertex count: 173
+    Local minimum: -0.18133389949798584, -0.08184400945901871, -0.1773466169834137
+    Local maximum: 0.1055867075920105, 0.053803492337465286, 0.11715469509363174
+
+Object_109 [Node 109]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-frame-l_52 / Object_109
+  Mesh: Object_51
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Chrome_-_Rough
+    Triangles: 760
+    Mode: 4
+    Vertex count: 420
+    Local minimum: -0.17088007926940918, -0.08641897886991501, -0.15187369287014008
+    Local maximum: 0.1787741780281067, 0.08037198334932327, 0.24471630156040192
+
+Object_111 [Node 111]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-frame-r_53 / Object_111
+  Mesh: Object_52
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Chrome_-_Rough
+    Triangles: 760
+    Mode: 4
+    Vertex count: 420
+    Local minimum: -0.17877429723739624, -0.08641897141933441, -0.15187355875968933
+    Local maximum: 0.1708800196647644, 0.08037199825048447, 0.2447163164615631
+
+Object_113 [Node 113]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-led-l_54 / Object_113
+  Mesh: Object_53
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Clear_-_Bumps
+    Triangles: 272
+    Mode: 4
+    Vertex count: 544
+    Local minimum: -0.07011711597442627, -0.02464139088988304, -0.08025799691677094
+    Local maximum: 0.07658553123474121, 0.026683934032917023, 0.08157338201999664
+
+Object_115 [Node 115]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-led-r_55 / Object_115
+  Mesh: Object_54
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Clear_-_Bumps
+    Triangles: 272
+    Mode: 4
+    Vertex count: 544
+    Local minimum: -0.07658571004867554, -0.02464139088988304, -0.08025799691677094
+    Local maximum: 0.07011699676513672, 0.02668393775820732, 0.08157362043857574
+
+Object_117 [Node 117]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-led-trim-l_56 / Object_117
+  Mesh: Object_55
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 132
+    Mode: 4
+    Vertex count: 82
+    Local minimum: -0.09491240978240967, -0.05151969566941261, -0.08586911857128143
+    Local maximum: 0.08654075860977173, 0.05401357635855675, 0.12164635956287384
+
+Object_119 [Node 119]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / headlights-led-trim-r_57 / Object_119
+  Mesh: Object_56
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 132
+    Mode: 4
+    Vertex count: 82
+    Local minimum: -0.08654075860977173, -0.05151969566941261, -0.08586911857128143
+    Local maximum: 0.09491240978240967, 0.05401357635855675, 0.12164635956287384
+
+Object_121 [Node 121]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / honeycomb-grill-pattern_58 / Object_121
+  Mesh: Object_57
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: honeycomb-grill-pattern
+    Triangles: 6
+    Mode: 4
+    Vertex count: 8
+    Local minimum: -0.49502497911453247, -0.06524599343538284, -0.0281726885586977
+    Local maximum: 0.49502497911453247, 0.06524599343538284, 0.02934839576482773
+
+Object_123 [Node 123]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / honeycomb-grill-pattern-small_59 / Object_123
+  Mesh: Object_58
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: honeycomb-grill-pattern-small
+    Triangles: 6
+    Mode: 4
+    Vertex count: 8
+    Local minimum: -0.5370988249778748, -0.046652235090732574, -0.04641596972942352
+    Local maximum: 0.5370988249778748, 0.057023510336875916, 0.045500196516513824
+
+Object_125 [Node 125]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / hood_60 / Object_125
+  Mesh: Object_59
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 2840
+    Mode: 4
+    Vertex count: 1569
+    Local minimum: -0.8344348073005676, -0.15886014699935913, -0.7589906454086304
+    Local maximum: 0.8344349265098572, 0.1788133680820465, 0.5118367671966553
+
+Object_127 [Node 127]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / radiator_61 / Object_127
+  Mesh: Object_60
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: engine
+    Triangles: 12
+    Mode: 4
+    Vertex count: 24
+    Local minimum: -0.4423583745956421, -0.18735069036483765, -0.02079879865050316
+    Local maximum: 0.4423583745956421, 0.15501928329467773, 0.02079879865050316
+
+Object_129 [Node 129]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / rear-seat_62 / Object_129
+  Mesh: Object_61
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 268
+    Mode: 4
+    Vertex count: 222
+    Local minimum: -0.6740018725395203, -0.1305854767560959, -0.3023954927921295
+    Local maximum: 0.6752481460571289, 0.14773891866207123, 0.2540648281574249
+
+Object_131 [Node 131]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / rear-seat-backseat_63 / Object_131
+  Mesh: Object_62
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 488
+    Mode: 4
+    Vertex count: 408
+    Local minimum: -0.6780703663825989, -0.24607720971107483, -0.4743969440460205
+    Local maximum: 0.6800678968429565, 0.2425987869501114, 0.38352030515670776
+
+Object_133 [Node 133]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / roof-pillars-interior_64 / Object_133
+  Mesh: Object_63
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 640
+    Mode: 4
+    Vertex count: 437
+    Local minimum: -0.8034526705741882, -0.8735154867172241, -1.458701729774475
+    Local maximum: 0.8034526705741882, 0.3166787624359131, 1.3692383766174316
+
+Object_135 [Node 135]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / sedan-unibody_65 / Object_135
+  Mesh: Object_64
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 10774
+    Mode: 4
+    Vertex count: 6198
+    Local minimum: -0.9728978872299194, -0.6152845025062561, -1.5951159000396729
+    Local maximum: 0.9728982448577881, 0.6979464292526245, 1.9545867443084717
+
+Object_137 [Node 137]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / shock-absorber_66 / Object_137
+  Mesh: Object_65
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K.001
+    Triangles: 412
+    Mode: 4
+    Vertex count: 602
+    Local minimum: -0.058785948902368546, -0.2340342253446579, -0.031225159764289856
+    Local maximum: 0.027352098375558853, 0.3075200915336609, 0.031225204467773438
+
+Object_139 [Node 139]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / shock-absorber.001_67 / Object_139
+  Mesh: Object_66
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K.001
+    Triangles: 412
+    Mode: 4
+    Vertex count: 602
+    Local minimum: -0.058785948902368546, -0.2340342253446579, -0.031225159764289856
+    Local maximum: 0.027352098375558853, 0.3075200915336609, 0.031225204467773438
+
+Object_141 [Node 141]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / shock-absorber.002_68 / Object_141
+  Mesh: Object_67
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K.001
+    Triangles: 412
+    Mode: 4
+    Vertex count: 602
+    Local minimum: -0.058785948902368546, -0.2340342253446579, -0.031225159764289856
+    Local maximum: 0.027352098375558853, 0.3075200915336609, 0.031225204467773438
+
+Object_143 [Node 143]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / shock-absorber.003_69 / Object_143
+  Mesh: Object_68
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K.001
+    Triangles: 412
+    Mode: 4
+    Vertex count: 602
+    Local minimum: -0.058785948902368546, -0.2340342253446579, -0.031225159764289856
+    Local maximum: 0.027352098375558853, 0.3075200915336609, 0.031225204467773438
+
+Object_145 [Node 145]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / side-mirror-l_70 / Object_145
+  Mesh: Object_69
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 496
+    Mode: 4
+    Vertex count: 362
+    Local minimum: -0.10380786657333374, -0.060527458786964417, -0.0600997731089592
+    Local maximum: 0.11158794164657593, 0.07278747856616974, 0.09813893586397171
+
+Object_147 [Node 147]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / side-mirror-r_71 / Object_147
+  Mesh: Object_70
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 496
+    Mode: 4
+    Vertex count: 362
+    Local minimum: -0.11158806085586548, -0.060527458786964417, -0.0600997731089592
+    Local maximum: 0.10380786657333374, 0.07278747856616974, 0.09813893586397171
+
+Object_149 [Node 149]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / side-mirror-trim-l_72 / Object_149
+  Mesh: Object_71
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Plastic_ext_gloss
+    Triangles: 688
+    Mode: 4
+    Vertex count: 476
+    Local minimum: -0.06358063220977783, -0.051847975701093674, -0.09262509644031525
+    Local maximum: 0.08411669731140137, 0.10282307118177414, 0.15051530301570892
+
+Object_151 [Node 151]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / side-mirror-trim-r_73 / Object_151
+  Mesh: Object_72
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Plastic_ext_gloss
+    Triangles: 688
+    Mode: 4
+    Vertex count: 473
+    Local minimum: -0.08411675691604614, -0.051847975701093674, -0.09262509644031525
+    Local maximum: 0.06358051300048828, 0.10282303392887115, 0.15051530301570892
+
+Object_153 [Node 153]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / spring_74 / Object_153
+  Mesh: Object_73
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K
+    Triangles: 1312
+    Mode: 4
+    Vertex count: 786
+    Local minimum: -0.056188154965639114, -0.05083450675010681, -0.029017725959420204
+    Local maximum: 0.013732202351093292, 0.19160261750221252, 0.028864435851573944
+
+Object_155 [Node 155]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / spring.001_75 / Object_155
+  Mesh: Object_74
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K
+    Triangles: 1312
+    Mode: 4
+    Vertex count: 786
+    Local minimum: -0.056188154965639114, -0.05083450675010681, -0.029017725959420204
+    Local maximum: 0.013732202351093292, 0.19160261750221252, 0.028864435851573944
+
+Object_157 [Node 157]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / spring.002_76 / Object_157
+  Mesh: Object_75
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K
+    Triangles: 1312
+    Mode: 4
+    Vertex count: 786
+    Local minimum: -0.056188154965639114, -0.05083450675010681, -0.029017725959420204
+    Local maximum: 0.013732202351093292, 0.19160261750221252, 0.028864435851573944
+
+Object_159 [Node 159]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / spring.003_77 / Object_159
+  Mesh: Object_76
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K
+    Triangles: 1312
+    Mode: 4
+    Vertex count: 786
+    Local minimum: -0.056188154965639114, -0.05083450675010681, -0.029017725959420204
+    Local maximum: 0.013732202351093292, 0.19160261750221252, 0.028864435851573944
+
+Object_161 [Node 161]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / steering-wheel_78 / Object_161
+  Mesh: Object_77
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: interior
+    Triangles: 662
+    Mode: 4
+    Vertex count: 593
+    Local minimum: -0.17386549711227417, -0.1424829363822937, -0.06872732937335968
+    Local maximum: 0.1672613024711609, 0.19668342173099518, 0.08378788083791733
+
+Object_163 [Node 163]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / suspension-front_79 / Object_163
+  Mesh: Object_78
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 784
+    Mode: 4
+    Vertex count: 618
+    Local minimum: -0.731602668762207, -0.10547468066215515, -0.1526397466659546
+    Local maximum: 0.7316023111343384, 0.15614865720272064, 0.15757958590984344
+
+Object_165 [Node 165]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / suspension-rear_80 / Object_165
+  Mesh: Object_79
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: suspension-pipe-brakes
+    Triangles: 432
+    Mode: 4
+    Vertex count: 523
+    Local minimum: -0.7447405457496643, -0.09362290799617767, -0.08827070891857147
+    Local maximum: 0.7447407841682434, 0.2043798267841339, 0.10675136744976044
+
+Object_167 [Node 167]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-back-01-l_81 / Object_167
+  Mesh: Object_80
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 624
+    Mode: 4
+    Vertex count: 348
+    Local minimum: -0.09906017780303955, -0.0585545152425766, -0.15000171959400177
+    Local maximum: 0.12403261661529541, 0.057283297181129456, 0.0978420227766037
+
+Object_169 [Node 169]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-back-01-r_82 / Object_169
+  Mesh: Object_81
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 624
+    Mode: 4
+    Vertex count: 348
+    Local minimum: -0.12403291463851929, -0.058554507791996, -0.15000194311141968
+    Local maximum: 0.09906005859375, 0.05728330463171005, 0.097842276096344
+
+Object_171 [Node 171]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-back-trunk-02-l_83 / Object_171
+  Mesh: Object_82
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 384
+    Mode: 4
+    Vertex count: 218
+    Local minimum: -0.11408749222755432, -0.05563439056277275, -0.10956078767776489
+    Local maximum: 0.07513651251792908, 0.05334709957242012, 0.0849265456199646
+
+Object_173 [Node 173]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-back-trunk-02-r_84 / Object_173
+  Mesh: Object_83
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 384
+    Mode: 4
+    Vertex count: 218
+    Local minimum: -0.07513651251792908, -0.05563438683748245, -0.10956078767776489
+    Local maximum: 0.11408743262290955, 0.05334710329771042, 0.0849263072013855
+
+Object_175 [Node 175]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-led-02-l_85 / Object_175
+  Mesh: Object_84
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 112
+    Mode: 4
+    Vertex count: 130
+    Local minimum: -0.08663171529769897, -0.03072243556380272, -0.07291407138109207
+    Local maximum: 0.07424920797348022, 0.032160643488168716, 0.09775524586439133
+
+Object_177 [Node 177]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-led-02-r_86 / Object_177
+  Mesh: Object_85
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Headlight_Metal
+    Triangles: 112
+    Mode: 4
+    Vertex count: 130
+    Local minimum: -0.07424911856651306, -0.03072243556380272, -0.07291407138109207
+    Local maximum: 0.08663174510002136, 0.032160643488168716, 0.09775524586439133
+
+Object_179 [Node 179]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-led-l_87 / Object_179
+  Mesh: Object_86
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red_-_Rough
+    Triangles: 64
+    Mode: 4
+    Vertex count: 96
+    Local minimum: -0.06007388234138489, -0.020867981016635895, -0.05640815198421478
+    Local maximum: 0.057797789573669434, 0.022346816956996918, 0.05185796320438385
+
+Object_181 [Node 181]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-led-r_88 / Object_181
+  Mesh: Object_87
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red_-_Rough
+    Triangles: 64
+    Mode: 4
+    Vertex count: 96
+    Local minimum: -0.057797789573669434, -0.020867981016635895, -0.05640815198421478
+    Local maximum: 0.06007388234138489, 0.022346816956996918, 0.05185796320438385
+
+Object_183 [Node 183]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-lens-r_89 / Object_183
+  Mesh: Object_88
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red
+    Triangles: 552
+    Mode: 4
+    Vertex count: 297
+    Local minimum: -0.1372302770614624, -0.062147676944732666, -0.09708447009325027
+    Local maximum: 0.1239234209060669, 0.06484287977218628, 0.178470179438591
+
+Object_185 [Node 185]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-lens-trunk-l_90 / Object_185
+  Mesh: Object_89
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red
+    Triangles: 320
+    Mode: 4
+    Vertex count: 175
+    Local minimum: -0.13555577397346497, -0.045888327062129974, -0.04674772173166275
+    Local maximum: 0.0708499550819397, 0.06964585930109024, 0.040616475045681
+
+Object_187 [Node 187]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-lens-trunk-r_91 / Object_187
+  Mesh: Object_90
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red
+    Triangles: 320
+    Mode: 4
+    Vertex count: 175
+    Local minimum: -0.0708499550819397, -0.04588833078742027, -0.04674772545695305
+    Local maximum: 0.13555580377578735, 0.06964585185050964, 0.0406164713203907
+
+Object_189 [Node 189]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-lens-l_92 / Object_189
+  Mesh: Object_91
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red
+    Triangles: 552
+    Mode: 4
+    Vertex count: 297
+    Local minimum: -0.12392336130142212, -0.06214767321944237, -0.09708424657583237
+    Local maximum: 0.13723021745681763, 0.0648428201675415, 0.1784701645374298
+
+Object_191 [Node 191]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-trim-01-l_93 / Object_191
+  Mesh: Object_92
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red_-_Rough
+    Triangles: 106
+    Mode: 4
+    Vertex count: 142
+    Local minimum: -0.1091313362121582, -0.017247434705495834, -0.08404432237148285
+    Local maximum: 0.08698093891143799, 0.01587909832596779, 0.11438311636447906
+
+Object_193 [Node 193]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-trim-01-r_94 / Object_193
+  Mesh: Object_93
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red_-_Rough
+    Triangles: 106
+    Mode: 4
+    Vertex count: 114
+    Local minimum: -0.08698093891143799, -0.017247434705495834, -0.08404432237148285
+    Local maximum: 0.1091313362121582, 0.01587909832596779, 0.11438311636447906
+
+Object_195 [Node 195]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-trim-l_95 / Object_195
+  Mesh: Object_94
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red_-_Rough
+    Triangles: 84
+    Mode: 4
+    Vertex count: 122
+    Local minimum: -0.0689321756362915, -0.015537816099822521, -0.0637810006737709
+    Local maximum: 0.08131170272827148, 0.014185828156769276, 0.11198689788579941
+
+Object_197 [Node 197]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-trim-r_96 / Object_197
+  Mesh: Object_95
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red_-_Rough
+    Triangles: 84
+    Mode: 4
+    Vertex count: 120
+    Local minimum: -0.0813116729259491, -0.015537816099822521, -0.0637810006737709
+    Local maximum: 0.06893214583396912, 0.014185828156769276, 0.11198689788579941
+
+Object_199 [Node 199]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-trim-top-l_97 / Object_199
+  Mesh: Object_96
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red_-_Rough
+    Triangles: 112
+    Mode: 4
+    Vertex count: 134
+    Local minimum: -0.10220080614089966, -0.007314445450901985, -0.08420871198177338
+    Local maximum: 0.07802808284759521, 0.007036207243800163, 0.09486080706119537
+
+Object_201 [Node 201]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / taillight-trim-top-r_98 / Object_201
+  Mesh: Object_97
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_-_Red_-_Rough
+    Triangles: 112
+    Mode: 4
+    Vertex count: 134
+    Local minimum: -0.07802808284759521, -0.007314445450901985, -0.08420871198177338
+    Local maximum: 0.10220080614089966, 0.007036207243800163, 0.09486080706119537
+
+Object_203 [Node 203]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / trunk_99 / Object_203
+  Mesh: Object_98
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Car_Paint_-_All_Colors
+    Triangles: 3416
+    Mode: 4
+    Vertex count: 1859
+    Local minimum: -0.6608679890632629, -0.30427664518356323, -0.22012972831726074
+    Local maximum: 0.6608679890632629, 0.18614953756332397, 0.44458431005477905
+
+Object_205 [Node 205]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / wheel-fender-l_100 / Object_205
+  Mesh: Object_99
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Plastic_ext_matt
+    Triangles: 36
+    Mode: 4
+    Vertex count: 20
+    Local minimum: -0.12966716289520264, -0.3206053376197815, -0.2047593593597412
+    Local maximum: 0.1505192518234253, 0.3103012442588806, 0.10660231113433838
+
+Object_207 [Node 207]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / wheel-fender-r_101 / Object_207
+  Mesh: Object_100
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Plastic_ext_matt
+    Triangles: 36
+    Mode: 4
+    Vertex count: 20
+    Local minimum: -0.1505192518234253, -0.3206053376197815, -0.2047593593597412
+    Local maximum: 0.12966716289520264, 0.3103012442588806, 0.10660231113433838
+
+Object_209 [Node 209]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / windshield_102 / Object_209
+  Mesh: Object_101
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Glass_ext
+    Triangles: 280
+    Mode: 4
+    Vertex count: 165
+    Local minimum: -0.7501879334449768, -0.16718131303787231, -0.4757381081581116
+    Local maximum: 0.7501879334449768, 0.24498796463012695, 0.38796544075012207
+
+Object_211 [Node 211]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 1_103 / Object_211
+  Mesh: Object_102
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 784
+    Mode: 4
+    Vertex count: 540
+    Local minimum: -0.1798330545425415, -0.042266517877578735, -0.021500349044799805
+    Local maximum: 0.0014775438467040658, -0.0018446737667545676, 0.017340660095214844
+
+Object_213 [Node 213]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 1.001_104 / Object_213
+  Mesh: Object_103
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 784
+    Mode: 4
+    Vertex count: 546
+    Local minimum: -0.1728287935256958, -0.040568314492702484, -0.036035120487213135
+    Local maximum: 0.014360046945512295, -0.0010079345665872097, 0.009799358434975147
+
+Object_215 [Node 215]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 2_105 / Object_215
+  Mesh: Object_104
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 1180
+    Mode: 4
+    Vertex count: 812
+    Local minimum: -0.2977074086666107, -0.013880094513297081, -0.009136366657912731
+    Local maximum: -0.004356694873422384, 0.008688966743648052, 0.019061598926782608
+
+Object_217 [Node 217]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 2.001_106 / Object_217
+  Mesh: Object_105
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 1180
+    Mode: 4
+    Vertex count: 813
+    Local minimum: -0.2977074086666107, -0.015204789116978645, -0.019859354943037033
+    Local maximum: 0.002534877974539995, 0.008703266270458698, 0.009182163514196873
+
+Object_219 [Node 219]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 3_107 / Object_219
+  Mesh: Object_106
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 1452
+    Mode: 4
+    Vertex count: 948
+    Local minimum: -0.12572932243347168, -0.02636587619781494, -0.032143235206604004
+    Local maximum: 0.028784409165382385, -0.002371668815612793, 0.005055377725511789
+
+Object_221 [Node 221]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 3.001_108 / Object_221
+  Mesh: Object_107
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 1452
+    Mode: 4
+    Vertex count: 951
+    Local minimum: -0.12739278376102448, -0.037731271237134933, -0.02997582033276558
+    Local maximum: 0.028784409165382385, -0.002371668815612793, 0.005055377725511789
+
+Object_223 [Node 223]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Main Axle_109 / Object_223
+  Mesh: Object_108
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 40
+    Mode: 4
+    Vertex count: 48
+    Local minimum: -0.030163846909999847, -0.08646232634782791, -0.013070797547698021
+    Local maximum: -0.005676157772541046, -0.029687728732824326, 0.018486276268959045
+
+Object_225 [Node 225]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Main Axle.001_110 / Object_225
+  Mesh: Object_109
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 40
+    Mode: 4
+    Vertex count: 48
+    Local minimum: -0.011702676303684711, -0.07555443048477173, -0.023241814225912094
+    Local maximum: 0.009027422405779362, -0.020418642088770866, 0.02203436754643917
+
+Object_227 [Node 227]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Pegs 1_111 / Object_227
+  Mesh: Object_110
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 76
+    Mode: 4
+    Vertex count: 88
+    Local minimum: -0.28788286447525024, -0.03391212224960327, -0.007769952528178692
+    Local maximum: -0.2843613922595978, -0.030390677973628044, 0.007613549940288067
+
+Object_229 [Node 229]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Pegs 2_112 / Object_229
+  Mesh: Object_111
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 76
+    Mode: 4
+    Vertex count: 88
+    Local minimum: -0.4185951352119446, -0.04453079402446747, -0.03771285340189934
+    Local maximum: -0.4131830632686615, -0.03911875560879707, -0.01731816679239273
+
+Object_231 [Node 231]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Rubber_113 / Object_231
+  Mesh: Object_112
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Rubber_-_Black
+    Triangles: 3392
+    Mode: 4
+    Vertex count: 2016
+    Local minimum: -0.27525731921195984, -0.038805507123470306, -0.01978778839111328
+    Local maximum: 0.27642446756362915, -0.020408181473612785, 0.003409444587305188
+
+Object_233 [Node 233]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Wiper_114 / Object_233
+  Mesh: Object_113
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 1396
+    Mode: 4
+    Vertex count: 1120
+    Local minimum: -0.27922552824020386, -0.031108522787690163, -0.021687913686037064
+    Local maximum: 0.2803936302661896, 0.0019815510604530573, 0.005866248160600662
+
+Object_235 [Node 235]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Wiper.001_115 / Object_235
+  Mesh: Object_114
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Metal_-_Black_-_Rough_0.2
+    Triangles: 1396
+    Mode: 4
+    Vertex count: 1120
+    Local minimum: -0.2844376862049103, -0.05245618149638176, -0.017157545313239098
+    Local maximum: 0.2755511403083801, -0.008290008641779423, 0.011121750809252262
+
+Object_237 [Node 237]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / windshield-grill_118 / Object_237
+  Mesh: Object_115
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: Plastic_ext_matt
+    Triangles: 1504
+    Mode: 4
+    Vertex count: 1085
+    Local minimum: -0.7563533782958984, -0.027186870574951172, -0.09906399250030518
+    Local maximum: 0.7563526034355164, 0.025207340717315674, 0.2126857042312622
+
+Object_241 [Node 241]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Wheel.Ft.L_124 / Name-Wheel.Ft.L_123 / generic-tire-low_121 / Object_241
+  Mesh: Object_116
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: tire-low
+    Triangles: 528
+    Mode: 4
+    Vertex count: 386
+    Local minimum: -0.1287357360124588, -0.343719482421875, -0.3436903655529022
+    Local maximum: 0.12873561680316925, 0.3436609208583832, 0.34369003772735596
+
+Object_243 [Node 243]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Wheel.Ft.L_124 / Name-Wheel.Ft.L_123 / generic-wheel_122 / Object_243
+  Mesh: Object_117
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K
+    Triangles: 2000
+    Mode: 4
+    Vertex count: 1828
+    Local minimum: -0.03562716022133827, -0.24997766315937042, -0.24889442324638367
+    Local maximum: 0.02786419354379177, 0.2516419589519501, 0.24889735877513885
+
+Object_247 [Node 247]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Wheel.Ft.R_128 / Name-Wheel.Ft.R_127 / generic-tire-low.001_125 / Object_247
+  Mesh: Object_118
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: tire-low
+    Triangles: 528
+    Mode: 4
+    Vertex count: 386
+    Local minimum: -0.12873561680316925, -0.343719482421875, -0.34369003772735596
+    Local maximum: 0.1287357360124588, 0.3436609208583832, 0.3436903655529022
+
+Object_249 [Node 249]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Wheel.Ft.R_128 / Name-Wheel.Ft.R_127 / generic-wheel.001_126 / Object_249
+  Mesh: Object_119
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K
+    Triangles: 2000
+    Mode: 4
+    Vertex count: 1828
+    Local minimum: -0.02786419354379177, -0.24997766315937042, -0.24889442324638367
+    Local maximum: 0.03562716022133827, 0.2516419589519501, 0.24889735877513885
+
+Object_253 [Node 253]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Wheel.Bk.L_132 / Name-Wheel.Bk.L_131 / generic-tire-low.002_129 / Object_253
+  Mesh: Object_120
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: tire-low
+    Triangles: 528
+    Mode: 4
+    Vertex count: 386
+    Local minimum: -0.1287357360124588, -0.343719482421875, -0.3436903655529022
+    Local maximum: 0.12873561680316925, 0.3436609208583832, 0.34369003772735596
+
+Object_255 [Node 255]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Wheel.Bk.L_132 / Name-Wheel.Bk.L_131 / generic-wheel.002_130 / Object_255
+  Mesh: Object_121
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K
+    Triangles: 2000
+    Mode: 4
+    Vertex count: 1828
+    Local minimum: -0.03562716022133827, -0.24997766315937042, -0.24889442324638367
+    Local maximum: 0.02786419354379177, 0.2516419589519501, 0.24889735877513885
+
+Object_259 [Node 259]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Wheel.Bk.R_136 / Name-Wheel.Bk.R_135 / generic-tire-low.003_133 / Object_259
+  Mesh: Object_122
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: tire-low
+    Triangles: 528
+    Mode: 4
+    Vertex count: 386
+    Local minimum: -0.12873561680316925, -0.343719482421875, -0.34369003772735596
+    Local maximum: 0.1287357360124588, 0.3436609208583832, 0.3436903655529022
+
+Object_261 [Node 261]
+  Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Wheel.Bk.R_136 / Name-Wheel.Bk.R_135 / generic-wheel.003_134 / Object_261
+  Mesh: Object_123
+  Depth: 7
+  Translation: 0, 0, 0
+  Rotation (quaternion): 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Primitive 0:
+    Material: MetalStainlessSteelBrushedElongated005_2K
+    Triangles: 2000
+    Mode: 4
+    Vertex count: 1828
+    Local minimum: -0.02786419354379177, -0.24997766315937042, -0.24889442324638367
+    Local maximum: 0.03562716022133827, 0.2516419589519501, 0.24889735877513885
+
+IMPORTANT
+--------
+Accessor bounds are local geometry bounds, not final world-space bounds.
+Node transforms must be applied to calculate final world positions.
+Embedded textures were not decoded or modified.
+
+Report saved to ../docs/reports/sedan-cockpit-inspection.txt
