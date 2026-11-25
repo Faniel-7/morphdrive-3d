@@ -1,0 +1,2445 @@
+MORPHDRIVE 3D - HONDA CBR650R COMPONENT REPORT
+Generated: 2026-11-21T17:29:57.314Z
+Model: frontend/public/models/motorcycles/honda_cbr650r.glb
+
+MODEL SUMMARY
+==========================================================================================
+Total hierarchy objects: 279
+Renderable meshes: 114
+Skinned meshes: 94
+Ordinary meshes: 20
+Total vertices: 335886
+Total triangles: 366615
+
+TOP-LEVEL COMPONENTS
+==========================================================================================
+
+COMPONENT: Sketchfab_model
+Type: Object3D
+Meshes: 114
+Vertices: 335886
+Triangles: 366615
+
+COMPLETE OBJECT HIERARCHY AND MESH DETAILS
+==========================================================================================
+
+[0] Sketchfab_Scene
+Type: Group
+Parent: (root)
+Children: 1
+
+  [1] Sketchfab_model
+  Type: Object3D
+  Parent: Sketchfab_Scene
+  Children: 1
+
+    [2] root
+    Type: Object3D
+    Parent: Sketchfab_model
+    Children: 1
+
+      [3] GLTF_SceneRootNode
+      Type: Object3D
+      Parent: root
+      Children: 1
+
+        [4] cbr650r_159
+        Type: Object3D
+        Parent: GLTF_SceneRootNode
+        Children: 1
+
+          [5] GLTF_created_0
+          Type: Object3D
+          Parent: cbr650r_159
+          Children: 96
+
+            [6] GLTF_created_0_rootJoint
+            Type: Bone
+            Parent: GLTF_created_0
+            Children: 1
+
+              [7] chassis_43
+              Type: Bone
+              Parent: GLTF_created_0_rootJoint
+              Children: 24
+
+                [8] seat_r_1
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [9] seat_f_2
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [10] engine_3
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [11] overheat_2_4
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [12] overheat_5
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [13] petroltank_6
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [14] headlight_l_7
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [15] headlight_r_8
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [16] extralight_1_9
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [17] extralight_2_10
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [18] swingarm_17
+                Type: Bone
+                Parent: chassis_43
+                Children: 1
+
+                  [19] wheel_lr_16
+                  Type: Bone
+                  Parent: swingarm_17
+                  Children: 5
+
+                    [20] bikedisc_r_11
+                    Type: Bone
+                    Parent: wheel_lr_16
+                    Children: 0
+
+                    [21] wheelmeshbk_r_12
+                    Type: Bone
+                    Parent: wheel_lr_16
+                    Children: 0
+
+                    [22] wheelmeshbk_r_l1_13
+                    Type: Bone
+                    Parent: wheel_lr_16
+                    Children: 0
+
+                    [23] wheelmeshbk_r_l2_14
+                    Type: Bone
+                    Parent: wheel_lr_16
+                    Children: 0
+
+                    [24] wheelmeshbk_r_ng_15
+                    Type: Bone
+                    Parent: wheel_lr_16
+                    Children: 0
+
+                [25] handlebars_20
+                Type: Bone
+                Parent: chassis_43
+                Children: 2
+
+                  [26] hbgrip_l_18
+                  Type: Bone
+                  Parent: handlebars_20
+                  Children: 0
+
+                  [27] hbgrip_r_19
+                  Type: Bone
+                  Parent: handlebars_20
+                  Children: 0
+
+                [28] forks_u_28
+                Type: Bone
+                Parent: chassis_43
+                Children: 1
+
+                  [29] forks_l_27
+                  Type: Bone
+                  Parent: forks_u_28
+                  Children: 1
+
+                    [30] wheel_lf_26
+                    Type: Bone
+                    Parent: forks_l_27
+                    Children: 5
+
+                      [31] bikedisc_f_21
+                      Type: Bone
+                      Parent: wheel_lf_26
+                      Children: 0
+
+                      [32] wheelmeshbk_f_22
+                      Type: Bone
+                      Parent: wheel_lf_26
+                      Children: 0
+
+                      [33] wheelmeshbk_f_l1_23
+                      Type: Bone
+                      Parent: wheel_lf_26
+                      Children: 0
+
+                      [34] wheelmeshbk_f_l2_24
+                      Type: Bone
+                      Parent: wheel_lf_26
+                      Children: 0
+
+                      [35] wheelmeshbk_f_ng_25
+                      Type: Bone
+                      Parent: wheel_lf_26
+                      Children: 0
+
+                [36] taillight_l_29
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [37] misc_d_30
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [38] taillight_r_31
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [39] bodyshell_32
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [40] enginecbr_33
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [41] misc_a_35
+                Type: Bone
+                Parent: chassis_43
+                Children: 1
+
+                  [42] exhaust_34
+                  Type: Bone
+                  Parent: misc_a_35
+                  Children: 0
+
+                [43] misc_b_36
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [44] misc_g_37
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [45] misc_c_40
+                Type: Bone
+                Parent: chassis_43
+                Children: 2
+
+                  [46] indicator_lr_38
+                  Type: Bone
+                  Parent: misc_c_40
+                  Children: 0
+
+                  [47] indicator_rr_39
+                  Type: Bone
+                  Parent: misc_c_40
+                  Children: 0
+
+                [48] dials_41
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+                [49] chassis_dummy_42
+                Type: Bone
+                Parent: chassis_43
+                Children: 0
+
+            [50] Object_8
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1567
+            Triangles: 1550
+            Materials: abs1
+            World position: -0.0742, -0.0681, -0.7709
+            World dimensions: 0.0051, 0.1392, 0.1450
+            Bounds min: -0.0767, -0.1377, -0.8434
+            Bounds max: -0.0716, 0.0015, -0.6984
+
+            [51] Object_10
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 5987
+            Triangles: 6372
+            Materials: Material.010
+            World position: 0.0002, -0.0746, -0.7709
+            World dimensions: 0.1462, 0.3322, 0.3329
+            Bounds min: -0.0729, -0.2408, -0.9373
+            Bounds max: 0.0732, 0.0915, -0.6044
+
+            [52] Object_12
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 4226
+            Triangles: 4528
+            Materials: bakablack.002
+            World position: -0.1128, -0.0626, 0.7809
+            World dimensions: 0.0579, 0.2451, 0.2451
+            Bounds min: -0.1417, -0.1851, 0.6584
+            Bounds max: -0.0839, 0.0599, 0.9034
+
+            [53] Object_14
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 3392
+            Triangles: 2102
+            Materials: material
+            World position: -0.0257, -0.0652, 0.7808
+            World dimensions: 0.2296, 0.1681, 0.1663
+            Bounds min: -0.1404, -0.1492, 0.6976
+            Bounds max: 0.0891, 0.0188, 0.8640
+
+            [54] Object_16
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2587
+            Triangles: 2256
+            Materials: Material.008
+            World position: 0.0845, -0.0626, 0.7809
+            World dimensions: 0.0094, 0.2573, 0.2573
+            Bounds min: 0.0798, -0.1913, 0.6522
+            Bounds max: 0.0892, 0.0661, 0.9096
+
+            [55] Object_18
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 678
+            Triangles: 1054
+            Materials: Material.002
+            World position: -0.0001, 0.4606, 0.3792
+            World dimensions: 0.3335, 0.1527, 0.4055
+            Bounds min: -0.1668, 0.3842, 0.1764
+            Bounds max: 0.1667, 0.5369, 0.5820
+
+            [56] Object_20
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 13566
+            Triangles: 19698
+            Materials: Material.006
+            World position: -0.0001, 0.2700, -0.0615
+            World dimensions: 0.5291, 1.0354, 1.6459
+            Bounds min: -0.2646, -0.2478, -0.8844
+            Bounds max: 0.2645, 0.7877, 0.7615
+
+            [57] Object_22
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1439
+            Triangles: 1230
+            Materials: bakablack
+            World position: -0.0001, 0.4668, -0.7191
+            World dimensions: 0.3398, 0.1079, 0.0984
+            Bounds min: -0.1700, 0.4128, -0.7683
+            Bounds max: 0.1698, 0.5207, -0.6699
+
+            [58] Object_24
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 4239
+            Triangles: 4632
+            Materials: material
+            World position: -0.0001, 0.2964, -0.1718
+            World dimensions: 0.4864, 0.9510, 1.0347
+            Bounds min: -0.2433, -0.1792, -0.6891
+            Bounds max: 0.2431, 0.7719, 0.3456
+
+            [59] Object_26
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 140
+            Triangles: 128
+            Materials: Material.003
+            World position: -0.0001, 0.4408, 0.4725
+            World dimensions: 0.3310, 0.1038, 0.1954
+            Bounds min: -0.1656, 0.3889, 0.3748
+            Bounds max: 0.1654, 0.4927, 0.5702
+
+            [60] Object_28
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 4190
+            Triangles: 3716
+            Materials: bakablack.002
+            World position: 0.0184, 0.1927, 0.4165
+            World dimensions: 0.4778, 0.7488, 0.8382
+            Bounds min: -0.2205, -0.1817, -0.0026
+            Bounds max: 0.2573, 0.5671, 0.8356
+
+            [61] Object_30
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 196
+            Triangles: 168
+            Materials: handc
+            World position: 0.1543, -0.0172, 0.3373
+            World dimensions: 0.0224, 0.0462, 0.0313
+            Bounds min: 0.1431, -0.0403, 0.3216
+            Bounds max: 0.1656, 0.0059, 0.3529
+
+            [62] Object_32
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 28499
+            Triangles: 35277
+            Materials: bakablack.003
+            World position: -0.0001, 0.2449, -0.2515
+            World dimensions: 0.5374, 0.9801, 1.2102
+            Bounds min: -0.2688, -0.2452, -0.8566
+            Bounds max: 0.2686, 0.7350, 0.3536
+
+            [63] Object_34
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2520
+            Triangles: 2760
+            Materials: bakablack.004
+            World position: -0.0001, 0.4877, -0.0133
+            World dimensions: 0.4192, 0.1728, 1.6764
+            Bounds min: -0.2097, 0.4013, -0.8515
+            Bounds max: 0.2095, 0.5741, 0.8249
+
+            [64] Object_36
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1727
+            Triangles: 1754
+            Materials: bakablack.003
+            World position: -0.0461, 0.0764, 0.2126
+            World dimensions: 0.4125, 0.4515, 0.2816
+            Bounds min: -0.2523, -0.1494, 0.0718
+            Bounds max: 0.1602, 0.3021, 0.3534
+
+            [65] Object_38
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 138
+            Triangles: 208
+            Materials: plsru2
+            World position: -0.0001, 0.4386, 0.4749
+            World dimensions: 0.3433, 0.0988, 0.1833
+            Bounds min: -0.1717, 0.3892, 0.3832
+            Bounds max: 0.1716, 0.4880, 0.5666
+
+            [66] Object_40
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1218
+            Triangles: 1872
+            Materials: yard1
+            World position: -0.0001, 0.4362, -0.4774
+            World dimensions: 0.5189, 0.1404, 0.5437
+            Bounds min: -0.2595, 0.3660, -0.7493
+            Bounds max: 0.2594, 0.5065, -0.2056
+
+            [67] Object_42
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 8
+            Triangles: 6
+            Materials: 1honda
+            World position: -0.0001, 0.6548, -0.2403
+            World dimensions: 0.0213, 0.0033, 0.0172
+            Bounds min: -0.0107, 0.6531, -0.2489
+            Bounds max: 0.0106, 0.6564, -0.2317
+
+            [68] Object_44
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 17727
+            Triangles: 15558
+            Materials: material
+            World position: -0.0001, 0.2945, 0.0589
+            World dimensions: 0.5860, 0.7719, 1.0587
+            Bounds min: -0.2931, -0.0914, -0.4705
+            Bounds max: 0.2929, 0.6805, 0.5882
+
+            [69] Object_46
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 21656
+            Triangles: 22610
+            Materials: bakablack.002
+            World position: -0.0002, 0.2796, 0.0713
+            World dimensions: 0.4622, 0.7959, 1.2237
+            Bounds min: -0.2312, -0.1184, -0.5405
+            Bounds max: 0.2309, 0.6775, 0.6832
+
+            [70] Object_48
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 532
+            Triangles: 546
+            Materials: handc
+            World position: -0.0001, 0.6717, -0.1420
+            World dimensions: 0.0820, 0.0180, 0.0881
+            Bounds min: -0.0411, 0.6627, -0.1861
+            Bounds max: 0.0409, 0.6807, -0.0980
+
+            [71] Object_50
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 7463
+            Triangles: 9319
+            Materials: bakablack.003
+            World position: -0.0046, 0.2052, -0.0155
+            World dimensions: 0.4430, 0.5132, 0.8992
+            Bounds min: -0.2262, -0.0514, -0.4651
+            Bounds max: 0.2169, 0.4618, 0.4341
+
+            [72] Object_52
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 5003
+            Triangles: 5105
+            Materials: bakablack.003
+            World position: -0.0001, 0.2746, 0.2848
+            World dimensions: 0.4211, 0.6080, 1.0924
+            Bounds min: -0.2106, -0.0294, -0.2614
+            Bounds max: 0.2104, 0.5786, 0.8310
+
+            [73] Object_54
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 93
+            Triangles: 106
+            Materials: ru0007
+            World position: -0.0001, 0.3710, -0.0036
+            World dimensions: 0.4623, 0.1207, 0.2959
+            Bounds min: -0.2312, 0.3106, -0.1516
+            Bounds max: 0.2311, 0.4313, 0.1443
+
+            [74] Object_56
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 227
+            Triangles: 139
+            Materials: script_rt_dials_digital
+            World position: -0.0579, 0.6496, -0.6160
+            World dimensions: 0.0423, 0.0395, 0.0310
+            Bounds min: -0.0790, 0.6299, -0.6314
+            Bounds max: -0.0368, 0.6694, -0.6005
+
+            [75] Object_58
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 371
+            Triangles: 417
+            Materials: windows1
+            World position: -0.0001, 0.6456, -0.6124
+            World dimensions: 0.1730, 0.0654, 0.0521
+            Bounds min: -0.0866, 0.6129, -0.6384
+            Bounds max: 0.0864, 0.6782, -0.5864
+
+            [76] Object_60
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 11754
+            Triangles: 9868
+            Materials: material
+            World position: 0.0135, 0.0891, -0.1107
+            World dimensions: 0.4562, 0.6032, 0.5030
+            Bounds min: -0.2146, -0.2126, -0.3622
+            Bounds max: 0.2416, 0.3907, 0.1408
+
+            [77] Object_62
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 3904
+            Triangles: 4484
+            Materials: material_18
+            World position: 0.0100, -0.0197, -0.1218
+            World dimensions: 0.3505, 0.3982, 0.4557
+            Bounds min: -0.1653, -0.2188, -0.3496
+            Bounds max: 0.1852, 0.1794, 0.1061
+
+            [78] Object_64
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 8958
+            Triangles: 12292
+            Materials: eng11
+            World position: 0.0024, 0.1537, -0.1128
+            World dimensions: 0.5084, 0.4739, 0.5016
+            Bounds min: -0.2518, -0.0833, -0.3636
+            Bounds max: 0.2567, 0.3907, 0.1380
+
+            [79] Object_66
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 22152
+            Triangles: 22720
+            Materials: Material.014
+            World position: 0.0339, 0.0879, -0.1176
+            World dimensions: 0.4482, 0.6021, 0.5888
+            Bounds min: -0.1902, -0.2132, -0.4120
+            Bounds max: 0.2580, 0.3890, 0.1768
+
+            [80] Object_68
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 6139
+            Triangles: 4773
+            Materials: in_d
+            World position: -0.0003, 0.2017, -0.3614
+            World dimensions: 0.4386, 0.2810, 0.1948
+            Bounds min: -0.2195, 0.0612, -0.4589
+            Bounds max: 0.2190, 0.3422, -0.2640
+
+            [81] Object_70
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2700
+            Triangles: 2011
+            Materials: handc
+            World position: 0.0107, 0.1935, -0.3926
+            World dimensions: 0.4451, 0.3112, 0.1660
+            Bounds min: -0.2119, 0.0379, -0.4756
+            Bounds max: 0.2332, 0.3491, -0.3096
+
+            [82] Object_72
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 57
+            Triangles: 54
+            Materials: dital1tt
+            World position: -0.0001, 0.6453, -0.6132
+            World dimensions: 0.1732, 0.0651, 0.0509
+            Bounds min: -0.0867, 0.6128, -0.6386
+            Bounds max: 0.0865, 0.6779, -0.5877
+
+            [83] Object_74
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2794
+            Triangles: 4027
+            Materials: bakablack.003
+            World position: -0.0067, 0.2437, -0.2558
+            World dimensions: 0.4294, 0.7590, 0.6760
+            Bounds min: -0.2214, -0.1358, -0.5938
+            Bounds max: 0.2079, 0.6233, 0.0823
+
+            [84] Object_76
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1047
+            Triangles: 831
+            Materials: bakablack.004
+            World position: 0.0718, 0.3336, -0.3320
+            World dimensions: 0.3236, 0.6886, 0.6511
+            Bounds min: -0.0900, -0.0107, -0.6575
+            Bounds max: 0.2336, 0.6779, -0.0064
+
+            [85] Object_78
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 494
+            Triangles: 474
+            Materials: material_23
+            World position: 0.0580, -0.1512, 0.1080
+            World dimensions: 0.1216, 0.1241, 0.1295
+            Bounds min: -0.0028, -0.2133, 0.0433
+            Bounds max: 0.1188, -0.0892, 0.1728
+
+            [86] Object_80
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 302
+            Triangles: 298
+            Materials: handc.001
+            World position: -0.0001, 0.4327, -0.7372
+            World dimensions: 0.1342, 0.0321, 0.0401
+            Bounds min: -0.0672, 0.4166, -0.7573
+            Bounds max: 0.0670, 0.4487, -0.7172
+
+            [87] Object_82
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 969
+            Triangles: 1820
+            Materials: windows1
+            World position: -0.0001, 0.4830, -0.7771
+            World dimensions: 0.3906, 0.1796, 0.1895
+            Bounds min: -0.1954, 0.3932, -0.8718
+            Bounds max: 0.1952, 0.5729, -0.6824
+
+            [88] Object_84
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 108
+            Triangles: 104
+            Materials: Material.011
+            World position: -0.0001, 0.0243, -0.6451
+            World dimensions: 0.2674, 0.0570, 0.0579
+            Bounds min: -0.1338, -0.0042, -0.6741
+            Bounds max: 0.1336, 0.0528, -0.6162
+
+            [89] Object_86
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1751
+            Triangles: 2361
+            Materials: vehicle_generic_smallspecmap_PRIMARY
+            World position: -0.0001, 0.1414, -0.7032
+            World dimensions: 0.2791, 0.2701, 0.4422
+            Bounds min: -0.1396, 0.0063, -0.9243
+            Bounds max: 0.1395, 0.2764, -0.4821
+
+            [90] Object_88
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 80
+            Triangles: 80
+            Materials: bakablack
+            World position: -0.0001, 0.2316, -0.6247
+            World dimensions: 0.2629, 0.4061, 0.2251
+            Bounds min: -0.1315, 0.0285, -0.7373
+            Bounds max: 0.1314, 0.4346, -0.5122
+
+            [91] Object_90
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 3792
+            Triangles: 2546
+            Materials: material
+            World position: -0.0049, -0.0104, -0.6928
+            World dimensions: 0.2713, 0.1704, 0.2357
+            Bounds min: -0.1406, -0.0955, -0.8106
+            Bounds max: 0.1307, 0.0748, -0.5750
+
+            [92] Object_92
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 4
+            Triangles: 2
+            Materials: abslogo
+            World position: 0.1318, 0.1264, -0.7373
+            World dimensions: 0.0123, 0.0717, 0.0382
+            Bounds min: 0.1256, 0.0906, -0.7564
+            Bounds max: 0.1379, 0.1623, -0.7182
+
+            [93] Object_94
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2605
+            Triangles: 2274
+            Materials: bakablack.002
+            World position: -0.0001, 0.0588, -0.6393
+            World dimensions: 0.2530, 0.2585, 0.2097
+            Bounds min: -0.1266, -0.0705, -0.7442
+            Bounds max: 0.1264, 0.1881, -0.5345
+
+            [94] Object_96
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 12652
+            Triangles: 12140
+            Materials: Material.012
+            World position: -0.0001, -0.0007, -0.6929
+            World dimensions: 0.2735, 0.2202, 0.2278
+            Bounds min: -0.1368, -0.1108, -0.8068
+            Bounds max: 0.1367, 0.1094, -0.5790
+
+            [95] Object_98
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1060
+            Triangles: 1182
+            Materials: bakablack.004
+            World position: 0.0036, 0.1368, -0.5258
+            World dimensions: 0.2637, 0.4288, 0.3533
+            Bounds min: -0.1283, -0.0776, -0.7024
+            Bounds max: 0.1354, 0.3512, -0.3491
+
+            [96] Object_100
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 966
+            Triangles: 1120
+            Materials: sock1
+            World position: -0.0001, 0.3856, -0.5533
+            World dimensions: 0.2816, 0.4691, 0.2638
+            Bounds min: -0.1409, 0.1510, -0.6852
+            Bounds max: 0.1407, 0.6201, -0.4214
+
+            [97] Object_102
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 507
+            Triangles: 362
+            Materials: material
+            World position: 0.0000, 0.6386, -0.4372
+            World dimensions: 0.2348, 0.0014, 0.0029
+            Bounds min: -0.1174, 0.6379, -0.4387
+            Bounds max: 0.1174, 0.6393, -0.4358
+
+            [98] Object_104
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1573
+            Triangles: 1184
+            Materials: bakablack.003
+            World position: 0.0000, 0.6233, -0.4386
+            World dimensions: 0.2696, 0.0481, 0.0574
+            Bounds min: -0.1347, 0.5993, -0.4673
+            Bounds max: 0.1348, 0.6474, -0.4099
+
+            [99] Object_106
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 418
+            Triangles: 480
+            Materials: bakablack.004
+            World position: -0.0001, 0.1614, -0.6578
+            World dimensions: 0.2816, 0.0330, 0.0585
+            Bounds min: -0.1409, 0.1449, -0.6870
+            Bounds max: 0.1407, 0.1779, -0.6285
+
+            [100] Object_108
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 195
+            Triangles: 182
+            Materials: handc.002
+            World position: -0.2053, 0.6423, -0.3910
+            World dimensions: 0.0357, 0.0432, 0.0179
+            Bounds min: -0.2232, 0.6207, -0.4000
+            Bounds max: -0.1875, 0.6639, -0.3820
+
+            [101] Object_110
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2219
+            Triangles: 2276
+            Materials: material
+            World position: 0.0079, 0.5051, -0.4284
+            World dimensions: 0.8046, 0.2832, 0.2102
+            Bounds min: -0.3944, 0.3636, -0.5335
+            Bounds max: 0.4102, 0.6467, -0.3233
+
+            [102] Object_112
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 232
+            Triangles: 212
+            Materials: bakablack.002
+            World position: 0.1931, 0.6050, -0.4527
+            World dimensions: 0.0660, 0.0510, 0.0547
+            Bounds min: 0.1601, 0.5795, -0.4800
+            Bounds max: 0.2260, 0.6305, -0.4253
+
+            [103] Object_114
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2363
+            Triangles: 2378
+            Materials: handc
+            World position: -0.0001, 0.6142, -0.4200
+            World dimensions: 0.2840, 0.0667, 0.1188
+            Bounds min: -0.1421, 0.5808, -0.4794
+            Bounds max: 0.1419, 0.6475, -0.3606
+
+            [104] Object_116
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 11947
+            Triangles: 14344
+            Materials: bakablack.003
+            World position: -0.0022, 0.4590, -0.4204
+            World dimensions: 0.7568, 0.4784, 0.4112
+            Bounds min: -0.3806, 0.2198, -0.6260
+            Bounds max: 0.3762, 0.6982, -0.2148
+
+            [105] Object_118
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 103
+            Triangles: 129
+            Materials: pokhand2
+            World position: -0.0016, 0.6048, -0.3698
+            World dimensions: 0.7099, 0.0575, 0.0813
+            Bounds min: -0.3565, 0.5760, -0.4104
+            Bounds max: 0.3533, 0.6335, -0.3291
+
+            [106] Object_120
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 3937
+            Triangles: 3851
+            Materials: bakablack.003
+            World position: -0.0002, 0.4250, -0.4616
+            World dimensions: 0.7051, 0.4911, 0.2571
+            Bounds min: -0.3528, 0.1794, -0.5902
+            Bounds max: 0.3523, 0.6705, -0.3331
+
+            [107] Object_122
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 553
+            Triangles: 316
+            Materials: vehicle_generic_smallspecmap.001
+            World position: -0.0182, 0.6231, -0.4065
+            World dimensions: 0.4795, 0.0782, 0.0542
+            Bounds min: -0.2580, 0.5840, -0.4336
+            Bounds max: 0.2215, 0.6622, -0.3794
+
+            [108] Object_124
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 86
+            Triangles: 113
+            Materials: redhonda1
+            World position: 0.0109, 0.6512, -0.4028
+            World dimensions: 0.4129, 0.0385, 0.0351
+            Bounds min: -0.1956, 0.6319, -0.4204
+            Bounds max: 0.2173, 0.6704, -0.3853
+
+            [109] Object_126
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 290
+            Triangles: 247
+            Materials: handc.001
+            World position: -0.1134, 0.4548, -0.7257
+            World dimensions: 0.0893, 0.0712, 0.0741
+            Bounds min: -0.1580, 0.4192, -0.7628
+            Bounds max: -0.0687, 0.4904, -0.6887
+
+            [110] Object_128
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 290
+            Triangles: 247
+            Materials: handc.001
+            World position: 0.1132, 0.4548, -0.7257
+            World dimensions: 0.0893, 0.0712, 0.0741
+            Bounds min: 0.0686, 0.4192, -0.7628
+            Bounds max: 0.1579, 0.4904, -0.6887
+
+            [111] Object_130
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1589
+            Triangles: 1281
+            Materials: cb650fait2
+            World position: -0.2094, 0.3652, 0.2021
+            World dimensions: 0.2229, 0.0965, 1.7841
+            Bounds min: -0.3209, 0.3170, -0.6900
+            Bounds max: -0.0980, 0.4134, 1.0941
+
+            [112] Object_132
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1597
+            Triangles: 1281
+            Materials: cb650fait2
+            World position: 0.2093, 0.3654, 0.2021
+            World dimensions: 0.2229, 0.0969, 1.7841
+            Bounds min: 0.0978, 0.3170, -0.6900
+            Bounds max: 0.3207, 0.4139, 1.0941
+
+            [113] Object_134
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1009
+            Triangles: 1377
+            Materials: Material.007
+            World position: 0.1793, -0.1176, 0.2718
+            World dimensions: 0.1471, 0.1892, 0.4550
+            Bounds min: 0.1058, -0.2122, 0.0443
+            Bounds max: 0.2529, -0.0230, 0.4993
+
+            [114] Object_136
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 96
+            Triangles: 116
+            Materials: material
+            World position: 0.1531, -0.1586, 0.3498
+            World dimensions: 0.0326, 0.0522, 0.2274
+            Bounds min: 0.1368, -0.1847, 0.2361
+            Bounds max: 0.1694, -0.1326, 0.4634
+
+            [115] Object_138
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 445
+            Triangles: 626
+            Materials: bakablack.002
+            World position: 0.1531, -0.0712, 0.3883
+            World dimensions: 0.1648, 0.0768, 0.2060
+            Bounds min: 0.0707, -0.1096, 0.2853
+            Bounds max: 0.2355, -0.0328, 0.4913
+
+            [116] Object_140
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 3729
+            Triangles: 4640
+            Materials: in_d
+            World position: 0.0363, -0.1199, 0.2663
+            World dimensions: 0.2446, 0.2186, 0.2977
+            Bounds min: -0.0860, -0.2292, 0.1174
+            Bounds max: 0.1586, -0.0106, 0.4152
+
+            [117] Object_142
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 801
+            Triangles: 1108
+            Materials: Material.005
+            World position: -0.0001, 0.5375, 0.6855
+            World dimensions: 0.3189, 0.1463, 0.3736
+            Bounds min: -0.1595, 0.4644, 0.4987
+            Bounds max: 0.1594, 0.6107, 0.8723
+
+            [118] Object_144
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 192
+            Triangles: 184
+            Materials: Material.004
+            World position: -0.0001, 0.5432, 0.6747
+            World dimensions: 0.2908, 0.1158, 0.3522
+            Bounds min: -0.1455, 0.4853, 0.4986
+            Bounds max: 0.1453, 0.6011, 0.8508
+
+            [119] Object_146
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 270
+            Triangles: 442
+            Materials: plsru2
+            World position: -0.0001, 0.5311, 0.6733
+            World dimensions: 0.3166, 0.1333, 0.3491
+            Bounds min: -0.1584, 0.4644, 0.4987
+            Bounds max: 0.1582, 0.5977, 0.8478
+
+            [120] Object_148
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 14
+            Triangles: 12
+            Materials: vehicle_licenseplate
+            World position: -0.0018, 0.2768, 1.1453
+            World dimensions: 0.2215, 0.0982, 0.0493
+            Bounds min: -0.1125, 0.2277, 1.1207
+            Bounds max: 0.1090, 0.3259, 1.1700
+
+            [121] Object_150
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 68
+            Triangles: 64
+            Materials: bakablack
+            World position: -0.0001, 0.7875, -0.6598
+            World dimensions: 0.8504, 0.1129, 0.0215
+            Bounds min: -0.4253, 0.7310, -0.6706
+            Bounds max: 0.4251, 0.8439, -0.6490
+
+            [122] Object_152
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1504
+            Triangles: 1688
+            Materials: material
+            World position: -0.0001, 0.5360, 0.2317
+            World dimensions: 0.3056, 0.2992, 1.8606
+            Bounds min: -0.1529, 0.3863, -0.6986
+            Bounds max: 0.1527, 0.6856, 1.1620
+
+            [123] Object_154
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 4
+            Triangles: 2
+            Materials: hondalogo1
+            World position: -0.0001, 0.4937, 0.8396
+            World dimensions: 0.0703, 0.0072, 0.0051
+            Bounds min: -0.0352, 0.4901, 0.8371
+            Bounds max: 0.0351, 0.4973, 0.8421
+
+            [124] Object_156
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 36
+            Triangles: 34
+            Materials: handc.001
+            World position: -0.0001, 0.4015, 1.1634
+            World dimensions: 0.0310, 0.0051, 0.0419
+            Bounds min: -0.0156, 0.3990, 1.1424
+            Bounds max: 0.0154, 0.4041, 1.1843
+
+            [125] Object_158
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 727
+            Triangles: 980
+            Materials: bakablack.003
+            World position: -0.0001, 0.3985, 1.0734
+            World dimensions: 0.3491, 0.0339, 0.0352
+            Bounds min: -0.1746, 0.3816, 1.0558
+            Bounds max: 0.1745, 0.4155, 1.0910
+
+            [126] Object_160
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1784
+            Triangles: 1888
+            Materials: bakablack.004
+            World position: -0.0001, 0.3619, 0.1991
+            World dimensions: 0.6416, 0.0943, 1.7833
+            Bounds min: -0.3209, 0.3147, -0.6925
+            Bounds max: 0.3207, 0.4090, 1.0908
+
+            [127] Object_162
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 8743
+            Triangles: 10774
+            Materials: bakablack.003
+            World position: -0.0001, 0.5081, 0.2391
+            World dimensions: 0.8606, 0.6819, 1.9133
+            Bounds min: -0.4304, 0.1671, -0.7175
+            Bounds max: 0.4302, 0.8490, 1.1958
+
+            [128] Object_164
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 48
+            Triangles: 46
+            Materials: stopreflector1
+            World position: 0.0015, 0.3571, 1.1202
+            World dimensions: 0.0910, 0.0331, 0.0034
+            Bounds min: -0.0440, 0.3406, 1.1185
+            Bounds max: 0.0469, 0.3737, 1.1219
+
+            [129] Object_166
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 810
+            Triangles: 1362
+            Materials: cb650fait2.001
+            World position: -0.0001, 0.3662, 0.2016
+            World dimensions: 0.6416, 0.0985, 1.7881
+            Bounds min: -0.3209, 0.3170, -0.6925
+            Bounds max: 0.3207, 0.4155, 1.0957
+
+            [130] Object_168
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1531
+            Triangles: 2565
+            Materials: windows1
+            World position: -0.0001, 0.7080, -0.6521
+            World dimensions: 0.3187, 0.2669, 0.2922
+            Bounds min: -0.1594, 0.5746, -0.7982
+            Bounds max: 0.1593, 0.8414, -0.5059
+
+            [131] Object_170
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 24
+            Triangles: 22
+            Materials: hondalogo1
+            World position: -0.0000, 0.6418, -0.7422
+            World dimensions: 0.0852, 0.0137, 0.0157
+            Bounds min: -0.0426, 0.6349, -0.7500
+            Bounds max: 0.0426, 0.6486, -0.7344
+
+            [132] Object_172
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 136
+            Triangles: 136
+            Materials: handc.002
+            World position: -0.0000, 0.4034, -0.4949
+            World dimensions: 0.5263, 0.0671, 0.1714
+            Bounds min: -0.2631, 0.3699, -0.5806
+            Bounds max: 0.2631, 0.4370, -0.4092
+
+            [133] Object_174
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 105
+            Triangles: 109
+            Materials: Material.001
+            World position: -0.0009, 0.2171, -0.1247
+            World dimensions: 0.3909, 0.8818, 0.3592
+            Bounds min: -0.1963, -0.2238, -0.3043
+            Bounds max: 0.1946, 0.6580, 0.0549
+
+            [134] Object_176
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 590
+            Triangles: 578
+            Materials: material_43
+            World position: -0.0001, 0.2876, -0.0390
+            World dimensions: 0.5382, 0.7701, 1.5634
+            Bounds min: -0.2692, -0.0974, -0.8207
+            Bounds max: 0.2690, 0.6726, 0.7427
+
+            [135] Object_178
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1065
+            Triangles: 1706
+            Materials: shok2
+            World position: 0.0000, 0.1899, 0.2856
+            World dimensions: 0.0887, 0.1490, 0.1513
+            Bounds min: -0.0443, 0.1154, 0.2100
+            Bounds max: 0.0444, 0.2644, 0.3613
+
+            [136] Object_180
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2549
+            Triangles: 1859
+            Materials: material
+            World position: -0.0121, 0.0204, 0.6005
+            World dimensions: 0.3631, 0.2116, 0.4033
+            Bounds min: -0.1936, -0.0854, 0.3989
+            Bounds max: 0.1695, 0.1262, 0.8022
+
+            [137] Object_182
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 12531
+            Triangles: 10820
+            Materials: Material.009
+            World position: -0.1232, -0.0480, 0.4635
+            World dimensions: 0.0256, 0.2792, 0.8825
+            Bounds min: -0.1360, -0.1876, 0.0223
+            Bounds max: -0.1104, 0.0916, 0.9048
+
+            [138] Object_184
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 9190
+            Triangles: 8854
+            Materials: bakablack.002
+            World position: -0.0103, 0.1189, 0.4091
+            World dimensions: 0.3687, 0.4340, 0.8188
+            Bounds min: -0.1946, -0.0982, -0.0003
+            Bounds max: 0.1741, 0.3359, 0.8185
+
+            [139] Object_186
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1491
+            Triangles: 1924
+            Materials: handc
+            World position: -0.0129, 0.0447, 0.5603
+            World dimensions: 0.2767, 0.2752, 0.5020
+            Bounds min: -0.1513, -0.0930, 0.3093
+            Bounds max: 0.1255, 0.1823, 0.8113
+
+            [140] Object_188
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 4891
+            Triangles: 5328
+            Materials: bakablack.003
+            World position: -0.0168, 0.1009, 0.5246
+            World dimensions: 0.3246, 0.3792, 0.7920
+            Bounds min: -0.1791, -0.0887, 0.1286
+            Bounds max: 0.1455, 0.2905, 0.9207
+
+            [141] Object_190
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 2475
+            Triangles: 2808
+            Materials: bakablack.003
+            World position: -0.0007, 0.1642, 0.3883
+            World dimensions: 0.2512, 0.3502, 0.7422
+            Bounds min: -0.1263, -0.0108, 0.0172
+            Bounds max: 0.1249, 0.3393, 0.7594
+
+            [142] Object_192
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 449
+            Triangles: 606
+            Materials: cb650fait2.001
+            World position: -0.0001, 0.5387, 0.8390
+            World dimensions: 0.1564, 0.0693, 0.0760
+            Bounds min: -0.0783, 0.5040, 0.8010
+            Bounds max: 0.0781, 0.5733, 0.8770
+
+            [143] Object_194
+            Type: SkinnedMesh
+            Parent: GLTF_created_0
+            Children: 0
+            Renderable: YES
+            Skinned: true
+            Vertices: 1197
+            Triangles: 1112
+            Materials: cb650fait2
+            World position: -0.0001, 0.5352, 0.8298
+            World dimensions: 0.1294, 0.0381, 0.0091
+            Bounds min: -0.0648, 0.5161, 0.8252
+            Bounds max: 0.0646, 0.5542, 0.8343
+
+            [144] cbr650rmesh_158
+            Type: Object3D
+            Parent: GLTF_created_0
+            Children: 114
+
+              [145] bikedisc_f_44
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [146] bikedisc_f001_45
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [147] bikedisc_r_46
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [148] bikedisc_r001_47
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [149] bikedisc_r002_48
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [150] bodyshell_49
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [151] bodyshell001_50
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [152] bodyshell002_51
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [153] bodyshell003_52
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [154] bodyshell004_53
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [155] bodyshell005_54
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [156] bodyshell006_55
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [157] bodyshell007_56
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [158] bodyshell008_57
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [159] bodyshell009_58
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [160] bodyshell010_59
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [161] bodyshell011_60
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [162] chassis_61
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [163] chassis001_62
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [164] chassis002_63
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [165] chassis003_64
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [166] chassis004_65
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [167] chassis005_66
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [168] chassis006_67
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [169] dials_68
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [170] enginecbr_69
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [171] enginecbr001_70
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [172] enginecbr002_71
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [173] enginecbr003_72
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [174] enginecbr004_73
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [175] enginecbr005_74
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [176] enginecbr006_75
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [177] enginecbr007_76
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [178] enginecbr008_77
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [179] enginecbr009_78
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [180] enginecbr010_79
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [181] extralight_1_80
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [182] extralight_2_81
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [183] forks_l_82
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [184] forks_l001_83
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [185] forks_l002_84
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [186] forks_l003_85
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [187] forks_l004_86
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [188] forks_l005_87
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [189] forks_l006_88
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [190] forks_l007_89
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [191] forks_u_90
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [192] forks_u001_91
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [193] forks_u002_92
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [194] forks_u003_93
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [195] handlebars_94
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [196] handlebars001_95
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [197] handlebars002_96
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [198] handlebars003_97
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [199] handlebars004_98
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [200] handlebars005_99
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [201] handlebars006_100
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [202] handlebars007_101
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [203] handlebars008_102
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [204] headlight_l_103
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [205] headlight_r_104
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [206] indicator_lr_105
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [207] indicator_rr_106
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [208] misc_a_107
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [209] misc_a001_108
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [210] misc_a002_109
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [211] misc_a003_110
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [212] misc_b_111
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [213] misc_b001_112
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [214] misc_b002_113
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [215] misc_c_114
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [216] misc_c001_115
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [217] misc_c002_116
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [218] misc_c003_117
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [219] misc_c004_118
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [220] misc_c005_119
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [221] misc_c006_120
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [222] misc_c007_121
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [223] misc_c008_122
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [224] misc_c009_123
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [225] misc_d_124
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [226] misc_d001_125
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [227] misc_g_126
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [228] misc_g001_127
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [229] misc_g002_128
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [230] swingarm_129
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [231] swingarm001_130
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [232] swingarm002_131
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [233] swingarm003_132
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [234] swingarm004_133
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [235] swingarm005_134
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [236] swingarm006_135
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [237] taillight_l_136
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [238] taillight_r_137
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 0
+
+              [239] wheel_lfchild_138
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [240] Object_196
+                Type: Mesh
+                Parent: wheel_lfchild_138
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 189
+                Triangles: 129
+                Materials: cm1_WHEEL
+                World position: 0.0000, -0.0987, -0.7728
+                World dimensions: 0.1086, 0.4300, 0.4755
+                Bounds min: -0.0543, -0.3138, -1.0106
+                Bounds max: 0.0543, 0.1163, -0.5351
+
+              [241] wheel_lfchild001_139
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [242] Object_198
+                Type: Mesh
+                Parent: wheel_lfchild001_139
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 189
+                Triangles: 129
+                Materials: cm1_WHEEL
+                World position: 0.0000, -0.0987, -0.7728
+                World dimensions: 0.1086, 0.4300, 0.4755
+                Bounds min: -0.0543, -0.3138, -1.0106
+                Bounds max: 0.0543, 0.1163, -0.5351
+
+              [243] wheel_lfchild002_140
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [244] Object_200
+                Type: Mesh
+                Parent: wheel_lfchild002_140
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 8717
+                Triangles: 10079
+                Materials: bakablack.001
+                World position: -0.0001, -0.0745, -0.7709
+                World dimensions: 0.1457, 0.4935, 0.4945
+                Bounds min: -0.0729, -0.3213, -1.0181
+                Bounds max: 0.0727, 0.1722, -0.5236
+
+              [245] wheel_lfchild003_141
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [246] Object_202
+                Type: Mesh
+                Parent: wheel_lfchild003_141
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 540
+                Triangles: 768
+                Materials: tire11
+                World position: -0.0000, -0.0746, -0.7709
+                World dimensions: 0.1310, 0.6452, 0.6452
+                Bounds min: -0.0655, -0.3972, -1.0935
+                Bounds max: 0.0655, 0.2479, -0.4483
+
+              [247] wheel_lfchild004_142
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [248] Object_204
+                Type: Mesh
+                Parent: wheel_lfchild004_142
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 508
+                Triangles: 576
+                Materials: sidewall1
+                World position: -0.0000, -0.0746, -0.7709
+                World dimensions: 0.1310, 0.5455, 0.5455
+                Bounds min: -0.0655, -0.3474, -1.0436
+                Bounds max: 0.0655, 0.1981, -0.4981
+
+              [249] wheel_lfchild005_143
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [250] Object_206
+                Type: Mesh
+                Parent: wheel_lfchild005_143
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 120
+                Triangles: 84
+                Materials: vehicle_generic_smallspecmap
+                World position: -0.0001, -0.0910, -0.5372
+                World dimensions: 0.1087, 0.0611, 0.0099
+                Bounds min: -0.0544, -0.1216, -0.5421
+                Bounds max: 0.0543, -0.0604, -0.5322
+
+              [251] wheel_lfchild006_144
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [252] Object_208
+                Type: Mesh
+                Parent: wheel_lfchild006_144
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 8717
+                Triangles: 10079
+                Materials: bakablack.001
+                World position: -0.0001, -0.0745, -0.7709
+                World dimensions: 0.1457, 0.4935, 0.4945
+                Bounds min: -0.0729, -0.3213, -1.0181
+                Bounds max: 0.0727, 0.1722, -0.5236
+
+              [253] wheel_lfchild007_145
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [254] Object_210
+                Type: Mesh
+                Parent: wheel_lfchild007_145
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 540
+                Triangles: 768
+                Materials: tire11
+                World position: -0.0000, -0.0746, -0.7709
+                World dimensions: 0.1310, 0.6452, 0.6452
+                Bounds min: -0.0655, -0.3972, -1.0935
+                Bounds max: 0.0655, 0.2479, -0.4483
+
+              [255] wheel_lfchild008_146
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [256] Object_212
+                Type: Mesh
+                Parent: wheel_lfchild008_146
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 508
+                Triangles: 576
+                Materials: sidewall1
+                World position: -0.0000, -0.0746, -0.7709
+                World dimensions: 0.1310, 0.5455, 0.5455
+                Bounds min: -0.0655, -0.3474, -1.0436
+                Bounds max: 0.0655, 0.1981, -0.4981
+
+              [257] wheel_lfchild009_147
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [258] Object_214
+                Type: Mesh
+                Parent: wheel_lfchild009_147
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 120
+                Triangles: 84
+                Materials: vehicle_generic_smallspecmap
+                World position: -0.0001, -0.0910, -0.5372
+                World dimensions: 0.1087, 0.0611, 0.0099
+                Bounds min: -0.0544, -0.1216, -0.5421
+                Bounds max: 0.0543, -0.0604, -0.5322
+
+              [259] wheel_lrchild_148
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [260] Object_216
+                Type: Mesh
+                Parent: wheel_lrchild_148
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 143
+                Triangles: 123
+                Materials: cm1_WHEEL
+                World position: -0.0000, -0.0859, 0.7791
+                World dimensions: 0.1633, 0.4320, 0.4763
+                Bounds min: -0.0816, -0.3019, 0.5410
+                Bounds max: 0.0816, 0.1301, 1.0173
+
+              [261] wheel_lrchild001_149
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [262] Object_218
+                Type: Mesh
+                Parent: wheel_lrchild001_149
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 143
+                Triangles: 123
+                Materials: cm1_WHEEL
+                World position: -0.0000, -0.0859, 0.7791
+                World dimensions: 0.1633, 0.4320, 0.4763
+                Bounds min: -0.0816, -0.3019, 0.5410
+                Bounds max: 0.0816, 0.1301, 1.0173
+
+              [263] wheel_lrchild002_150
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [264] Object_220
+                Type: Mesh
+                Parent: wheel_lrchild002_150
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 5980
+                Triangles: 8292
+                Materials: bakablack.001
+                World position: -0.0001, -0.0623, 0.7807
+                World dimensions: 0.1828, 0.4956, 0.4959
+                Bounds min: -0.0915, -0.3102, 0.5327
+                Bounds max: 0.0913, 0.1855, 1.0287
+
+              [265] wheel_lrchild003_151
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [266] Object_222
+                Type: Mesh
+                Parent: wheel_lrchild003_151
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 936
+                Triangles: 1536
+                Materials: tire11
+                World position: 0.0001, -0.0626, 0.7817
+                World dimensions: 0.1991, 0.6742, 0.6742
+                Bounds min: -0.0995, -0.3997, 0.4446
+                Bounds max: 0.0996, 0.2745, 1.1189
+
+              [267] wheel_lrchild004_152
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [268] Object_224
+                Type: Mesh
+                Parent: wheel_lrchild004_152
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 649
+                Triangles: 1024
+                Materials: sidewall1
+                World position: 0.0001, -0.0626, 0.7817
+                World dimensions: 0.1991, 0.5646, 0.5646
+                Bounds min: -0.0995, -0.3449, 0.4994
+                Bounds max: 0.0996, 0.2197, 1.0640
+
+              [269] wheel_lrchild005_153
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [270] Object_226
+                Type: Mesh
+                Parent: wheel_lrchild005_153
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 121
+                Triangles: 84
+                Materials: vehicle_generic_smallspecmap
+                World position: -0.0000, -0.0751, 1.0148
+                World dimensions: 0.1636, 0.0595, 0.0100
+                Bounds min: -0.0818, -0.1049, 1.0098
+                Bounds max: 0.0817, -0.0453, 1.0198
+
+              [271] wheel_lrchild006_154
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [272] Object_228
+                Type: Mesh
+                Parent: wheel_lrchild006_154
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 5980
+                Triangles: 8292
+                Materials: bakablack.001
+                World position: -0.0001, -0.0623, 0.7807
+                World dimensions: 0.1828, 0.4956, 0.4959
+                Bounds min: -0.0915, -0.3102, 0.5327
+                Bounds max: 0.0913, 0.1855, 1.0287
+
+              [273] wheel_lrchild007_155
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [274] Object_230
+                Type: Mesh
+                Parent: wheel_lrchild007_155
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 936
+                Triangles: 1536
+                Materials: tire11
+                World position: 0.0001, -0.0626, 0.7817
+                World dimensions: 0.1991, 0.6742, 0.6742
+                Bounds min: -0.0995, -0.3997, 0.4446
+                Bounds max: 0.0996, 0.2745, 1.1189
+
+              [275] wheel_lrchild008_156
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [276] Object_232
+                Type: Mesh
+                Parent: wheel_lrchild008_156
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 649
+                Triangles: 1024
+                Materials: sidewall1
+                World position: 0.0001, -0.0626, 0.7817
+                World dimensions: 0.1991, 0.5646, 0.5646
+                Bounds min: -0.0995, -0.3449, 0.4994
+                Bounds max: 0.0996, 0.2197, 1.0640
+
+              [277] wheel_lrchild009_157
+              Type: Object3D
+              Parent: cbr650rmesh_158
+              Children: 1
+
+                [278] Object_234
+                Type: Mesh
+                Parent: wheel_lrchild009_157
+                Children: 0
+                Renderable: YES
+                Skinned: undefined
+                Vertices: 121
+                Triangles: 84
+                Materials: vehicle_generic_smallspecmap
+                World position: -0.0000, -0.0751, 1.0148
+                World dimensions: 0.1636, 0.0595, 0.0100
+                Bounds min: -0.0818, -0.1049, 1.0098
+                Bounds max: 0.0817, -0.0453, 1.0198
