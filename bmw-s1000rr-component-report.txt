@@ -1,0 +1,739 @@
+BMW S1000 RR — GLB COMPONENT REPORT
+=================================================================
+File: public/models/motorcycles/bmw_s1000_rr.glb
+GLB version: 2
+Nodes: 203
+Meshes: 117
+Skins: 1
+
+1. COMPLETE NODE HIERARCHY
+-----------------------------------------------------------------
+[0] Sketchfab_model
+  [1] root
+    [2] GLTF_SceneRootNode
+      [3] offlrds1000r_81
+        [4] GLTF_created_0
+          [5] GLTF_created_0_rootJoint
+            [158] chassis_45
+              [159] dials_10
+                [160] N_1
+                [161] 1_2
+                [162] 2_3
+                [163] 3_4
+                [164] 4_5
+                [165] 5_6
+                [166] 6_7
+                [167] 8_8
+                [168] 9_9
+              [169] interior_13
+                [170] takometro_11
+                [171] dashglow_12
+              [172] headlight_l_14
+              [173] headlight_r_15
+              [174] seat_f_16
+              [175] handlebars_21
+                [176] hbgrip_l_17
+                [177] hbgrip_r_18
+                [178] LBUTTONS_19
+                [179] ign_20
+              [180] forks_u_25
+                [181] forks_l_24
+                  [182] wheel_lf_23
+                    [183] bikedisc_f_22
+              [184] cockpit_26
+              [185] swingarm_30
+                [186] mud-gaurd_27
+                [187] wheel_lr_29
+                  [188] bikedisc_r_28
+              [189] rear-frame_31
+              [190] seat_32
+              [191] rear-seat_33
+              [192] exhaust_1_34
+              [193] exhaust_2_35
+              [194] exhaust_3_36
+              [195] exhaust_4_37
+              [196] exhaust_5_38
+              [197] brakelight_l_39
+              [198] engineblock_40
+              [199] bodyshell_41
+              [200] extra_7_42
+              [201] chassis_dummy_43
+              [202] chassis_lowlod_44
+          [8] Object_8 | mesh=0 (Object_0), skin=0
+          [10] Object_10 | mesh=1 (Object_1), skin=0
+          [12] Object_12 | mesh=2 (Object_2), skin=0
+          [14] Object_14 | mesh=3 (Object_3), skin=0
+          [16] Object_16 | mesh=4 (Object_4), skin=0
+          [18] Object_18 | mesh=5 (Object_5), skin=0
+          [20] Object_20 | mesh=6 (Object_6), skin=0
+          [22] Object_22 | mesh=7 (Object_7), skin=0
+          [24] Object_24 | mesh=8 (Object_8), skin=0
+          [26] Object_26 | mesh=9 (Object_9), skin=0
+          [27] Object_27 | mesh=10 (Object_10), skin=0
+          [28] Object_28 | mesh=11 (Object_11), skin=0
+          [30] Object_30 | mesh=12 (Object_12), skin=0
+          [31] Object_31 | mesh=13 (Object_13), skin=0
+          [32] Object_32 | mesh=14 (Object_14), skin=0
+          [33] Object_33 | mesh=15 (Object_15), skin=0
+          [34] Object_34 | mesh=16 (Object_16), skin=0
+          [35] Object_35 | mesh=17 (Object_17), skin=0
+          [36] Object_36 | mesh=18 (Object_18), skin=0
+          [37] Object_37 | mesh=19 (Object_19), skin=0
+          [38] Object_38 | mesh=20 (Object_20), skin=0
+          [39] Object_39 | mesh=21 (Object_21), skin=0
+          [40] Object_40 | mesh=22 (Object_22), skin=0
+          [42] Object_42 | mesh=23 (Object_23), skin=0
+          [44] Object_44 | mesh=24 (Object_24), skin=0
+          [45] Object_45 | mesh=25 (Object_25), skin=0
+          [46] Object_46 | mesh=26 (Object_26), skin=0
+          [48] Object_48 | mesh=27 (Object_27), skin=0
+          [50] Object_50 | mesh=28 (Object_28), skin=0
+          [51] Object_51 | mesh=29 (Object_29), skin=0
+          [53] Object_53 | mesh=30 (Object_30), skin=0
+          [55] Object_55 | mesh=31 (Object_31), skin=0
+          [57] Object_57 | mesh=32 (Object_32), skin=0
+          [58] Object_58 | mesh=33 (Object_33), skin=0
+          [59] Object_59 | mesh=34 (Object_34), skin=0
+          [61] Object_61 | mesh=35 (Object_35), skin=0
+          [63] Object_63 | mesh=36 (Object_36), skin=0
+          [64] Object_64 | mesh=37 (Object_37), skin=0
+          [65] Object_65 | mesh=38 (Object_38), skin=0
+          [66] Object_66 | mesh=39 (Object_39), skin=0
+          [67] Object_67 | mesh=40 (Object_40), skin=0
+          [68] Object_68 | mesh=41 (Object_41), skin=0
+          [69] Object_69 | mesh=42 (Object_42), skin=0
+          [70] Object_70 | mesh=43 (Object_43), skin=0
+          [71] Object_71 | mesh=44 (Object_44), skin=0
+          [72] Object_72 | mesh=45 (Object_45), skin=0
+          [73] Object_73 | mesh=46 (Object_46), skin=0
+          [74] Object_74 | mesh=47 (Object_47), skin=0
+          [75] Object_75 | mesh=48 (Object_48), skin=0
+          [76] Object_76 | mesh=49 (Object_49), skin=0
+          [77] Object_77 | mesh=50 (Object_50), skin=0
+          [78] Object_78 | mesh=51 (Object_51), skin=0
+          [79] Object_79 | mesh=52 (Object_52), skin=0
+          [80] Object_80 | mesh=53 (Object_53), skin=0
+          [81] Object_81 | mesh=54 (Object_54), skin=0
+          [82] Object_82 | mesh=55 (Object_55), skin=0
+          [83] Object_83 | mesh=56 (Object_56), skin=0
+          [84] Object_84 | mesh=57 (Object_57), skin=0
+          [85] Object_85 | mesh=58 (Object_58), skin=0
+          [86] Object_86 | mesh=59 (Object_59), skin=0
+          [87] Object_87 | mesh=60 (Object_60), skin=0
+          [88] Object_88 | mesh=61 (Object_61), skin=0
+          [89] Object_89 | mesh=62 (Object_62), skin=0
+          [90] Object_90 | mesh=63 (Object_63), skin=0
+          [91] Object_91 | mesh=64 (Object_64), skin=0
+          [92] Object_92 | mesh=65 (Object_65), skin=0
+          [93] Object_93 | mesh=66 (Object_66), skin=0
+          [94] Object_94 | mesh=67 (Object_67), skin=0
+          [95] Object_95 | mesh=68 (Object_68), skin=0
+          [96] Object_96 | mesh=69 (Object_69), skin=0
+          [97] Object_97 | mesh=70 (Object_70), skin=0
+          [98] Object_98 | mesh=71 (Object_71), skin=0
+          [99] Object_99 | mesh=72 (Object_72), skin=0
+          [100] Object_100 | mesh=73 (Object_73), skin=0
+          [101] Object_101 | mesh=74 (Object_74), skin=0
+          [102] Object_102 | mesh=75 (Object_75), skin=0
+          [104] Object_104 | mesh=76 (Object_76), skin=0
+          [105] Object_105 | mesh=77 (Object_77), skin=0
+          [106] Object_106 | mesh=78 (Object_78), skin=0
+          [108] Object_108 | mesh=79 (Object_79), skin=0
+          [109] Object_109 | mesh=80 (Object_80), skin=0
+          [110] Object_110 | mesh=81 (Object_81), skin=0
+          [112] Object_112 | mesh=82 (Object_82), skin=0
+          [113] Object_113 | mesh=83 (Object_83), skin=0
+          [114] Object_114 | mesh=84 (Object_84), skin=0
+          [115] Object_115 | mesh=85 (Object_85), skin=0
+          [116] Object_116 | mesh=86 (Object_86), skin=0
+          [117] Object_117 | mesh=87 (Object_87), skin=0
+          [118] Object_118 | mesh=88 (Object_88), skin=0
+          [119] Object_119 | mesh=89 (Object_89), skin=0
+          [120] Object_120 | mesh=90 (Object_90), skin=0
+          [122] Object_122 | mesh=91 (Object_91), skin=0
+          [123] Object_123 | mesh=92 (Object_92), skin=0
+          [124] Object_124 | mesh=93 (Object_93), skin=0
+          [125] Object_125 | mesh=94 (Object_94), skin=0
+          [126] Object_126 | mesh=95 (Object_95), skin=0
+          [127] Object_127 | mesh=96 (Object_96), skin=0
+          [129] Object_129 | mesh=97 (Object_97), skin=0
+          [130] Object_130 | mesh=98 (Object_98), skin=0
+          [131] Object_131 | mesh=99 (Object_99), skin=0
+          [132] Object_132 | mesh=100 (Object_100), skin=0
+          [133] Object_133 | mesh=101 (Object_101), skin=0
+          [134] Object_134 | mesh=102 (Object_102), skin=0
+          [136] Object_136 | mesh=103 (Object_103), skin=0
+          [138] Object_138 | mesh=104 (Object_104), skin=0
+          [140] Object_140 | mesh=105 (Object_105), skin=0
+          [142] Object_142 | mesh=106 (Object_106), skin=0
+          [144] Object_144 | mesh=107 (Object_107), skin=0
+          [146] Object_146 | mesh=108 (Object_108), skin=0
+          [147] Object_147 | mesh=109 (Object_109), skin=0
+          [148] Object_148 | mesh=110 (Object_110), skin=0
+          [149] Object_149 | mesh=111 (Object_111), skin=0
+          [151] Object_151 | mesh=112 (Object_112), skin=0
+          [6] offlrds1000r.mesh_80
+            [7] 1_46
+            [9] 2_47
+            [11] 3_48
+            [13] 4_49
+            [15] 5_50
+            [17] 6_51
+            [19] 8_52
+            [21] 9_53
+            [23] bikedisc_f_54
+            [25] bikedisc_r_55
+            [29] bodyshell_56
+            [41] brakelight_l_57
+            [43] chassis_58
+            [47] cockpit_59
+            [49] dials_60
+            [52] engineblock_61
+            [54] extra_7_62
+            [56] forks_l_63
+            [60] forks_u_64
+            [62] handlebars_65
+            [103] headlight_l_66
+            [107] headlight_r_67
+            [111] ign_68
+            [121] interior_69
+            [128] LBUTTONS_70
+            [135] mud-gaurd_71
+            [137] N_72
+            [139] rear-frame_73
+            [141] rear-seat_74
+            [143] seat_75
+            [145] swingarm_76
+            [150] takometro_77
+            [152] wheel_lf.child_78
+              [153] Object_153 | mesh=113 (Object_113)
+              [154] Object_154 | mesh=114 (Object_114)
+            [155] wheel_lr.child_79
+              [156] Object_156 | mesh=115 (Object_115)
+              [157] Object_157 | mesh=116 (Object_116)
+
+2. MESH DETAILS
+-----------------------------------------------------------------
+Mesh 0: Object_0
+  Primitives: 1
+  primitive 0: 1156 vertices, 1020 triangles
+Mesh 1: Object_1
+  Primitives: 1
+  primitive 0: 960 vertices, 800 triangles
+Mesh 2: Object_2
+  Primitives: 1
+  primitive 0: 1152 vertices, 992 triangles
+Mesh 3: Object_3
+  Primitives: 1
+  primitive 0: 812 vertices, 666 triangles
+Mesh 4: Object_4
+  Primitives: 1
+  primitive 0: 780 vertices, 650 triangles
+Mesh 5: Object_5
+  Primitives: 1
+  primitive 0: 2152 vertices, 1749 triangles
+Mesh 6: Object_6
+  Primitives: 1
+  primitive 0: 965 vertices, 803 triangles
+Mesh 7: Object_7
+  Primitives: 1
+  primitive 0: 965 vertices, 803 triangles
+Mesh 8: Object_8
+  Primitives: 1
+  primitive 0: 1063 vertices, 1284 triangles
+Mesh 9: Object_9
+  Primitives: 1
+  primitive 0: 193 vertices, 140 triangles
+Mesh 10: Object_10
+  Primitives: 1
+  primitive 0: 72 vertices, 68 triangles
+Mesh 11: Object_11
+  Primitives: 1
+  primitive 0: 536 vertices, 512 triangles
+Mesh 12: Object_12
+  Primitives: 1
+  primitive 0: 312 vertices, 328 triangles
+Mesh 13: Object_13
+  Primitives: 1
+  primitive 0: 565 vertices, 710 triangles
+Mesh 14: Object_14
+  Primitives: 1
+  primitive 0: 259 vertices, 238 triangles
+Mesh 15: Object_15
+  Primitives: 1
+  primitive 0: 5786 vertices, 9404 triangles
+Mesh 16: Object_16
+  Primitives: 1
+  primitive 0: 19514 vertices, 33416 triangles
+Mesh 17: Object_17
+  Primitives: 1
+  primitive 0: 2036 vertices, 2054 triangles
+Mesh 18: Object_18
+  Primitives: 1
+  primitive 0: 14739 vertices, 12516 triangles
+Mesh 19: Object_19
+  Primitives: 1
+  primitive 0: 226 vertices, 240 triangles
+Mesh 20: Object_20
+  Primitives: 1
+  primitive 0: 197 vertices, 174 triangles
+Mesh 21: Object_21
+  Primitives: 1
+  primitive 0: 8099 vertices, 8638 triangles
+Mesh 22: Object_22
+  Primitives: 1
+  primitive 0: 4538 vertices, 5656 triangles
+Mesh 23: Object_23
+  Primitives: 1
+  primitive 0: 152 vertices, 178 triangles
+Mesh 24: Object_24
+  Primitives: 1
+  primitive 0: 43195 vertices, 42275 triangles
+Mesh 25: Object_25
+  Primitives: 1
+  primitive 0: 47 vertices, 34 triangles
+Mesh 26: Object_26
+  Primitives: 1
+  primitive 0: 2282 vertices, 2734 triangles
+Mesh 27: Object_27
+  Primitives: 1
+  primitive 0: 1284 vertices, 1392 triangles
+Mesh 28: Object_28
+  Primitives: 1
+  primitive 0: 92 vertices, 46 triangles
+Mesh 29: Object_29
+  Primitives: 1
+  primitive 0: 229 vertices, 290 triangles
+Mesh 30: Object_30
+  Primitives: 1
+  primitive 0: 11013 vertices, 10747 triangles
+Mesh 31: Object_31
+  Primitives: 1
+  primitive 0: 950 vertices, 856 triangles
+Mesh 32: Object_32
+  Primitives: 1
+  primitive 0: 827 vertices, 870 triangles
+Mesh 33: Object_33
+  Primitives: 1
+  primitive 0: 6344 vertices, 5975 triangles
+Mesh 34: Object_34
+  Primitives: 1
+  primitive 0: 6263 vertices, 8804 triangles
+Mesh 35: Object_35
+  Primitives: 1
+  primitive 0: 1466 vertices, 1412 triangles
+Mesh 36: Object_36
+  Primitives: 1
+  primitive 0: 7179 vertices, 7584 triangles
+Mesh 37: Object_37
+  Primitives: 1
+  primitive 0: 170 vertices, 168 triangles
+Mesh 38: Object_38
+  Primitives: 1
+  primitive 0: 71 vertices, 68 triangles
+Mesh 39: Object_39
+  Primitives: 1
+  primitive 0: 70 vertices, 108 triangles
+Mesh 40: Object_40
+  Primitives: 1
+  primitive 0: 27 vertices, 32 triangles
+Mesh 41: Object_41
+  Primitives: 1
+  primitive 0: 203 vertices, 336 triangles
+Mesh 42: Object_42
+  Primitives: 1
+  primitive 0: 3166 vertices, 3126 triangles
+Mesh 43: Object_43
+  Primitives: 1
+  primitive 0: 3365 vertices, 4576 triangles
+Mesh 44: Object_44
+  Primitives: 1
+  primitive 0: 508 vertices, 628 triangles
+Mesh 45: Object_45
+  Primitives: 1
+  primitive 0: 5828 vertices, 6652 triangles
+Mesh 46: Object_46
+  Primitives: 1
+  primitive 0: 3921 vertices, 3048 triangles
+Mesh 47: Object_47
+  Primitives: 1
+  primitive 0: 1632 vertices, 1440 triangles
+Mesh 48: Object_48
+  Primitives: 1
+  primitive 0: 1920 vertices, 1648 triangles
+Mesh 49: Object_49
+  Primitives: 1
+  primitive 0: 1476 vertices, 2144 triangles
+Mesh 50: Object_50
+  Primitives: 1
+  primitive 0: 920 vertices, 1672 triangles
+Mesh 51: Object_51
+  Primitives: 1
+  primitive 0: 196 vertices, 154 triangles
+Mesh 52: Object_52
+  Primitives: 1
+  primitive 0: 37 vertices, 53 triangles
+Mesh 53: Object_53
+  Primitives: 1
+  primitive 0: 6778 vertices, 12576 triangles
+Mesh 54: Object_54
+  Primitives: 1
+  primitive 0: 728 vertices, 448 triangles
+Mesh 55: Object_55
+  Primitives: 1
+  primitive 0: 1345 vertices, 2632 triangles
+Mesh 56: Object_56
+  Primitives: 1
+  primitive 0: 40 vertices, 56 triangles
+Mesh 57: Object_57
+  Primitives: 1
+  primitive 0: 36 vertices, 51 triangles
+Mesh 58: Object_58
+  Primitives: 1
+  primitive 0: 896 vertices, 1556 triangles
+Mesh 59: Object_59
+  Primitives: 1
+  primitive 0: 653 vertices, 1248 triangles
+Mesh 60: Object_60
+  Primitives: 1
+  primitive 0: 896 vertices, 1554 triangles
+Mesh 61: Object_61
+  Primitives: 1
+  primitive 0: 653 vertices, 1248 triangles
+Mesh 62: Object_62
+  Primitives: 1
+  primitive 0: 890 vertices, 1546 triangles
+Mesh 63: Object_63
+  Primitives: 1
+  primitive 0: 889 vertices, 1540 triangles
+Mesh 64: Object_64
+  Primitives: 1
+  primitive 0: 778 vertices, 1002 triangles
+Mesh 65: Object_65
+  Primitives: 1
+  primitive 0: 532 vertices, 610 triangles
+Mesh 66: Object_66
+  Primitives: 1
+  primitive 0: 6765 vertices, 11056 triangles
+Mesh 67: Object_67
+  Primitives: 1
+  primitive 0: 874 vertices, 1632 triangles
+Mesh 68: Object_68
+  Primitives: 1
+  primitive 0: 872 vertices, 1628 triangles
+Mesh 69: Object_69
+  Primitives: 1
+  primitive 0: 1280 vertices, 1112 triangles
+Mesh 70: Object_70
+  Primitives: 1
+  primitive 0: 192 vertices, 184 triangles
+Mesh 71: Object_71
+  Primitives: 1
+  primitive 0: 982 vertices, 1104 triangles
+Mesh 72: Object_72
+  Primitives: 1
+  primitive 0: 384 vertices, 380 triangles
+Mesh 73: Object_73
+  Primitives: 1
+  primitive 0: 516 vertices, 607 triangles
+Mesh 74: Object_74
+  Primitives: 1
+  primitive 0: 2541 vertices, 2824 triangles
+Mesh 75: Object_75
+  Primitives: 1
+  primitive 0: 1529 vertices, 2692 triangles
+Mesh 76: Object_76
+  Primitives: 1
+  primitive 0: 881 vertices, 723 triangles
+Mesh 77: Object_77
+  Primitives: 1
+  primitive 0: 113 vertices, 169 triangles
+Mesh 78: Object_78
+  Primitives: 1
+  primitive 0: 230 vertices, 274 triangles
+Mesh 79: Object_79
+  Primitives: 1
+  primitive 0: 844 vertices, 694 triangles
+Mesh 80: Object_80
+  Primitives: 1
+  primitive 0: 115 vertices, 169 triangles
+Mesh 81: Object_81
+  Primitives: 1
+  primitive 0: 264 vertices, 303 triangles
+Mesh 82: Object_82
+  Primitives: 1
+  primitive 0: 301 vertices, 318 triangles
+Mesh 83: Object_83
+  Primitives: 1
+  primitive 0: 212 vertices, 190 triangles
+Mesh 84: Object_84
+  Primitives: 1
+  primitive 0: 262 vertices, 218 triangles
+Mesh 85: Object_85
+  Primitives: 1
+  primitive 0: 196 vertices, 222 triangles
+Mesh 86: Object_86
+  Primitives: 1
+  primitive 0: 1140 vertices, 1658 triangles
+Mesh 87: Object_87
+  Primitives: 1
+  primitive 0: 821 vertices, 1642 triangles
+Mesh 88: Object_88
+  Primitives: 1
+  primitive 0: 962 vertices, 1160 triangles
+Mesh 89: Object_89
+  Primitives: 1
+  primitive 0: 691 vertices, 886 triangles
+Mesh 90: Object_90
+  Primitives: 1
+  primitive 0: 27 vertices, 9 triangles
+Mesh 91: Object_91
+  Primitives: 1
+  primitive 0: 4 vertices, 2 triangles
+Mesh 92: Object_92
+  Primitives: 1
+  primitive 0: 68 vertices, 64 triangles
+Mesh 93: Object_93
+  Primitives: 1
+  primitive 0: 288 vertices, 265 triangles
+Mesh 94: Object_94
+  Primitives: 1
+  primitive 0: 1893 vertices, 2380 triangles
+Mesh 95: Object_95
+  Primitives: 1
+  primitive 0: 82 vertices, 80 triangles
+Mesh 96: Object_96
+  Primitives: 1
+  primitive 0: 659 vertices, 752 triangles
+Mesh 97: Object_97
+  Primitives: 1
+  primitive 0: 16888 vertices, 22468 triangles
+Mesh 98: Object_98
+  Primitives: 1
+  primitive 0: 402 vertices, 688 triangles
+Mesh 99: Object_99
+  Primitives: 1
+  primitive 0: 404 vertices, 692 triangles
+Mesh 100: Object_100
+  Primitives: 1
+  primitive 0: 402 vertices, 688 triangles
+Mesh 101: Object_101
+  Primitives: 1
+  primitive 0: 406 vertices, 696 triangles
+Mesh 102: Object_102
+  Primitives: 1
+  primitive 0: 404 vertices, 692 triangles
+Mesh 103: Object_103
+  Primitives: 1
+  primitive 0: 3712 vertices, 5047 triangles
+Mesh 104: Object_104
+  Primitives: 1
+  primitive 0: 76 vertices, 63 triangles
+Mesh 105: Object_105
+  Primitives: 1
+  primitive 0: 1224 vertices, 1398 triangles
+Mesh 106: Object_106
+  Primitives: 1
+  primitive 0: 2826 vertices, 3656 triangles
+Mesh 107: Object_107
+  Primitives: 1
+  primitive 0: 877 vertices, 1215 triangles
+Mesh 108: Object_108
+  Primitives: 1
+  primitive 0: 4 vertices, 2 triangles
+Mesh 109: Object_109
+  Primitives: 1
+  primitive 0: 7462 vertices, 8092 triangles
+Mesh 110: Object_110
+  Primitives: 1
+  primitive 0: 697 vertices, 664 triangles
+Mesh 111: Object_111
+  Primitives: 1
+  primitive 0: 1578 vertices, 1423 triangles
+Mesh 112: Object_112
+  Primitives: 1
+  primitive 0: 20 vertices, 18 triangles
+Mesh 113: Object_113
+  Primitives: 1
+  primitive 0: 5180 vertices, 3709 triangles
+Mesh 114: Object_114
+  Primitives: 1
+  primitive 0: 1986 vertices, 2432 triangles
+Mesh 115: Object_115
+  Primitives: 1
+  primitive 0: 5121 vertices, 3724 triangles
+Mesh 116: Object_116
+  Primitives: 1
+  primitive 0: 2017 vertices, 2432 triangles
+
+3. SKIN / SKELETON DETAILS
+-----------------------------------------------------------------
+Skin 0: Skin_0
+  Joint count: 46
+  Skeleton root: GLTF_created_0_rootJoint
+  - [5] GLTF_created_0_rootJoint
+  - [158] chassis_45
+  - [159] dials_10
+  - [160] N_1
+  - [161] 1_2
+  - [162] 2_3
+  - [163] 3_4
+  - [164] 4_5
+  - [165] 5_6
+  - [166] 6_7
+  - [167] 8_8
+  - [168] 9_9
+  - [169] interior_13
+  - [170] takometro_11
+  - [171] dashglow_12
+  - [172] headlight_l_14
+  - [173] headlight_r_15
+  - [174] seat_f_16
+  - [175] handlebars_21
+  - [176] hbgrip_l_17
+  - [177] hbgrip_r_18
+  - [178] LBUTTONS_19
+  - [179] ign_20
+  - [180] forks_u_25
+  - [181] forks_l_24
+  - [182] wheel_lf_23
+  - [183] bikedisc_f_22
+  - [184] cockpit_26
+  - [185] swingarm_30
+  - [186] mud-gaurd_27
+  - [187] wheel_lr_29
+  - [188] bikedisc_r_28
+  - [189] rear-frame_31
+  - [190] seat_32
+  - [191] rear-seat_33
+  - [192] exhaust_1_34
+  - [193] exhaust_2_35
+  - [194] exhaust_3_36
+  - [195] exhaust_4_37
+  - [196] exhaust_5_38
+  - [197] brakelight_l_39
+  - [198] engineblock_40
+  - [199] bodyshell_41
+  - [200] extra_7_42
+  - [201] chassis_dummy_43
+  - [202] chassis_lowlod_44
+
+4. NODES WITH MESHES
+-----------------------------------------------------------------
+Node [8] Object_8 -> Mesh [0] Object_0 | Skin [0]
+Node [10] Object_10 -> Mesh [1] Object_1 | Skin [0]
+Node [12] Object_12 -> Mesh [2] Object_2 | Skin [0]
+Node [14] Object_14 -> Mesh [3] Object_3 | Skin [0]
+Node [16] Object_16 -> Mesh [4] Object_4 | Skin [0]
+Node [18] Object_18 -> Mesh [5] Object_5 | Skin [0]
+Node [20] Object_20 -> Mesh [6] Object_6 | Skin [0]
+Node [22] Object_22 -> Mesh [7] Object_7 | Skin [0]
+Node [24] Object_24 -> Mesh [8] Object_8 | Skin [0]
+Node [26] Object_26 -> Mesh [9] Object_9 | Skin [0]
+Node [27] Object_27 -> Mesh [10] Object_10 | Skin [0]
+Node [28] Object_28 -> Mesh [11] Object_11 | Skin [0]
+Node [30] Object_30 -> Mesh [12] Object_12 | Skin [0]
+Node [31] Object_31 -> Mesh [13] Object_13 | Skin [0]
+Node [32] Object_32 -> Mesh [14] Object_14 | Skin [0]
+Node [33] Object_33 -> Mesh [15] Object_15 | Skin [0]
+Node [34] Object_34 -> Mesh [16] Object_16 | Skin [0]
+Node [35] Object_35 -> Mesh [17] Object_17 | Skin [0]
+Node [36] Object_36 -> Mesh [18] Object_18 | Skin [0]
+Node [37] Object_37 -> Mesh [19] Object_19 | Skin [0]
+Node [38] Object_38 -> Mesh [20] Object_20 | Skin [0]
+Node [39] Object_39 -> Mesh [21] Object_21 | Skin [0]
+Node [40] Object_40 -> Mesh [22] Object_22 | Skin [0]
+Node [42] Object_42 -> Mesh [23] Object_23 | Skin [0]
+Node [44] Object_44 -> Mesh [24] Object_24 | Skin [0]
+Node [45] Object_45 -> Mesh [25] Object_25 | Skin [0]
+Node [46] Object_46 -> Mesh [26] Object_26 | Skin [0]
+Node [48] Object_48 -> Mesh [27] Object_27 | Skin [0]
+Node [50] Object_50 -> Mesh [28] Object_28 | Skin [0]
+Node [51] Object_51 -> Mesh [29] Object_29 | Skin [0]
+Node [53] Object_53 -> Mesh [30] Object_30 | Skin [0]
+Node [55] Object_55 -> Mesh [31] Object_31 | Skin [0]
+Node [57] Object_57 -> Mesh [32] Object_32 | Skin [0]
+Node [58] Object_58 -> Mesh [33] Object_33 | Skin [0]
+Node [59] Object_59 -> Mesh [34] Object_34 | Skin [0]
+Node [61] Object_61 -> Mesh [35] Object_35 | Skin [0]
+Node [63] Object_63 -> Mesh [36] Object_36 | Skin [0]
+Node [64] Object_64 -> Mesh [37] Object_37 | Skin [0]
+Node [65] Object_65 -> Mesh [38] Object_38 | Skin [0]
+Node [66] Object_66 -> Mesh [39] Object_39 | Skin [0]
+Node [67] Object_67 -> Mesh [40] Object_40 | Skin [0]
+Node [68] Object_68 -> Mesh [41] Object_41 | Skin [0]
+Node [69] Object_69 -> Mesh [42] Object_42 | Skin [0]
+Node [70] Object_70 -> Mesh [43] Object_43 | Skin [0]
+Node [71] Object_71 -> Mesh [44] Object_44 | Skin [0]
+Node [72] Object_72 -> Mesh [45] Object_45 | Skin [0]
+Node [73] Object_73 -> Mesh [46] Object_46 | Skin [0]
+Node [74] Object_74 -> Mesh [47] Object_47 | Skin [0]
+Node [75] Object_75 -> Mesh [48] Object_48 | Skin [0]
+Node [76] Object_76 -> Mesh [49] Object_49 | Skin [0]
+Node [77] Object_77 -> Mesh [50] Object_50 | Skin [0]
+Node [78] Object_78 -> Mesh [51] Object_51 | Skin [0]
+Node [79] Object_79 -> Mesh [52] Object_52 | Skin [0]
+Node [80] Object_80 -> Mesh [53] Object_53 | Skin [0]
+Node [81] Object_81 -> Mesh [54] Object_54 | Skin [0]
+Node [82] Object_82 -> Mesh [55] Object_55 | Skin [0]
+Node [83] Object_83 -> Mesh [56] Object_56 | Skin [0]
+Node [84] Object_84 -> Mesh [57] Object_57 | Skin [0]
+Node [85] Object_85 -> Mesh [58] Object_58 | Skin [0]
+Node [86] Object_86 -> Mesh [59] Object_59 | Skin [0]
+Node [87] Object_87 -> Mesh [60] Object_60 | Skin [0]
+Node [88] Object_88 -> Mesh [61] Object_61 | Skin [0]
+Node [89] Object_89 -> Mesh [62] Object_62 | Skin [0]
+Node [90] Object_90 -> Mesh [63] Object_63 | Skin [0]
+Node [91] Object_91 -> Mesh [64] Object_64 | Skin [0]
+Node [92] Object_92 -> Mesh [65] Object_65 | Skin [0]
+Node [93] Object_93 -> Mesh [66] Object_66 | Skin [0]
+Node [94] Object_94 -> Mesh [67] Object_67 | Skin [0]
+Node [95] Object_95 -> Mesh [68] Object_68 | Skin [0]
+Node [96] Object_96 -> Mesh [69] Object_69 | Skin [0]
+Node [97] Object_97 -> Mesh [70] Object_70 | Skin [0]
+Node [98] Object_98 -> Mesh [71] Object_71 | Skin [0]
+Node [99] Object_99 -> Mesh [72] Object_72 | Skin [0]
+Node [100] Object_100 -> Mesh [73] Object_73 | Skin [0]
+Node [101] Object_101 -> Mesh [74] Object_74 | Skin [0]
+Node [102] Object_102 -> Mesh [75] Object_75 | Skin [0]
+Node [104] Object_104 -> Mesh [76] Object_76 | Skin [0]
+Node [105] Object_105 -> Mesh [77] Object_77 | Skin [0]
+Node [106] Object_106 -> Mesh [78] Object_78 | Skin [0]
+Node [108] Object_108 -> Mesh [79] Object_79 | Skin [0]
+Node [109] Object_109 -> Mesh [80] Object_80 | Skin [0]
+Node [110] Object_110 -> Mesh [81] Object_81 | Skin [0]
+Node [112] Object_112 -> Mesh [82] Object_82 | Skin [0]
+Node [113] Object_113 -> Mesh [83] Object_83 | Skin [0]
+Node [114] Object_114 -> Mesh [84] Object_84 | Skin [0]
+Node [115] Object_115 -> Mesh [85] Object_85 | Skin [0]
+Node [116] Object_116 -> Mesh [86] Object_86 | Skin [0]
+Node [117] Object_117 -> Mesh [87] Object_87 | Skin [0]
+Node [118] Object_118 -> Mesh [88] Object_88 | Skin [0]
+Node [119] Object_119 -> Mesh [89] Object_89 | Skin [0]
+Node [120] Object_120 -> Mesh [90] Object_90 | Skin [0]
+Node [122] Object_122 -> Mesh [91] Object_91 | Skin [0]
+Node [123] Object_123 -> Mesh [92] Object_92 | Skin [0]
+Node [124] Object_124 -> Mesh [93] Object_93 | Skin [0]
+Node [125] Object_125 -> Mesh [94] Object_94 | Skin [0]
+Node [126] Object_126 -> Mesh [95] Object_95 | Skin [0]
+Node [127] Object_127 -> Mesh [96] Object_96 | Skin [0]
+Node [129] Object_129 -> Mesh [97] Object_97 | Skin [0]
+Node [130] Object_130 -> Mesh [98] Object_98 | Skin [0]
+Node [131] Object_131 -> Mesh [99] Object_99 | Skin [0]
+Node [132] Object_132 -> Mesh [100] Object_100 | Skin [0]
+Node [133] Object_133 -> Mesh [101] Object_101 | Skin [0]
+Node [134] Object_134 -> Mesh [102] Object_102 | Skin [0]
+Node [136] Object_136 -> Mesh [103] Object_103 | Skin [0]
+Node [138] Object_138 -> Mesh [104] Object_104 | Skin [0]
+Node [140] Object_140 -> Mesh [105] Object_105 | Skin [0]
+Node [142] Object_142 -> Mesh [106] Object_106 | Skin [0]
+Node [144] Object_144 -> Mesh [107] Object_107 | Skin [0]
+Node [146] Object_146 -> Mesh [108] Object_108 | Skin [0]
+Node [147] Object_147 -> Mesh [109] Object_109 | Skin [0]
+Node [148] Object_148 -> Mesh [110] Object_110 | Skin [0]
+Node [149] Object_149 -> Mesh [111] Object_111 | Skin [0]
+Node [151] Object_151 -> Mesh [112] Object_112 | Skin [0]
+Node [153] Object_153 -> Mesh [113] Object_113
+Node [154] Object_154 -> Mesh [114] Object_114
+Node [156] Object_156 -> Mesh [115] Object_115
+Node [157] Object_157 -> Mesh [116] Object_116
