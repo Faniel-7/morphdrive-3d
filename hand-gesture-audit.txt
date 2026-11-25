@@ -1,0 +1,3078 @@
+==================================================
+MORPHDRIVE 3D — HAND GESTURE AUDIT
+==================================================
+
+===== PROJECT STATUS =====
+ M frontend/src/main.js
+ M frontend/src/style.css
+ M frontend/src/vehicle-explosion/explosion-manager.js
+?? bmw-s1000rr-component-report.txt
+?? docs/cockpit-vehicle-reference.md
+?? docs/reports/Honda_CBR650R_component_report.txt
+?? docs/reports/cockpit-geometry-world-bounds-2026-11-22T15-20-23-664Z.txt
+?? docs/reports/cockpit-geometry-world-bounds-2026-11-22T17-33-24-086Z.txt
+?? docs/reports/sedan-cockpit-inspection.txt
+?? docs/reports/vehicle-cockpit-candidates.txt
+?? docs/reports/vehicle-model-inventory.json
+?? docs/reports/vehicle-model-inventory.txt
+?? frontend/realistic-helicopter-file-search.txt
+?? frontend/scripts/find-vehicle-cockpit-parts.mjs
+?? frontend/scripts/generate-honda-cbr650r-report.mjs
+?? frontend/scripts/generate-honda-report.mjs
+?? frontend/scripts/inspect-all-vehicles.mjs
+?? frontend/scripts/inspect-cockpit-geometry.mjs
+?? frontend/scripts/inspect-cockpit-model.mjs
+?? frontend/src/cockpit-mode/
+?? frontend/src/main.backup-customization-20261122-135910.js
+?? frontend/src/main.backup-inspection-20261122-133845.js
+?? frontend/src/main.backup-scanning-20261122-141735.js
+?? frontend/src/main.backup-sedan-animation-20261122-133034.js
+?? frontend/src/main.js.backup-cockpit-20261122
+?? frontend/src/main.js.backup-front-seat-20261122-100619
+?? frontend/src/style.backup-customization-20261122-135910.css
+?? frontend/src/style.backup-scanning-20261122-141735.css
+?? frontend/src/vehicle-explosion/explosion-manager.backup-smooth-animation-20261122-131902.js
+?? frontend/src/vehicle-explosion/explosion-manager.js.failed-individual-parts-20261121-131344
+?? frontend/src/vehicle-explosion/honda-cbr650r-explosion.js.failed-individual-parts-20261121-131344
+?? frontend/src/vehicle-scanning/
+?? hand-gesture-audit.txt
+?? sukhoi-su57-component-report.txt
+
+===== FRONTEND SOURCE STRUCTURE =====
+frontend/src/assets/hero.png
+frontend/src/assets/javascript.svg
+frontend/src/assets/vite.svg
+frontend/src/cockpit-mode/cockpit-camera.js
+frontend/src/cockpit-mode/cockpit-camera.js.backup-20261122
+frontend/src/cockpit-mode/cockpit-camera.js.backup-20261122-125115
+frontend/src/cockpit-mode/cockpit-camera.js.backup-camera-gap-20261122-101441
+frontend/src/cockpit-mode/cockpit-camera.js.backup-driving-view-20261122-100950
+frontend/src/cockpit-mode/cockpit-camera.js.backup-front-seat-20261122-100619
+frontend/src/counter.js
+frontend/src/hand-controller.js
+frontend/src/hand-preview.js
+frontend/src/hand-test.js
+frontend/src/main.backup-customization-20261122-135910.js
+frontend/src/main.backup-inspection-20261122-133845.js
+frontend/src/main.backup-scanning-20261122-141735.js
+frontend/src/main.backup-sedan-animation-20261122-133034.js
+frontend/src/main.js
+frontend/src/main.js.backup-cockpit-20261122
+frontend/src/main.js.backup-front-seat-20261122-100619
+frontend/src/main.js.before-bmw-diagnostic-20261121-132014
+frontend/src/main.js.before-honda-rig-report
+frontend/src/main.js.before-ui-cleanup.bak
+frontend/src/polestar-test.js
+frontend/src/showroom/showroom.css
+frontend/src/showroom/showroom.js
+frontend/src/showroom/vehicle-catalog.js
+frontend/src/showroom/vehicle-catalog.js.backup
+frontend/src/style.backup-customization-20261122-135910.css
+frontend/src/style.backup-scanning-20261122-141735.css
+frontend/src/style.css
+frontend/src/style.css.before-ui-cleanup.bak
+frontend/src/vehicle-explosion/airbus-a320-explosion.js
+frontend/src/vehicle-explosion/airbus-a320-explosion.js.backup
+frontend/src/vehicle-explosion/airbus-a320-explosion.js.bad-experiment
+frontend/src/vehicle-explosion/airbus-a320-explosion.js.before-all-groups
+frontend/src/vehicle-explosion/airbus-a320-explosion.js.before-ground-axis-fix
+frontend/src/vehicle-explosion/bmw-s1000rr-explosion.js
+frontend/src/vehicle-explosion/bmw-s1000rr-explosion.js.before-spacing-fix
+frontend/src/vehicle-explosion/component-diagnostic.js
+frontend/src/vehicle-explosion/explosion-config.js
+frontend/src/vehicle-explosion/explosion-config.js.backup
+frontend/src/vehicle-explosion/explosion-config.js.before-bmw-20261121-133422
+frontend/src/vehicle-explosion/explosion-config.js.before-honda-20261121-124858
+frontend/src/vehicle-explosion/explosion-config.js.before-man-tgx
+frontend/src/vehicle-explosion/explosion-config.js.before-missing-meshes.bak
+frontend/src/vehicle-explosion/explosion-config.js.before-sports-bike-fix
+frontend/src/vehicle-explosion/explosion-config.js.before-su57-fix
+frontend/src/vehicle-explosion/explosion-manager.backup-smooth-animation-20261122-131902.js
+frontend/src/vehicle-explosion/explosion-manager.js
+frontend/src/vehicle-explosion/explosion-manager.js.backup
+frontend/src/vehicle-explosion/explosion-manager.js.before-a320-all-groups
+frontend/src/vehicle-explosion/explosion-manager.js.before-a320-assembly-fix
+frontend/src/vehicle-explosion/explosion-manager.js.before-a320-floor-diagnostic
+frontend/src/vehicle-explosion/explosion-manager.js.before-a320-floor-fix
+frontend/src/vehicle-explosion/explosion-manager.js.before-a320-height-diagnostic
+frontend/src/vehicle-explosion/explosion-manager.js.before-bmw-20261121-133422
+frontend/src/vehicle-explosion/explosion-manager.js.before-component-separation
+frontend/src/vehicle-explosion/explosion-manager.js.before-helicopter-layout
+frontend/src/vehicle-explosion/explosion-manager.js.before-honda-20261121-124858
+frontend/src/vehicle-explosion/explosion-manager.js.before-individual-parts-20261121-130432
+frontend/src/vehicle-explosion/explosion-manager.js.before-man-tgx
+frontend/src/vehicle-explosion/explosion-manager.js.before-polestar-floor-fix
+frontend/src/vehicle-explosion/explosion-manager.js.before-sports-bike-fix
+frontend/src/vehicle-explosion/explosion-manager.js.before-su57-planner
+frontend/src/vehicle-explosion/explosion-manager.js.before-wide-spacing
+frontend/src/vehicle-explosion/explosion-manager.js.failed-individual-parts-20261121-131344
+frontend/src/vehicle-explosion/honda-cbr650r-explosion.js
+frontend/src/vehicle-explosion/honda-cbr650r-explosion.js.before-individual-parts-20261121-130432
+frontend/src/vehicle-explosion/honda-cbr650r-explosion.js.before-spacing-20261121-125427
+frontend/src/vehicle-explosion/honda-cbr650r-explosion.js.failed-individual-parts-20261121-131344
+frontend/src/vehicle-explosion/man-tgx-explosion.js
+frontend/src/vehicle-explosion/man-tgx-explosion.js.before-individual-separation
+frontend/src/vehicle-explosion/man-tgx-explosion.js.before-parent-root-fix
+frontend/src/vehicle-explosion/man-tgx-explosion.js.before-root-fix
+frontend/src/vehicle-explosion/man-tgx-explosion.js.before-spacing-fix
+frontend/src/vehicle-explosion/sukhoi-su57-explosion.js
+frontend/src/vehicle-explosion/vehicle-analyzer.js
+frontend/src/vehicle-scanning/vehicle-scanner.js
+
+===== HAND CONTROLLER =====
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+import {
+  HandLandmarker,
+  FilesetResolver
+} from '@mediapipe/tasks-vision';
+
+export function createHandController({ scene, camera, viewport }) {
+  const video = document.createElement('video');
+  const orientationStatus = document.querySelector('#hand-orientation');
+  const startButton = document.querySelector('#start-hand-control');
+  const status = document.querySelector('#hand-status');
+
+  if (!scene?.isObject3D || !camera?.isCamera || !viewport ||
+      !startButton || !status) {
+    throw new Error('Missing required elements for hand control.');
+  }
+
+  video.muted = true;
+  video.playsInline = true;
+  video.autoplay = true;
+
+  const SETTINGS = {
+    maxHands: 2,
+    modelHeight: 12,
+
+    // Time constants in seconds. A little more filtering reduces
+    // landmark jitter without making the hand feel sluggish.
+    positionTime: 0.075,
+    rotationTime: 0.095,
+    imageTime: 0.065,
+    landmarkTime: 0.075,
+    boneTime: 0.095,
+    scaleTime: 0.12,
+
+    scaleMin: 0.35,
+    scaleMax: 1.8,
+    visualScale: 0.72,
+
+    detectionInterval: 40,
+    lostHandGraceMs: 420,
+    handIdentityGraceMs: 650,
+    identitySwitchMargin: 0.045,
+
+    showCameraPreview: true,
+    previewInterval: 45
+  };
+
+  // ------------------------------------------------------------
+  // STATE
+  // ------------------------------------------------------------
+
+  let previewCanvas = null;
+  let previewContext = null;
+  let previewWrapper = null;
+  let latestImageLandmarks = [];
+  let lastPreviewDraw = 0;
+
+  let originalHandScene = null;
+  let handModelReady = false;
+  let handLandmarker = null;
+  let cameraStream = null;
+
+  let running = false;
+  let disposed = false;
+  let detectionBusy = false;
+
+  let lastDetectionTime = -Infinity;
+  let lastVideoTime = -1;
+  let detectionFrame = null;
+
+  const handInstances = new Map();
+  const loader = new GLTFLoader();
+
+  const cyanMaterial = new THREE.MeshBasicMaterial({
+    color: 0x16cfff,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.95,
+    side: THREE.DoubleSide,
+    depthWrite: false
+  });
+
+  const FINGER_SEGMENTS = [
+    ['index_meta', 0, 5, 'index_prox'],
+    ['index_prox', 5, 6, 'index_midd'],
+    ['index_midd', 6, 7, 'index_dist'],
+    ['index_dist', 7, 8, null],
+
+    ['midd_meta', 0, 9, 'midd_prox'],
+    ['midd_prox', 9, 10, 'midd_midd'],
+    ['midd_midd', 10, 11, 'midd_dist'],
+    ['midd_dist', 11, 12, null],
+
+    ['ring_meta', 0, 13, 'ring_prox'],
+    ['ring_prox', 13, 14, 'ring_midd'],
+    ['ring_midd', 14, 15, 'ring_dist'],
+    ['ring_dist', 15, 16, null],
+
+    ['pinky_meta', 0, 17, 'pinky_prox'],
+    ['pinky_prox', 17, 18, 'pinky_midd'],
+    ['pinky_midd', 18, 19, 'pinky_dist'],
+    ['pinky_dist', 19, 20, null],
+
+    ['thumb_trapez', 0, 1, 'thumb_meta'],
+    ['thumb_meta', 1, 2, 'thumb_prox'],
+    ['thumb_prox', 2, 3, 'thumb_dist'],
+    ['thumb_dist', 3, 4, null]
+  ];
+
+  const REQUIRED_BONES = [
+    'radius_ulna',
+    'index_meta', 'index_prox', 'index_midd', 'index_dist',
+    'midd_meta', 'midd_prox', 'midd_midd', 'midd_dist',
+    'ring_meta', 'ring_prox', 'ring_midd', 'ring_dist',
+    'pinky_meta', 'pinky_prox', 'pinky_midd', 'pinky_dist',
+    'thumb_trapez', 'thumb_meta', 'thumb_prox', 'thumb_dist'
+  ];
+
+  const PALM_IDS = [0, 5, 9, 13, 17];
+
+  // ------------------------------------------------------------
+  // SMALL HELPERS
+  // ------------------------------------------------------------
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function smoothingAlpha(dt, timeConstant) {
+    if (timeConstant <= 0) return 1;
+    return 1 - Math.exp(-Math.max(0, dt) / timeConstant);
+  }
+
+  function validVector(vector) {
+    return Number.isFinite(vector.x) &&
+      Number.isFinite(vector.y) &&
+      Number.isFinite(vector.z) &&
+      vector.lengthSq() > 1e-10;
+  }
+
+  function worldPoint(point) {
+    // MediaPipe world coordinates are converted into the controller's
+    // mirrored coordinate convention, consistently with image X.
+    return new THREE.Vector3(-point.x, -point.y, -point.z);
+  }
+
+  function imageCenter(landmarks) {
+    const center = new THREE.Vector2();
+    for (const id of PALM_IDS) {
+      center.x += 1 - landmarks[id].x;
+      center.y += landmarks[id].y;
+    }
+    return center.multiplyScalar(1 / PALM_IDS.length);
+  }
+
+  function normalizedHandCenter(landmarks) {
+    const center = imageCenter(landmarks);
+    return { x: center.x, y: center.y };
+  }
+
+  function directionBetween(points, start, end) {
+    const a = worldPoint(points[start]);
+    const b = worldPoint(points[end]);
+    const direction = b.sub(a);
+    if (direction.lengthSq() > 1e-10) direction.normalize();
+    return direction;
+  }
+
+  function makeFrame(across, up, previousQuaternion = null) {
+    const xAxis = across.clone();
+    const yInput = up.clone();
+
+    if (!validVector(xAxis) || !validVector(yInput)) return null;
+
+    xAxis.normalize();
+
+    const yAxis = yInput.addScaledVector(xAxis, -yInput.dot(xAxis));
+    if (yAxis.lengthSq() < 2.5e-3) return null;
+    yAxis.normalize();
+
+    const zAxis = new THREE.Vector3().crossVectors(xAxis, yAxis);
+    if (zAxis.lengthSq() < 2.5e-3) return null;
+    zAxis.normalize();
+
+    const correctedY = new THREE.Vector3()
+      .crossVectors(zAxis, xAxis)
+      .normalize();
+
+    const matrix = new THREE.Matrix4().makeBasis(
+      xAxis, correctedY, zAxis
+    );
+
+    const result = new THREE.Quaternion()
+      .setFromRotationMatrix(matrix)
+      .normalize();
+
+    // q and -q represent the same rotation. Keep the sign continuous
+    // so interpolation does not occasionally take the long path.
+    if (previousQuaternion && result.dot(previousQuaternion) < 0) {
+      result.set(-result.x, -result.y, -result.z, -result.w);
+    }
+    return result;
+  }
+
+  function getObservedPalmFrame(points, previousQuaternion = null) {
+    const wrist = worldPoint(points[0]);
+    const indexBase = worldPoint(points[5]);
+    const middleBase = worldPoint(points[9]);
+    const pinkyBase = worldPoint(points[17]);
+
+    return makeFrame(
+      pinkyBase.sub(indexBase),
+      middleBase.sub(wrist),
+      previousQuaternion
+    );
+  }
+
+  function getViewSize() {
+    const distance = 5.5;
+    const height = 2 * distance * Math.tan(
+      THREE.MathUtils.degToRad(camera.fov / 2)
+    );
+    return {
+      width: height * camera.aspect,
+      height,
+      distance
+    };
+  }
+
+  // ------------------------------------------------------------
+  // CAMERA PREVIEW
+  // ------------------------------------------------------------
+
+  function createCameraPreview() {
+    if (!SETTINGS.showCameraPreview || previewWrapper) return;
+
+    previewWrapper = document.createElement('div');
+    previewWrapper.id = 'morphdrive-camera-preview';
+    previewWrapper.style.cssText = [
+      'position:absolute',
+      'top:54px',
+      'right:12px',
+      'width:min(180px,28%)',
+      'max-width:calc(100% - 24px)',
+      'aspect-ratio:4/3',
+      'z-index:6',
+      'box-sizing:border-box',
+      'overflow:hidden',
+      'border:1px solid rgba(22,207,255,.65)',
+      'border-radius:10px',
+      'background:#020711',
+      'box-shadow:0 0 22px rgba(0,180,255,.16)',
+      'pointer-events:none'
+    ].join(';');
+
+    const previewLabel = document.createElement('div');
+    previewLabel.textContent = 'LIVE CAMERA • MIRRORED';
+    previewLabel.style.cssText = [
+      'position:absolute',
+      'z-index:2',
+      'top:0',
+      'left:0',
+      'right:0',
+      'padding:6px 8px',
+      'font:10px/1.2 monospace',
+      'letter-spacing:.08em',
+      'color:#7eeaff',
+      'background:rgba(2,7,17,.72)'
+    ].join(';');
+
+    video.style.cssText = [
+      'position:absolute',
+      'inset:0',
+      'width:100%',
+      'height:100%',
+      'object-fit:fill',
+      'transform:scaleX(-1)',
+      'opacity:1',
+      'display:block',
+      'pointer-events:none'
+    ].join(';');
+
+    previewCanvas = document.createElement('canvas');
+    previewCanvas.width = 640;
+    previewCanvas.height = 480;
+    previewCanvas.style.cssText = [
+      'position:absolute',
+      'inset:0',
+      'width:100%',
+      'height:100%',
+      'z-index:1',
+      'pointer-events:none'
+    ].join(';');
+
+    previewContext = previewCanvas.getContext('2d');
+
+    previewWrapper.append(video, previewCanvas, previewLabel);
+    viewport.appendChild(previewWrapper);
+  }
+
+  function synchronizePreviewSize() {
+    if (!previewCanvas || !video.videoWidth || !video.videoHeight) return;
+    previewCanvas.width = video.videoWidth;
+    previewCanvas.height = video.videoHeight;
+    previewWrapper.style.aspectRatio =
+      `${video.videoWidth}/${video.videoHeight}`;
+  }
+
+  function drawCameraPreview(now = 0) {
+    if (!previewContext || !previewCanvas) return;
+    if (now - lastPreviewDraw < SETTINGS.previewInterval) return;
+    lastPreviewDraw = now;
+
+    const ctx = previewContext;
+    const width = previewCanvas.width;
+    const height = previewCanvas.height;
+    ctx.clearRect(0, 0, width, height);
+    ctx.save();
+
+    ctx.strokeStyle = 'rgba(85,220,255,.45)';
+    ctx.lineWidth = Math.max(1, width / 320);
+    ctx.setLineDash([width * 0.014, width * 0.012]);
+    ctx.strokeRect(width * 0.05, height * 0.10, width * 0.90, height * 0.82);
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = 'rgba(100,220,255,.7)';
+    ctx.font = `${Math.max(10, width * 0.025)}px monospace`;
+    ctx.fillText('KEEP HANDS INSIDE FRAME', width * 0.065, height * 0.145);
+
+    const connections = [
+      [0, 1], [1, 2], [2, 3], [3, 4],
+      [0, 5], [5, 6], [6, 7], [7, 8],
+      [0, 9], [9, 10], [10, 11], [11, 12],
+      [0, 13], [13, 14], [14, 15], [15, 16],
+      [0, 17], [17, 18], [18, 19], [19, 20],
+      [5, 9], [9, 13], [13, 17]
+    ];
+
+    for (const hand of latestImageLandmarks) {
+      ctx.strokeStyle = 'rgba(22,207,255,.9)';
+      ctx.lineWidth = Math.max(1.5, width / 220);
+      ctx.beginPath();
+
+      for (const [a, b] of connections) {
+        ctx.moveTo((1 - hand[a].x) * width, hand[a].y * height);
+        ctx.lineTo((1 - hand[b].x) * width, hand[b].y * height);
+      }
+      ctx.stroke();
+
+      ctx.fillStyle = '#baf7ff';
+      for (const point of hand) {
+        ctx.beginPath();
+        ctx.arc(
+          (1 - point.x) * width,
+          point.y * height,
+          Math.max(2, width / 160),
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
+
+  createCameraPreview();
+
+  // ------------------------------------------------------------
+  // 3D HAND INSTANCE
+  // ------------------------------------------------------------
+
+  function createHandInstance(side) {
+    if (!originalHandScene) return null;
+
+    const root = new THREE.Group();
+    root.name = `${side}_TrackedHand`;
+    root.visible = false;
+    scene.add(root);
+
+    const modelContainer = new THREE.Group();
+    root.add(modelContainer);
+
+    const model = SkeletonUtils.clone(originalHandScene);
+    modelContainer.add(model);
+
+    const bones = {};
+
+    model.traverse(object => {
+      if (object.isBone) bones[object.name] = object;
+
+      if (object.isMesh || object.isSkinnedMesh) {
+        const materialForMesh = () => cyanMaterial.clone();
+        object.material = Array.isArray(object.material)
+          ? object.material.map(materialForMesh)
+          : materialForMesh();
+        object.frustumCulled = false;
+      }
+    });
+
+    const missing = REQUIRED_BONES.filter(name => !bones[name]);
+    if (missing.length) {
+      console.error(`${side} hand model is missing bones:`, missing);
+      root.removeFromParent();
+      return null;
+    }
+
+    const bounds = new THREE.Box3().setFromObject(model);
+    const size = bounds.getSize(new THREE.Vector3());
+    const center = bounds.getCenter(new THREE.Vector3());
+    const largestDimension = Math.max(size.x, size.y, size.z);
+
+    if (!Number.isFinite(largestDimension) || largestDimension <= 0) {
+      console.error('Invalid hand GLB dimensions.');
+      root.removeFromParent();
+      return null;
+    }
+
+    const baseScale = SETTINGS.modelHeight / largestDimension;
+    model.scale.setScalar(baseScale);
+    model.position.set(
+      -center.x * baseScale,
+      -center.y * baseScale,
+      -center.z * baseScale
+    );
+
+    // Keep the model's anatomical orientation; mirror the left instance
+    // at its container level rather than changing the rig's bone data.
+    if (side === 'Left') modelContainer.scale.x = -1;
+
+    root.updateMatrixWorld(true);
+
+    const restBones = {};
+
+    for (const [boneName, startIndex, endIndex, nextBoneName] of FINGER_SEGMENTS) {
+      const bone = bones[boneName];
+      const inverseBoneWorld = bone.matrixWorld.clone().invert();
+      let restDirectionLocal;
+
+      if (nextBoneName) {
+        const childWorldPosition = new THREE.Vector3();
+        bones[nextBoneName].getWorldPosition(childWorldPosition);
+        restDirectionLocal = childWorldPosition
+          .applyMatrix4(inverseBoneWorld)
+          .normalize();
+      } else {
+        const parentWorldPosition = new THREE.Vector3();
+        const boneWorldPosition = new THREE.Vector3();
+        bone.parent.getWorldPosition(parentWorldPosition);
+        bone.getWorldPosition(boneWorldPosition);
+        restDirectionLocal = boneWorldPosition
+          .sub(parentWorldPosition)
+          .transformDirection(inverseBoneWorld)
+          .normalize();
+      }
+
+      if (!validVector(restDirectionLocal)) {
+        console.error(`Invalid rest direction for ${boneName}`);
+        root.removeFromParent();
+        return null;
+      }
+
+      restBones[boneName] = {
+        restQuaternion: bone.quaternion.clone(),
+        restDirectionLocal: restDirectionLocal.clone(),
+        smoothedQuaternion: bone.quaternion.clone(),
+        initialized: false,
+        startIndex,
+        endIndex
+      };
+    }
+
+    const rootInverse = root.matrixWorld.clone().invert();
+    const rootPoint = object => {
+      const point = new THREE.Vector3();
+      object.getWorldPosition(point);
+      return point.applyMatrix4(rootInverse);
+    };
+
+    const wristPosition = rootPoint(bones.radius_ulna);
+    const indexPosition = rootPoint(bones.index_prox);
+    const middlePosition = rootPoint(bones.midd_prox);
+    const ringPosition = rootPoint(bones.ring_prox);
+    const pinkyPosition = rootPoint(bones.pinky_prox);
+
+    const palmAnchor = wristPosition.clone()
+      .add(indexPosition)
+      .add(middlePosition)
+      .add(ringPosition)
+      .add(pinkyPosition)
+      .multiplyScalar(0.2);
+
+    modelContainer.position.sub(palmAnchor);
+    root.updateMatrixWorld(true);
+
+    const anchoredRootInverse = root.matrixWorld.clone().invert();
+    const anchoredPoint = object => {
+      const point = new THREE.Vector3();
+      object.getWorldPosition(point);
+      return point.applyMatrix4(anchoredRootInverse);
+    };
+
+    const anchoredWrist = anchoredPoint(bones.radius_ulna);
+    const anchoredIndex = anchoredPoint(bones.index_prox);
+    const anchoredMiddle = anchoredPoint(bones.midd_prox);
+    const anchoredPinky = anchoredPoint(bones.pinky_prox);
+
+    const restPalmFrame = makeFrame(
+      anchoredPinky.clone().sub(anchoredIndex),
+      anchoredMiddle.clone().sub(anchoredWrist)
+    );
+
+    if (!restPalmFrame) {
+      console.error(`Could not establish ${side} model palm frame.`);
+      root.removeFromParent();
+      return null;
+    }
+
+    const restPalmWidth = anchoredIndex.distanceTo(anchoredPinky);
+    if (!Number.isFinite(restPalmWidth) || restPalmWidth < 0.001) {
+      console.error(`Invalid ${side} hand palm width.`);
+      root.removeFromParent();
+      return null;
+    }
+
+    const anchoredBounds = new THREE.Box3().setFromObject(model);
+    const anchoredSize = anchoredBounds.getSize(new THREE.Vector3());
+    const handRadius = Math.max(
+      anchoredSize.x, anchoredSize.y, anchoredSize.z
+    ) * 0.5;
+
+    const instance = {
+      side,
+      root,
+      model,
+      modelContainer,
+      bones,
+      restBones,
+      restPalmFrame,
+      restPalmWidth,
+      handRadius,
+      smoothedWorld: null,
+      smoothedImage: null,
+      lastObservedFrame: null,
+      position: new THREE.Vector3(),
+      rotation: new THREE.Quaternion(),
+      scale: 1,
+      positionReady: false,
+      rotationReady: false,
+      scaleReady: false,
+      lastImageCenter: null,
+      lastSeen: 0,
+      hoverNdc: null,
+      hoverPosition: null,
+      palmFacing: null
+    };
+
+    handInstances.set(side, instance);
+
+    console.info(`${side} hand rig ready`, {
+      bones: Object.keys(bones).length,
+      restPalmWidth,
+      modelSize: size
+    });
+
+    return instance;
+  }
+
+  // ------------------------------------------------------------
+  // LANDMARK FILTERING
+  // ------------------------------------------------------------
+
+  function smoothLandmarks(instance, input, dt, property, timeConstant) {
+    if (!input || input.length !== 21) return null;
+
+    if (!instance[property]) {
+      instance[property] = input.map(point => ({
+        x: point.x,
+        y: point.y,
+        z: point.z
+      }));
+      return instance[property];
+    }
+
+    const alpha = smoothingAlpha(dt, timeConstant);
+    for (let i = 0; i < 21; i++) {
+      const current = instance[property][i];
+      const target = input[i];
+      current.x += (target.x - current.x) * alpha;
+      current.y += (target.y - current.y) * alpha;
+      current.z += (target.z - current.z) * alpha;
+    }
+    return instance[property];
+  }
+
+  function smoothWorldLandmarks(instance, input, dt) {
+    return smoothLandmarks(
+      instance, input, dt, 'smoothedWorld', SETTINGS.landmarkTime
+    );
+  }
+
+  function smoothImageLandmarks(instance, input, dt) {
+    return smoothLandmarks(
+      instance, input, dt, 'smoothedImage', SETTINGS.imageTime
+    );
+  }
+
+  // ------------------------------------------------------------
+  // HAND POSITION / ROTATION
+  // ------------------------------------------------------------
+
+  function updateHandPosition(instance, imageLandmarks, dt) {
+    const center = imageCenter(imageLandmarks);
+    const view = getViewSize();
+
+    camera.updateMatrixWorld(true);
+
+    // Image Y grows downward; camera-local Y grows upward.
+    const target = camera.localToWorld(new THREE.Vector3(
+      (center.x - 0.5) * view.width,
+      (0.5 - center.y) * view.height,
+      -view.distance
+    ));
+
+    const dx = (imageLandmarks[5].x - imageLandmarks[17].x) * view.width;
+    const dy = (imageLandmarks[5].y - imageLandmarks[17].y) * view.height;
+    const observedPalmWidth = Math.hypot(dx, dy);
+
+    const targetScale = clamp(
+      (observedPalmWidth / Math.max(instance.restPalmWidth, 0.001)) *
+        SETTINGS.visualScale,
+      SETTINGS.scaleMin,
+      SETTINGS.scaleMax
+    );
+
+    if (!instance.scaleReady) {
+      instance.scale = targetScale;
+      instance.scaleReady = true;
+    } else {
+      instance.scale += (targetScale - instance.scale) *
+        smoothingAlpha(dt, SETTINGS.scaleTime);
+    }
+
+    if (!instance.positionReady) {
+      instance.position.copy(target);
+      instance.positionReady = true;
+    } else {
+      instance.position.lerp(
+        target,
+        smoothingAlpha(dt, SETTINGS.positionTime)
+      );
+    }
+
+    instance.root.position.copy(instance.position);
+
+    const indexTip = imageLandmarks[8];
+
+    const targetHoverNdc = new THREE.Vector2(
+      1 - (indexTip.x * 2),
+      1 - (indexTip.y * 2)
+    );
+
+    if (!instance.hoverNdc) {
+      instance.hoverNdc = targetHoverNdc;
+    } else {
+      instance.hoverNdc.lerp(
+        targetHoverNdc,
+        smoothingAlpha(dt, SETTINGS.positionTime)
+      );
+    }
+
+    const hoverTarget = camera.localToWorld(new THREE.Vector3(
+      (0.5 - indexTip.x) * view.width,
+      (0.5 - indexTip.y) * view.height,
+      -view.distance
+    ));
+
+    if (!instance.hoverPosition) {
+      instance.hoverPosition = hoverTarget.clone();
+    } else {
+      instance.hoverPosition.lerp(
+        hoverTarget,
+        smoothingAlpha(dt, SETTINGS.positionTime)
+      );
+    }
+
+    instance.root.scale.setScalar(instance.scale);
+  }
+
+  function updatePalmRotation(instance, worldLandmarks, dt) {
+    const observedFrame = getObservedPalmFrame(
+      worldLandmarks,
+      instance.lastObservedFrame
+    );
+    if (!observedFrame) return;
+
+    instance.lastObservedFrame = observedFrame.clone();
+
+    const targetRotation = camera.quaternion.clone()
+      .multiply(observedFrame)
+      .multiply(instance.restPalmFrame.clone().invert())
+      .normalize();
+
+    if (!instance.rotationReady) {
+      instance.rotation.copy(targetRotation);
+      instance.rotationReady = true;
+    } else {
+      instance.rotation.slerp(
+        targetRotation,
+        smoothingAlpha(dt, SETTINGS.rotationTime)
+      );
+    }
+
+    instance.root.quaternion.copy(instance.rotation);
+  }
+
+  function makeStableSwing(restDirection, targetDirection) {
+    const dot = clamp(restDirection.dot(targetDirection), -1, 1);
+    const maximumAngle = THREE.MathUtils.degToRad(150);
+    const angle = Math.acos(dot);
+    const swing = new THREE.Quaternion();
+
+    if (angle <= maximumAngle) {
+      return swing.setFromUnitVectors(restDirection, targetDirection);
+    }
+
+    const axis = new THREE.Vector3().crossVectors(
+      restDirection, targetDirection
+    );
+
+    if (axis.lengthSq() < 1e-8) {
+      axis.crossVectors(restDirection, new THREE.Vector3(0, 0, 1));
+      if (axis.lengthSq() < 1e-8) {
+        axis.crossVectors(restDirection, new THREE.Vector3(1, 0, 0));
+      }
+    }
+
+    axis.normalize();
+    return swing.setFromAxisAngle(axis, maximumAngle);
+  }
+
+  function updateFingerBone(instance, boneName, start, end, points, dt) {
+    const bone = instance.bones[boneName];
+    const rest = instance.restBones[boneName];
+    if (!bone || !rest || !bone.parent) return;
+
+    const targetWorldDirection = directionBetween(points, start, end)
+      .applyQuaternion(camera.quaternion);
+
+    if (!validVector(targetWorldDirection)) return;
+
+    bone.parent.updateWorldMatrix(true, false);
+    const parentInverse = bone.parent.matrixWorld.clone().invert();
+
+    const targetParentDirection = targetWorldDirection.clone()
+      .transformDirection(parentInverse)
+      .normalize();
+
+    const restParentDirection = rest.restDirectionLocal.clone()
+      .applyQuaternion(rest.restQuaternion)
+      .normalize();
+
+    if (!validVector(targetParentDirection) ||
+        !validVector(restParentDirection)) return;
+
+    const swing = makeStableSwing(
+      restParentDirection, targetParentDirection
+    );
+
+    const desiredLocal = swing.multiply(rest.restQuaternion);
+
+    if (!rest.initialized) {
+      rest.smoothedQuaternion.copy(desiredLocal);
+      rest.initialized = true;
+    } else {
+      rest.smoothedQuaternion.slerp(
+        desiredLocal,
+        smoothingAlpha(dt, SETTINGS.boneTime)
+      );
+    }
+
+    bone.quaternion.copy(rest.smoothedQuaternion);
+    bone.updateMatrix();
+    bone.updateWorldMatrix(false, true);
+  }
+
+  function updateAllFingerBones(instance, points, dt) {
+    for (const [boneName, start, end] of FINGER_SEGMENTS) {
+      updateFingerBone(instance, boneName, start, end, points, dt);
+    }
+  }
+
+  function updateTrackedHand(side, imageLandmarks, worldLandmarks, dt, now) {
+    let instance = handInstances.get(side);
+    if (!instance) instance = createHandInstance(side);
+    if (!instance) return;
+
+    const smoothedImage = smoothImageLandmarks(instance, imageLandmarks, dt);
+    const smoothedWorld = smoothWorldLandmarks(instance, worldLandmarks, dt);
+    if (!smoothedImage || !smoothedWorld) return;
+
+    instance.lastSeen = now;
+    instance.lastImageCenter = normalizedHandCenter(imageLandmarks);
+    instance.root.visible = true;
+
+    updateHandPosition(instance, smoothedImage, dt);
+    updatePalmRotation(instance, smoothedWorld, dt);
+
+    const palmFrame = getObservedPalmFrame(smoothedWorld);
+    if (palmFrame && orientationStatus) {
+      const palmNormal = new THREE.Vector3(0, 0, 1)
+        .applyQuaternion(palmFrame);
+      const facingScore = palmNormal.z;
+
+      if (Math.abs(facingScore) < 0.22) {
+        orientationStatus.textContent =
+          `${side.toUpperCase()} HAND: EDGE-ON`;
+      } else if (facingScore > 0) {
+        instance.palmFacing = true;
+        orientationStatus.textContent =
+          `${side.toUpperCase()} HAND: PALM`;
+      } else {
+        instance.palmFacing = false;
+        orientationStatus.textContent =
+          `${side.toUpperCase()} HAND: BACK`;
+      }
+    }
+
+    instance.root.updateMatrixWorld(true);
+    updateAllFingerBones(instance, smoothedWorld, dt);
+    instance.root.updateMatrixWorld(true);
+  }
+
+  // ------------------------------------------------------------
+  // HAND IDENTITY
+  // ------------------------------------------------------------
+
+  function readHandSide(result, index) {
+    const groups = result.handednesses || result.handedness;
+    const category = groups?.[index]?.[0]?.categoryName;
+
+    if (category !== 'Left' && category !== 'Right') return null;
+
+    // MediaPipe labels refer to the anatomical hand. The preview is
+    // mirrored, but the controller's established side convention
+    // intentionally maps the label to the opposite screen-side name.
+    return category === 'Left' ? 'Right' : 'Left';
+  }
+
+  function distanceBetweenCenters(a, b) {
+    if (!a || !b) return Infinity;
+    return Math.hypot(a.x - b.x, a.y - b.y);
+  }
+
+  function assignHandSides(result, imageResults, now) {
+    const assignments = new Array(imageResults.length).fill(null);
+    const candidates = imageResults.map((landmarks, index) => ({
+      index,
+      center: normalizedHandCenter(landmarks),
+      classified: readHandSide(result, index)
+    }));
+
+    // With two hands present, use the previous screen positions to
+    // maintain identity through short handedness-label fluctuations.
+    if (candidates.length === 2) {
+      const left = handInstances.get('Left');
+      const right = handInstances.get('Right');
+
+      const recent = instance =>
+        instance?.lastImageCenter &&
+        now - instance.lastSeen < SETTINGS.handIdentityGraceMs;
+
+      if (recent(left) && recent(right)) {
+        const direct =
+          distanceBetweenCenters(candidates[0].center, left.lastImageCenter) +
+          distanceBetweenCenters(candidates[1].center, right.lastImageCenter);
+        const crossed =
+          distanceBetweenCenters(candidates[0].center, right.lastImageCenter) +
+          distanceBetweenCenters(candidates[1].center, left.lastImageCenter);
+
+        if (crossed + SETTINGS.identitySwitchMargin < direct) {
+          assignments[0] = 'Right';
+          assignments[1] = 'Left';
+          return assignments;
+        }
+        if (direct <= crossed + SETTINGS.identitySwitchMargin) {
+          assignments[0] = 'Left';
+          assignments[1] = 'Right';
+          return assignments;
+        }
+      }
+    }
+
+    const used = new Set();
+
+    // First honor labels when they do not collide.
+    for (const candidate of candidates) {
+      const side = candidate.classified;
+      if (side && !used.has(side)) {
+        assignments[candidate.index] = side;
+        used.add(side);
+      }
+    }
+
+    // Resolve missing/duplicate labels by nearest recent track.
+    for (const candidate of candidates) {
+      if (assignments[candidate.index]) continue;
+
+      let bestSide = null;
+      let bestDistance = Infinity;
+
+      for (const side of ['Left', 'Right']) {
+        if (used.has(side)) continue;
+        const instance = handInstances.get(side);
+        if (!instance?.lastImageCenter ||
+            now - instance.lastSeen > SETTINGS.handIdentityGraceMs) {
+          continue;
+        }
+
+        const distance = distanceBetweenCenters(
+          candidate.center, instance.lastImageCenter
+        );
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestSide = side;
+        }
+      }
+
+      if (bestSide) {
+        assignments[candidate.index] = bestSide;
+        used.add(bestSide);
+      }
+    }
+
+    // Allocate any remaining detection to a free side.
+    for (const candidate of candidates) {
+      if (assignments[candidate.index]) continue;
+      const freeSide = ['Left', 'Right'].find(side => !used.has(side));
+      if (freeSide) {
+        assignments[candidate.index] = freeSide;
+        used.add(freeSide);
+      }
+    }
+
+    return assignments;
+  }
+
+  // ------------------------------------------------------------
+  // MEDIAPIPE DETECTION
+  // ------------------------------------------------------------
+
+  function processDetection(now) {
+    if (!running || detectionBusy || !handLandmarker ||
+        video.readyState < 2) return;
+
+    if (video.currentTime === lastVideoTime) return;
+    if (now - lastDetectionTime < SETTINGS.detectionInterval) return;
+
+    detectionBusy = true;
+    lastVideoTime = video.currentTime;
+    lastDetectionTime = now;
+
+    try {
+      const result = handLandmarker.detectForVideo(video, now);
+      const imageResults = result.landmarks || [];
+      const worldResults = result.worldLandmarks || [];
+
+      latestImageLandmarks = imageResults;
+      drawCameraPreview(now);
+
+      const assignments = assignHandSides(result, imageResults, now);
+      const visibleSides = new Set();
+
+      for (let i = 0; i < imageResults.length; i++) {
+        const imageLandmarks = imageResults[i];
+        const worldLandmarks = worldResults[i];
+        const side = assignments[i];
+
+        if (!side || !imageLandmarks || !worldLandmarks ||
+            imageLandmarks.length !== 21 ||
+            worldLandmarks.length !== 21 ||
+            visibleSides.has(side)) continue;
+
+        visibleSides.add(side);
+
+        const instance = handInstances.get(side);
+        const previousTime = instance?.lastSeen || now;
+        const dt = clamp((now - previousTime) / 1000, 0.001, 0.15);
+
+        updateTrackedHand(
+          side, imageLandmarks, worldLandmarks, dt, now
+        );
+      }
+
+      for (const [side, instance] of handInstances) {
+        if (!visibleSides.has(side) &&
+            now - instance.lastSeen > SETTINGS.lostHandGraceMs) {
+          instance.root.visible = false;
+        }
+      }
+
+      if (visibleSides.size === 2) {
+        status.textContent = 'BOTH HANDS TRACKED';
+      } else if (visibleSides.size === 1) {
+        status.textContent =
+          `${[...visibleSides][0].toUpperCase()} HAND TRACKED`;
+      } else {
+        status.textContent = 'SHOW ONE OR BOTH HANDS';
+      }
+    } catch (error) {
+      console.error('Hand detection error:', error);
+      status.textContent = 'TRACKING ERROR — CHECK CONSOLE';
+    } finally {
+      detectionBusy = false;
+    }
+  }
+
+  function scheduleDetection() {
+    if (!running || disposed) return;
+
+    if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
+      detectionFrame = video.requestVideoFrameCallback(now => {
+        processDetection(now);
+        scheduleDetection();
+      });
+    } else {
+      detectionFrame = requestAnimationFrame(now => {
+        processDetection(now);
+        scheduleDetection();
+      });
+    }
+  }
+
+  // ------------------------------------------------------------
+  // LOAD HAND MODEL
+  // ------------------------------------------------------------
+
+  status.textContent = 'LOADING ANATOMICAL HAND MODEL...';
+
+  loader.load(
+    '/models/hand/hand.glb',
+    gltf => {
+      if (disposed) return;
+      originalHandScene = gltf.scene;
+      handModelReady = true;
+      status.textContent = '3D HAND READY — INITIALIZE CAMERA';
+      console.info('Anatomical hand GLB loaded.');
+    },
+    undefined,
+    error => {
+      if (disposed) return;
+      console.error('Could not load /models/hand/hand.glb:', error);
+      status.textContent = 'ERROR: COULD NOT LOAD HAND MODEL';
+    }
+  );
+
+  // ------------------------------------------------------------
+  // MEDIAPIPE INITIALIZATION
+  // ------------------------------------------------------------
+
+  async function initializeMediaPipe() {
+    status.textContent = 'INITIALIZING MEDIAPIPE...';
+
+    const vision = await FilesetResolver.forVisionTasks(
+      'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.2.2/wasm'
+    );
+
+    handLandmarker = await HandLandmarker.createFromOptions(vision, {
+      baseOptions: {
+        modelAssetPath: '/models/mediapipe/hand_landmarker.task',
+        delegate: 'CPU'
+      },
+      runningMode: 'VIDEO',
+      numHands: SETTINGS.maxHands,
+      minHandDetectionConfidence: 0.55,
+      minHandPresenceConfidence: 0.55,
+      minTrackingConfidence: 0.55
+    });
+
+    console.info('MediaPipe initialized.');
+  }
+
+  // ------------------------------------------------------------
+  // CAMERA START / STOP
+  // ------------------------------------------------------------
+
+  async function startCamera() {
+    if (running || disposed) return;
+
+    try {
+      startButton.disabled = true;
+      startButton.textContent = 'INITIALIZING...';
+
+      if (!handModelReady) {
+        status.textContent = 'WAITING FOR 3D HAND MODEL...';
+        startButton.disabled = false;
+        startButton.textContent = 'INITIALIZE HAND SCANNER';
+        return;
+      }
+
+      if (!handLandmarker) await initializeMediaPipe();
+
+      status.textContent = 'REQUESTING CAMERA...';
+
+      cameraStream = await navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+          facingMode: 'user',
+          width: { ideal: 640, min: 480 },
+          height: { ideal: 480, min: 360 },
+          frameRate: { ideal: 24, max: 30 }
+        }
+      });
+
+      if (disposed) {
+        cameraStream.getTracks().forEach(track => track.stop());
+        cameraStream = null;
+        return;
+      }
+
+      createCameraPreview();
+      video.srcObject = cameraStream;
+
+      await new Promise((resolve, reject) => {
+        if (video.readyState >= 2) {
+          resolve();
+          return;
+        }
+
+        const onReady = () => {
+          cleanup();
+          resolve();
+        };
+        const onError = () => {
+          cleanup();
+          reject(new Error('The webcam video stream did not become ready.'));
+        };
+        const cleanup = () => {
+          video.removeEventListener('loadeddata', onReady);
+          video.removeEventListener('error', onError);
+        };
+
+        video.addEventListener('loadeddata', onReady, { once: true });
+        video.addEventListener('error', onError, { once: true });
+      });
+
+      await video.play();
+      synchronizePreviewSize();
+
+      running = true;
+      lastVideoTime = -1;
+      lastDetectionTime = -Infinity;
+
+      startButton.style.display = 'none';
+      status.textContent = 'PLACE YOUR HANDS INSIDE THE CAMERA GUIDE';
+      scheduleDetection();
+    } catch (error) {
+      console.error('Hand scanner startup failed:', error);
+      status.textContent = `STARTUP ERROR: ${error.message}`;
+
+      startButton.disabled = false;
+      startButton.textContent = 'TRY AGAIN';
+
+      cameraStream?.getTracks().forEach(track => track.stop());
+      cameraStream = null;
+      video.srcObject = null;
+    }
+  }
+
+  startButton.addEventListener('click', startCamera);
+
+  // ------------------------------------------------------------
+  // PUBLIC TRACKING DATA
+  // ------------------------------------------------------------
+
+  function getTrackedPointers() {
+    return [...handInstances.values()]
+      .filter(instance => instance.root.visible && instance.hoverNdc)
+      .map(instance => instance.hoverNdc.clone());
+  }
+
+  function getTrackedHands() {
+    return [...handInstances.values()]
+      .filter(instance => instance.root.visible)
+      .map(instance =>
+        (instance.hoverPosition || instance.root.position).clone()
+      );
+  }
+
+  function getStatus() {
+    return status.textContent;
+  }
+
+  // ------------------------------------------------------------
+  // CLEANUP
+  // ------------------------------------------------------------
+
+  function disposeHandInstance(instance) {
+    instance.root.removeFromParent();
+
+    instance.model.traverse(object => {
+      if (object.isMesh || object.isSkinnedMesh) {
+        if (Array.isArray(object.material)) {
+          object.material.forEach(material => material.dispose());
+        } else {
+          object.material?.dispose();
+        }
+      }
+    });
+  }
+
+  function stop() {
+    if (disposed) return;
+
+    running = false;
+
+    if (detectionFrame !== null) {
+      if ('requestVideoFrameCallback' in HTMLVideoElement.prototype &&
+          video.cancelVideoFrameCallback) {
+        video.cancelVideoFrameCallback(detectionFrame);
+      } else {
+        cancelAnimationFrame(detectionFrame);
+      }
+      detectionFrame = null;
+    }
+
+    cameraStream?.getTracks().forEach(track => track.stop());
+    cameraStream = null;
+    video.pause();
+    video.srcObject = null;
+
+    handLandmarker?.close();
+    handLandmarker = null;
+
+    for (const instance of handInstances.values()) {
+      disposeHandInstance(instance);
+    }
+    handInstances.clear();
+
+    latestImageLandmarks = [];
+
+    if (previewWrapper) {
+      previewWrapper.remove();
+      previewWrapper = null;
+      previewCanvas = null;
+      previewContext = null;
+    }
+
+    // Allow a later start() call to initialize MediaPipe again.
+    startButton.style.display = '';
+    startButton.disabled = false;
+    startButton.textContent = 'INITIALIZE HAND SCANNER';
+    status.textContent = 'HAND SCANNER STOPPED';
+    if (orientationStatus) orientationStatus.textContent = '';
+  }
+
+  function dispose() {
+    if (disposed) return;
+    stop();
+    disposed = true;
+    startButton.removeEventListener('click', startCamera);
+    cyanMaterial.dispose();
+  }
+
+  return {
+    start: startCamera,
+    stop,
+    dispose,
+    getTrackedPointers,
+    getTrackedHands,
+    getStatus
+  };
+}
+
+===== HAND TRACKING AND GESTURE REFERENCES IN MAIN.JS =====
+2-    import * as THREE from 'three';
+3-import { createVehicleScanner } from './vehicle-scanning/vehicle-scanner.js';
+4-    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+5-    import { createVehicleManager } from '../vehicle-manager.js';
+6:    import { createHandController } from './hand-controller.js';
+7-    import './showroom/showroom.css';
+8-    import { createShowroom } from './showroom/showroom.js';
+9-    import { VEHICLE_CATALOG } from './showroom/vehicle-catalog.js';
+10-    import { createExplosionManager } from './vehicle-explosion/explosion-manager.js';
+11:import { createCockpitCamera } from './cockpit-mode/cockpit-camera.js';
+12-import {
+13-  diagnoseSkinnedComponents,
+14-  createBoneMovementTester
+15-} from './vehicle-explosion/component-diagnostic.js';
+--
+26-        <div class="app-name">3D Vehicle Studio</div>
+27-
+28-        <div class="top-actions">
+29-          <button id="toggle-browser" class="topbar-action" type="button" title="Show or hide the vehicle browser" aria-expanded="true">Vehicles</button>
+30:          <button id="toggle-properties" class="topbar-action" type="button" title="Show or hide vehicle properties" aria-expanded="true">Properties</button>
+31-          <button id="help-toggle" class="topbar-action help-action" type="button" title="Show controls and help" aria-label="Open help">Help</button>
+32-        </div>
+33-      </header>
+34-
+--
+46-            <section class="help-section">
+47-              <h3>VIEWPORT NAVIGATION</h3>
+48-              <div class="help-row"><span>Rotate view</span><kbd>Left-click + drag</kbd></div>
+49-              <div class="help-row"><span>Pan view</span><kbd>Right-click + drag</kbd></div>
+50:              <div class="help-row"><span>Zoom</span><kbd>Mouse wheel</kbd></div>
+51:              <div class="help-row"><span>Restore camera</span><kbd>Reset view</kbd></div>
+52:              <p>Adjust rotation, pan, and zoom sensitivity in the Properties panel.</p>
+53-            </section>
+54-
+55-            <section class="help-section">
+56-              <h3>MODEL TOOLS</h3>
+57:              <div class="help-row"><span>Exploded view</span><kbd>♧ Explode</kbd></div>
+58:              <div class="help-row"><span>Wireframe display</span><kbd>▧ Wireframe</kbd></div>
+59-              <div class="help-row"><span>Fullscreen viewport</span><kbd>⛶ Fullscreen</kbd></div>
+60-            </section>
+61-
+62-            <section class="help-section">
+63-              <h3>APPEARANCE</h3>
+64:              <p>Use the Properties panel to customize the vehicle's appearance.</p>
+65-              <ul>
+66-                <li>Choose a body color.</li>
+67-                <li>Select Glossy, Metallic, or Matte finish.</li>
+68-                <li>Adjust metallic and roughness values.</li>
+--
+73-            <section class="help-section">
+74-              <h3>HAND INTERACTION</h3>
+75-              <p>Press <strong>ENABLE HAND CONTROL</strong> to activate webcam-based hand tracking.</p>
+76-              <p>Move your tracked hand to interact with vehicle parts. The status indicators show tracking and orientation information.</p>
+77:              <p class="help-note">Hand interaction is experimental and requires camera permission.</p>
+78-            </section>
+79-          </div>
+80-
+81-          <div class="help-panel-footer">
+--
+115-        </aside>
+116-
+117-        <section class="center">
+118-
+119:          <div class="viewport-toolbar panel" aria-label="Vehicle and camera tools">
+120-            <div class="toolbar-group">
+121:              <button class="tool tool-primary" id="explode" type="button" title="Toggle exploded view" aria-label="Toggle exploded view">
+122:                <span class="tool-icon">⤢</span><span class="tool-label">Explode</span>
+123-              </button>
+124:              <button class="tool tool-scan" id="scan-vehicle"
+125-                type="button"
+126-                title="Start vehicle scanning"
+127-                aria-label="Start vehicle scanning"
+128-                aria-pressed="false">
+129-                <span class="tool-icon">⌁</span>
+130-                <span class="tool-label">Scan</span>
+131-              </button>
+132:              <button class="tool" id="wireframe" type="button" title="Toggle wireframe display" aria-label="Toggle wireframe display">
+133:                <span class="tool-icon">▧</span><span class="tool-label">Wireframe</span>
+134-              </button>
+135:              <button class="tool" id="reset" type="button" title="Reset camera position and target" aria-label="Reset camera view">
+136-                <span class="tool-icon">↺</span><span class="tool-label">Reset view</span>
+137-              </button>
+138:              <button class="tool" id="front-seat" type="button"
+139:                title="Move camera to the driver's seat"
+140:                aria-label="Move camera to front seat"
+141-                aria-pressed="false">
+142-                <span class="tool-icon">◉</span><span class="tool-label">Front Seat</span>
+143-              </button>
+144-            </div>
+145:            <span class="toolbar-note">Drag to rotate · Right-drag to pan · Scroll to zoom</span>
+146-          </div>
+147-
+148-          <div class="viewport panel" id="viewport">
+149-
+--
+193-            </div>
+194-          </div>
+195-        </section>
+196-
+197:        <aside class="properties panel">
+198-
+199:          <div class="properties-heading">
+200:            <span>PROPERTIES</span>
+201:            <button id="close-properties" type="button" title="Hide properties panel" aria-label="Hide properties panel">×</button>
+202-          </div>
+203-
+204-          <div class="property-section">
+205-
+--
+239-          </div>
+240-
+241-
+242-
+243:          <div class="property-section camera-settings-section">
+244:            <h4>Camera controls</h4>
+245:            <p class="camera-hint">Left-drag: rotate · Right-drag: pan · Wheel: zoom</p>
+246-
+247-            <div class="slider-heading">
+248:              <label class="appearance-label" for="camera-rotate-speed">Rotation speed</label>
+249:              <span id="camera-rotate-number">0.8×</span>
+250-            </div>
+251:            <input class="appearance-slider" type="range" id="camera-rotate-speed" min="0.2" max="2.5" step="0.1" value="0.8">
+252-
+253-            <div class="slider-heading">
+254:              <label class="appearance-label" for="camera-pan-speed">Pan speed</label>
+255:              <span id="camera-pan-number">0.8×</span>
+256-            </div>
+257:            <input class="appearance-slider" type="range" id="camera-pan-speed" min="0.2" max="2.5" step="0.1" value="0.8">
+258-
+259-            <div class="slider-heading">
+260:              <label class="appearance-label" for="camera-zoom-speed">Zoom speed</label>
+261:              <span id="camera-zoom-number">1.0×</span>
+262-            </div>
+263:            <input class="appearance-slider" type="range" id="camera-zoom-speed" min="0.2" max="2.5" step="0.1" value="1.0">
+264-          </div>
+265-
+266-          <div class="property-section appearance-section">
+267-
+--
+441-    });
+442-
+443-    const scene = new THREE.Scene();
+444-
+445:    const scanButton = document.querySelector('#scan-vehicle');
+446-
+447-    const vehicleScanner = createVehicleScanner({
+448-      scene,
+449-      onStateChange: state => {
+--
+463-      }
+464-    });
+465-    scene.background = new THREE.Color('#020914');
+466-
+467:    const camera = new THREE.PerspectiveCamera(
+468-      38,
+469-      viewport.clientWidth / viewport.clientHeight,
+470-      0.01,
+471-      1000
+472-    );
+473-
+474:    camera.position.set(7, 4.2, 8);
+475-
+476-    const renderer = new THREE.WebGLRenderer({
+477-      antialias: true,
+478-      alpha: false,
+--
+497-    renderer.domElement.className = 'three-canvas';
+498-    viewport.prepend(renderer.domElement);
+499-
+500-    const controls = new OrbitControls(
+501:      camera,
+502-      renderer.domElement
+503-    );
+504-
+505-    controls.enableDamping = true;
+506-    controls.dampingFactor = 0.06;
+507-    controls.target.set(0, 0.8, 0);
+508:    // Allow the camera to move through the vehicle shell and into the cabin.
+509-    controls.minDistance = 0.05;
+510-    controls.maxDistance = 18;
+511-    controls.enableRotate = true;
+512-    controls.enablePan = true;
+513:    controls.enableZoom = true;
+514-    controls.rotateSpeed = 1.15;
+515-    controls.panSpeed = 0.9;
+516:    controls.zoomSpeed = 1.0;
+517-    // Allow a full 360-degree orbit, including looking almost straight up/down.
+518-    controls.minPolarAngle = 0.001;
+519-    controls.maxPolarAngle = Math.PI - 0.001;
+520-    controls.minAzimuthAngle = -Infinity;
+--
+525-      MIDDLE: THREE.MOUSE.DOLLY,
+526-      RIGHT: THREE.MOUSE.PAN
+527-    };
+528-
+529:    // Camera sensitivity controls change only OrbitControls; they do not
+530-    // alter the vehicle, explosion system, or hand-tracking controller.
+531:    const cameraSpeedControls = [
+532:      { input: '#camera-rotate-speed', output: '#camera-rotate-number', property: 'rotateSpeed' },
+533:      { input: '#camera-pan-speed', output: '#camera-pan-number', property: 'panSpeed' },
+534:      { input: '#camera-zoom-speed', output: '#camera-zoom-number', property: 'zoomSpeed' }
+535-    ];
+536-
+537:    cameraSpeedControls.forEach(({ input, output, property }) => {
+538-      const slider = document.querySelector(input);
+539-      const valueLabel = document.querySelector(output);
+540-      slider.addEventListener('input', () => {
+541-        const value = Number(slider.value);
+--
+546-
+547-    const orientationStatus =
+548-      document.querySelector('#hand-orientation');
+549-
+550:    const handController = createHandController({
+551-      scene,
+552:      camera,
+553-      viewport
+554-    });
+555-
+556-    scene.add(
+--
+700-
+701-    let originalMaterials = [];
+702-    let paintMaterials = [];
+703-
+704:    let exploded = false;
+705:    let wireframe = false;
+706-
+707-    let triangleTotal = 0;
+708-    let partTotal = 0;
+709-    let materialTotal = 0;
+--
+745-};
+746-    let hoveredOriginalMaterial = null;
+747-    let hoveredHighlightMaterial = null;
+748-
+749:    function restoreHoveredMesh() {
+750-      if (!hoveredMesh) return;
+751-
+752-      hoveredMesh.material =
+753-        hoveredMesh === selectedInspectionMesh
+--
+772-        if (componentTooltip) componentTooltip.hidden = true;
+773-        return;
+774-      }
+775-
+776:      const projected = worldPoint.clone().project(camera);
+777-      if (projected.z < -1 || projected.z > 1) {
+778-        componentTooltip.hidden = true;
+779-        return;
+780-      }
+--
+785-      componentTooltip.style.top = `${y - 14}px`;
+786-      componentTooltip.hidden = false;
+787-    }
+788-
+789:    function setHoveredMesh(mesh, worldPoint = null) {
+790-      if (mesh === hoveredMesh) {
+791-        positionComponentTooltip(worldPoint);
+792-        return;
+793-      }
+794-
+795:      restoreHoveredMesh();
+796-
+797-      if (!mesh) {
+798-        document.querySelector('#hover-status').textContent =
+799-          'Hover over a vehicle part';
+--
+913-      componentTooltip.textContent = readableLabel;
+914-      positionComponentTooltip(worldPoint);
+915-    }
+916-
+917:    function updateVehicleHover(now, cameraChanged = false) {
+918-      if (!vehicle) return;
+919-
+920-      // Sample tracked pointers at 30 Hz rather than allocating and raycasting
+921:      // on every render frame. Mouse movement refreshes immediately; camera
+922-      // movement is checked at the same 30 Hz limit.
+923-      if (
+924-        !hoverDirty &&
+925-        now - lastHoverUpdate < HOVER_UPDATE_INTERVAL
+926-      ) {
+927-        return;
+928-      }
+929-
+930:      const trackedPointers = handController.getTrackedPointers();
+931-      hoverTestPoints.length = 0;
+932-
+933-      for (const point of trackedPointers) {
+934-        if (
+--
+963-      }
+964-
+965-      lastHoverUpdate = now;
+966-
+967:      if (!hoverDirty && !cameraChanged && !pointersChanged) {
+968-        return;
+969-      }
+970-
+971-      hoverDirty = false;
+972:      camera.updateMatrixWorld(true);
+973-
+974-      // If no fingertip is currently inside the viewport, keep mouse hover usable.
+975-      if (hoverTestPoints.length === 0 && pointerActive) {
+976-        hoverTestPoints.push(pointerNdc);
+--
+978-
+979-      let nearestHit = null;
+980-
+981-      for (const point of hoverTestPoints) {
+982:        raycaster.setFromCamera(point, camera);
+983-
+984-        hoverRaycastHits.length = 0;
+985-        raycaster.intersectObject(vehicle, true, hoverRaycastHits);
+986-
+--
+990-          nearestHit = hit;
+991-        }
+992-      }
+993-
+994:      setHoveredMesh(nearestHit?.object || null, nearestHit?.point || null);
+995-    }
+996-
+997-    renderer.domElement.addEventListener('pointermove', event => {
+998-      const rect = renderer.domElement.getBoundingClientRect();
+--
+1009-    renderer.domElement.addEventListener('pointerleave', () => {
+1010-      pointerActive = false;
+1011-      hoverDirty = true;
+1012-
+1013:      if (!handController.getTrackedHands().length) {
+1014:        setHoveredMesh(null);
+1015-      }
+1016-    });
+1017-    const loadingPanel = document.querySelector('#loading');
+1018-    const loadingMessage = document.querySelector('#loading span:last-child');
+--
+1049-        `${models.length} model${models.length === 1 ? '' : 's'} available · Import a GLB to add another`;
+1050-    }
+1051-
+1052-    function resetVehicleInteractionState() {
+1053:      restoreHoveredMesh();
+1054:      exploded = false;
+1055:      wireframe = false;
+1056:      document.querySelector('#explode').classList.remove('active');
+1057:      document.querySelector('#wireframe').classList.remove('active');
+1058-      hoverTestPoints.length = 0;
+1059-      previousHoverPointers.length = 0;
+1060-      hoverDirty = true;
+1061-    }
+--
+1123-    console.groupEnd();
+1124-
+1125-    return records;
+1126-  };
+1127:  exploded = false;
+1128-
+1129-  resetVehicleInteractionState();
+1130-
+1131:  document.querySelector('#explode')?.classList.remove('active');
+1132-
+1133-  // The Sedan retains its original, specialized explosion system.
+1134-  // All other vehicles use the reusable explosion manager.
+1135-  if (activeVehicleId && activeVehicleId !== 'sedan') {
+--
+1208-              material,
+1209-              originalColor: material.color ? material.color.clone() : null,
+1210-              originalMetalness: material.metalness,
+1211-              originalRoughness: material.roughness,
+1212:              originalWireframe: material.wireframe,
+1213-              meshNames: [],
+1214-              materialName: (material.name || '').toLowerCase()
+1215-            });
+1216-          }
+--
+1280-      document.querySelector('#hover-status').textContent =
+1281-        'Hover over a vehicle part';
+1282-
+1283-      controls.target.set(0, 1, 0);
+1284:      camera.position.set(7, 4.2, 8);
+1285-      controls.update();
+1286-      hoverDirty = true;
+1287-
+1288-      updatePaint();
+--
+1396-    });
+1397-
+1398-    updateVehicleCatalogOptions();
+1399-
+1400:function setShowroomCamera() {
+1401-  controls.autoRotate = true;
+1402-  controls.autoRotateSpeed = 0.45;
+1403-
+1404-  if (!vehicle) {
+1405-    controls.target.set(0, 1, 0);
+1406:    camera.position.set(7, 4.2, 8);
+1407-    controls.update();
+1408-    return;
+1409-  }
+1410-
+--
+1424-  const distance = Math.max(7, modelSize * 1.75);
+1425-
+1426-  controls.target.copy(center);
+1427-
+1428:  camera.position.set(
+1429-    center.x + distance * 1.25,
+1430-    center.y + distance * 0.58,
+1431-    center.z + distance * 1.35
+1432-  );
+--
+1437-
+1438-  controls.update();
+1439-}
+1440-
+1441:const cockpitCamera = createCockpitCamera({
+1442-  THREE,
+1443:  camera,
+1444-  controls
+1445-});
+1446-
+1447:function setCockpitCamera() {
+1448-  if (!vehicle || !activeVehicleId) {
+1449-    console.warn('MorphDrive: cannot enter cockpit without an active vehicle.');
+1450-    return false;
+1451-  }
+1452-
+1453:  return cockpitCamera.enter(vehicle, activeVehicleId);
+1454-}
+1455-
+1456:function setFreeExploreCamera() {
+1457-  controls.autoRotate = false;
+1458-  controls.minDistance = 0.05;
+1459-
+1460-  if (vehicle) {
+--
+1465-  } else {
+1466-    controls.maxDistance = 18;
+1467-  }
+1468-
+1469:  camera.position.set(7, 4.2, 8);
+1470-  controls.target.set(0, 1, 0);
+1471-  controls.update();
+1472-
+1473:  const button = document.querySelector('#front-seat');
+1474-  if (button) {
+1475-    button.classList.remove('active');
+1476-    button.setAttribute('aria-pressed', 'false');
+1477-  }
+--
+1489-
+1490-    activePreviewId = id;
+1491-
+1492-    if (showroomMode) {
+1493:      setShowroomCamera();
+1494-    }
+1495-
+1496-    return true;
+1497-  },
+--
+1514-    backToShowroomButton.hidden = false;
+1515-
+1516-    viewport.prepend(renderer.domElement);
+1517-
+1518:    setFreeExploreCamera();
+1519-    resize();
+1520-
+1521-    return true;
+1522-  }
+--
+1542-  backToShowroomButton.hidden = true;
+1543-
+1544-  showroom.show();
+1545-
+1546:  setShowroomCamera();
+1547-  resize();
+1548-});resize
+1549-
+1550-
+1551:    document.querySelector('#wireframe').addEventListener('click', () => {
+1552-      if (!vehicle || !originalMaterials.length) return;
+1553-
+1554:      restoreHoveredMesh();
+1555:      wireframe = !wireframe;
+1556-
+1557-      originalMaterials.forEach(entry => {
+1558-        const material = entry.material;
+1559-        if (!material) return;
+1560:        material.wireframe = wireframe ? true : entry.originalWireframe;
+1561-        material.needsUpdate = true;
+1562-      });
+1563-
+1564:      const button = document.querySelector('#wireframe');
+1565:      button.classList.toggle('active', wireframe);
+1566:      button.setAttribute('aria-pressed', String(wireframe));
+1567:      button.title = wireframe ? 'Turn wireframe off' : 'Turn wireframe on';
+1568-      button.setAttribute('aria-label', button.title);
+1569-      hoverDirty = true;
+1570-    });
+1571-
+1572:    document.querySelector('#front-seat').addEventListener('click', () => {
+1573:      if (!setCockpitCamera()) return;
+1574-
+1575:      const button = document.querySelector('#front-seat');
+1576-      button.classList.add('active');
+1577-      button.setAttribute('aria-pressed', 'true');
+1578-    });
+1579-
+1580-    document.querySelector('#reset').addEventListener('click', () => {
+1581:      setFreeExploreCamera();
+1582-    });
+1583-
+1584-    scanButton?.addEventListener('click', () => {
+1585-      if (!vehicle) return;
+--
+1590-        vehicleScanner.start();
+1591-      }
+1592-    });
+1593-
+1594:    document.querySelector('#explode').addEventListener(
+1595-  'click',
+1596-  (event) => {
+1597-    if (!vehicle) return;
+1598-
+--
+1602-
+1603-    if (activeVehicleId !== 'sedan') {
+1604-      if (!explosionManager) {
+1605-        console.warn(
+1606:          'Explode: No explosion manager is available for this vehicle.'
+1607-        );
+1608-        return;
+1609-      }
+1610-
+1611-      const status = explosionManager.getStatus();
+1612-
+1613:      const result = status.exploded
+1614-        ? explosionManager.assemble()
+1615:        : explosionManager.explode();
+1616-
+1617-      if (!result.success) {
+1618-        console.warn('MorphDrive explosion:', result.reason);
+1619-
+--
+1625-      }
+1626-
+1627-      event.currentTarget.classList.toggle(
+1628-        'active',
+1629:        result.exploded
+1630-      );
+1631-
+1632-      hoverDirty = true;
+1633-
+1634-      console.log(
+1635:        `MorphDrive: ${result.exploded ? 'EXPLODED' : 'ASSEMBLED'}`,
+1636-        result
+1637-      );
+1638-
+1639-      return;
+--
+1647-    );
+1648-
+1649-
+1650-
+1651:  document.querySelector('#explode').addEventListener(
+1652-    'click',
+1653-    (event) => {
+1654-      if (!vehicle) return;
+1655-
+--
+1738-      // Find the common component container.
+1739-      const componentContainer = vehicle.getObjectByName('carBody_119');
+1740-
+1741-      if (!componentContainer) {
+1742:        console.error('Explode: carBody_119 not found.');
+1743-        return;
+1744-      }
+1745-
+1746-      // Collect all complete component groups.
+--
+1754-        return containsMesh;
+1755-      });
+1756-
+1757-      if (!parts.length) {
+1758:        console.error('Explode: No component groups found.');
+1759-        return;
+1760-      }
+1761-
+1762-      vehicle.updateMatrixWorld(true);
+--
+1769-      const sedanStartPositions = new Map(
+1770-        parts.map(part => [part, part.position.clone()])
+1771-      );
+1772-
+1773:      exploded = !exploded;
+1774-
+1775-      let frontMoved = 0;
+1776-let rearMoved = 0;
+1777-let otherMoved = 0;
+--
+1784-            part.position.clone();
+1785-        }
+1786-
+1787-        // Restore all components when assembling.
+1788:        if (!exploded) {
+1789-          part.position.copy(
+1790-            part.userData.explosionOriginalPosition
+1791-          );
+1792-          continue;
+--
+1913-      }
+1914-
+1915-      vehicle.updateMatrixWorld(true);
+1916-
+1917:      event.currentTarget.classList.toggle('active', exploded);
+1918-
+1919-      hoverDirty = true;
+1920-
+1921-      console.log(
+1922:        `Explode: ${exploded ? 'EXPLODED' : 'ASSEMBLED'}`,
+1923-        {
+1924-  frontComponentsMoved: frontMoved,
+1925-  rearComponentsMoved: rearMoved,
+1926-  otherComponentsMoved: otherMoved,
+--
+1952-    );
+1953-
+1954-    const workspace = document.querySelector('.workspace');
+1955-    const browserPanel = document.querySelector('.browser');
+1956:    const propertiesPanel = document.querySelector('.properties');
+1957-    const browserToggle = document.querySelector('#toggle-browser');
+1958:    const propertiesToggle = document.querySelector('#toggle-properties');
+1959-
+1960-    // MORPHDRIVE: Engineering Inspection Mode
+1961-    let selectedInspectionMesh = null;
+1962-    let selectedOriginalMaterial = null;
+--
+2000-      line-height: 1.7;
+2001-      overflow-y: auto;
+2002-    `;
+2003-
+2004:    propertiesPanel.appendChild(inspectionDetails);
+2005-
+2006-    function inspectionRow(label, value) {
+2007-      const row = document.createElement('div');
+2008-      row.style.cssText = `
+--
+2165-        margin: 4px 0;
+2166-      `;
+2167-      inspectionDetails.appendChild(childrenText);
+2168-
+2169:      // Open the existing Properties panel.
+2170:      propertiesPanel.classList.remove('collapsed');
+2171:      workspace.classList.remove('properties-collapsed');
+2172:      propertiesToggle?.setAttribute('aria-expanded', 'true');
+2173-
+2174-      requestAnimationFrame(() => {
+2175-        renderer.setSize(viewport.clientWidth, viewport.clientHeight);
+2176:        camera.aspect = viewport.clientWidth / viewport.clientHeight;
+2177:        camera.updateProjectionMatrix();
+2178-      });
+2179-    }
+2180-
+2181-    renderer.domElement.addEventListener('click', event => {
+--
+2187-        ((event.clientX - rect.left) / rect.width) * 2 - 1,
+2188-        -((event.clientY - rect.top) / rect.height) * 2 + 1
+2189-      );
+2190-
+2191:      camera.updateMatrixWorld(true);
+2192:      raycaster.setFromCamera(pointerNdc, camera);
+2193-
+2194-      const hits = raycaster.intersectObject(vehicle, true);
+2195-      const hit = hits.find(item => item.object.isMesh);
+2196-
+--
+2204-        toggleButton.setAttribute('aria-expanded', String(!isCollapsed));
+2205-      }
+2206-      requestAnimationFrame(() => {
+2207-        renderer.setSize(viewport.clientWidth, viewport.clientHeight);
+2208:        camera.aspect = viewport.clientWidth / viewport.clientHeight;
+2209:        camera.updateProjectionMatrix();
+2210-      });
+2211-    }
+2212-
+2213-    browserToggle.addEventListener('click', () => {
+2214-      setPanelCollapsed(browserPanel, 'browser-collapsed', browserToggle);
+2215-    });
+2216-
+2217:    propertiesToggle.addEventListener('click', () => {
+2218:      setPanelCollapsed(propertiesPanel, 'properties-collapsed', propertiesToggle);
+2219-    });
+2220-
+2221:    document.querySelector('#close-properties').addEventListener('click', () => {
+2222:      setPanelCollapsed(propertiesPanel, 'properties-collapsed', propertiesToggle);
+2223-    });
+2224-
+2225-    const colorPicker =
+2226-      document.querySelector('#body-color');
+--
+2419-          if (entry.originalRoughness !== undefined) {
+2420-            mat.roughness = entry.originalRoughness;
+2421-          }
+2422-
+2423:          mat.wireframe = entry.originalWireframe;
+2424-
+2425-          mat.needsUpdate = true;
+2426-
+2427-        });
+--
+2440-
+2441-        document.querySelector('#roughness-number')
+2442-          .textContent = '25%';
+2443-
+2444:        wireframe = false;
+2445-
+2446:        document.querySelector('#wireframe')
+2447-          .classList.remove('active');
+2448:        document.querySelector('#wireframe')
+2449-          .setAttribute('aria-pressed', 'false');
+2450:        document.querySelector('#wireframe')
+2451:          .title = 'Turn wireframe on';
+2452-
+2453-      });
+2454-
+2455- function resize() {
+--
+2459-  const height = renderHost.clientHeight;
+2460-
+2461-  if (!width || !height) return;
+2462-
+2463:  camera.aspect = width / height;
+2464:  camera.updateProjectionMatrix();
+2465-
+2466-  renderer.setPixelRatio(
+2467-    Math.min(window.devicePixelRatio || 1, 1.25)
+2468-  );
+--
+2478-
+2479-function animate(now = 0) {
+2480-  requestAnimationFrame(animate);
+2481-
+2482:  const cameraChanged = controls.update();
+2483-  vehicleScanner.update(now);
+2484-
+2485-  if (!showroomMode) {
+2486:    updateVehicleHover(now, cameraChanged);
+2487-  }
+2488-
+2489:  renderer.render(scene, camera);
+2490-}
+2491-
+2492-animate();
+2493-
+--
+2527-      for (const geometry of geometries) geometry.dispose();
+2528-    }
+2529-
+2530-    window.addEventListener('pagehide', (event) => {
+2531:      handController.stop();
+2532:      restoreHoveredMesh();
+2533-
+2534-      // Do not destroy the renderer when the browser is placing this page
+2535-      // into the back-forward cache; the page may be restored.
+2536-      if (event.persisted) return;
+
+===== EXPLOSION MANAGER INTERFACE =====
+107-  }
+108-];
+109-
+110:function isRenderableObject(object) {
+111-  return Boolean(
+112-    object &&
+113-    (
+--
+118-  );
+119-}
+120-
+121:function countRenderableObjects(root) {
+122-  let count = 0;
+123-
+124-  root.traverse(object => {
+--
+128-  return count;
+129-}
+130-
+131:function countRenderableDescendants(root) {
+132-  let count = 0;
+133-
+134-  root.traverse(object => {
+--
+138-  return count;
+139-}
+140-
+141:function isDescendantOf(object, ancestor) {
+142-  let current = object.parent;
+143-
+144-  while (current) {
+--
+149-  return false;
+150-}
+151-
+152:function hasRenderableAncestor(object) {
+153-  let parent = object.parent;
+154-
+155-  while (parent) {
+--
+160-  return false;
+161-}
+162-
+163:function getHierarchyPartCandidates(root, config) {
+164-  const configuredNames = new Set(config.parts ?? []);
+165-  const matches = [];
+166-
+--
+178-  );
+179-}
+180-
+181:function getLegacyExplosionCandidates(root) {
+182-  const selected = [];
+183-
+184-  root.traverse(object => {
+--
+191-  return selected;
+192-}
+193-
+194:function getExplosionCandidates(root, config) {
+195-  if (config?.strategy === 'inspect-only') return [];
+196-
+197-  if (config?.strategy === 'hierarchy-parts') {
+--
+201-  return getLegacyExplosionCandidates(root);
+202-}
+203-
+204:function getMissingConfiguredParts(root, config) {
+205-  if (config?.strategy !== 'hierarchy-parts') return [];
+206-
+207-  const foundNames = new Set();
+--
+215-  );
+216-}
+217-
+218:function getObjectWorldCenter(object) {
+219-  const bounds = new THREE.Box3().setFromObject(object);
+220-
+221-  if (!bounds.isEmpty()) {
+--
+225-  return object.getWorldPosition(new THREE.Vector3());
+226-}
+227-
+228:function getStableDirection(vector, index) {
+229-  if (vector.lengthSq() > 0.000001) {
+230-    return vector.normalize();
+231-  }
+--
+246-    .normalize();
+247-}
+248-
+249:function getExplosionDistance(root, factor) {
+250-  const bounds = new THREE.Box3().setFromObject(root);
+251-
+252-  if (bounds.isEmpty()) return 1;
+--
+265- * material mesh into multiple geometry objects during preprocessing.
+266- * Those objects receive the same offset and remain one component.
+267- */
+268:function getHelicopterComponentRecords(root) {
+269-  root.updateWorldMatrix(true, true);
+270-
+271-  const renderableObjects = [];
+--
+310-  return records;
+311-}
+312-
+313:function getClusterBounds(records, clusterName) {
+314-  const bounds = new THREE.Box3();
+315-
+316-  for (const record of records) {
+--
+327- * Components move away from the cluster center, not away from
+328- * the center of the entire helicopter.
+329- */
+330:function getComponentOffset(record, clusterBounds, index) {
+331-  const clusterCenter = clusterBounds.getCenter(
+332-    new THREE.Vector3()
+333-  );
+--
+363-
+364-  direction.addScaledVector(variation, 0.24).normalize();
+365-
+366:  // Wider engineering-style exploded spacing.
+367-  const separation =
+368-    clusterDiagonal * 0.48 +
+369-    record.diagonal * 0.13;
+--
+371-  return direction.multiplyScalar(separation);
+372-}
+373-
+374:function keepAboveFloor(offset, bounds, minimumClearance = 0.12) {
+375-  if (!bounds || bounds.isEmpty()) return offset;
+376-
+377-  const projectedBottom = bounds.min.y + offset.y;
+--
+383-  return offset;
+384-}
+385-
+386:export function createExplosionManager({
+387-  root,
+388-  vehicleId,
+389-  distanceFactor = 0.16
+--
+402-
+403-  const config = getExplosionConfig(vehicleId);
+404-
+405:  let exploded = false;
+406-  let selectedParts = [];
+407-  let activeHelicopterRecords = [];
+408-  let activeA320Groups = [];
+--
+417-  let animationFrame = null;
+418-  let animationToken = 0;
+419-
+420:  function captureObjectPositions() {
+421-    const snapshot = [];
+422-
+423-    root.traverse(object => {
+--
+430-    return snapshot;
+431-  }
+432-
+433:  function cancelPositionAnimation() {
+434-    animationToken++;
+435-
+436-    if (
+--
+443-    animationFrame = null;
+444-  }
+445-
+446:  function animatePositionChanges(startSnapshot, endSnapshot) {
+447-    if (typeof requestAnimationFrame !== 'function') return;
+448-
+449:    const startPositions = new Map(
+450:      startSnapshot.map(record => [record.object, record.position])
+451-    );
+452-
+453-    const transitions = [];
+454-
+455-    for (const record of endSnapshot) {
+456:      const start = startPositions.get(record.object);
+457-
+458:      if (!start) continue;
+459-
+460:      if (start.distanceToSquared(record.position) < 1e-8) {
+461-        continue;
+462-      }
+463-
+464-      transitions.push({
+465-        object: record.object,
+466:        start,
+467-        end: record.position.clone()
+468-      });
+469-    }
+--
+471-    if (transitions.length === 0) return;
+472-
+473-    const token = ++animationToken;
+474:    const startTime = performance.now();
+475-
+476:    // Return objects to their starting positions before animating.
+477-    for (const item of transitions) {
+478:      item.object.position.copy(item.start);
+479-    }
+480-
+481-    root.updateWorldMatrix(true, true);
+482-
+483:    function updateFrame(now) {
+484-      if (token !== animationToken) return;
+485-
+486-      const progress = THREE.MathUtils.clamp(
+487:        (now - startTime) / EXPLOSION_ANIMATION_DURATION,
+488-        0,
+489-        1
+490-      );
+--
+494-
+495-      for (const item of transitions) {
+496-        item.object.position.lerpVectors(
+497:          item.start,
+498-          item.end,
+499-          eased
+500-        );
+--
+521-  const isHelicopter =
+522-    vehicleId === 'realistic-helicopter';
+523-
+524:  function getStatus() {
+525-    const renderableObjectCount =
+526-      countRenderableObjects(root);
+527-
+--
+535-    return {
+536-      vehicleId,
+537-      strategy: config.strategy,
+538:      exploded,
+539-      selectedCount: selectedParts.length,
+540-      configuredCount: isHelicopter
+541-        ? HELICOPTER_COMPONENTS.length
+--
+550-    };
+551-  }
+552-
+553:  function getAvailableParts() {
+554-    if (config.strategy === 'legacy-sedan') return [];
+555-
+556-    root.updateWorldMatrix(true, true);
+--
+601-    });
+602-  }
+603-
+604:  function saveOriginalPosition(object) {
+605-    if (!object.userData[ORIGINAL_POSITION_KEY]) {
+606-      object.userData[ORIGINAL_POSITION_KEY] =
+607-        object.position.clone();
+608-    }
+609-  }
+610-
+611:  function correctSportsBikeWheelHeight() {
+612-    if (vehicleId !== 'sports-bike') return;
+613-
+614-    const wheelName = 'Wheels_Wheels_0';
+--
+659-    });
+660-  }
+661-
+662:  function applyWorldOffset(object, worldOffset, movements) {
+663-    if (!object.parent) return;
+664-
+665-    saveOriginalPosition(object);
+--
+685-    });
+686-  }
+687-
+688:  function explodeHelicopter() {
+689-    const records = getHelicopterComponentRecords(root);
+690-
+691-    if (records.length === 0) {
+--
+754-
+755-    root.updateWorldMatrix(true, true);
+756-
+757:    exploded = true;
+758-
+759-    console.log('MORPHDRIVE HELICOPTER COMPONENT EXPLOSION', {
+760-      clusters: clusterNames.map(name => ({
+--
+776-    };
+777-  }
+778-
+779:  function explodeStandardVehicle() {
+780-    root.updateWorldMatrix(true, true);
+781-
+782-    selectedParts = getExplosionCandidates(root, config);
+--
+938-      });
+939-    }
+940-
+941:    exploded = true;
+942-
+943-    return {
+944-      success: true,
+--
+948-  }
+949-
+950-
+951:  function explodeBMWS1000RR() {
+952-    root.updateWorldMatrix(true, true);
+953-
+954-    const plan = getBMWS1000RRExplosionPlan(root);
+--
+1012-    });
+1013-
+1014-    selectedParts = [...activeBMWGroups];
+1015:    exploded = true;
+1016-
+1017-    return {
+1018-      success: true,
+--
+1023-    };
+1024-  }
+1025-
+1026:  function explodeA320() {
+1027-    const plan = getA320ExplosionPlan(root);
+1028-
+1029-    if (plan.length === 0) {
+--
+1115-    );
+1116-    console.table(remainingBelowGrid);
+1117-
+1118:    exploded = true;
+1119-
+1120-    return {
+1121-      success: true,
+--
+1127-  }
+1128-
+1129-
+1130:  function explodeMANTGX() {
+1131-    const plan = getMANTGXExplosionPlan(root);
+1132-
+1133-    if (plan.length === 0) {
+--
+1199-      componentsStillBelowGrid: remainingBelowGrid.length
+1200-    });
+1201-
+1202:    exploded = true;
+1203-
+1204-    return {
+1205-      success: true,
+--
+1212-  }
+1213-
+1214-
+1215:  function explodeSukhoiSU57() {
+1216-    const plan = getSukhoiSU57ExplosionPlan(root);
+1217-
+1218-    if (plan.length !== 8) {
+--
+1242-    }
+1243-
+1244-    root.updateWorldMatrix(true, true);
+1245:    exploded = true;
+1246-
+1247-    console.log('[Su-57] Explosion completed:', {
+1248-      componentsSeparated: activeSukhoiGroups.length,
+--
+1259-  }
+1260-
+1261-
+1262:  function explodeHondaCBR650R() {
+1263-    const plan = getHondaCBR650RExplosionPlan(root);
+1264-
+1265-    if (plan.length !== 19) {
+--
+1291-    }
+1292-
+1293-    root.updateWorldMatrix(true, true);
+1294:    exploded = true;
+1295-
+1296-    console.log('[Honda CBR650R] Explosion completed:', {
+1297-      componentsSeparated: plan.length,
+--
+1309-    };
+1310-  }
+1311-
+1312:  function explodeImmediately() {
+1313:    if (exploded) {
+1314-      return {
+1315-        success: true,
+1316-        alreadyExploded: true,
+--
+1330-    root.updateWorldMatrix(true, true);
+1331-
+1332-    if (isHelicopter) {
+1333:      return explodeHelicopter();
+1334-    }
+1335-
+1336-    if (vehicleId === 'bmw-s1000rr') {
+1337:      return explodeBMWS1000RR();
+1338-    }
+1339-
+1340-    if (vehicleId === 'airbus-a320') {
+1341:      return explodeA320();
+1342-    }
+1343-
+1344-    if (vehicleId === 'man-tgx') {
+1345:      return explodeMANTGX();
+1346-    }
+1347-
+1348-    if (vehicleId === 'sukhoi-su57') {
+1349:      return explodeSukhoiSU57();
+1350-    }
+1351-
+1352-    if (vehicleId === 'honda-cbr650r') {
+1353:      return explodeHondaCBR650R();
+1354-    }
+1355-
+1356:    return explodeStandardVehicle();
+1357-  }
+1358-
+1359:  function assembleImmediately() {
+1360:    if (!exploded) {
+1361-      return {
+1362-        success: true,
+1363-        alreadyAssembled: true,
+--
+1391-
+1392-    root.updateWorldMatrix(true, true);
+1393-
+1394:    exploded = false;
+1395-    selectedParts = [];
+1396-    activeHelicopterRecords = [];
+1397-    activeA320Groups = [];
+--
+1414-  }
+1415-
+1416-
+1417:  function runAnimatedTransition(operation) {
+1418-    cancelPositionAnimation();
+1419-
+1420:    const startSnapshot = captureObjectPositions();
+1421-    const result = operation();
+1422-
+1423-    if (
+--
+1431-
+1432-    const endSnapshot = captureObjectPositions();
+1433-
+1434:    animatePositionChanges(startSnapshot, endSnapshot);
+1435-
+1436-    return result;
+1437-  }
+1438-
+1439:  function explode() {
+1440:    return runAnimatedTransition(explodeImmediately);
+1441-  }
+1442-
+1443:  function assemble() {
+1444-    return runAnimatedTransition(assembleImmediately);
+1445-  }
+1446-
+1447:  function dispose() {
+1448-    cancelPositionAnimation();
+1449:    if (exploded) {
+1450-      assembleImmediately();
+1451-    }
+1452-
+--
+1459-  }
+1460-
+1461-  return {
+1462:    explode,
+1463-    assemble,
+1464:    dispose,
+1465-    getStatus,
+1466-    getAvailableParts
+1467-  };
+
+===== VEHICLE SCANNER =====
+import * as THREE from 'three';
+
+export function createVehicleScanner({ scene, onStateChange = () => {} }) {
+  const overlayGroup = new THREE.Group();
+  overlayGroup.name = 'MorphDriveVehicleScanOverlay';
+  scene.add(overlayGroup);
+
+  const beamMaterial = new THREE.MeshBasicMaterial({
+    color: 0x00d9ff,
+    transparent: true,
+    opacity: 0.2,
+    depthWrite: false,
+    side: THREE.DoubleSide
+  });
+
+  const beam = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    beamMaterial
+  );
+
+  beam.name = 'MorphDriveScanningBeam';
+  beam.visible = false;
+  beam.renderOrder = 20;
+  scene.add(beam);
+
+  const clock = new THREE.Clock();
+
+  let currentVehicle = null;
+  let scanRecords = [];
+  let scanBounds = null;
+  let scanAxis = 'z';
+  let scanStart = 0;
+  let active = false;
+  let disposed = false;
+
+  const duration = 3000;
+  const fadeDuration = 850;
+
+  function clearOverlay() {
+    for (const record of scanRecords) {
+      overlayGroup.remove(record.overlay);
+      record.material.dispose();
+    }
+
+    scanRecords = [];
+    overlayGroup.clear();
+
+    beam.visible = false;
+    active = false;
+  }
+
+  function setVehicle(root) {
+    clearOverlay();
+    currentVehicle = root;
+
+    if (root) {
+      root.updateMatrixWorld(true);
+    }
+
+    onStateChange('idle');
+  }
+
+  function prepareScan() {
+    if (!currentVehicle) return false;
+
+    currentVehicle.updateMatrixWorld(true);
+
+    scanBounds = new THREE.Box3().setFromObject(currentVehicle);
+
+    if (scanBounds.isEmpty()) return false;
+
+    const size = scanBounds.getSize(new THREE.Vector3());
+
+    scanAxis = size.x >= size.z ? 'x' : 'z';
+
+    currentVehicle.traverse(object => {
+      if (!object.isMesh || !object.visible || object.isSkinnedMesh) {
+        return;
+      }
+
+      const bounds = new THREE.Box3().setFromObject(object);
+
+      if (bounds.isEmpty()) return;
+
+      const center = bounds.getCenter(new THREE.Vector3());
+
+      const material = new THREE.MeshBasicMaterial({
+        color: 0x27dfff,
+        wireframe: true,
+        transparent: true,
+        opacity: 0,
+        depthWrite: false,
+        side: THREE.DoubleSide
+      });
+
+      const overlay = new THREE.Mesh(object.geometry, material);
+
+      object.updateWorldMatrix(true, false);
+
+      object.matrixWorld.decompose(
+        overlay.position,
+        overlay.quaternion,
+        overlay.scale
+      );
+
+      overlay.renderOrder = 15;
+      overlay.frustumCulled = false;
+
+      overlayGroup.add(overlay);
+
+      scanRecords.push({
+        overlay,
+        material,
+        coordinate: center[scanAxis]
+      });
+    });
+
+    return scanRecords.length > 0;
+  }
+
+  function start() {
+    if (disposed || !currentVehicle) return false;
+
+    if (active) {
+      stop();
+    }
+
+    clearOverlay();
+
+    if (!prepareScan()) {
+      console.warn('MorphDrive Scanner: No suitable vehicle meshes found.');
+      return false;
+    }
+
+    const size = scanBounds.getSize(new THREE.Vector3());
+    const center = scanBounds.getCenter(new THREE.Vector3());
+
+    const thickness = Math.max(
+      0.025,
+      Math.max(size.x, size.y, size.z) * 0.006
+    );
+
+    beam.geometry.dispose();
+
+    beam.geometry = scanAxis === 'x'
+      ? new THREE.BoxGeometry(thickness, size.y * 1.12, size.z * 1.12)
+      : new THREE.BoxGeometry(size.x * 1.12, size.y * 1.12, thickness);
+
+    beam.position.copy(center);
+    beam.position[scanAxis] = scanBounds.min[scanAxis];
+    beam.visible = true;
+
+    scanStart = clock.elapsedTime;
+    active = true;
+
+    onStateChange('scanning');
+
+    return true;
+  }
+
+  function stop() {
+    clearOverlay();
+    onStateChange('idle');
+  }
+
+  function update() {
+    if (!active || !scanBounds) return;
+
+    const elapsed = clock.elapsedTime - scanStart;
+    const progress = Math.min(elapsed / (duration / 1000), 1);
+
+    const min = scanBounds.min[scanAxis];
+    const max = scanBounds.max[scanAxis];
+    const length = Math.max(max - min, 0.001);
+
+    const scanPosition = THREE.MathUtils.lerp(min, max, progress);
+
+    beam.position[scanAxis] = scanPosition;
+
+    // Subtle pulsing makes the scanning beam feel more energetic.
+    beam.material.opacity =
+      0.15 + Math.sin(elapsed * 12) * 0.045;
+
+    for (const record of scanRecords) {
+      const normalizedPosition =
+        (record.coordinate - min) / length;
+
+      const reveal = THREE.MathUtils.clamp(
+        (progress - normalizedPosition + 0.18) / 0.18,
+        0,
+        1
+      );
+
+      record.material.opacity = reveal * 0.78;
+    }
+
+    if (progress >= 1) {
+      const fade = Math.min(
+        (elapsed - duration / 1000) / (fadeDuration / 1000),
+        1
+      );
+
+      for (const record of scanRecords) {
+        record.material.opacity *= 1 - fade;
+      }
+
+      beam.material.opacity = 0.2 * (1 - fade);
+
+      if (fade >= 1) {
+        clearOverlay();
+        onStateChange('idle');
+      }
+    }
+  }
+
+  function dispose() {
+    if (disposed) return;
+
+    clearOverlay();
+    scene.remove(beam);
+    scene.remove(overlayGroup);
+
+    beam.geometry.dispose();
+    beam.material.dispose();
+
+    currentVehicle = null;
+    disposed = true;
+  }
+
+  return {
+    setVehicle,
+    start,
+    stop,
+    update,
+    dispose,
+    isActive: () => active
+  };
+}
+
+===== CAMERA AND CONTROL REFERENCES =====
+1-    import './style.css';
+2-    import * as THREE from 'three';
+3-import { createVehicleScanner } from './vehicle-scanning/vehicle-scanner.js';
+4:    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+5-    import { createVehicleManager } from '../vehicle-manager.js';
+6-    import { createHandController } from './hand-controller.js';
+7-    import './showroom/showroom.css';
+--
+49-              <div class="help-row"><span>Pan view</span><kbd>Right-click + drag</kbd></div>
+50-              <div class="help-row"><span>Zoom</span><kbd>Mouse wheel</kbd></div>
+51-              <div class="help-row"><span>Restore camera</span><kbd>Reset view</kbd></div>
+52:              <p>Adjust rotation, pan, and zoom sensitivity in the Properties panel.</p>
+53-            </section>
+54-
+55-            <section class="help-section">
+--
+132-              <button class="tool" id="wireframe" type="button" title="Toggle wireframe display" aria-label="Toggle wireframe display">
+133-                <span class="tool-icon">▧</span><span class="tool-label">Wireframe</span>
+134-              </button>
+135:              <button class="tool" id="reset" type="button" title="Reset camera position and target" aria-label="Reset camera view">
+136-                <span class="tool-icon">↺</span><span class="tool-label">Reset view</span>
+137-              </button>
+138-              <button class="tool" id="front-seat" type="button"
+--
+142-                <span class="tool-icon">◉</span><span class="tool-label">Front Seat</span>
+143-              </button>
+144-            </div>
+145:            <span class="toolbar-note">Drag to rotate · Right-drag to pan · Scroll to zoom</span>
+146-          </div>
+147-
+148-          <div class="viewport panel" id="viewport">
+--
+242-
+243-          <div class="property-section camera-settings-section">
+244-            <h4>Camera controls</h4>
+245:            <p class="camera-hint">Left-drag: rotate · Right-drag: pan · Wheel: zoom</p>
+246-
+247-            <div class="slider-heading">
+248-              <label class="appearance-label" for="camera-rotate-speed">Rotation speed</label>
+--
+257-            <input class="appearance-slider" type="range" id="camera-pan-speed" min="0.2" max="2.5" step="0.1" value="0.8">
+258-
+259-            <div class="slider-heading">
+260:              <label class="appearance-label" for="camera-zoom-speed">Zoom speed</label>
+261:              <span id="camera-zoom-number">1.0×</span>
+262-            </div>
+263:            <input class="appearance-slider" type="range" id="camera-zoom-speed" min="0.2" max="2.5" step="0.1" value="1.0">
+264-          </div>
+265-
+266-          <div class="property-section appearance-section">
+--
+464-    });
+465-    scene.background = new THREE.Color('#020914');
+466-
+467:    const camera = new THREE.PerspectiveCamera(
+468-      38,
+469-      viewport.clientWidth / viewport.clientHeight,
+470-      0.01,
+471-      1000
+472-    );
+473-
+474:    camera.position.set(7, 4.2, 8);
+475-
+476-    const renderer = new THREE.WebGLRenderer({
+477-      antialias: true,
+--
+497-    renderer.domElement.className = 'three-canvas';
+498-    viewport.prepend(renderer.domElement);
+499-
+500:    const controls = new OrbitControls(
+501-      camera,
+502-      renderer.domElement
+503-    );
+--
+513-    controls.enableZoom = true;
+514-    controls.rotateSpeed = 1.15;
+515-    controls.panSpeed = 0.9;
+516:    controls.zoomSpeed = 1.0;
+517-    // Allow a full 360-degree orbit, including looking almost straight up/down.
+518-    controls.minPolarAngle = 0.001;
+519-    controls.maxPolarAngle = Math.PI - 0.001;
+--
+526-      RIGHT: THREE.MOUSE.PAN
+527-    };
+528-
+529:    // Camera sensitivity controls change only OrbitControls; they do not
+530-    // alter the vehicle, explosion system, or hand-tracking controller.
+531-    const cameraSpeedControls = [
+532-      { input: '#camera-rotate-speed', output: '#camera-rotate-number', property: 'rotateSpeed' },
+533-      { input: '#camera-pan-speed', output: '#camera-pan-number', property: 'panSpeed' },
+534:      { input: '#camera-zoom-speed', output: '#camera-zoom-number', property: 'zoomSpeed' }
+535-    ];
+536-
+537-    cameraSpeedControls.forEach(({ input, output, property }) => {
+--
+1281-        'Hover over a vehicle part';
+1282-
+1283-      controls.target.set(0, 1, 0);
+1284:      camera.position.set(7, 4.2, 8);
+1285:      controls.update();
+1286-      hoverDirty = true;
+1287-
+1288-      updatePaint();
+--
+1403-
+1404-  if (!vehicle) {
+1405-    controls.target.set(0, 1, 0);
+1406:    camera.position.set(7, 4.2, 8);
+1407:    controls.update();
+1408-    return;
+1409-  }
+1410-
+--
+1425-
+1426-  controls.target.copy(center);
+1427-
+1428:  camera.position.set(
+1429-    center.x + distance * 1.25,
+1430-    center.y + distance * 0.58,
+1431-    center.z + distance * 1.35
+--
+1435-  controls.minDistance = 0.05;
+1436-  controls.maxDistance = Math.max(18, modelSize * 5);
+1437-
+1438:  controls.update();
+1439-}
+1440-
+1441-const cockpitCamera = createCockpitCamera({
+--
+1453-  return cockpitCamera.enter(vehicle, activeVehicleId);
+1454-}
+1455-
+1456:function setFreeExploreCamera() {
+1457-  controls.autoRotate = false;
+1458-  controls.minDistance = 0.05;
+1459-
+--
+1466-    controls.maxDistance = 18;
+1467-  }
+1468-
+1469:  camera.position.set(7, 4.2, 8);
+1470-  controls.target.set(0, 1, 0);
+1471:  controls.update();
+1472-
+1473-  const button = document.querySelector('#front-seat');
+1474-  if (button) {
+--
+1515-
+1516-    viewport.prepend(renderer.domElement);
+1517-
+1518:    setFreeExploreCamera();
+1519-    resize();
+1520-
+1521-    return true;
+--
+1578-    });
+1579-
+1580-    document.querySelector('#reset').addEventListener('click', () => {
+1581:      setFreeExploreCamera();
+1582-    });
+1583-
+1584-    scanButton?.addEventListener('click', () => {
+--
+2479-function animate(now = 0) {
+2480-  requestAnimationFrame(animate);
+2481-
+2482:  const cameraChanged = controls.update();
+2483-  vehicleScanner.update(now);
+2484-
+2485-  if (!showroomMode) {
+
+===== FRONTEND DEPENDENCIES =====
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.3.5"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^1.2.2",
+    "three": "^0.187.0"
+  }
+}
+
+===== END OF REPORT =====
