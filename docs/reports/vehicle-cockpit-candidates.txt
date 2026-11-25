@@ -1,0 +1,4193 @@
+MORPHDRIVE 3D — NORMALIZED COCKPIT / INTERIOR CANDIDATES
+========================================================
+Normalized coordinates reproduce vehicle-manager.js wrapper normalization.
+Largest vehicle dimension is normalized to 5 Three.js units.
+Candidate positions are approximate bounds centers, NOT verified camera positions.
+Direct, ancestor and material matches are reported separately.
+
+
+VEHICLE: Sedan (sedan)
+Type: Car
+Status: success
+----------------------------------------
+Original dimensions: 2.176, 1.602, 4.195
+Original center: 0.115, -0.073, 0.503
+Normalization scale: 1.191796
+Normalized dimensions: 2.593, 1.909, 5.000
+Normalized vehicle center: -0.000, 0.955, 0.000
+Normalized vehicle minimum: -1.297, 0.000, -2.500
+Normalized vehicle maximum: 1.297, 1.909, 2.500
+
+Candidates found: 30
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: Object_29
+Mesh: Object_11
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: console
+Material matches: interior [interior]
+Triangles: 352
+Original world center: -0.015, -0.064, -0.104
+Normalized center: -0.155, 0.965, -0.723
+Normalized min: -0.350, 0.732, -1.581
+Normalized max: 0.040, 1.199, 0.135
+Normalized size: 0.390, 0.467, 1.716
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / center-console_11 / Object_29
+
+Name: Object_31
+Mesh: Object_12
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: interior [interior]
+Triangles: 96
+Original world center: 0.000, -0.146, 0.202
+Normalized center: -0.137, 0.867, -0.359
+Normalized min: -0.227, 0.495, -0.889
+Normalized max: -0.047, 1.238, 0.172
+Normalized size: 0.179, 0.743, 1.061
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / column-wheel_12 / Object_31
+
+Name: Object_33
+Mesh: Object_13
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: dashboard
+Material matches: interior [interior]
+Triangles: 784
+Original world center: -0.113, -0.090, 0.022
+Normalized center: -0.272, 0.933, -0.572
+Normalized min: -1.171, 0.543, -0.815
+Normalized max: 0.628, 1.323, -0.330
+Normalized size: 1.799, 0.780, 0.485
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / dashboard_13 / Object_33
+
+Name: Object_35
+Mesh: Object_14
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: interior
+Material matches: interior [interior]
+Triangles: 396
+Original world center: -0.014, -0.016, 0.015
+Normalized center: -0.154, 1.022, -0.581
+Normalized min: -0.273, 0.590, -1.217
+Normalized max: -0.034, 1.454, 0.055
+Normalized size: 0.238, 0.864, 1.272
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-front-interior-panel-l_14 / Object_35
+
+Name: Object_37
+Mesh: Object_15
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: interior
+Material matches: interior [interior]
+Triangles: 396
+Original world center: 0.014, -0.016, 0.015
+Normalized center: -0.121, 1.022, -0.581
+Normalized min: -0.240, 0.590, -1.217
+Normalized max: -0.002, 1.454, 0.055
+Normalized size: 0.238, 0.864, 1.272
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-front-interior-panel-r_15 / Object_37
+
+Name: Object_47
+Mesh: Object_20
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: interior
+Material matches: interior [interior]
+Triangles: 388
+Original world center: -0.010, -0.040, -0.101
+Normalized center: -0.149, 0.993, -0.720
+Normalized min: -0.268, 0.561, -1.336
+Normalized max: -0.030, 1.426, -0.103
+Normalized size: 0.238, 0.866, 1.234
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-interior-panel-l_20 / Object_47
+
+Name: Object_49
+Mesh: Object_21
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: interior
+Material matches: interior [interior]
+Triangles: 388
+Original world center: 0.010, -0.040, -0.101
+Normalized center: -0.125, 0.993, -0.720
+Normalized min: -0.244, 0.561, -1.336
+Normalized max: -0.006, 1.426, -0.103
+Normalized size: 0.238, 0.866, 1.234
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / door-rear-interior-panel-r_21 / Object_49
+
+Name: Object_83
+Mesh: Object_38
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: interior [interior]
+Triangles: 342
+Original world center: -0.001, 0.004, -0.043
+Normalized center: -0.138, 1.046, -0.650
+Normalized min: -0.468, 0.889, -1.039
+Normalized max: 0.192, 1.202, -0.261
+Normalized size: 0.660, 0.313, 0.777
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-seat_38 / Object_83
+
+Name: Object_85
+Mesh: Object_39
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: interior [interior]
+Triangles: 740
+Original world center: -0.000, 0.133, -0.032
+Normalized center: -0.138, 1.200, -0.637
+Normalized min: -0.491, 0.636, -0.929
+Normalized max: 0.216, 1.764, -0.345
+Normalized size: 0.708, 1.128, 0.585
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-seat-backrest_39 / Object_85
+
+Name: Object_87
+Mesh: Object_40
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: interior [interior]
+Triangles: 740
+Original world center: -0.000, 0.133, -0.032
+Normalized center: -0.138, 1.200, -0.637
+Normalized min: -0.491, 0.636, -0.929
+Normalized max: 0.216, 1.764, -0.345
+Normalized size: 0.708, 1.128, 0.585
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-seat-backrest--passenger_40 / Object_87
+
+Name: Object_89
+Mesh: Object_41
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: interior [interior]
+Triangles: 342
+Original world center: -0.001, 0.004, -0.043
+Normalized center: -0.138, 1.046, -0.650
+Normalized min: -0.468, 0.889, -1.039
+Normalized max: 0.192, 1.202, -0.261
+Normalized size: 0.660, 0.313, 0.777
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / front-seat-passenger_41 / Object_89
+
+Name: Object_129
+Mesh: Object_61
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: interior [interior]
+Triangles: 268
+Original world center: 0.001, 0.009, -0.024
+Normalized center: -0.136, 1.051, -0.628
+Normalized min: -0.940, 0.885, -0.959
+Normalized max: 0.668, 1.217, -0.296
+Normalized size: 1.608, 0.332, 0.663
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / rear-seat_62 / Object_129
+
+Name: Object_131
+Mesh: Object_62
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: interior [interior]
+Triangles: 488
+Original world center: 0.001, -0.002, -0.045
+Normalized center: -0.136, 1.039, -0.653
+Normalized min: -0.945, 0.748, -1.164
+Normalized max: 0.673, 1.330, -0.142
+Normalized size: 1.619, 0.582, 1.022
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / rear-seat-backseat_63 / Object_131
+
+Name: Object_133
+Mesh: Object_63
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: interior
+Material matches: interior [interior]
+Triangles: 640
+Original world center: 0.000, -0.278, -0.045
+Normalized center: -0.137, 0.709, -0.652
+Normalized min: -1.095, 0.000, -2.337
+Normalized max: 0.820, 1.418, 1.033
+Normalized size: 1.915, 1.418, 3.370
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / roof-pillars-interior_64 / Object_133
+
+Name: Object_161
+Mesh: Object_77
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: steering
+Material matches: interior [interior]
+Triangles: 662
+Original world center: -0.003, 0.027, 0.008
+Normalized center: -0.141, 1.073, -0.590
+Normalized min: -0.344, 0.871, -0.681
+Normalized max: 0.062, 1.275, -0.499
+Normalized size: 0.407, 0.404, 0.182
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / steering-wheel_78 / Object_161
+
+Name: Object_209
+Mesh: Object_101
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 280
+Original world center: 0.000, 0.039, -0.044
+Normalized center: -0.137, 1.087, -0.651
+Normalized min: -1.031, 0.842, -1.166
+Normalized max: 0.757, 1.333, -0.137
+Normalized size: 1.788, 0.491, 1.029
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / windshield_102 / Object_209
+
+Name: Object_211
+Mesh: Object_102
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 784
+Original world center: -0.089, -0.022, -0.002
+Normalized center: -0.243, 1.015, -0.601
+Normalized min: -0.352, 0.991, -0.625
+Normalized max: -0.135, 1.039, -0.578
+Normalized size: 0.216, 0.048, 0.046
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 1_103 / Object_211
+
+Name: Object_213
+Mesh: Object_103
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 784
+Original world center: -0.079, -0.021, -0.013
+Normalized center: -0.232, 1.016, -0.615
+Normalized min: -0.343, 0.993, -0.642
+Normalized max: -0.120, 1.040, -0.587
+Normalized size: 0.223, 0.047, 0.055
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 1.001_104 / Object_213
+
+Name: Object_215
+Mesh: Object_104
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 1180
+Original world center: -0.151, -0.003, 0.005
+Normalized center: -0.317, 1.038, -0.593
+Normalized min: -0.492, 1.025, -0.610
+Normalized max: -0.142, 1.051, -0.576
+Normalized size: 0.350, 0.027, 0.034
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 2_105 / Object_215
+
+Name: Object_217
+Mesh: Object_105
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 1180
+Original world center: -0.148, -0.003, -0.005
+Normalized center: -0.313, 1.037, -0.605
+Normalized min: -0.492, 1.023, -0.623
+Normalized max: -0.134, 1.051, -0.588
+Normalized size: 0.358, 0.028, 0.035
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 2.001_106 / Object_217
+
+Name: Object_219
+Mesh: Object_106
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 1452
+Original world center: -0.048, -0.014, -0.014
+Normalized center: -0.195, 1.024, -0.615
+Normalized min: -0.287, 1.010, -0.637
+Normalized max: -0.103, 1.038, -0.593
+Normalized size: 0.184, 0.029, 0.044
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 3_107 / Object_219
+
+Name: Object_221
+Mesh: Object_107
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 1452
+Original world center: -0.049, -0.020, -0.012
+Normalized center: -0.196, 1.017, -0.614
+Normalized min: -0.289, 0.996, -0.635
+Normalized max: -0.103, 1.038, -0.593
+Normalized size: 0.186, 0.042, 0.042
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Arm 3.001_108 / Object_221
+
+Name: Object_223
+Mesh: Object_108
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 40
+Original world center: -0.018, -0.058, 0.003
+Normalized center: -0.159, 0.972, -0.596
+Normalized min: -0.173, 0.938, -0.615
+Normalized max: -0.144, 1.006, -0.577
+Normalized size: 0.029, 0.068, 0.038
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Main Axle_109 / Object_223
+
+Name: Object_225
+Mesh: Object_109
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 40
+Original world center: -0.001, -0.048, -0.001
+Normalized center: -0.139, 0.984, -0.600
+Normalized min: -0.151, 0.951, -0.627
+Normalized max: -0.126, 1.017, -0.573
+Normalized size: 0.025, 0.066, 0.054
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Main Axle.001_110 / Object_225
+
+Name: Object_227
+Mesh: Object_110
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 76
+Original world center: -0.286, -0.032, -0.000
+Normalized center: -0.478, 1.003, -0.599
+Normalized min: -0.480, 1.001, -0.608
+Normalized max: -0.476, 1.005, -0.590
+Normalized size: 0.004, 0.004, 0.018
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Pegs 1_111 / Object_227
+
+Name: Object_229
+Mesh: Object_111
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 76
+Original world center: -0.416, -0.042, -0.028
+Normalized center: -0.633, 0.991, -0.632
+Normalized min: -0.636, 0.988, -0.644
+Normalized max: -0.630, 0.994, -0.620
+Normalized size: 0.006, 0.006, 0.024
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Pegs 2_112 / Object_229
+
+Name: Object_231
+Mesh: Object_112
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 3392
+Original world center: 0.001, -0.030, -0.008
+Normalized center: -0.137, 1.006, -0.609
+Normalized min: -0.465, 0.995, -0.623
+Normalized max: 0.192, 1.017, -0.595
+Normalized size: 0.657, 0.022, 0.028
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Rubber_113 / Object_231
+
+Name: Object_233
+Mesh: Object_113
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 1396
+Original world center: 0.001, -0.015, -0.008
+Normalized center: -0.137, 1.024, -0.608
+Normalized min: -0.470, 1.004, -0.625
+Normalized max: 0.197, 1.043, -0.592
+Normalized size: 0.667, 0.039, 0.033
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Wiper_114 / Object_233
+
+Name: Object_235
+Mesh: Object_114
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 1396
+Original world center: -0.004, -0.030, -0.003
+Normalized center: -0.142, 1.005, -0.603
+Normalized min: -0.476, 0.979, -0.619
+Normalized max: 0.191, 1.031, -0.586
+Normalized size: 0.667, 0.053, 0.034
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / Windshield Wiper - Left - Wiper.001_115 / Object_235
+
+Name: Object_237
+Mesh: Object_115
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windshield
+Material matches: None
+Triangles: 1504
+Original world center: -0.000, -0.001, 0.057
+Normalized center: -0.137, 1.040, -0.531
+Normalized min: -1.039, 1.009, -0.717
+Normalized max: 0.764, 1.071, -0.345
+Normalized size: 1.803, 0.062, 0.372
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Car Rig_187 / DEF-Body_120 / car.Body_119 / windshield-grill_118 / Object_237
+
+VEHICLE: Lamborghini Urus Performante (urus-performante)
+Type: Car
+Status: success
+----------------------------------------
+Original dimensions: 2.216, 1.983, 5.136
+Original center: 0.000, 0.598, 0.006
+Normalization scale: 0.973465
+Normalized dimensions: 2.157, 1.930, 5.000
+Normalized vehicle center: 0.000, 0.965, 0.000
+Normalized vehicle minimum: -1.079, 0.000, -2.500
+Normalized vehicle maximum: 1.079, 1.930, 2.500
+
+Candidates found: 2
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: Interior_Geo_lodA_Lamborghini_UrusPerformanteRewardRecycled_2023InteriorA_Material_0
+Mesh: Interior_Geo_lodA_Lamborghini_UrusPerformanteRewardRecycled_2023InteriorA_Material_0
+Classification: DIRECT + ANCESTOR + MATERIAL
+Direct matches: interior
+Ancestor matches: interior
+Material matches: Lamborghini_UrusPerformanteRewardRecycled_2023InteriorA_Material [interior]
+Triangles: 67440
+Original world center: 0.000, 0.713, -0.629
+Normalized center: 0.000, 1.077, -0.618
+Normalized min: -0.959, 0.453, -2.341
+Normalized max: 0.959, 1.701, 1.105
+Normalized size: 1.919, 1.248, 3.447
+Hierarchy: Sketchfab_model / Final_Model.fbx / RootNode / Body_lodA / Interior_Geo_lodA / Interior_Geo_lodA_Lamborghini_UrusPerformanteRewardRecycled_2023InteriorA_Material_0
+
+Name: SeatBelt_Geo_lodA_Lamborghini_UrusPerformanteRewardRecycled_2023SeatBelt_Material_0
+Mesh: SeatBelt_Geo_lodA_Lamborghini_UrusPerformanteRewardRecycled_2023SeatBelt_Material_0
+Classification: DIRECT + ANCESTOR + MATERIAL
+Direct matches: seat
+Ancestor matches: seat
+Material matches: Lamborghini_UrusPerformanteRewardRecycled_2023SeatBelt_Material [seat]
+Triangles: 444
+Original world center: 0.694, 0.684, -0.191
+Normalized center: 0.676, 1.049, -0.192
+Normalized min: 0.630, 0.614, -0.290
+Normalized max: 0.722, 1.483, -0.094
+Normalized size: 0.091, 0.869, 0.196
+Hierarchy: Sketchfab_model / Final_Model.fbx / RootNode / Body_lodA / SeatBelt_Geo_lodA / SeatBelt_Geo_lodA_Lamborghini_UrusPerformanteRewardRecycled_2023SeatBelt_Material_0
+
+VEHICLE: Ford F-150 Raptor (ford-f150-raptor)
+Type: Car
+Status: success
+----------------------------------------
+Original dimensions: 2.461, 2.387, 6.115
+Original center: 0.004, 0.438, 0.239
+Normalization scale: 0.817691
+Normalized dimensions: 2.012, 1.952, 5.000
+Normalized vehicle center: 0.000, 0.976, 0.000
+Normalized vehicle minimum: -1.006, 0.000, -2.500
+Normalized vehicle maximum: 1.006, 1.952, 2.500
+
+Candidates found: 39
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: engine_new
+Mesh: engine_new.001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: pedals.001 [pedal]
+Triangles: 48401
+Original world center: -0.018, 0.372, -2.004
+Normalized center: -0.018, 0.922, -1.834
+Normalized min: -0.738, 0.579, -2.348
+Normalized max: 0.703, 1.266, -1.320
+Normalized size: 1.441, 0.687, 1.028
+Hierarchy: engine_new
+
+Name: Object_5
+Mesh: Object_1
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 37468
+Original world center: -0.000, 0.706, 0.207
+Normalized center: -0.003, 1.195, -0.027
+Normalized min: -0.861, 0.438, -2.471
+Normalized max: 0.855, 1.952, 2.417
+Normalized size: 1.716, 1.514, 4.888
+Hierarchy: Police Ford Raptor / bodyshell1_1 / Object_5
+
+Name: Object_15
+Mesh: Object_10
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 16230
+Original world center: 0.012, 0.694, -0.701
+Normalized center: 0.007, 1.185, -0.769
+Normalized min: -0.720, 0.666, -2.352
+Normalized max: 0.734, 1.704, 0.814
+Normalized size: 1.454, 1.038, 3.166
+Hierarchy: Police Ford Raptor / chassis_2 / Object_15
+
+Name: Object_18
+Mesh: Object_13
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | floor carpet textile [interior]; Interior | grained soft-touch dashboard [interior, dashboard]; Interior | charcoal automotive leather [interior]
+Triangles: 9740
+Original world center: 0.000, 0.696, -0.068
+Normalized center: -0.003, 1.187, -0.251
+Normalized min: -0.717, 0.671, -1.294
+Normalized max: 0.711, 1.703, 0.792
+Normalized size: 1.428, 1.033, 2.086
+Hierarchy: Police Ford Raptor / chassis_2 / Object_18
+
+Name: Object_19
+Mesh: Object_14
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | charcoal automotive leather [interior]; Interior | fine steering leather [interior, steering]
+Triangles: 1952
+Original world center: -0.015, 0.398, 0.782
+Normalized center: -0.015, 0.943, 0.444
+Normalized min: -0.670, 0.503, -1.294
+Normalized max: 0.640, 1.383, 2.182
+Normalized size: 1.310, 0.879, 3.476
+Hierarchy: Police Ford Raptor / chassis_2 / Object_19
+
+Name: Object_27
+Mesh: Object_22
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: pedals.001 [pedal]
+Triangles: 214
+Original world center: -0.473, 0.323, -1.239
+Normalized center: -0.390, 0.882, -1.209
+Normalized min: -0.575, 0.782, -1.257
+Normalized max: -0.205, 0.982, -1.162
+Normalized size: 0.371, 0.201, 0.095
+Hierarchy: Police Ford Raptor / chassis_2 / Object_27
+
+Name: Object_30
+Mesh: Object_25
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 76
+Original world center: 0.001, 0.505, -0.590
+Normalized center: -0.002, 1.031, -0.678
+Normalized min: -0.123, 1.027, -0.781
+Normalized max: 0.118, 1.035, -0.575
+Normalized size: 0.242, 0.008, 0.206
+Hierarchy: Police Ford Raptor / chassis_2 / Object_30
+
+Name: Object_40
+Mesh: Object_32
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Cockpit | anti-reflection instrument glass [cockpit, instrument]
+Triangles: 57
+Original world center: -0.452, 0.767, -1.003
+Normalized center: -0.372, 1.245, -1.016
+Normalized min: -0.515, 1.203, -1.032
+Normalized max: -0.230, 1.287, -1.000
+Normalized size: 0.285, 0.084, 0.032
+Hierarchy: Police Ford Raptor / dials_5 / Object_40
+
+Name: Object_42
+Mesh: Object_34
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Cockpit | readable gauges [cockpit]
+Triangles: 60
+Original world center: -0.452, 0.777, -1.011
+Normalized center: -0.373, 1.253, -1.023
+Normalized min: -0.515, 1.205, -1.042
+Normalized max: -0.230, 1.302, -1.004
+Normalized size: 0.285, 0.097, 0.038
+Hierarchy: Police Ford Raptor / dials_5 / Object_42
+
+Name: Object_126
+Mesh: Object_95
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]; Interior | charcoal automotive leather [interior]; Interior | floor carpet textile [interior]
+Triangles: 27701
+Original world center: -0.964, 0.604, -0.533
+Normalized center: -0.791, 1.112, -0.632
+Normalized min: -1.006, 0.538, -1.144
+Normalized max: -0.575, 1.686, -0.120
+Normalized size: 0.431, 1.148, 1.024
+Hierarchy: Police Ford Raptor / door_dside_f_28 / Object_126
+
+Name: Object_147
+Mesh: Object_113
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 1443
+Original world center: -0.870, 0.701, 0.553
+Normalized center: -0.715, 1.191, 0.256
+Normalized min: -0.842, 0.705, -0.128
+Normalized max: -0.587, 1.676, 0.640
+Normalized size: 0.255, 0.970, 0.768
+Hierarchy: Police Ford Raptor / door_dside_r_31 / Object_147
+
+Name: Object_151
+Mesh: Object_117
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 1277
+Original world center: -0.819, 0.724, 0.561
+Normalized center: -0.673, 1.210, 0.263
+Normalized min: -0.748, 0.769, -0.067
+Normalized max: -0.597, 1.651, 0.593
+Normalized size: 0.151, 0.882, 0.660
+Hierarchy: Police Ford Raptor / door_dside_r_31 / Object_151
+
+Name: Object_152
+Mesh: Object_118
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]; Interior | charcoal automotive leather [interior]
+Triangles: 271
+Original world center: -0.839, 0.570, 0.603
+Normalized center: -0.689, 1.084, 0.297
+Normalized min: -0.748, 0.899, 0.005
+Normalized max: -0.630, 1.270, 0.589
+Normalized size: 0.118, 0.371, 0.585
+Hierarchy: Police Ford Raptor / door_dside_r_31 / Object_152
+
+Name: Object_153
+Mesh: Object_119
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | charcoal automotive leather [interior]
+Triangles: 51
+Original world center: -0.871, 0.704, 0.605
+Normalized center: -0.715, 1.193, 0.299
+Normalized min: -0.748, 1.117, 0.260
+Normalized max: -0.683, 1.270, 0.337
+Normalized size: 0.065, 0.154, 0.077
+Hierarchy: Police Ford Raptor / door_dside_r_31 / Object_153
+
+Name: Object_97
+Mesh: Object_71
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 3745
+Original world center: 0.970, 0.610, -0.503
+Normalized center: 0.790, 1.116, -0.607
+Normalized min: 0.575, 0.563, -1.097
+Normalized max: 1.005, 1.670, -0.118
+Normalized size: 0.430, 1.107, 0.978
+Hierarchy: Police Ford Raptor / door_pside_f_23 / Object_97
+
+Name: Object_100
+Mesh: Object_74
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 1845
+Original world center: 0.821, 0.665, -0.518
+Normalized center: 0.668, 1.161, -0.619
+Normalized min: 0.589, 0.684, -1.038
+Normalized max: 0.747, 1.639, -0.201
+Normalized size: 0.159, 0.956, 0.837
+Hierarchy: Police Ford Raptor / door_pside_f_23 / Object_100
+
+Name: Object_101
+Mesh: Object_75
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]; Interior | charcoal automotive leather [interior]; Interior | floor carpet textile [interior]
+Triangles: 221
+Original world center: 0.816, 0.400, -0.505
+Normalized center: 0.664, 0.945, -0.608
+Normalized min: 0.620, 0.728, -0.987
+Normalized max: 0.708, 1.161, -0.230
+Normalized size: 0.088, 0.433, 0.757
+Hierarchy: Police Ford Raptor / door_pside_f_23 / Object_101
+
+Name: Object_106
+Mesh: Object_80
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | charcoal automotive leather [interior]
+Triangles: 67
+Original world center: 0.873, 0.616, -0.596
+Normalized center: 0.711, 1.122, -0.683
+Normalized min: 0.674, 1.037, -0.736
+Normalized max: 0.747, 1.207, -0.630
+Normalized size: 0.073, 0.171, 0.106
+Hierarchy: Police Ford Raptor / door_pside_f_23 / Object_106
+
+Name: Object_115
+Mesh: Object_86
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 1404
+Original world center: 0.867, 0.701, 0.557
+Normalized center: 0.706, 1.191, 0.260
+Normalized min: 0.579, 0.705, -0.124
+Normalized max: 0.833, 1.676, 0.644
+Normalized size: 0.254, 0.970, 0.768
+Hierarchy: Police Ford Raptor / door_pside_r_26 / Object_115
+
+Name: Object_119
+Mesh: Object_90
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 1277
+Original world center: 0.816, 0.724, 0.565
+Normalized center: 0.665, 1.210, 0.266
+Normalized min: 0.589, 0.769, -0.064
+Normalized max: 0.740, 1.651, 0.596
+Normalized size: 0.151, 0.882, 0.660
+Hierarchy: Police Ford Raptor / door_pside_r_26 / Object_119
+
+Name: Object_120
+Mesh: Object_91
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]; Interior | charcoal automotive leather [interior]
+Triangles: 271
+Original world center: 0.836, 0.570, 0.607
+Normalized center: 0.681, 1.084, 0.301
+Normalized min: 0.622, 0.899, 0.008
+Normalized max: 0.740, 1.270, 0.593
+Normalized size: 0.118, 0.371, 0.584
+Hierarchy: Police Ford Raptor / door_pside_r_26 / Object_120
+
+Name: Object_121
+Mesh: Object_92
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | charcoal automotive leather [interior]
+Triangles: 51
+Original world center: 0.868, 0.704, 0.609
+Normalized center: 0.707, 1.193, 0.302
+Normalized min: 0.674, 1.117, 0.263
+Normalized max: 0.740, 1.270, 0.341
+Normalized size: 0.065, 0.154, 0.077
+Hierarchy: Police Ford Raptor / door_pside_r_26 / Object_121
+
+Name: Object_55
+Mesh: Object_41
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 12
+Original world center: -0.011, 1.227, -0.655
+Normalized center: -0.012, 1.621, -0.732
+Normalized min: -0.461, 1.612, -0.737
+Normalized max: 0.437, 1.631, -0.726
+Normalized size: 0.898, 0.019, 0.011
+Hierarchy: Police Ford Raptor / extra_7_11 / Object_55
+
+Name: Object_77
+Mesh: Object_55
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Interior | floor carpet textile [interior]; Interior | charcoal automotive leather [interior]
+Triangles: 912
+Original world center: -0.006, 0.314, 2.126
+Normalized center: -0.008, 0.874, 1.543
+Normalized min: -0.847, 0.446, 0.688
+Normalized max: 0.831, 1.303, 2.397
+Normalized size: 1.679, 0.857, 1.708
+Hierarchy: Police Ford Raptor / Object_19.001 / Object_77
+
+Name: Object_214
+Mesh: Object_163
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: console.003 [console]
+Triangles: 434
+Original world center: 0.000, 0.622, -0.020
+Normalized center: -0.003, 1.126, -0.212
+Normalized min: -0.147, 1.070, -0.268
+Normalized max: 0.141, 1.182, -0.156
+Normalized size: 0.287, 0.112, 0.112
+Hierarchy: Police Ford Raptor / radar_48 / Object_214
+
+Name: Object_162
+Mesh: Object_124
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: steering
+Material matches: None
+Triangles: 261
+Original world center: -0.452, 0.796, -0.663
+Normalized center: -0.373, 1.269, -0.738
+Normalized min: -0.493, 1.158, -0.776
+Normalized max: -0.252, 1.380, -0.699
+Normalized size: 0.241, 0.221, 0.076
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_162
+
+Name: Object_163
+Mesh: Object_125
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: steering
+Material matches: None
+Triangles: 14
+Original world center: -0.452, 0.744, -0.729
+Normalized center: -0.373, 1.226, -0.792
+Normalized min: -0.455, 1.209, -0.809
+Normalized max: -0.290, 1.244, -0.776
+Normalized size: 0.165, 0.035, 0.033
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_163
+
+Name: Object_164
+Mesh: Object_126
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: steering
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 814
+Original world center: -0.452, 0.737, -0.700
+Normalized center: -0.373, 1.221, -0.768
+Normalized min: -0.472, 1.160, -0.827
+Normalized max: -0.273, 1.281, -0.710
+Normalized size: 0.199, 0.122, 0.117
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_164
+
+Name: Object_165
+Mesh: Object_127
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: steering
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 2218
+Original world center: -0.452, 0.785, -0.677
+Normalized center: -0.373, 1.259, -0.749
+Normalized min: -0.492, 1.119, -0.827
+Normalized max: -0.253, 1.400, -0.672
+Normalized size: 0.239, 0.281, 0.154
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_165
+
+Name: Object_166
+Mesh: Object_128
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: steering
+Material matches: Interior | fine steering leather [interior, steering]
+Triangles: 632
+Original world center: -0.452, 0.726, -0.637
+Normalized center: -0.373, 1.211, -0.717
+Normalized min: -0.495, 1.140, -0.758
+Normalized max: -0.251, 1.283, -0.676
+Normalized size: 0.244, 0.143, 0.082
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_166
+
+Name: Object_167
+Mesh: Object_129
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: steering
+Material matches: None
+Triangles: 8
+Original world center: -0.452, 0.740, -0.629
+Normalized center: -0.373, 1.223, -0.710
+Normalized min: -0.382, 1.216, -0.711
+Normalized max: -0.363, 1.230, -0.709
+Normalized size: 0.019, 0.014, 0.002
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_167
+
+Name: Object_168
+Mesh: Object_130
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: steering
+Material matches: None
+Triangles: 53
+Original world center: -0.453, 0.768, -0.678
+Normalized center: -0.373, 1.246, -0.750
+Normalized min: -0.476, 1.200, -0.790
+Normalized max: -0.270, 1.292, -0.710
+Normalized size: 0.207, 0.092, 0.080
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_168
+
+Name: Object_169
+Mesh: Object_131
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: steering
+Material matches: None
+Triangles: 40
+Original world center: -0.452, 0.795, -0.646
+Normalized center: -0.373, 1.268, -0.724
+Normalized min: -0.393, 1.260, -0.727
+Normalized max: -0.352, 1.275, -0.721
+Normalized size: 0.041, 0.015, 0.006
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_169
+
+Name: Object_170
+Mesh: Object_132
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: steering
+Material matches: Interior | charcoal automotive leather [interior]
+Triangles: 1434
+Original world center: -0.452, 0.819, -0.676
+Normalized center: -0.373, 1.287, -0.749
+Normalized min: -0.518, 1.174, -0.808
+Normalized max: -0.227, 1.400, -0.689
+Normalized size: 0.291, 0.226, 0.119
+Hierarchy: Police Ford Raptor / steeringwheel_35 / Object_170
+
+Name: Object_237
+Mesh: Object_178
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windscreen
+Material matches: None
+Triangles: 190
+Original world center: 0.002, 1.059, -1.017
+Normalized center: -0.001, 1.483, -1.028
+Normalized min: -0.694, 1.297, -1.384
+Normalized max: 0.692, 1.670, -0.671
+Normalized size: 1.386, 0.373, 0.712
+Hierarchy: Police Ford Raptor / windscreen_56 / Object_237
+
+Name: Object_238
+Mesh: Object_179
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: windscreen
+Material matches: Interior | grained soft-touch dashboard [interior, dashboard]
+Triangles: 48
+Original world center: 0.003, 0.853, -1.348
+Normalized center: -0.000, 1.316, -1.298
+Normalized min: -0.653, 1.300, -1.393
+Normalized max: 0.653, 1.331, -1.204
+Normalized size: 1.306, 0.030, 0.189
+Hierarchy: Police Ford Raptor / windscreen_56 / Object_238
+
+Name: Object_239
+Mesh: Object_180
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windscreen
+Material matches: None
+Triangles: 372
+Original world center: 0.002, 1.062, -1.018
+Normalized center: -0.001, 1.486, -1.029
+Normalized min: -0.693, 1.300, -1.384
+Normalized max: 0.692, 1.673, -0.673
+Normalized size: 1.385, 0.373, 0.712
+Hierarchy: Police Ford Raptor / windscreen_56 / Object_239
+
+Name: Object_234
+Mesh: Object_176
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windscreen
+Material matches: None
+Triangles: 394
+Original world center: -0.003, 1.061, 1.208
+Normalized center: -0.005, 1.485, 0.792
+Normalized min: -0.658, 1.306, 0.760
+Normalized max: 0.648, 1.665, 0.825
+Normalized size: 1.306, 0.359, 0.065
+Hierarchy: Police Ford Raptor / windscreen_r_55 / Object_234
+
+Name: Object_235
+Mesh: Object_177
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: windscreen
+Material matches: None
+Triangles: 820
+Original world center: -0.003, 1.061, 1.209
+Normalized center: -0.005, 1.485, 0.793
+Normalized min: -0.658, 1.306, 0.760
+Normalized max: 0.648, 1.665, 0.826
+Normalized size: 1.306, 0.359, 0.066
+Hierarchy: Police Ford Raptor / windscreen_r_55 / Object_235
+
+VEHICLE: Lamborghini Centenario (lamborghini-centenario)
+Type: Car
+Status: success
+----------------------------------------
+Original dimensions: 18.282, 9.606, 4.980
+Original center: 8.022, -3.487, -0.029
+Normalization scale: 0.273486
+Normalized dimensions: 5.000, 2.627, 1.362
+Normalized vehicle center: -0.000, 1.314, -0.000
+Normalized vehicle minimum: -2.500, 0.000, -0.681
+Normalized vehicle maximum: 2.500, 2.627, 0.681
+
+Candidates found: 21
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: Object_31
+Mesh: Object_20
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 2363
+Original world center: -0.014, 0.541, -0.286
+Normalized center: -2.198, 2.415, -0.070
+Normalized min: -2.441, 2.310, -0.313
+Normalized max: -1.954, 2.520, 0.173
+Normalized size: 0.487, 0.209, 0.486
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_31
+
+Name: Object_32
+Mesh: Object_21
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 4
+Original world center: -0.208, 0.588, -0.562
+Normalized center: -2.251, 2.428, -0.146
+Normalized min: -2.262, 2.417, -0.157
+Normalized max: -2.240, 2.439, -0.134
+Normalized size: 0.022, 0.022, 0.024
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_32
+
+Name: Object_33
+Mesh: Object_22
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 9
+Original world center: 0.698, 0.284, 0.130
+Normalized center: -2.003, 2.345, 0.043
+Normalized min: -2.009, 2.307, 0.023
+Normalized max: -1.997, 2.383, 0.064
+Normalized size: 0.012, 0.075, 0.041
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_33
+
+Name: Object_34
+Mesh: Object_23
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: interior
+Material matches: Seat_Belt [seat]
+Triangles: 9
+Original world center: -0.698, 0.284, 0.130
+Normalized center: -2.385, 2.345, 0.043
+Normalized min: -2.390, 2.307, 0.023
+Normalized max: -2.379, 2.383, 0.064
+Normalized size: 0.012, 0.075, 0.041
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_34
+
+Name: Object_35
+Mesh: Object_24
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 3394
+Original world center: 0.005, 0.554, -0.348
+Normalized center: -2.193, 2.419, -0.087
+Normalized min: -2.491, 2.314, -0.294
+Normalized max: -1.894, 2.524, 0.120
+Normalized size: 0.598, 0.210, 0.413
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_35
+
+Name: Object_36
+Mesh: Object_25
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 888
+Original world center: 0.021, 0.510, -0.897
+Normalized center: -2.188, 2.407, -0.237
+Normalized min: -2.387, 2.312, -0.387
+Normalized max: -1.989, 2.501, -0.088
+Normalized size: 0.398, 0.190, 0.299
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_36
+
+Name: Object_37
+Mesh: Object_26
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 1733
+Original world center: -0.294, 0.660, -0.644
+Normalized center: -2.274, 2.448, -0.168
+Normalized min: -2.386, 2.381, -0.308
+Normalized max: -2.162, 2.514, -0.029
+Normalized size: 0.224, 0.134, 0.279
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_37
+
+Name: Object_38
+Mesh: Object_27
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 790
+Original world center: 0.164, 0.668, -0.815
+Normalized center: -2.149, 2.450, -0.215
+Normalized min: -2.419, 2.398, -0.467
+Normalized max: -1.879, 2.502, 0.037
+Normalized size: 0.540, 0.104, 0.504
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_38
+
+Name: Object_39
+Mesh: Object_28
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 703
+Original world center: -0.374, 0.338, -0.990
+Normalized center: -2.296, 2.360, -0.263
+Normalized min: -2.353, 2.307, -0.308
+Normalized max: -2.239, 2.412, -0.217
+Normalized size: 0.114, 0.105, 0.091
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_39
+
+Name: Object_40
+Mesh: Object_29
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 186
+Original world center: -0.018, 0.600, -0.243
+Normalized center: -2.199, 2.431, -0.058
+Normalized min: -2.205, 2.429, -0.063
+Normalized max: -2.193, 2.433, -0.053
+Normalized size: 0.012, 0.004, 0.010
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_40
+
+Name: Object_41
+Mesh: Object_30
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 168
+Original world center: -0.001, 0.712, -0.532
+Normalized center: -2.194, 2.462, -0.137
+Normalized min: -2.401, 2.438, -0.196
+Normalized max: -1.988, 2.486, -0.078
+Normalized size: 0.413, 0.048, 0.118
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_41
+
+Name: Object_42
+Mesh: Object_31
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 2119
+Original world center: -0.241, 0.706, -0.421
+Normalized center: -2.260, 2.460, -0.107
+Normalized min: -2.367, 2.397, -0.220
+Normalized max: -2.153, 2.524, 0.006
+Normalized size: 0.214, 0.127, 0.226
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_42
+
+Name: Object_43
+Mesh: Object_32
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 19
+Original world center: -0.002, 0.679, -0.514
+Normalized center: -2.194, 2.453, -0.133
+Normalized min: -2.400, 2.452, -0.137
+Normalized max: -1.989, 2.454, -0.128
+Normalized size: 0.411, 0.002, 0.009
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_43
+
+Name: Object_44
+Mesh: Object_33
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 645
+Original world center: 0.018, 0.532, -0.203
+Normalized center: -2.189, 2.413, -0.048
+Normalized min: -2.500, 2.307, -0.313
+Normalized max: -1.878, 2.518, 0.218
+Normalized size: 0.622, 0.211, 0.531
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_44
+
+Name: Object_45
+Mesh: Object_34
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: interior
+Material matches: None
+Triangles: 1223
+Original world center: -0.009, 0.495, -0.666
+Normalized center: -2.196, 2.403, -0.174
+Normalized min: -2.434, 2.310, -0.267
+Normalized max: -1.959, 2.495, -0.081
+Normalized size: 0.475, 0.185, 0.186
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Interior_6 / Object_45
+
+Name: Object_48
+Mesh: Object_36
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Steering_Wheel_Logo [steering]
+Triangles: 20
+Original world center: -0.412, 0.811, -0.015
+Normalized center: -2.306, 2.489, 0.004
+Normalized min: -2.347, 2.488, 0.002
+Normalized max: -2.266, 2.490, 0.006
+Normalized size: 0.080, 0.003, 0.004
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / movsteer_1.0_7 / Object_48
+
+Name: Object_54
+Mesh: Object_41
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: seat
+Material matches: None
+Triangles: 410
+Original world center: 0.000, 0.478, 0.133
+Normalized center: -2.194, 2.398, 0.044
+Normalized min: -2.364, 2.322, -0.068
+Normalized max: -2.024, 2.474, 0.157
+Normalized size: 0.340, 0.153, 0.225
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Seats_9 / Object_54
+
+Name: Object_55
+Mesh: Object_42
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: seat
+Material matches: None
+Triangles: 3368
+Original world center: 0.000, 0.649, 0.144
+Normalized center: -2.194, 2.445, 0.047
+Normalized min: -2.395, 2.309, -0.068
+Normalized max: -1.992, 2.580, 0.163
+Normalized size: 0.403, 0.271, 0.231
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Seats_9 / Object_55
+
+Name: Object_56
+Mesh: Object_43
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: seat
+Material matches: None
+Triangles: 1450
+Original world center: 0.000, 0.672, 0.339
+Normalized center: -2.194, 2.451, 0.101
+Normalized min: -2.384, 2.324, 0.038
+Normalized max: -2.003, 2.578, 0.164
+Normalized size: 0.381, 0.255, 0.126
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Seats_9 / Object_56
+
+Name: Object_57
+Mesh: Object_44
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: seat
+Material matches: None
+Triangles: 1243
+Original world center: 0.004, 0.549, 0.142
+Normalized center: -2.193, 2.417, 0.047
+Normalized min: -2.405, 2.309, -0.074
+Normalized max: -1.980, 2.526, 0.168
+Normalized size: 0.426, 0.216, 0.242
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Seats_9 / Object_57
+
+Name: Object_58
+Mesh: Object_45
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: seat
+Material matches: None
+Triangles: 132
+Original world center: 0.004, 0.561, 0.319
+Normalized center: -2.193, 2.421, 0.095
+Normalized min: -2.406, 2.396, 0.081
+Normalized max: -1.979, 2.445, 0.109
+Normalized size: 0.426, 0.049, 0.028
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / Empty_10 / Seats_9 / Object_58
+
+VEHICLE: Polestar 3 (polestar-3)
+Type: Car
+Status: success
+----------------------------------------
+Original dimensions: 2.094, 1.662, 4.878
+Original center: -0.000, 0.829, -0.002
+Normalization scale: 1.025078
+Normalized dimensions: 2.147, 1.703, 5.000
+Normalized vehicle center: -0.000, 0.852, -0.000
+Normalized vehicle minimum: -1.073, 0.000, -2.500
+Normalized vehicle maximum: 1.073, 1.703, 2.500
+
+Candidates found: 157
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: ChromeWheelRim
+Mesh: ChromeWheelRim
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1385
+Original world center: -0.975, 0.406, -1.537
+Normalized center: -0.999, 0.419, -1.574
+Normalized min: -1.003, 0.032, -1.961
+Normalized max: -0.996, 0.806, -1.187
+Normalized size: 0.008, 0.774, 0.774
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Wheel1 / wheels_21-plus_my27_polestar3_plus-wheel / PlusWheel / ChromeWheelRim
+
+Name: ChromeCentreBadge
+Mesh: ChromeCentreBadge
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 894
+Original world center: -0.924, 0.407, -1.538
+Normalized center: -0.948, 0.420, -1.574
+Normalized min: -0.950, 0.390, -1.604
+Normalized max: -0.945, 0.450, -1.545
+Normalized size: 0.005, 0.060, 0.059
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Wheel1 / wheels_21-plus_my27_polestar3_plus-wheel / PlusWheel / ChromeCentreBadge
+
+Name: ChromeWheelRim
+Mesh: ChromeWheelRim
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1385
+Original world center: -0.975, 0.406, 1.438
+Normalized center: -0.999, 0.419, 1.476
+Normalized min: -1.003, 0.032, 1.089
+Normalized max: -0.996, 0.806, 1.863
+Normalized size: 0.008, 0.774, 0.774
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Wheel2 / wheels_21-plus_my27_polestar3_plus-wheel / PlusWheel / ChromeWheelRim
+
+Name: ChromeCentreBadge
+Mesh: ChromeCentreBadge
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 894
+Original world center: -0.924, 0.407, 1.437
+Normalized center: -0.948, 0.420, 1.475
+Normalized min: -0.950, 0.390, 1.446
+Normalized max: -0.945, 0.450, 1.505
+Normalized size: 0.005, 0.060, 0.059
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Wheel2 / wheels_21-plus_my27_polestar3_plus-wheel / PlusWheel / ChromeCentreBadge
+
+Name: ChromeWheelRim
+Mesh: ChromeWheelRim
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1385
+Original world center: 0.966, 0.406, -1.536
+Normalized center: 0.991, 0.419, -1.573
+Normalized min: 0.987, 0.032, -1.960
+Normalized max: 0.995, 0.806, -1.186
+Normalized size: 0.008, 0.774, 0.774
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Wheel3 / wheels_21-plus_my27_polestar3_plus-wheel / PlusWheel / ChromeWheelRim
+
+Name: ChromeCentreBadge
+Mesh: ChromeCentreBadge
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 894
+Original world center: 0.916, 0.407, -1.536
+Normalized center: 0.939, 0.420, -1.573
+Normalized min: 0.936, 0.390, -1.602
+Normalized max: 0.941, 0.450, -1.543
+Normalized size: 0.005, 0.060, 0.059
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Wheel3 / wheels_21-plus_my27_polestar3_plus-wheel / PlusWheel / ChromeCentreBadge
+
+Name: ChromeWheelRim
+Mesh: ChromeWheelRim
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1385
+Original world center: 0.966, 0.406, 1.443
+Normalized center: 0.991, 0.419, 1.482
+Normalized min: 0.987, 0.032, 1.095
+Normalized max: 0.995, 0.806, 1.868
+Normalized size: 0.008, 0.774, 0.774
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Wheel4 / wheels_21-plus_my27_polestar3_plus-wheel / PlusWheel / ChromeWheelRim
+
+Name: ChromeCentreBadge
+Mesh: ChromeCentreBadge
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 894
+Original world center: 0.916, 0.407, 1.444
+Normalized center: 0.939, 0.420, 1.482
+Normalized min: 0.936, 0.390, 1.452
+Normalized max: 0.941, 0.450, 1.512
+Normalized size: 0.005, 0.060, 0.059
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Wheel4 / wheels_21-plus_my27_polestar3_plus-wheel / PlusWheel / ChromeCentreBadge
+
+Name: gold_accent
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 1294
+Original world center: -0.715, 1.110, 0.590
+Normalized center: -0.733, 1.140, 0.607
+Normalized min: -0.734, 1.137, 0.591
+Normalized max: -0.733, 1.142, 0.623
+Normalized size: 0.001, 0.004, 0.032
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / gold_accent
+
+Name: Object477
+Mesh: Object477
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 877
+Original world center: -0.821, 0.817, 0.772
+Normalized center: -0.841, 0.839, 0.793
+Normalized min: -0.939, 0.431, 0.321
+Normalized max: -0.744, 1.247, 1.266
+Normalized size: 0.196, 0.816, 0.945
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / Object477
+
+Name: texIntSilver_speaker_door001_LR.doors001
+Mesh: texIntSilver_speaker_door001_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 790
+Original world center: -0.697, 0.730, 0.500
+Normalized center: -0.715, 0.750, 0.514
+Normalized min: -0.734, 0.661, 0.412
+Normalized max: -0.695, 0.839, 0.617
+Normalized size: 0.040, 0.178, 0.206
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / texIntSilver_speaker_door001_LR.doors001
+
+Name: silver_door001_LR.doors001
+Mesh: silver_door001_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 400
+Original world center: -0.711, 0.909, 0.557
+Normalized center: -0.729, 0.934, 0.573
+Normalized min: -0.739, 0.920, 0.545
+Normalized max: -0.719, 0.949, 0.601
+Normalized size: 0.020, 0.029, 0.056
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / silver_door001_LR.doors001
+
+Name: rubber_door001_LR.doors002
+Mesh: rubber_door001_LR.doors002
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1560
+Original world center: -0.725, 1.312, 0.736
+Normalized center: -0.743, 1.347, 0.756
+Normalized min: -0.859, 1.097, 0.263
+Normalized max: -0.627, 1.598, 1.250
+Normalized size: 0.232, 0.501, 0.987
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / rubber_door001_LR.doors002
+
+Name: plasticGlossy_BW_door001_rl_LR.doors001
+Mesh: plasticGlossy_BW_door001_rl_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 208
+Original world center: -0.713, 1.118, 0.791
+Normalized center: -0.731, 1.148, 0.813
+Normalized min: -0.736, 1.133, 0.590
+Normalized max: -0.726, 1.163, 1.036
+Normalized size: 0.010, 0.030, 0.447
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / plasticGlossy_BW_door001_rl_LR.doors001
+
+Name: plastic_door001_LR.doors001
+Mesh: plastic_door001_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 930
+Original world center: -0.752, 0.666, 0.690
+Normalized center: -0.771, 0.685, 0.710
+Normalized min: -0.845, 0.514, 0.389
+Normalized max: -0.697, 0.856, 1.030
+Normalized size: 0.148, 0.341, 0.641
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / plastic_door001_LR.doors001
+
+Name: gold_accent (1)
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 124
+Original world center: -0.712, 1.119, 0.807
+Normalized center: -0.730, 1.149, 0.829
+Normalized min: -0.733, 1.140, 0.624
+Normalized max: -0.726, 1.158, 1.034
+Normalized size: 0.007, 0.018, 0.410
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / gold_accent (1)
+
+Name: leatherA_door001_LR.doors001
+Mesh: leatherA_door001_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 985
+Original world center: -0.724, 1.230, 0.761
+Normalized center: -0.742, 1.263, 0.782
+Normalized min: -0.828, 1.201, 0.388
+Normalized max: -0.655, 1.325, 1.175
+Normalized size: 0.173, 0.123, 0.787
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / leatherA_door001_LR.doors001
+
+Name: InteriorStyle006
+Mesh: InteriorStyle006
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 1417
+Original world center: -0.750, 0.961, 0.772
+Normalized center: -0.768, 0.987, 0.793
+Normalized min: -0.845, 0.840, 0.404
+Normalized max: -0.692, 1.134, 1.182
+Normalized size: 0.153, 0.294, 0.778
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / InteriorStyle006
+
+Name: black_door001_LR.doors001
+Mesh: black_door001_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 20
+Original world center: -0.827, 1.014, 1.145
+Normalized center: -0.848, 1.041, 1.175
+Normalized min: -0.881, 1.023, 1.151
+Normalized max: -0.815, 1.059, 1.200
+Normalized size: 0.066, 0.035, 0.050
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearRight / int_charcoal_my27_polestar3_black-deco-doors_rear_right / black_door001_LR.doors001
+
+Name: gold_accent
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 1294
+Original world center: 0.715, 1.110, 0.590
+Normalized center: 0.733, 1.140, 0.607
+Normalized min: 0.733, 1.138, 0.591
+Normalized max: 0.734, 1.141, 0.623
+Normalized size: 0.001, 0.004, 0.032
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / gold_accent
+
+Name: texIntSilver_speaker_door003_LR.doors001
+Mesh: texIntSilver_speaker_door003_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1408
+Original world center: 0.697, 0.730, 0.500
+Normalized center: 0.714, 0.750, 0.515
+Normalized min: 0.694, 0.661, 0.412
+Normalized max: 0.735, 0.839, 0.617
+Normalized size: 0.040, 0.178, 0.205
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / texIntSilver_speaker_door003_LR.doors001
+
+Name: black_door003_LR.doors001
+Mesh: black_door003_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 20
+Original world center: 0.827, 1.014, 1.145
+Normalized center: 0.848, 1.041, 1.175
+Normalized min: 0.815, 1.023, 1.151
+Normalized max: 0.881, 1.059, 1.200
+Normalized size: 0.066, 0.035, 0.050
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / black_door003_LR.doors001
+
+Name: Object482
+Mesh: Object482
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 610
+Original world center: 0.811, 0.835, 0.780
+Normalized center: 0.831, 0.858, 0.801
+Normalized min: 0.744, 0.468, 0.339
+Normalized max: 0.919, 1.248, 1.263
+Normalized size: 0.175, 0.780, 0.924
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / Object482
+
+Name: Object483
+Mesh: Object483
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 240
+Original world center: 0.682, 0.730, 0.499
+Normalized center: 0.699, 0.750, 0.513
+Normalized min: 0.694, 0.666, 0.417
+Normalized max: 0.703, 0.835, 0.610
+Normalized size: 0.009, 0.169, 0.194
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / Object483
+
+Name: plastic_door003_LR.doors001
+Mesh: plastic_door003_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 930
+Original world center: 0.752, 0.666, 0.690
+Normalized center: 0.771, 0.685, 0.710
+Normalized min: 0.697, 0.514, 0.389
+Normalized max: 0.845, 0.856, 1.030
+Normalized size: 0.148, 0.341, 0.641
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / plastic_door003_LR.doors001
+
+Name: gold_accent (1)
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 124
+Original world center: 0.712, 1.119, 0.807
+Normalized center: 0.730, 1.149, 0.829
+Normalized min: 0.726, 1.140, 0.624
+Normalized max: 0.733, 1.158, 1.034
+Normalized size: 0.007, 0.018, 0.410
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / gold_accent (1)
+
+Name: InteriorStyle007
+Mesh: InteriorStyle007
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 1417
+Original world center: 0.750, 0.961, 0.772
+Normalized center: 0.769, 0.987, 0.793
+Normalized min: 0.692, 0.840, 0.404
+Normalized max: 0.845, 1.134, 1.182
+Normalized size: 0.153, 0.294, 0.778
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / InteriorStyle007
+
+Name: Object484
+Mesh: Object484
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 201
+Original world center: 0.870, 0.766, 0.779
+Normalized center: 0.892, 0.787, 0.800
+Normalized min: 0.856, 0.431, 0.337
+Normalized max: 0.928, 1.143, 1.264
+Normalized size: 0.072, 0.711, 0.927
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / Object484
+
+Name: rubber_door003_LR.doors002
+Mesh: rubber_door003_LR.doors002
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1560
+Original world center: 0.725, 1.312, 0.736
+Normalized center: 0.743, 1.347, 0.756
+Normalized min: 0.627, 1.097, 0.263
+Normalized max: 0.859, 1.598, 1.250
+Normalized size: 0.232, 0.501, 0.987
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_RearLeft / int_charcoal_my27_polestar3_black-deco-doors_rear-left / rubber_door003_LR.doors002
+
+Name: silver_door000_LR.doors001
+Mesh: silver_door000_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: WhitePlasticInterior [interior]
+Triangles: 480
+Original world center: -0.675, 0.875, -0.476
+Normalized center: -0.692, 0.899, -0.486
+Normalized min: -0.701, 0.884, -0.514
+Normalized max: -0.682, 0.914, -0.459
+Normalized size: 0.020, 0.030, 0.055
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / silver_door000_LR.doors001
+
+Name: gold_accent
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 112
+Original world center: -0.712, 1.060, -0.202
+Normalized center: -0.730, 1.088, -0.206
+Normalized min: -0.735, 1.078, -0.403
+Normalized max: -0.725, 1.099, -0.008
+Normalized size: 0.010, 0.022, 0.395
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / gold_accent
+
+Name: plasticGlossy_BW_door000_fl_LR.doors001
+Mesh: plasticGlossy_BW_door000_fl_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 216
+Original world center: -0.714, 1.059, -0.222
+Normalized center: -0.731, 1.087, -0.226
+Normalized min: -0.738, 1.070, -0.446
+Normalized max: -0.725, 1.105, -0.006
+Normalized size: 0.013, 0.035, 0.439
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / plasticGlossy_BW_door000_fl_LR.doors001
+
+Name: black_door000_LR.doors001
+Mesh: black_door000_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 26
+Original world center: -0.817, 0.881, 0.096
+Normalized center: -0.837, 0.905, 0.101
+Normalized min: -0.862, 0.896, 0.085
+Normalized max: -0.812, 0.915, 0.116
+Normalized size: 0.051, 0.019, 0.031
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / black_door000_LR.doors001
+
+Name: rubber_door000_LR.doors001
+Mesh: rubber_door000_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 1128
+Original world center: -0.746, 1.278, -0.280
+Normalized center: -0.764, 1.312, -0.285
+Normalized min: -0.883, 1.040, -0.862
+Normalized max: -0.646, 1.585, 0.291
+Normalized size: 0.236, 0.545, 1.153
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / rubber_door000_LR.doors001
+
+Name: plastic_door000_fl_LR.doors001
+Mesh: plastic_door000_fl_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1348
+Original world center: -0.726, 0.640, -0.369
+Normalized center: -0.745, 0.659, -0.376
+Normalized min: -0.828, 0.489, -0.819
+Normalized max: -0.661, 0.828, 0.066
+Normalized size: 0.167, 0.340, 0.885
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / plastic_door000_fl_LR.doors001
+
+Name: InteriorStyle008
+Mesh: InteriorStyle008
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 1456
+Original world center: -0.725, 0.905, -0.344
+Normalized center: -0.743, 0.930, -0.350
+Normalized min: -0.829, 0.780, -0.819
+Normalized max: -0.657, 1.079, 0.119
+Normalized size: 0.171, 0.299, 0.938
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / InteriorStyle008
+
+Name: texIntSilver_speaker_door000_LR.doors001
+Mesh: texIntSilver_speaker_door000_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1101
+Original world center: -0.722, 0.890, -0.676
+Normalized center: -0.740, 0.915, -0.691
+Normalized min: -0.809, 0.612, -0.807
+Normalized max: -0.672, 1.217, -0.576
+Normalized size: 0.137, 0.605, 0.231
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / texIntSilver_speaker_door000_LR.doors001
+
+Name: Object471
+Mesh: Object471
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 324
+Original world center: -0.663, 0.674, -0.651
+Normalized center: -0.679, 0.693, -0.666
+Normalized min: -0.685, 0.683, -0.716
+Normalized max: -0.674, 0.703, -0.616
+Normalized size: 0.011, 0.020, 0.100
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / Object471
+
+Name: plasticGlossy_door000_LR.doors001
+Mesh: plasticGlossy_door000_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 1074
+Original world center: -0.679, 0.879, -0.337
+Normalized center: -0.696, 0.903, -0.343
+Normalized min: -0.717, 0.875, -0.515
+Normalized max: -0.675, 0.932, -0.171
+Normalized size: 0.042, 0.057, 0.344
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / plasticGlossy_door000_LR.doors001
+
+Name: gold_accent (1)
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 1294
+Original world center: -0.708, 1.049, -0.413
+Normalized center: -0.725, 1.077, -0.421
+Normalized min: -0.726, 1.075, -0.437
+Normalized max: -0.725, 1.079, -0.406
+Normalized size: 0.001, 0.004, 0.032
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / gold_accent (1)
+
+Name: Object472
+Mesh: Object472
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 583
+Original world center: -0.827, 0.754, -0.364
+Normalized center: -0.847, 0.775, -0.371
+Normalized min: -0.899, 0.450, -0.901
+Normalized max: -0.796, 1.101, 0.159
+Normalized size: 0.103, 0.651, 1.060
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontRight / int_charcoal_my27_polestar3_black-deco-doors_front-right / Object472
+
+Name: gold_accent
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 1294
+Original world center: 0.708, 1.049, -0.413
+Normalized center: 0.725, 1.077, -0.422
+Normalized min: 0.725, 1.075, -0.438
+Normalized max: 0.726, 1.079, -0.406
+Normalized size: 0.001, 0.004, 0.032
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / gold_accent
+
+Name: black_door002_LR.doors001
+Mesh: black_door002_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 26
+Original world center: 0.817, 0.881, 0.096
+Normalized center: 0.837, 0.905, 0.101
+Normalized min: 0.812, 0.896, 0.085
+Normalized max: 0.862, 0.915, 0.116
+Normalized size: 0.051, 0.019, 0.031
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / black_door002_LR.doors001
+
+Name: gold_accent (1)
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 112
+Original world center: 0.712, 1.060, -0.202
+Normalized center: 0.730, 1.088, -0.206
+Normalized min: 0.725, 1.078, -0.403
+Normalized max: 0.735, 1.099, -0.008
+Normalized size: 0.010, 0.022, 0.395
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / gold_accent (1)
+
+Name: InteriorStyle009
+Mesh: InteriorStyle009
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 1456
+Original world center: 0.725, 0.904, -0.344
+Normalized center: 0.743, 0.929, -0.350
+Normalized min: 0.657, 0.780, -0.819
+Normalized max: 0.829, 1.077, 0.119
+Normalized size: 0.171, 0.297, 0.938
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / InteriorStyle009
+
+Name: Object481
+Mesh: Object481
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 551
+Original world center: 0.826, 0.754, -0.350
+Normalized center: 0.847, 0.775, -0.356
+Normalized min: 0.796, 0.450, -0.872
+Normalized max: 0.899, 1.101, 0.159
+Normalized size: 0.103, 0.651, 1.031
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / Object481
+
+Name: plastic_door002_fl_LR.doors001
+Mesh: plastic_door002_fl_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1348
+Original world center: 0.726, 0.640, -0.369
+Normalized center: 0.745, 0.659, -0.376
+Normalized min: 0.661, 0.489, -0.819
+Normalized max: 0.828, 0.828, 0.066
+Normalized size: 0.167, 0.340, 0.885
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / plastic_door002_fl_LR.doors001
+
+Name: plasticGlossy_BW_door002_fl_LR.doors001
+Mesh: plasticGlossy_BW_door002_fl_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 216
+Original world center: 0.713, 1.059, -0.222
+Normalized center: 0.731, 1.087, -0.226
+Normalized min: 0.725, 1.070, -0.446
+Normalized max: 0.738, 1.105, -0.006
+Normalized size: 0.013, 0.035, 0.439
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / plasticGlossy_BW_door002_fl_LR.doors001
+
+Name: plasticGlossy_door002_LR.doors001
+Mesh: plasticGlossy_door002_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 1074
+Original world center: 0.679, 0.879, -0.337
+Normalized center: 0.696, 0.903, -0.343
+Normalized min: 0.675, 0.875, -0.515
+Normalized max: 0.717, 0.932, -0.171
+Normalized size: 0.042, 0.057, 0.344
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / plasticGlossy_door002_LR.doors001
+
+Name: rubber_door002_LR.doors001
+Mesh: rubber_door002_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 1128
+Original world center: 0.746, 1.278, -0.280
+Normalized center: 0.764, 1.312, -0.285
+Normalized min: 0.646, 1.040, -0.862
+Normalized max: 0.883, 1.585, 0.291
+Normalized size: 0.236, 0.545, 1.153
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / rubber_door002_LR.doors001
+
+Name: silver_door002_LR.doors001
+Mesh: silver_door002_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: WhitePlasticInterior [interior]
+Triangles: 480
+Original world center: 0.675, 0.875, -0.476
+Normalized center: 0.692, 0.899, -0.486
+Normalized min: 0.682, 0.884, -0.514
+Normalized max: 0.701, 0.914, -0.459
+Normalized size: 0.020, 0.030, 0.055
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / silver_door002_LR.doors001
+
+Name: texIntSilver_speaker_door002_LR.doors001
+Mesh: texIntSilver_speaker_door002_LR.doors001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]; BlackPlasticInterior [interior]
+Triangles: 1425
+Original world center: 0.721, 0.890, -0.676
+Normalized center: 0.740, 0.915, -0.691
+Normalized min: 0.672, 0.612, -0.807
+Normalized max: 0.807, 1.217, -0.576
+Normalized size: 0.135, 0.605, 0.231
+Hierarchy: animation-anchors_hidden_my27_polestar3_animation-anchors / ANCHOR_Door_FrontLeft / int_charcoal_my27_polestar3_black-deco-doors_front-left / texIntSilver_speaker_door002_LR.doors001
+
+Name: black_windshield001_LR.exterior
+Mesh: black_windshield001_LR.exterior
+Classification: DIRECT
+Direct matches: windshield
+Ancestor matches: None
+Material matches: None
+Triangles: 4552
+Original world center: 0.000, 1.333, -0.737
+Normalized center: 0.000, 1.368, -0.753
+Normalized min: -0.785, 1.145, -1.207
+Normalized max: 0.785, 1.592, -0.300
+Normalized size: 1.569, 0.446, 0.907
+Hierarchy: trim_dual-motor_my27_polestar3_body / black_windshield001_LR.exterior
+
+Name: chrome_doorLatches_LR.exterior
+Mesh: chrome_doorLatches_LR.exterior
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 2480
+Original world center: 0.000, 0.935, 0.643
+Normalized center: 0.000, 0.961, 0.661
+Normalized min: -0.878, 0.857, 0.111
+Normalized max: 0.878, 1.064, 1.210
+Normalized size: 1.756, 0.207, 1.099
+Hierarchy: trim_dual-motor_my27_polestar3_body / chrome_doorLatches_LR.exterior
+
+Name: glassDark_windshield_LR.exterior
+Mesh: glassDark_windshield_LR.exterior
+Classification: DIRECT
+Direct matches: windshield
+Ancestor matches: None
+Material matches: None
+Triangles: 1324
+Original world center: 0.000, 1.331, -0.738
+Normalized center: 0.000, 1.367, -0.755
+Normalized min: -0.786, 1.141, -1.211
+Normalized max: 0.786, 1.593, -0.299
+Normalized size: 1.573, 0.452, 0.912
+Hierarchy: trim_dual-motor_my27_polestar3_body / glassDark_windshield_LR.exterior
+
+Name: glassDark_windshieldCam_LR.exterior
+Mesh: glassDark_windshieldCam_LR.exterior
+Classification: DIRECT + MATERIAL
+Direct matches: windshield
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 624
+Original world center: -0.000, 1.483, -0.490
+Normalized center: 0.000, 1.523, -0.501
+Normalized min: -0.008, 1.514, -0.502
+Normalized max: 0.008, 1.531, -0.499
+Normalized size: 0.017, 0.017, 0.002
+Hierarchy: trim_dual-motor_my27_polestar3_body / glassDark_windshieldCam_LR.exterior
+
+Name: plastic_cockpit
+Mesh: plastic_cockpit
+Classification: DIRECT + MATERIAL
+Direct matches: cockpit
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 506
+Original world center: -0.000, 1.179, -0.996
+Normalized center: 0.000, 1.210, -1.019
+Normalized min: -0.182, 1.194, -1.047
+Normalized max: 0.183, 1.227, -0.992
+Normalized size: 0.365, 0.033, 0.056
+Hierarchy: trim_dual-motor_my27_polestar3_body / plastic_cockpit
+
+Name: black_cockpit_noMS
+Mesh: black_cockpit_noMS
+Classification: DIRECT + MATERIAL
+Direct matches: cockpit
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 56
+Original world center: 0.000, 1.109, -0.870
+Normalized center: 0.000, 1.139, -0.890
+Normalized min: -0.623, 1.071, -1.082
+Normalized max: 0.623, 1.207, -0.698
+Normalized size: 1.247, 0.136, 0.384
+Hierarchy: trim_dual-motor_my27_polestar3_body / black_cockpit_noMS
+
+Name: Object001
+Mesh: Object001
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 480
+Original world center: -0.000, 1.224, -0.946
+Normalized center: 0.000, 1.257, -0.968
+Normalized min: -0.026, 1.242, -0.994
+Normalized max: 0.026, 1.272, -0.941
+Normalized size: 0.053, 0.029, 0.053
+Hierarchy: trim_dual-motor_my27_polestar3_body / Object001
+
+Name: Object002
+Mesh: Object002
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 432
+Original world center: -0.000, 1.197, -0.943
+Normalized center: 0.000, 1.229, -0.965
+Normalized min: -0.026, 1.218, -0.993
+Normalized max: 0.026, 1.241, -0.937
+Normalized size: 0.053, 0.023, 0.056
+Hierarchy: trim_dual-motor_my27_polestar3_body / Object002
+
+Name: plasticGlossy_hud_noMS
+Mesh: plasticGlossy_hud_noMS
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 14
+Original world center: -0.370, 1.135, -0.949
+Normalized center: -0.379, 1.165, -0.971
+Normalized min: -0.492, 1.158, -1.067
+Normalized max: -0.266, 1.172, -0.874
+Normalized size: 0.226, 0.013, 0.193
+Hierarchy: trim_dual-motor_my27_polestar3_body / plasticGlossy_hud_noMS
+
+Name: plasticGlossy_speaker_dash_top
+Mesh: plasticGlossy_speaker_dash_top
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 1612
+Original world center: 0.000, 1.189, -0.886
+Normalized center: 0.000, 1.220, -0.907
+Normalized min: -0.095, 1.201, -1.001
+Normalized max: 0.095, 1.240, -0.812
+Normalized size: 0.189, 0.039, 0.189
+Hierarchy: trim_dual-motor_my27_polestar3_body / plasticGlossy_speaker_dash_top
+
+Name: plasticInt_dash_topq
+Mesh: plasticInt_dash_topq
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 2753
+Original world center: 0.000, 1.158, -0.904
+Normalized center: 0.000, 1.189, -0.925
+Normalized min: -0.663, 1.156, -1.082
+Normalized max: 0.663, 1.222, -0.767
+Normalized size: 1.325, 0.066, 0.315
+Hierarchy: trim_dual-motor_my27_polestar3_body / plasticInt_dash_topq
+
+Name: silver_speaker_dash_top
+Mesh: silver_speaker_dash_top
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 864
+Original world center: 0.000, 1.212, -0.942
+Normalized center: 0.000, 1.245, -0.964
+Normalized min: -0.027, 1.218, -0.994
+Normalized max: 0.027, 1.272, -0.934
+Normalized size: 0.054, 0.053, 0.060
+Hierarchy: trim_dual-motor_my27_polestar3_body / silver_speaker_dash_top
+
+Name: BootCover
+Mesh: BootCover
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 8702
+Original world center: -0.007, 1.250, 1.756
+Normalized center: -0.008, 1.283, 1.802
+Normalized min: -0.541, 1.230, 1.457
+Normalized max: 0.526, 1.337, 2.147
+Normalized size: 1.067, 0.107, 0.690
+Hierarchy: trim_dual-motor_my27_polestar3_body / BootCover
+
+Name: Box046
+Mesh: Box046
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 110
+Original world center: 0.691, 0.491, -0.415
+Normalized center: 0.708, 0.506, -0.424
+Normalized min: 0.675, 0.494, -0.663
+Normalized max: 0.741, 0.518, -0.184
+Normalized size: 0.065, 0.024, 0.479
+Hierarchy: trim_dual-motor_my27_polestar3_body / Box046
+
+Name: Box047
+Mesh: Box047
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 110
+Original world center: -0.696, 0.492, -0.408
+Normalized center: -0.714, 0.506, -0.416
+Normalized min: -0.746, 0.496, -0.656
+Normalized max: -0.681, 0.517, -0.176
+Normalized size: 0.065, 0.021, 0.479
+Hierarchy: trim_dual-motor_my27_polestar3_body / Box047
+
+Name: Box048
+Mesh: Box048
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 110
+Original world center: 0.732, 0.516, 0.603
+Normalized center: 0.750, 0.531, 0.620
+Normalized min: 0.716, 0.527, 0.508
+Normalized max: 0.784, 0.535, 0.732
+Normalized size: 0.068, 0.008, 0.224
+Hierarchy: trim_dual-motor_my27_polestar3_body / Box048
+
+Name: Box049
+Mesh: Box049
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 110
+Original world center: -0.735, 0.516, 0.606
+Normalized center: -0.753, 0.531, 0.623
+Normalized min: -0.790, 0.526, 0.511
+Normalized max: -0.717, 0.537, 0.736
+Normalized size: 0.072, 0.011, 0.225
+Hierarchy: trim_dual-motor_my27_polestar3_body / Box049
+
+Name: seatbelt_rear007
+Mesh: seatbelt_rear007
+Classification: DIRECT + ANCESTOR + MATERIAL
+Direct matches: seat
+Ancestor matches: seat
+Material matches: BlackSeatBelt [seat]
+Triangles: 1968
+Original world center: -0.000, 0.835, 1.227
+Normalized center: -0.000, 0.858, 1.260
+Normalized min: -0.663, 0.401, 0.972
+Normalized max: 0.662, 1.315, 1.548
+Normalized size: 1.325, 0.914, 0.576
+Hierarchy: trim_dual-motor_my27_polestar3_goldstripeseatbelt / seatbelt_rear007
+
+Name: gold_accentdsf002
+Mesh: gold_accentdsf002
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 52
+Original world center: -0.603, 0.958, 0.211
+Normalized center: -0.618, 0.984, 0.218
+Normalized min: -0.661, 0.544, 0.098
+Normalized max: -0.576, 1.425, 0.337
+Normalized size: 0.085, 0.881, 0.239
+Hierarchy: trim_dual-motor_my27_polestar3_goldstripeseatbelt / gold_accentdsf002
+
+Name: gold_accentdf002
+Mesh: gold_accentdf002
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 52
+Original world center: 0.603, 0.959, 0.208
+Normalized center: 0.618, 0.985, 0.215
+Normalized min: 0.576, 0.544, 0.094
+Normalized max: 0.661, 1.426, 0.335
+Normalized size: 0.085, 0.882, 0.241
+Hierarchy: trim_dual-motor_my27_polestar3_goldstripeseatbelt / gold_accentdf002
+
+Name: gold_accentasdd002
+Mesh: gold_accentasdd002
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 76
+Original world center: 0.597, 0.824, 1.205
+Normalized center: 0.612, 0.847, 1.238
+Normalized min: 0.585, 0.401, 1.003
+Normalized max: 0.640, 1.293, 1.472
+Normalized size: 0.055, 0.892, 0.470
+Hierarchy: trim_dual-motor_my27_polestar3_goldstripeseatbelt / gold_accentasdd002
+
+Name: gold_accentasdds002
+Mesh: gold_accentasdds002
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 100
+Original world center: 0.181, 0.988, 1.219
+Normalized center: 0.186, 1.015, 1.252
+Normalized min: 0.181, 0.719, 1.055
+Normalized max: 0.191, 1.311, 1.449
+Normalized size: 0.009, 0.592, 0.393
+Hierarchy: trim_dual-motor_my27_polestar3_goldstripeseatbelt / gold_accentasdds002
+
+Name: seatbelt_front007
+Mesh: seatbelt_front007
+Classification: DIRECT + ANCESTOR + MATERIAL
+Direct matches: seat
+Ancestor matches: seat
+Material matches: BlackSeatBelt [seat]
+Triangles: 608
+Original world center: 0.000, 0.959, 0.208
+Normalized center: 0.000, 0.985, 0.215
+Normalized min: -0.661, 0.539, 0.071
+Normalized max: 0.661, 1.431, 0.360
+Normalized size: 1.322, 0.892, 0.289
+Hierarchy: trim_dual-motor_my27_polestar3_goldstripeseatbelt / seatbelt_front007
+
+Name: gold_accentde001
+Mesh: gold_accentde001
+Classification: ANCESTOR + MATERIAL
+Direct matches: None
+Ancestor matches: seat
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 76
+Original world center: -0.601, 0.824, 1.203
+Normalized center: -0.616, 0.847, 1.235
+Normalized min: -0.640, 0.401, 0.994
+Normalized max: -0.593, 1.293, 1.476
+Normalized size: 0.047, 0.892, 0.481
+Hierarchy: trim_dual-motor_my27_polestar3_goldstripeseatbelt / gold_accentde001
+
+Name: black_centTunnel003
+Mesh: black_centTunnel003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 64
+Original world center: 0.000, 0.720, 0.228
+Normalized center: 0.000, 0.740, 0.236
+Normalized min: -0.090, 0.676, 0.197
+Normalized max: 0.090, 0.803, 0.274
+Normalized size: 0.179, 0.127, 0.078
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / black_centTunnel003
+
+Name: black_pillar_vents_noMS003
+Mesh: black_pillar_vents_noMS003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 44
+Original world center: -0.000, 1.261, 0.405
+Normalized center: 0.000, 1.294, 0.417
+Normalized min: -0.711, 1.246, 0.383
+Normalized max: 0.711, 1.342, 0.450
+Normalized size: 1.421, 0.096, 0.067
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / black_pillar_vents_noMS003
+
+Name: glassClear_center_Int003
+Mesh: glassClear_center_Int003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 240
+Original world center: -0.070, 0.840, -0.318
+Normalized center: -0.071, 0.863, -0.324
+Normalized min: -0.085, 0.863, -0.338
+Normalized max: -0.058, 0.863, -0.311
+Normalized size: 0.027, 0.000, 0.027
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / glassClear_center_Int003
+
+Name: interiorA_pillars003
+Mesh: interiorA_pillars003
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 1504
+Original world center: 0.000, 1.287, -0.682
+Normalized center: 0.000, 1.322, -0.697
+Normalized min: -0.758, 1.122, -1.087
+Normalized max: 0.758, 1.521, -0.307
+Normalized size: 1.515, 0.399, 0.780
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / interiorA_pillars003
+
+Name: leatherA_center_Int005
+Mesh: leatherA_center_Int005
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]; DarkGreyPlasticInterior [interior]
+Triangles: 5972
+Original world center: 0.000, 0.603, -0.458
+Normalized center: 0.000, 0.620, -0.467
+Normalized min: -0.136, 0.375, -1.236
+Normalized max: 0.136, 0.865, 0.302
+Normalized size: 0.271, 0.491, 1.538
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherA_center_Int005
+
+Name: leatherA_interior_sides003
+Mesh: leatherA_interior_sides003
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 1236
+Original world center: 0.000, 0.777, 1.101
+Normalized center: 0.000, 0.799, 1.131
+Normalized min: -0.821, 0.463, 0.867
+Normalized max: 0.821, 1.135, 1.395
+Normalized size: 1.641, 0.673, 0.529
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherA_interior_sides003
+
+Name: leatherA_seats_f006
+Mesh: leatherA_seats_f006
+Classification: DIRECT
+Direct matches: seat
+Ancestor matches: None
+Material matches: None
+Triangles: 2396
+Original world center: -0.359, 1.354, 0.348
+Normalized center: -0.368, 1.390, 0.358
+Normalized min: -0.486, 1.275, 0.325
+Normalized max: -0.250, 1.506, 0.392
+Normalized size: 0.235, 0.230, 0.067
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherA_seats_f006
+
+Name: leatherA_seats_r003
+Mesh: leatherA_seats_r003
+Classification: DIRECT
+Direct matches: seat
+Ancestor matches: None
+Material matches: None
+Triangles: 672
+Original world center: 0.359, 1.375, 1.307
+Normalized center: 0.368, 1.411, 1.341
+Normalized min: 0.249, 1.331, 1.308
+Normalized max: 0.487, 1.492, 1.374
+Normalized size: 0.238, 0.162, 0.066
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherA_seats_r003
+
+Name: leatherB_interior_sides004
+Mesh: leatherB_interior_sides004
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 1456
+Original world center: -0.001, 0.934, 0.251
+Normalized center: -0.000, 0.960, 0.259
+Normalized min: -0.800, 0.821, 0.076
+Normalized max: 0.799, 1.098, 0.441
+Normalized size: 1.598, 0.276, 0.365
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherB_interior_sides004
+
+Name: leatherB_seats_r003
+Mesh: leatherB_seats_r003
+Classification: DIRECT
+Direct matches: seat
+Ancestor matches: None
+Material matches: None
+Triangles: 1180
+Original world center: 0.359, 0.967, 1.168
+Normalized center: 0.368, 0.994, 1.200
+Normalized min: 0.148, 0.778, 1.114
+Normalized max: 0.588, 1.209, 1.286
+Normalized size: 0.439, 0.431, 0.172
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherB_seats_r003
+
+Name: gold_accent
+Mesh: gold_accent
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 808
+Original world center: -0.000, 1.067, -0.620
+Normalized center: -0.000, 1.096, -0.633
+Normalized min: -0.633, 1.087, -0.634
+Normalized max: 0.632, 1.105, -0.632
+Normalized size: 1.265, 0.018, 0.002
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / gold_accent
+
+Name: metalDark_seats003
+Mesh: metalDark_seats003
+Classification: DIRECT + MATERIAL
+Direct matches: seat
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 896
+Original world center: 0.000, 0.464, -0.109
+Normalized center: 0.000, 0.478, -0.110
+Normalized min: -0.572, 0.391, -0.293
+Normalized max: 0.572, 0.564, 0.074
+Normalized size: 1.144, 0.173, 0.367
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / metalDark_seats003
+
+Name: plastic_center_Int005
+Mesh: plastic_center_Int005
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 3372
+Original world center: 0.000, 0.655, -0.426
+Normalized center: 0.000, 0.673, -0.435
+Normalized min: -0.099, 0.532, -0.843
+Normalized max: 0.099, 0.814, -0.027
+Normalized size: 0.199, 0.282, 0.816
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_center_Int005
+
+Name: plastic_center_Int006
+Mesh: plastic_center_Int006
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 568
+Original world center: 0.000, 0.826, -0.425
+Normalized center: 0.000, 0.849, -0.433
+Normalized min: -0.104, 0.838, -0.481
+Normalized max: 0.104, 0.859, -0.385
+Normalized size: 0.208, 0.021, 0.096
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_center_Int006
+
+Name: plastic_dash_sides003
+Mesh: plastic_dash_sides003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 2437
+Original world center: 0.000, 0.936, -0.881
+Normalized center: 0.000, 0.962, -0.901
+Normalized min: -0.799, 0.765, -1.240
+Normalized max: 0.800, 1.159, -0.563
+Normalized size: 1.599, 0.394, 0.677
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_dash_sides003
+
+Name: plastic_dash_vents003
+Mesh: plastic_dash_vents003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 656
+Original world center: 0.000, 1.063, -0.625
+Normalized center: 0.000, 1.092, -0.639
+Normalized min: -0.649, 1.047, -0.697
+Normalized max: 0.649, 1.137, -0.581
+Normalized size: 1.298, 0.090, 0.117
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_dash_vents003
+
+Name: plastic_mirrorInt003
+Mesh: plastic_mirrorInt003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1248
+Original world center: -0.000, 1.434, -0.430
+Normalized center: 0.000, 1.472, -0.438
+Normalized min: -0.126, 1.422, -0.498
+Normalized max: 0.126, 1.523, -0.379
+Normalized size: 0.252, 0.101, 0.120
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_mirrorInt003
+
+Name: plastic_pillar_vents003
+Mesh: plastic_pillar_vents003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 3000
+Original world center: 0.000, 1.260, 0.432
+Normalized center: 0.000, 1.294, 0.445
+Normalized min: -0.713, 1.240, 0.430
+Normalized max: 0.714, 1.348, 0.459
+Normalized size: 1.427, 0.109, 0.030
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_pillar_vents003
+
+Name: plastic_seabeltClip_f003
+Mesh: plastic_seabeltClip_f003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackSeatBelt [seat]
+Triangles: 880
+Original world center: -0.000, 0.613, 0.002
+Normalized center: 0.000, 0.630, 0.004
+Normalized min: -0.145, 0.557, -0.043
+Normalized max: 0.145, 0.703, 0.051
+Normalized size: 0.291, 0.146, 0.094
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_seabeltClip_f003
+
+Name: plastic_seabeltClip_r003
+Mesh: plastic_seabeltClip_r003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackSeatBelt [seat]
+Triangles: 1200
+Original world center: -0.000, 0.716, 0.991
+Normalized center: -0.000, 0.736, 1.018
+Normalized min: -0.179, 0.701, 0.985
+Normalized max: 0.179, 0.772, 1.051
+Normalized size: 0.359, 0.071, 0.066
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_seabeltClip_r003
+
+Name: plastic_seatbelt_mount003
+Mesh: plastic_seatbelt_mount003
+Classification: DIRECT + MATERIAL
+Direct matches: seat
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 832
+Original world center: 0.000, 1.365, 0.325
+Normalized center: 0.000, 1.401, 0.335
+Normalized min: -0.634, 1.315, 0.273
+Normalized max: 0.635, 1.488, 0.397
+Normalized size: 1.269, 0.174, 0.124
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_seatbelt_mount003
+
+Name: plastic_seats_r003
+Mesh: plastic_seats_r003
+Classification: DIRECT + MATERIAL
+Direct matches: seat
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 4156
+Original world center: 0.000, 0.914, 0.995
+Normalized center: 0.000, 0.939, 1.022
+Normalized min: -0.612, 0.388, 0.628
+Normalized max: 0.613, 1.489, 1.416
+Normalized size: 1.225, 1.101, 0.788
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_seats_r003
+
+Name: plastic_vent_r003
+Mesh: plastic_vent_r003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 96
+Original world center: 0.000, 0.716, 0.246
+Normalized center: 0.000, 0.736, 0.254
+Normalized min: -0.081, 0.698, 0.211
+Normalized max: 0.081, 0.774, 0.298
+Normalized size: 0.162, 0.076, 0.087
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_vent_r003
+
+Name: plasticBlack_beltHolders_f003
+Mesh: plasticBlack_beltHolders_f003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackSeatBelt [seat]
+Triangles: 370
+Original world center: 0.000, 0.952, 0.203
+Normalized center: 0.000, 0.978, 0.210
+Normalized min: -0.671, 0.957, 0.172
+Normalized max: 0.671, 0.998, 0.247
+Normalized size: 1.341, 0.041, 0.075
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticBlack_beltHolders_f003
+
+Name: plasticBlack_beltHolders_r003
+Mesh: plasticBlack_beltHolders_r003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackSeatBelt [seat]
+Triangles: 684
+Original world center: -0.000, 0.874, 1.058
+Normalized center: 0.000, 0.898, 1.087
+Normalized min: -0.669, 0.884, 1.057
+Normalized max: 0.669, 0.912, 1.116
+Normalized size: 1.338, 0.028, 0.059
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticBlack_beltHolders_r003
+
+Name: plasticGlossy_center_Int003
+Mesh: plasticGlossy_center_Int003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(GlassLike)Interior [interior]
+Triangles: 5544
+Original world center: -0.000, 0.787, -0.115
+Normalized center: 0.000, 0.809, -0.116
+Normalized min: -0.118, 0.751, -0.508
+Normalized max: 0.118, 0.866, 0.276
+Normalized size: 0.235, 0.115, 0.784
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticGlossy_center_Int003
+
+Name: plasticGlossy_dash_vents006
+Mesh: plasticGlossy_dash_vents006
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1392
+Original world center: -0.000, 1.059, -0.623
+Normalized center: 0.000, 1.088, -0.637
+Normalized min: -0.651, 1.066, -0.651
+Normalized max: 0.651, 1.110, -0.623
+Normalized size: 1.301, 0.044, 0.028
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticGlossy_dash_vents006
+
+Name: plasticGlossy_dash_vents007
+Mesh: plasticGlossy_dash_vents007
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 992
+Original world center: 0.000, 1.069, -0.631
+Normalized center: 0.000, 1.098, -0.644
+Normalized min: -0.638, 1.085, -0.662
+Normalized max: 0.638, 1.111, -0.627
+Normalized size: 1.276, 0.026, 0.034
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticGlossy_dash_vents007
+
+Name: plasticGlossy_vent_r003
+Mesh: plasticGlossy_vent_r003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 232
+Original world center: 0.000, 0.707, 0.265
+Normalized center: 0.000, 0.727, 0.274
+Normalized min: -0.049, 0.719, 0.264
+Normalized max: 0.049, 0.735, 0.283
+Normalized size: 0.099, 0.016, 0.018
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticGlossy_vent_r003
+
+Name: plasticInt_headliner003
+Mesh: plasticInt_headliner003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 488
+Original world center: -0.000, 1.511, -0.269
+Normalized center: 0.000, 1.551, -0.274
+Normalized min: -0.540, 1.525, -0.313
+Normalized max: 0.540, 1.577, -0.235
+Normalized size: 1.080, 0.053, 0.078
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticInt_headliner003
+
+Name: plasticInt_seats003
+Mesh: plasticInt_seats003
+Classification: DIRECT + MATERIAL
+Direct matches: seat
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 4976
+Original world center: 0.000, 0.587, -0.060
+Normalized center: 0.000, 0.603, -0.059
+Normalized min: -0.645, 0.515, -0.320
+Normalized max: 0.645, 0.692, 0.201
+Normalized size: 1.289, 0.177, 0.520
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticInt_seats003
+
+Name: plasticInt_sides003
+Mesh: plasticInt_sides003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 3312
+Original world center: 0.000, 0.753, -0.004
+Normalized center: 0.000, 0.774, -0.002
+Normalized min: -0.809, 0.425, -0.940
+Normalized max: 0.809, 1.122, 0.936
+Normalized size: 1.618, 0.698, 1.877
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticInt_sides003
+
+Name: plasticRed_seabeltClip_f003
+Mesh: plasticRed_seabeltClip_f003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: RedSeatBelt [seat]
+Triangles: 732
+Original world center: 0.000, 0.671, -0.022
+Normalized center: 0.000, 0.690, -0.021
+Normalized min: -0.143, 0.677, -0.041
+Normalized max: 0.143, 0.704, -0.000
+Normalized size: 0.286, 0.027, 0.041
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticRed_seabeltClip_f003
+
+Name: plasticRed_seabeltClip_r003
+Mesh: plasticRed_seabeltClip_r003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: RedSeatBelt [seat]
+Triangles: 1098
+Original world center: 0.000, 0.737, 0.981
+Normalized center: 0.000, 0.758, 1.007
+Normalized min: -0.177, 0.744, 0.987
+Normalized max: 0.177, 0.771, 1.028
+Normalized size: 0.354, 0.027, 0.042
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticRed_seabeltClip_r003
+
+Name: reflect_mirrorInt003
+Mesh: reflect_mirrorInt003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(GlassLike)Interior [interior]
+Triangles: 576
+Original world center: -0.000, 1.419, -0.368
+Normalized center: 0.000, 1.457, -0.376
+Normalized min: -0.126, 1.422, -0.376
+Normalized max: 0.126, 1.492, -0.375
+Normalized size: 0.252, 0.071, 0.001
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / reflect_mirrorInt003
+
+Name: silver_beltHolders_f003
+Mesh: silver_beltHolders_f003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 488
+Original world center: 0.000, 0.923, 0.199
+Normalized center: 0.000, 0.948, 0.206
+Normalized min: -0.654, 0.929, 0.189
+Normalized max: 0.654, 0.967, 0.223
+Normalized size: 1.308, 0.038, 0.034
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_beltHolders_f003
+
+Name: silver_beltHolders_r003
+Mesh: silver_beltHolders_r003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 732
+Original world center: -0.000, 0.854, 1.035
+Normalized center: 0.000, 0.878, 1.063
+Normalized min: -0.647, 0.864, 1.037
+Normalized max: 0.647, 0.891, 1.088
+Normalized size: 1.294, 0.027, 0.051
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_beltHolders_r003
+
+Name: silver_center_Int006
+Mesh: silver_center_Int006
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 8000
+Original world center: -0.070, 0.838, -0.318
+Normalized center: -0.071, 0.861, -0.324
+Normalized min: -0.093, 0.856, -0.346
+Normalized max: -0.050, 0.866, -0.303
+Normalized size: 0.043, 0.010, 0.043
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_center_Int006
+
+Name: silver_center_Int007
+Mesh: silver_center_Int007
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 120
+Original world center: 0.024, 0.836, -0.352
+Normalized center: 0.024, 0.859, -0.359
+Normalized min: -0.024, 0.856, -0.365
+Normalized max: 0.073, 0.863, -0.353
+Normalized size: 0.097, 0.006, 0.011
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_center_Int007
+
+Name: silver_dash_vents003
+Mesh: silver_dash_vents003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 174
+Original world center: 0.000, 1.069, -0.622
+Normalized center: 0.000, 1.098, -0.636
+Normalized min: -0.547, 1.085, -0.644
+Normalized max: 0.547, 1.111, -0.627
+Normalized size: 1.094, 0.025, 0.017
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_dash_vents003
+
+Name: silver_vent_r003
+Mesh: silver_vent_r003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 84
+Original world center: 0.000, 0.707, 0.265
+Normalized center: 0.000, 0.727, 0.274
+Normalized min: -0.046, 0.719, 0.264
+Normalized max: 0.046, 0.735, 0.283
+Normalized size: 0.092, 0.016, 0.018
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_vent_r003
+
+Name: USBC012
+Mesh: USBC012
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 5492
+Original world center: -0.002, 0.819, -0.427
+Normalized center: -0.002, 0.842, -0.436
+Normalized min: -0.049, 0.831, -0.453
+Normalized max: 0.044, 0.853, -0.419
+Normalized size: 0.093, 0.022, 0.034
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / USBC012
+
+Name: USBC013
+Mesh: USBC013
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 5412
+Original world center: -0.038, 0.724, -0.702
+Normalized center: -0.039, 0.744, -0.718
+Normalized min: -0.052, 0.736, -0.724
+Normalized max: -0.026, 0.752, -0.712
+Normalized size: 0.026, 0.016, 0.012
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / USBC013
+
+Name: USBC014
+Mesh: USBC014
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DarkGreyPlasticInterior [interior]
+Triangles: 1218
+Original world center: 0.002, 0.515, 0.190
+Normalized center: 0.002, 0.530, 0.197
+Normalized min: -0.037, 0.521, 0.192
+Normalized max: 0.042, 0.539, 0.201
+Normalized size: 0.080, 0.018, 0.009
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / USBC014
+
+Name: USBC015
+Mesh: USBC015
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 8439
+Original world center: 0.002, 0.512, 0.183
+Normalized center: 0.002, 0.527, 0.190
+Normalized min: -0.027, 0.518, 0.184
+Normalized max: 0.032, 0.537, 0.196
+Normalized size: 0.058, 0.019, 0.011
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / USBC015
+
+Name: USBC016
+Mesh: USBC016
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 5396
+Original world center: 0.038, 0.723, -0.702
+Normalized center: 0.039, 0.744, -0.718
+Normalized min: 0.026, 0.736, -0.724
+Normalized max: 0.053, 0.752, -0.712
+Normalized size: 0.026, 0.016, 0.012
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / USBC016
+
+Name: StandardDash007
+Mesh: StandardDash007
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]
+Triangles: 1006
+Original world center: 0.000, 1.182, -0.886
+Normalized center: 0.000, 1.214, -0.907
+Normalized min: -0.095, 1.201, -1.001
+Normalized max: 0.095, 1.226, -0.812
+Normalized size: 0.189, 0.025, 0.189
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / StandardDash007
+
+Name: Object228
+Mesh: Object228
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(Glossy)Interior [interior]; DarkGreyPlasticInterior [interior]
+Triangles: 10167
+Original world center: -0.004, 1.487, -0.481
+Normalized center: -0.004, 1.527, -0.491
+Normalized min: -0.159, 1.484, -0.613
+Normalized max: 0.152, 1.569, -0.370
+Normalized size: 0.311, 0.085, 0.243
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object228
+
+Name: Object229
+Mesh: Object229
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 2146
+Original world center: 0.359, 0.692, 1.044
+Normalized center: 0.368, 0.712, 1.072
+Normalized min: 0.232, 0.691, 1.042
+Normalized max: 0.504, 0.733, 1.103
+Normalized size: 0.273, 0.043, 0.061
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object229
+
+Name: Object230
+Mesh: Object230
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1162
+Original world center: -0.359, 0.696, 1.041
+Normalized center: -0.368, 0.715, 1.070
+Normalized min: -0.497, 0.697, 1.046
+Normalized max: -0.239, 0.733, 1.093
+Normalized size: 0.258, 0.036, 0.047
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object230
+
+Name: Object232
+Mesh: Object232
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1114
+Original world center: 0.005, 1.034, -0.507
+Normalized center: 0.005, 1.062, -0.518
+Normalized min: -0.101, 0.908, -0.595
+Normalized max: 0.111, 1.215, -0.440
+Normalized size: 0.212, 0.307, 0.155
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object232
+
+Name: Box022
+Mesh: Box022
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 12
+Original world center: 0.379, 1.026, -0.624
+Normalized center: 0.389, 1.053, -0.638
+Normalized min: 0.152, 1.034, -0.653
+Normalized max: 0.625, 1.073, -0.624
+Normalized size: 0.472, 0.039, 0.029
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Box022
+
+Name: Object242
+Mesh: Object242
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 717
+Original world center: 0.402, 0.867, -0.676
+Normalized center: 0.412, 0.891, -0.691
+Normalized min: 0.143, 0.786, -0.810
+Normalized max: 0.681, 0.997, -0.572
+Normalized size: 0.538, 0.211, 0.239
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object242
+
+Name: Object243
+Mesh: Object243
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 2530
+Original world center: -0.359, 1.014, 0.293
+Normalized center: -0.368, 1.042, 0.303
+Normalized min: -0.625, 0.612, 0.108
+Normalized max: -0.111, 1.471, 0.498
+Normalized size: 0.514, 0.859, 0.390
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object243
+
+Name: Object248
+Mesh: Object248
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 984
+Original world center: -0.359, 0.692, 1.044
+Normalized center: -0.368, 0.712, 1.072
+Normalized min: -0.504, 0.691, 1.042
+Normalized max: -0.232, 0.733, 1.103
+Normalized size: 0.273, 0.042, 0.061
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object248
+
+Name: Object261
+Mesh: Object261
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 916
+Original world center: 0.000, 1.373, 1.333
+Normalized center: 0.000, 1.409, 1.368
+Normalized min: -0.451, 1.350, 1.353
+Normalized max: 0.451, 1.468, 1.383
+Normalized size: 0.903, 0.118, 0.030
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object261
+
+Name: Box023
+Mesh: Box023
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 12
+Original world center: -0.657, 1.117, -0.744
+Normalized center: -0.673, 1.147, -0.760
+Normalized min: -0.698, 1.133, -0.787
+Normalized max: -0.649, 1.161, -0.734
+Normalized size: 0.049, 0.027, 0.053
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Box023
+
+Name: Box024
+Mesh: Box024
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 12
+Original world center: 0.657, 1.119, -0.746
+Normalized center: 0.673, 1.149, -0.762
+Normalized min: 0.649, 1.136, -0.789
+Normalized max: 0.698, 1.161, -0.736
+Normalized size: 0.049, 0.025, 0.053
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Box024
+
+Name: leatherA_center_Int006
+Mesh: leatherA_center_Int006
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1092
+Original world center: 0.000, 0.823, -0.294
+Normalized center: 0.000, 0.846, -0.299
+Normalized min: -0.118, 0.826, -0.513
+Normalized max: 0.118, 0.865, -0.085
+Normalized size: 0.235, 0.039, 0.428
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherA_center_Int006
+
+Name: plastic_pedals003
+Mesh: plastic_pedals003
+Classification: DIRECT + MATERIAL
+Direct matches: pedal
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1064
+Original world center: -0.377, 0.561, -1.011
+Normalized center: -0.386, 0.577, -1.034
+Normalized min: -0.620, 0.378, -1.209
+Normalized max: -0.152, 0.776, -0.859
+Normalized size: 0.467, 0.398, 0.350
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_pedals003
+
+Name: Object296
+Mesh: Object296
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 2530
+Original world center: 0.362, 1.014, 0.293
+Normalized center: 0.371, 1.042, 0.303
+Normalized min: 0.114, 0.612, 0.108
+Normalized max: 0.628, 1.471, 0.498
+Normalized size: 0.514, 0.859, 0.390
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object296
+
+Name: leatherA_seats_f007
+Mesh: leatherA_seats_f007
+Classification: DIRECT
+Direct matches: seat
+Ancestor matches: None
+Material matches: None
+Triangles: 2396
+Original world center: 0.362, 1.354, 0.348
+Normalized center: 0.371, 1.390, 0.358
+Normalized min: 0.253, 1.275, 0.325
+Normalized max: 0.489, 1.506, 0.392
+Normalized size: 0.235, 0.230, 0.067
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherA_seats_f007
+
+Name: plasticGlossy_sw003
+Mesh: plasticGlossy_sw003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlastic(GlassLike)Interior [interior]
+Triangles: 1996
+Original world center: -0.358, 1.018, -0.380
+Normalized center: -0.367, 1.046, -0.388
+Normalized min: -0.496, 0.983, -0.434
+Normalized max: -0.238, 1.108, -0.342
+Normalized size: 0.258, 0.125, 0.091
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticGlossy_sw003
+
+Name: plastic_screens003
+Mesh: plastic_screens003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1944
+Original world center: -0.358, 1.102, -0.520
+Normalized center: -0.367, 1.132, -0.531
+Normalized min: -0.481, 1.081, -0.549
+Normalized max: -0.252, 1.183, -0.513
+Normalized size: 0.228, 0.103, 0.036
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_screens003
+
+Name: plastic_sw005
+Mesh: plastic_sw005
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 544
+Original world center: -0.358, 0.975, -0.361
+Normalized center: -0.367, 1.002, -0.368
+Normalized min: -0.405, 0.974, -0.400
+Normalized max: -0.329, 1.029, -0.336
+Normalized size: 0.076, 0.056, 0.065
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_sw005
+
+Name: plastic_sw006
+Mesh: plastic_sw006
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 2552
+Original world center: -0.358, 1.027, -0.433
+Normalized center: -0.367, 1.055, -0.442
+Normalized min: -0.518, 0.994, -0.507
+Normalized max: -0.216, 1.117, -0.376
+Normalized size: 0.302, 0.123, 0.131
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_sw006
+
+Name: plastic_sw_airag_noMS003
+Mesh: plastic_sw_airag_noMS003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 4138
+Original world center: -0.356, 1.031, -0.377
+Normalized center: -0.365, 1.059, -0.384
+Normalized min: -0.377, 1.048, -0.388
+Normalized max: -0.353, 1.070, -0.380
+Normalized size: 0.024, 0.022, 0.008
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_sw_airag_noMS003
+
+Name: plastic_sw_switches003
+Mesh: plastic_sw_switches003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 2976
+Original world center: -0.358, 1.030, -0.508
+Normalized center: -0.367, 1.058, -0.518
+Normalized min: -0.491, 1.024, -0.545
+Normalized max: -0.242, 1.093, -0.492
+Normalized size: 0.249, 0.069, 0.052
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_sw_switches003
+
+Name: silver_sw003
+Mesh: silver_sw003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 3104
+Original world center: -0.358, 1.023, -0.400
+Normalized center: -0.367, 1.051, -0.408
+Normalized min: -0.518, 0.981, -0.467
+Normalized max: -0.216, 1.122, -0.348
+Normalized size: 0.302, 0.141, 0.119
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_sw003
+
+Name: silver_badge_sw003
+Mesh: silver_badge_sw003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1728
+Original world center: -0.358, 1.068, -0.385
+Normalized center: -0.367, 1.097, -0.393
+Normalized min: -0.388, 1.077, -0.402
+Normalized max: -0.345, 1.117, -0.383
+Normalized size: 0.043, 0.040, 0.019
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_badge_sw003
+
+Name: plasticInt_sw003
+Mesh: plasticInt_sw003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 1312
+Original world center: -0.358, 1.050, -0.413
+Normalized center: -0.367, 1.078, -0.422
+Normalized min: -0.441, 1.032, -0.465
+Normalized max: -0.292, 1.124, -0.379
+Normalized size: 0.149, 0.092, 0.086
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticInt_sw003
+
+Name: silver_dash003
+Mesh: silver_dash003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1156
+Original world center: 0.000, 1.059, -0.582
+Normalized center: 0.000, 1.088, -0.595
+Normalized min: -0.692, 1.028, -0.642
+Normalized max: 0.692, 1.149, -0.548
+Normalized size: 1.384, 0.121, 0.094
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_dash003
+
+Name: plastic_swColumn003
+Mesh: plastic_swColumn003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 344
+Original world center: -0.358, 0.944, -0.580
+Normalized center: -0.367, 0.970, -0.592
+Normalized min: -0.457, 0.854, -0.716
+Normalized max: -0.277, 1.086, -0.468
+Normalized size: 0.180, 0.232, 0.248
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plastic_swColumn003
+
+Name: silver_sw_switches003
+Mesh: silver_sw_switches003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 1152
+Original world center: -0.358, 1.071, -0.465
+Normalized center: -0.367, 1.100, -0.475
+Normalized min: -0.558, 1.087, -0.487
+Normalized max: -0.176, 1.112, -0.462
+Normalized size: 0.383, 0.025, 0.025
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / silver_sw_switches003
+
+Name: leatherA_dash_bottom003
+Mesh: leatherA_dash_bottom003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]
+Triangles: 3137
+Original world center: -0.001, 0.898, -0.654
+Normalized center: -0.001, 0.922, -0.669
+Normalized min: -0.681, 0.780, -0.809
+Normalized max: 0.680, 1.065, -0.528
+Normalized size: 1.361, 0.285, 0.281
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / leatherA_dash_bottom003
+
+Name: plasticGlossy_sw_switches003
+Mesh: plasticGlossy_sw_switches003
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: BlackPlasticInterior [interior]; BlackPlastic(Glossy)Interior [interior]
+Triangles: 3096
+Original world center: -0.358, 1.064, -0.474
+Normalized center: -0.367, 1.093, -0.484
+Normalized min: -0.558, 1.075, -0.506
+Normalized max: -0.176, 1.112, -0.463
+Normalized size: 0.382, 0.037, 0.043
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / plasticGlossy_sw_switches003
+
+Name: InteriorStyle005
+Mesh: InteriorStyle005
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 1160
+Original world center: 0.000, 1.057, -0.580
+Normalized center: 0.000, 1.085, -0.593
+Normalized min: -0.688, 1.030, -0.636
+Normalized max: 0.688, 1.140, -0.550
+Normalized size: 1.376, 0.110, 0.086
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / InteriorStyle005
+
+Name: Object466
+Mesh: Object466
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Gold Seatbelt stripe [seat]
+Triangles: 160
+Original world center: -0.070, 0.843, -0.318
+Normalized center: -0.071, 0.866, -0.324
+Normalized min: -0.090, 0.866, -0.343
+Normalized max: -0.053, 0.866, -0.306
+Normalized size: 0.037, 0.000, 0.036
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object466
+
+Name: Object469
+Mesh: Object469
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 320
+Original world center: -0.000, 1.419, -0.371
+Normalized center: 0.000, 1.457, -0.378
+Normalized min: -0.126, 1.422, -0.380
+Normalized max: 0.126, 1.492, -0.376
+Normalized size: 0.252, 0.071, 0.004
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object469
+
+Name: Object475
+Mesh: Object475
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 182
+Original world center: -0.038, 0.723, -0.703
+Normalized center: -0.039, 0.743, -0.718
+Normalized min: -0.044, 0.739, -0.723
+Normalized max: -0.034, 0.747, -0.714
+Normalized size: 0.009, 0.008, 0.010
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object475
+
+Name: Object476
+Mesh: Object476
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: DullChrome(Interior) [interior]
+Triangles: 198
+Original world center: 0.038, 0.722, -0.702
+Normalized center: 0.039, 0.743, -0.718
+Normalized min: 0.035, 0.738, -0.723
+Normalized max: 0.044, 0.747, -0.713
+Normalized size: 0.009, 0.008, 0.009
+Hierarchy: int_charcoal_my27_polestar3_bridge-of-weir_in_charcoal_with_black_ash_deco / Object476
+
+VEHICLE: Skoda Elroq (skoda-elroq)
+Type: Car
+Status: success
+----------------------------------------
+Original dimensions: 4.488, 1.706, 2.175
+Original center: 1.254, 0.846, -0.000
+Normalization scale: 1.114011
+Normalized dimensions: 5.000, 1.900, 2.423
+Normalized vehicle center: 0.000, 0.950, 0.000
+Normalized vehicle minimum: -2.500, 0.000, -1.212
+Normalized vehicle maximum: 2.500, 1.900, 1.212
+
+Candidates found: 10
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: NEW_Steering_wheel.006
+Mesh: Torus.076
+Classification: DIRECT
+Direct matches: steering
+Ancestor matches: None
+Material matches: None
+Triangles: 2594
+Original world center: 0.802, 0.964, 0.368
+Normalized center: -0.503, 1.081, 0.410
+Normalized min: -0.565, 1.004, 0.246
+Normalized max: -0.441, 1.159, 0.574
+Normalized size: 0.124, 0.156, 0.328
+Hierarchy: NEW_Steering_wheel.006
+
+Name: NEW_Steering_wheel.007
+Mesh: Shell1.011
+Classification: DIRECT
+Direct matches: steering
+Ancestor matches: None
+Material matches: None
+Triangles: 512
+Original world center: 0.888, 1.006, 0.365
+Normalized center: -0.407, 1.129, 0.407
+Normalized min: -0.416, 1.120, 0.276
+Normalized max: -0.399, 1.137, 0.537
+Normalized size: 0.017, 0.017, 0.260
+Hierarchy: NEW_Steering_wheel.007
+
+Name: NEW_Steering_wheel.009
+Mesh: Torus.078
+Classification: DIRECT
+Direct matches: steering
+Ancestor matches: None
+Material matches: None
+Triangles: 140
+Original world center: 0.777, 0.951, 0.446
+Normalized center: -0.531, 1.067, 0.497
+Normalized min: -0.668, 0.977, 0.244
+Normalized max: -0.394, 1.156, 0.750
+Normalized size: 0.274, 0.178, 0.506
+Hierarchy: NEW_Steering_wheel.009
+
+Name: NEW_Steering_wheel.011
+Mesh: Cube.202
+Classification: DIRECT
+Direct matches: steering
+Ancestor matches: None
+Material matches: None
+Triangles: 12272
+Original world center: 1.993, 1.070, -0.000
+Normalized center: 0.824, 1.199, -0.000
+Normalized min: -0.744, 0.770, -0.782
+Normalized max: 2.391, 1.628, 0.781
+Normalized size: 3.135, 0.858, 1.564
+Hierarchy: NEW_Steering_wheel.011
+
+Name: NEW_Steering_wheel.013
+Mesh: Cube.204
+Classification: DIRECT
+Direct matches: steering
+Ancestor matches: None
+Material matches: None
+Triangles: 188
+Original world center: 1.169, 0.753, 0.206
+Normalized center: -0.095, 0.846, 0.230
+Normalized min: -0.588, 0.542, -0.144
+Normalized max: 0.399, 1.150, 0.603
+Normalized size: 0.987, 0.607, 0.747
+Hierarchy: NEW_Steering_wheel.013
+
+Name: NEW_Steering_wheel.015
+Mesh: 11B_919_608____O01_TM__008_____TOP_COVER_ASSY_____LHD___57e.071
+Classification: DIRECT
+Direct matches: steering
+Ancestor matches: None
+Material matches: None
+Triangles: 19548
+Original world center: 0.908, 0.899, -0.002
+Normalized center: -0.386, 1.009, -0.003
+Normalized min: -1.234, 0.388, -0.787
+Normalized max: 0.462, 1.631, 0.782
+Normalized size: 1.696, 1.243, 1.569
+Hierarchy: NEW_Steering_wheel.015
+
+Name: NEW_Coupe_Interior.052
+Mesh: BSurfaceMesh.831
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 4
+Original world center: 1.607, 0.644, 0.000
+Normalized center: 0.393, 0.725, 0.000
+Normalized min: 0.393, 0.725, -0.033
+Normalized max: 0.393, 0.726, 0.033
+Normalized size: 0.000, 0.000, 0.066
+Hierarchy: NEW_Coupe_Interior.052
+
+Name: NEW_Coupe_Interior.015
+Mesh: BSurfaceMesh.836
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 144
+Original world center: 0.639, 0.697, 0.000
+Normalized center: -0.685, 0.784, 0.000
+Normalized min: -0.687, 0.782, -0.016
+Normalized max: -0.683, 0.786, 0.016
+Normalized size: 0.004, 0.004, 0.032
+Hierarchy: NEW_Coupe_Interior.015
+
+Name: NEW_Coupe_Interior.016
+Mesh: BSurfaceMesh.837
+Classification: DIRECT
+Direct matches: interior
+Ancestor matches: None
+Material matches: None
+Triangles: 24
+Original world center: 1.525, 0.484, 0.032
+Normalized center: 0.302, 0.547, 0.036
+Normalized min: 0.301, 0.545, 0.018
+Normalized max: 0.302, 0.549, 0.053
+Normalized size: 0.001, 0.004, 0.034
+Hierarchy: NEW_Coupe_Interior.016
+
+Name: NEW_Seatbelts
+Mesh: tq_Car_Lexus_RC-2015_Body.001
+Classification: DIRECT
+Direct matches: seat
+Ancestor matches: None
+Material matches: None
+Triangles: 3783
+Original world center: 1.790, 0.529, -0.006
+Normalized center: 0.597, 0.596, -0.007
+Normalized min: 0.025, 0.454, -0.751
+Normalized max: 1.169, 0.739, 0.737
+Normalized size: 1.144, 0.285, 1.488
+Hierarchy: NEW_Seatbelts
+
+VEHICLE: BMW S1000 RR (bmw-s1000rr)
+Type: Motorcycle
+Status: success
+----------------------------------------
+Original dimensions: 0.799, 1.067, 1.736
+Original center: 0.009, 0.190, -0.032
+Normalization scale: 2.880843
+Normalized dimensions: 2.301, 3.074, 5.000
+Normalized vehicle center: 0.000, 1.537, 0.000
+Normalized vehicle minimum: -1.150, 0.000, -2.500
+Normalized vehicle maximum: 1.150, 3.074, 2.500
+
+Candidates found: 4
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: Object_48
+Mesh: Object_27
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: bmw_m1krr_cockpit [cockpit]
+Triangles: 1392
+Original world center: 0.000, 0.545, -0.575
+Normalized center: -0.025, 2.559, -1.566
+Normalized min: -0.486, 2.440, -1.728
+Normalized max: 0.436, 2.678, -1.404
+Normalized size: 0.921, 0.238, 0.324
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / offlrds1000r_81 / GLTF_created_0 / Object_48
+
+Name: Object_63
+Mesh: Object_36
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: cockpit [cockpit]
+Triangles: 7584
+Original world center: 0.005, 0.462, -0.458
+Normalized center: -0.011, 2.322, -1.230
+Normalized min: -0.801, 2.138, -1.529
+Normalized max: 0.780, 2.505, -0.931
+Normalized size: 1.580, 0.367, 0.598
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / offlrds1000r_81 / GLTF_created_0 / Object_63
+
+Name: Object_70
+Mesh: Object_43
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: vehicle_paint1_DASHBOARD [dashboard]
+Triangles: 4576
+Original world center: 0.016, 0.387, -0.498
+Normalized center: 0.020, 2.105, -1.344
+Normalized min: -1.003, 1.983, -1.475
+Normalized max: 1.044, 2.226, -1.213
+Normalized size: 2.047, 0.244, 0.262
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / offlrds1000r_81 / GLTF_created_0 / Object_70
+
+Name: Object_140
+Mesh: Object_105
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: vehicle_generic_smallspecmap_DASHBOARD [dashboard]
+Triangles: 1398
+Original world center: 0.000, 0.125, 0.254
+Normalized center: -0.024, 1.350, 0.823
+Normalized min: -0.439, 0.676, 0.067
+Normalized max: 0.391, 2.023, 1.580
+Normalized size: 0.830, 1.347, 1.514
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / offlrds1000r_81 / GLTF_created_0 / Object_140
+
+VEHICLE: Honda CBR650R (honda-cbr650r)
+Type: Motorcycle
+Status: success
+----------------------------------------
+Original dimensions: 0.803, 1.107, 1.991
+Original center: -0.000, 0.239, 0.121
+Normalization scale: 2.511556
+Normalized dimensions: 2.017, 2.780, 5.000
+Normalized vehicle center: -0.000, 1.390, 0.000
+Normalized vehicle minimum: -1.009, 0.000, -2.500
+Normalized vehicle maximum: 1.009, 2.780, 2.500
+
+Candidates found: 0
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+No matching names or materials found.
+
+VEHICLE: Kawasaki Ninja H2 (kawasaki-ninja-h2)
+Type: Motorcycle
+Status: success
+----------------------------------------
+Original dimensions: 194.280, 82.882, 144.769
+Original center: -7.677, 0.000, 39.546
+Normalization scale: 0.025736
+Normalized dimensions: 5.000, 2.133, 3.726
+Normalized vehicle center: 0.000, 1.067, -0.000
+Normalized vehicle minimum: -2.500, 0.000, -1.863
+Normalized vehicle maximum: 2.500, 2.133, 1.863
+
+Candidates found: 0
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+No matching names or materials found.
+
+VEHICLE: Sports Bike (sports-bike)
+Type: Motorcycle
+Status: success
+----------------------------------------
+Original dimensions: 0.672, 1.856, 1.152
+Original center: 0.001, 0.014, -0.121
+Normalization scale: 2.694468
+Normalized dimensions: 1.811, 5.000, 3.104
+Normalized vehicle center: 0.000, 2.500, 0.000
+Normalized vehicle minimum: -0.906, 0.000, -1.552
+Normalized vehicle maximum: 0.906, 5.000, 1.552
+
+Candidates found: 2
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: Handlebar_Handlebar_0
+Mesh: Handlebar_Handlebar_0
+Classification: DIRECT + ANCESTOR + MATERIAL
+Direct matches: handlebar
+Ancestor matches: handlebar
+Material matches: Handlebar [handlebar]
+Triangles: 3162
+Original world center: 0.001, 0.008, -0.009
+Normalized center: 0.000, 2.484, 0.302
+Normalized min: -0.906, 2.333, 0.154
+Normalized max: 0.906, 2.634, 0.451
+Normalized size: 1.811, 0.302, 0.297
+Hierarchy: Sketchfab_model / 6760be620c824eb2bdd05aa4a2f1335e.fbx / RootNode / Handlebar / Handlebar_Handlebar_0
+
+Name: Bike.068_Seat_0
+Mesh: Bike.068_Seat_0
+Classification: DIRECT + MATERIAL
+Direct matches: seat
+Ancestor matches: None
+Material matches: Seat [seat]
+Triangles: 5998
+Original world center: 0.000, -0.033, -0.136
+Normalized center: -0.002, 2.373, -0.040
+Normalized min: -0.315, 1.854, -0.515
+Normalized max: 0.311, 2.892, 0.435
+Normalized size: 0.625, 1.038, 0.950
+Hierarchy: Sketchfab_model / 6760be620c824eb2bdd05aa4a2f1335e.fbx / RootNode / Bike.068 / Bike.068_Seat_0
+
+VEHICLE: Airbus A320 (airbus-a320)
+Type: Aircraft
+Status: success
+----------------------------------------
+Original dimensions: 4229.434, 2688.635, 17689.266
+Original center: -767.480, -567.275, 513.895
+Normalization scale: 0.000283
+Normalized dimensions: 1.195, 0.760, 5.000
+Normalized vehicle center: 0.000, 0.380, -0.000
+Normalized vehicle minimum: -0.598, 0.000, -2.500
+Normalized vehicle maximum: 0.598, 0.760, 2.500
+
+Candidates found: 0
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+No matching names or materials found.
+
+VEHICLE: Boeing 787 (boeing-787)
+Type: Aircraft
+Status: success
+----------------------------------------
+Original dimensions: 3291.444, 3730.168, 690.506
+Original center: 468.805, 517.011, 188.162
+Normalization scale: 0.001340
+Normalized dimensions: 4.412, 5.000, 0.926
+Normalized vehicle center: 0.000, 2.500, 0.000
+Normalized vehicle minimum: -2.206, 0.000, -0.463
+Normalized vehicle maximum: 2.206, 5.000, 0.463
+
+Candidates found: 1
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: Material2
+Mesh: Material2
+Classification: MATERIAL
+Direct matches: None
+Ancestor matches: None
+Material matches: Cockpit [cockpit]
+Triangles: 136
+Original world center: 0.000, 1013.716, 22.797
+Normalized center: -0.628, 3.166, -0.222
+Normalized min: -0.714, 3.116, -0.240
+Normalized max: -0.543, 3.216, -0.203
+Normalized size: 0.172, 0.099, 0.036
+Hierarchy: Sketchfab_model / Collada visual scene group / SketchUp / group_0 / instance_187 / BI_LOD_100 / Material2
+
+VEHICLE: Sukhoi Su-57 (sukhoi-su57)
+Type: Aircraft
+Status: success
+----------------------------------------
+Original dimensions: 210.299, 141.705, 45.673
+Original center: 18.190, 0.000, 1.368
+Normalization scale: 0.023776
+Normalized dimensions: 5.000, 3.369, 1.086
+Normalized vehicle center: 0.000, 1.685, 0.000
+Normalized vehicle minimum: -2.500, 0.000, -0.543
+Normalized vehicle maximum: 2.500, 3.369, 0.543
+
+Candidates found: 2
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: Object_6
+Mesh: Object_1
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: canopy
+Material matches: None
+Triangles: 612
+Original world center: 71.563, 0.000, -9.762
+Normalized center: 1.269, 1.685, -0.265
+Normalized min: 0.990, 1.559, -0.358
+Normalized max: 1.548, 1.810, -0.171
+Normalized size: 0.558, 0.251, 0.186
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / SU57-canopy_1 / Object_6
+
+Name: Object_8
+Mesh: Object_2
+Classification: ANCESTOR
+Direct matches: None
+Ancestor matches: cockpit
+Material matches: None
+Triangles: 3193
+Original world center: 71.283, 0.000, -6.903
+Normalized center: 1.262, 1.685, -0.197
+Normalized min: 0.977, 1.545, -0.340
+Normalized max: 1.548, 1.824, -0.053
+Normalized size: 0.571, 0.279, 0.287
+Hierarchy: Sketchfab_model / root / GLTF_SceneRootNode / SU57-cockpit_2 / Object_8
+
+VEHICLE: AH-64E Apache Guardian (apache-ah64e)
+Type: Helicopter
+Status: success
+----------------------------------------
+Original dimensions: 13.607, 9.727, 14.805
+Original center: 0.082, 2.353, 28.485
+Normalization scale: 0.337731
+Normalized dimensions: 4.595, 3.285, 5.000
+Normalized vehicle center: 0.000, 1.642, 0.000
+Normalized vehicle minimum: -2.298, 0.000, -2.500
+Normalized vehicle maximum: 2.298, 3.285, 2.500
+
+Candidates found: 0
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+No matching names or materials found.
+
+VEHICLE: Realistic Helicopter (realistic-helicopter)
+Type: Helicopter
+Status: success
+----------------------------------------
+Original dimensions: 70.472, 24.947, 88.557
+Original center: 0.000, 11.778, 0.342
+Normalization scale: 0.056461
+Normalized dimensions: 3.979, 1.409, 5.000
+Normalized vehicle center: 0.000, 0.704, -0.000
+Normalized vehicle minimum: -1.989, 0.000, -2.500
+Normalized vehicle maximum: 1.989, 1.409, 2.500
+
+Candidates found: 13
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+
+Name: MorphDrive_Cockpit__Seahawk_FrontSeat_0
+Mesh: Seahawk_FrontSeat_0.001
+Classification: DIRECT + ANCESTOR + MATERIAL
+Direct matches: seat, cockpit
+Ancestor matches: cockpit
+Material matches: FrontSeat [seat]
+Triangles: 1504
+Original world center: 0.000, 6.522, 21.777
+Normalized center: 0.000, 0.408, 1.210
+Normalized min: -0.256, 0.281, 1.083
+Normalized max: 0.256, 0.534, 1.338
+Normalized size: 0.512, 0.252, 0.255
+Hierarchy: MorphDrive_Cockpit / MorphDrive_Cockpit__Seahawk_FrontSeat_0
+
+Name: MorphDrive_Cockpit__Seahawk_FrontSeatHeadrest_0
+Mesh: Seahawk_FrontSeatHeadrest_0.001
+Classification: DIRECT + ANCESTOR + MATERIAL
+Direct matches: seat, cockpit
+Ancestor matches: cockpit
+Material matches: FrontSeatHeadrest [seat]
+Triangles: 384
+Original world center: 0.000, 9.209, 20.166
+Normalized center: 0.000, 0.559, 1.119
+Normalized min: -0.221, 0.531, 1.099
+Normalized max: 0.221, 0.587, 1.139
+Normalized size: 0.441, 0.056, 0.040
+Hierarchy: MorphDrive_Cockpit / MorphDrive_Cockpit__Seahawk_FrontSeatHeadrest_0
+
+Name: MorphDrive_Cockpit__Seahawk_Glass1_0
+Mesh: Seahawk_Glass1_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: cockpit
+Ancestor matches: cockpit
+Material matches: None
+Triangles: 1222
+Original world center: -0.075, 7.351, 18.136
+Normalized center: -0.004, 0.454, 1.005
+Normalized min: -0.379, 0.212, 0.324
+Normalized max: 0.371, 0.697, 1.686
+Normalized size: 0.750, 0.485, 1.362
+Hierarchy: MorphDrive_Cockpit / MorphDrive_Cockpit__Seahawk_Glass1_0
+
+Name: MorphDrive_Cockpit__Seahawk_Headlight_0
+Mesh: Seahawk_Headlight_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: cockpit
+Ancestor matches: cockpit
+Material matches: None
+Triangles: 264
+Original world center: 0.000, 3.745, 29.907
+Normalized center: 0.000, 0.251, 1.669
+Normalized min: -0.201, 0.238, 1.663
+Normalized max: 0.201, 0.263, 1.675
+Normalized size: 0.403, 0.025, 0.012
+Hierarchy: MorphDrive_Cockpit / MorphDrive_Cockpit__Seahawk_Headlight_0
+
+Name: MorphDrive_Cockpit__Seahawk_Material.001_0
+Mesh: Seahawk_Material.001_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: cockpit
+Ancestor matches: cockpit
+Material matches: None
+Triangles: 6
+Original world center: 0.000, 6.147, 25.426
+Normalized center: 0.000, 0.386, 1.416
+Normalized min: -0.220, 0.333, 1.397
+Normalized max: 0.220, 0.439, 1.436
+Normalized size: 0.441, 0.106, 0.039
+Hierarchy: MorphDrive_Cockpit / MorphDrive_Cockpit__Seahawk_Material.001_0
+
+Name: MorphDrive_Cockpit__Seahawk_Mirror_0
+Mesh: Seahawk_Mirror_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: cockpit
+Ancestor matches: cockpit
+Material matches: None
+Triangles: 196
+Original world center: 0.000, 9.475, 25.296
+Normalized center: 0.000, 0.574, 1.409
+Normalized min: -0.370, 0.551, 1.409
+Normalized max: 0.370, 0.598, 1.409
+Normalized size: 0.741, 0.047, 0.000
+Hierarchy: MorphDrive_Cockpit / MorphDrive_Cockpit__Seahawk_Mirror_0
+
+Name: MorphDrive_Cockpit__Seahawk_OtherPanel_0
+Mesh: Seahawk_OtherPanel_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: cockpit
+Ancestor matches: cockpit
+Material matches: None
+Triangles: 12
+Original world center: 0.000, 7.347, 22.233
+Normalized center: 0.000, 0.454, 1.236
+Normalized min: -0.226, 0.261, 1.075
+Normalized max: 0.226, 0.647, 1.397
+Normalized size: 0.452, 0.386, 0.322
+Hierarchy: MorphDrive_Cockpit / MorphDrive_Cockpit__Seahawk_OtherPanel_0
+
+Name: MorphDrive_Cockpit__Seahawk_PaintedBlackSteel_0
+Mesh: Seahawk_PaintedBlackSteel_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: cockpit
+Ancestor matches: cockpit
+Material matches: None
+Triangles: 2325
+Original world center: 11.747, 8.811, 31.730
+Normalized center: 0.663, 0.537, 1.772
+Normalized min: -0.663, 0.230, 1.044
+Normalized max: 1.989, 0.843, 2.500
+Normalized size: 2.652, 0.613, 1.456
+Hierarchy: MorphDrive_Cockpit / MorphDrive_Cockpit__Seahawk_PaintedBlackSteel_0
+
+Name: MorphDrive_Cabin_Interior__Seahawk_Aluminum_0
+Mesh: Seahawk_Aluminum_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: interior, cabin
+Ancestor matches: interior, cabin
+Material matches: None
+Triangles: 24626
+Original world center: 0.000, 8.361, 1.131
+Normalized center: 0.000, 0.511, 0.045
+Normalized min: -0.468, 0.026, -1.449
+Normalized max: 0.468, 0.997, 1.538
+Normalized size: 0.937, 0.971, 2.987
+Hierarchy: MorphDrive_Cabin_Interior / MorphDrive_Cabin_Interior__Seahawk_Aluminum_0
+
+Name: MorphDrive_Cabin_Interior__Seahawk_FlatBlack_0
+Mesh: Seahawk_FlatBlack_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: interior, cabin
+Ancestor matches: interior, cabin
+Material matches: None
+Triangles: 1564
+Original world center: 0.007, 12.133, 5.840
+Normalized center: 0.000, 0.724, 0.310
+Normalized min: -0.380, 0.622, -0.100
+Normalized max: 0.381, 0.826, 0.721
+Normalized size: 0.762, 0.204, 0.821
+Hierarchy: MorphDrive_Cabin_Interior / MorphDrive_Cabin_Interior__Seahawk_FlatBlack_0
+
+Name: MorphDrive_Cabin_Interior__Seahawk_InteriorGenericSteelPanels_0
+Mesh: Seahawk_InteriorGenericSteelPanels_0.001
+Classification: DIRECT + ANCESTOR + MATERIAL
+Direct matches: interior, cabin
+Ancestor matches: interior, cabin
+Material matches: InteriorGenericSteelPanels [interior]
+Triangles: 2876
+Original world center: 0.014, 9.681, -3.760
+Normalized center: 0.001, 0.586, -0.232
+Normalized min: -0.360, 0.247, -2.007
+Normalized max: 0.362, 0.925, 1.544
+Normalized size: 0.723, 0.677, 3.551
+Hierarchy: MorphDrive_Cabin_Interior / MorphDrive_Cabin_Interior__Seahawk_InteriorGenericSteelPanels_0
+
+Name: MorphDrive_Cabin_Interior__Seahawk_PaintedBlackSteel_0
+Mesh: Seahawk_PaintedBlackSteel_0.002
+Classification: DIRECT + ANCESTOR
+Direct matches: interior, cabin
+Ancestor matches: interior, cabin
+Material matches: None
+Triangles: 1286
+Original world center: 0.000, 13.344, 14.474
+Normalized center: 0.000, 0.793, 0.798
+Normalized min: -0.244, 0.608, 0.437
+Normalized max: 0.244, 0.978, 1.159
+Normalized size: 0.487, 0.370, 0.722
+Hierarchy: MorphDrive_Cabin_Interior / MorphDrive_Cabin_Interior__Seahawk_PaintedBlackSteel_0
+
+Name: MorphDrive_Cabin_Interior__Seahawk_SafetyOrange_0
+Mesh: Seahawk_SafetyOrange_0.001
+Classification: DIRECT + ANCESTOR
+Direct matches: interior, cabin
+Ancestor matches: interior, cabin
+Material matches: None
+Triangles: 3694
+Original world center: -0.050, 7.388, 8.954
+Normalized center: -0.003, 0.456, 0.486
+Normalized min: -0.331, 0.348, 0.277
+Normalized max: 0.325, 0.564, 0.696
+Normalized size: 0.656, 0.216, 0.419
+Hierarchy: MorphDrive_Cabin_Interior / MorphDrive_Cabin_Interior__Seahawk_SafetyOrange_0
+
+VEHICLE: MAN TGX 2010 V8 (man-tgx)
+Type: Truck
+Status: success
+----------------------------------------
+Original dimensions: 298.275, 38.368, 36.064
+Original center: -133.704, -2.337, 7.699
+Normalization scale: 0.016763
+Normalized dimensions: 5.000, 0.643, 0.605
+Normalized vehicle center: 0.000, 0.322, 0.000
+Normalized vehicle minimum: -2.500, 0.000, -0.302
+Normalized vehicle maximum: 2.500, 0.643, 0.302
+
+Candidates found: 0
+Match categories: DIRECT = node/mesh name; ANCESTOR = parent hierarchy; MATERIAL = material name.
+No matching names or materials found.
+
+========================================================
+SCAN SUMMARY
+Successful vehicles: 16
+Failed vehicles: 0
+Total candidates: 281
+Target normalization size: 5
