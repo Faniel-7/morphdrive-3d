@@ -1,0 +1,27 @@
+========== ALL 3D MODEL FILES ==========
+public/models/aircraft/airbus_a320-200.glb
+public/models/aircraft/boeing_787.glb
+public/models/aircraft/sukhoi_su-57_felon_p_-_fighter_jet_-_free.glb
+public/models/cars/2023-lamborghini-urus-performante/source/2023_lamborghini_urus_performante.glb
+public/models/cars/ford-f-150-raptor/source/Sketchfab_2026_11_09_21_07_40.glb
+public/models/cars/lamborghini_centenario_lp-770_interior_sdc.glb
+public/models/cars/polestar-3-2027/source/Polestar_3_2027_Dual_Motor.glb
+public/models/cars/skoda-elroq-2025/source/Skoda_Elroq_Sketchfab.glb
+public/models/hand/hand.glb
+public/models/helicopters/ah-64e_apache_guardian.glb
+public/models/motorcycles/bmw_s1000_rr.glb
+public/models/motorcycles/honda_cbr650r.glb
+public/models/motorcycles/kawasaki_ninja_h2_free.glb
+public/models/motorcycles/sports_bike.glb
+public/models/other-helicopters/realistic_hellicopter.glb
+public/models/sedan.glb
+public/models/trucks/man_tgx_2010_v8__high-detail_semi-truck.glb
+
+========== ALL COMPONENT REPORTS ==========
+
+========== REALISTIC HELICOPTER REFERENCES ==========
+src/showroom/vehicle-catalog.js:116:    id: 'realistic-helicopter',
+src/vehicle-explosion/explosion-config.js.before-missing-meshes.bak:211:  'realistic-helicopter': {
+src/vehicle-explosion/explosion-config.js.before-missing-meshes.bak:213:    report: 'Realistic_Helicopter_components.json',
+src/vehicle-explosion/explosion-config.js:217:  'realistic-helicopter': {
+src/vehicle-explosion/explosion-config.js:219:    report: 'Realistic_Helicopter_components.json',
