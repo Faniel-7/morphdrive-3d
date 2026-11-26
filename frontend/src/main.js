@@ -40,7 +40,7 @@ import {
               <span class="help-eyebrow">MORPHDRIVE 3D</span>
               <h2 id="help-title">Controls &amp; Guide</h2>
             </div>
-            <button id="help-close" type="button" aria-label="Close help">×</button>
+            <button id="help-close" type="button" aria-label="Close help" title="Close the controls and help panel">×</button>
           </div>
 
           <div class="help-content">
@@ -72,11 +72,24 @@ import {
             </section>
 
             <section class="help-section">
-              <h3>HAND INTERACTION</h3>
-              <p>Press <strong>ENABLE HAND CONTROL</strong> to activate webcam-based hand tracking.</p>
-              <p>Move your tracked hand to interact with vehicle parts. The status indicators show tracking and orientation information.</p>
-              <p class="help-note">Hand interaction is experimental and requires camera permission.</p>
-            </section>
+                <h3>HAND GESTURE GUIDE</h3>
+                <p>Press <strong>ENABLE HAND CONTROL</strong> and allow webcam access.</p>
+
+                <div class="help-row"><span>Explode vehicle</span><kbd>✊ Fist</kbd></div>
+                <div class="help-row"><span>Start vehicle scan</span><kbd>✌️ Peace</kbd></div>
+                <div class="help-row"><span>Reset camera view</span><kbd>👍 Thumbs up</kbd></div>
+                <div class="help-row"><span>Select a component</span><kbd>☝️ Point</kbd></div>
+                <div class="help-row"><span>Drag selected supported Sedan component</span><kbd>🤏 Pinch</kbd></div>
+                <div class="help-row"><span>Rotate camera</span><kbd>🖐️ One open palm</kbd></div>
+                <div class="help-row"><span>Zoom in or out</span><kbd>🖐️🖐️ Two open palms</kbd></div>
+                <div class="help-row"><span>Reassemble exploded vehicle</span><kbd>🖐️ Open palm</kbd></div>
+
+                <p class="help-note">
+                  One open palm rotates the camera. Two open palms control zoom.
+                  When the vehicle is exploded, an open palm triggers assembly.
+                  Keep your hand visible to the webcam while performing gestures.
+                </p>
+              </section>
           </div>
 
           <div class="help-panel-footer">
@@ -107,7 +120,7 @@ import {
               <option value="sedan">Sedan · Default model</option>
             </select>
             <div class="vehicle-library-actions">
-              <button id="import-vehicle" type="button">＋ Import GLB</button>
+              <button id="import-vehicle" type="button" title="Import a 3D vehicle model">＋ Import GLB</button>
               <input id="vehicle-file" type="file" accept=".glb,model/gltf-binary" hidden>
             </div>
             <small id="vehicle-library-status">1 model available · Import a GLB to add another</small>
@@ -159,7 +172,7 @@ import {
               <span class="axis-z">Z</span>
             </div>
 
-            <div id="loading" class="loading">
+            <div id="loading" class="loading" role="status" aria-live="polite" aria-busy="true">
               <span class="loader"></span>
               <span>LOADING VEHICLE MODEL</span>
             </div>
@@ -168,6 +181,9 @@ import {
               Could not load this vehicle. Check that the GLB file is valid and try again.
             </div>
 
+            <div id="toast-container" class="toast-container"
+              aria-live="polite" aria-atomic="true"></div>
+
             <div class="view-label">
               View <span>⌄</span>
             </div>
@@ -175,7 +191,7 @@ import {
             <div id="component-tooltip" class="component-tooltip" role="status" aria-live="polite" hidden></div>
 
             <div class="hand-controls">
-              <button id="start-hand-control" type="button">ENABLE HAND CONTROL</button>
+              <button id="start-hand-control" type="button" title="Enable webcam-based hand tracking">ENABLE HAND CONTROL</button>
               <span id="hand-status">3D HAND INITIALIZING...</span>
               <span id="hand-orientation">HAND: WAITING</span>
               <span id="gesture-status">GESTURE: WAITING</span>
@@ -320,7 +336,7 @@ import {
               value="25"
             >
 
-            <button id="reset-appearance" class="reset-appearance">
+            <button id="reset-appearance" class="reset-appearance" title="Restore the default vehicle appearance">
               ↻ Restore Original
             </button>
 
@@ -1051,10 +1067,38 @@ console.groupEnd();
 
     function setVehicleLoading(isLoading, message = 'LOADING VEHICLE MODEL...') {
       loadingPanel.classList.toggle('hidden', !isLoading);
+      loadingPanel.setAttribute('aria-busy', String(isLoading));
       modelError.classList.add('hidden');
       loadingMessage.textContent = message;
       vehicleSelect.disabled = isLoading;
       importVehicleButton.disabled = isLoading;
+    }
+
+    let activeToast = null;
+    let toastTimeout = null;
+
+    function showToast(message, type = 'info') {
+      const container = document.querySelector('#toast-container');
+      if (!container) return;
+
+      if (activeToast) activeToast.remove();
+      clearTimeout(toastTimeout);
+
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.textContent = message;
+      toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+
+      container.appendChild(toast);
+      activeToast = toast;
+
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('toast-hide');
+        setTimeout(() => {
+          toast.remove();
+          if (activeToast === toast) activeToast = null;
+        }, 220);
+      }, 2600);
     }
 
     function updateVehicleCatalogOptions(selectedId = '') {
@@ -1363,6 +1407,7 @@ async function activateVehicle(id) {
     initializeVehicle(result.root, result.model);
     updateVehicleCatalogOptions(result.model.id);
     setVehicleLoading(false);
+    showToast(`${result.model.name} loaded successfully`, 'success');
 
     return true;
   } catch (error) {
@@ -1376,6 +1421,7 @@ async function activateVehicle(id) {
       : 'Could not load this vehicle. Check that the GLB file is valid and try again.';
 
     modelError.classList.remove('hidden');
+    showToast('Vehicle loading failed', 'error');
     vehicleSelect.value = vehicleManager.getActiveModel()?.id || 'sedan';
     vehicleSelect.disabled = false;
     importVehicleButton.disabled = false;
@@ -1403,6 +1449,7 @@ async function activateVehicle(id) {
         initializeVehicle(result.root, result.model);
         updateVehicleCatalogOptions(result.model.id);
         setVehicleLoading(false);
+        showToast(`${result.model.name} imported successfully`, 'success');
       } catch (error) {
         if (error?.name === 'AbortError') return;
 
@@ -1410,6 +1457,7 @@ async function activateVehicle(id) {
         loadingPanel.classList.add('hidden');
         modelError.textContent = error?.message || 'Could not import this GLB file.';
         modelError.classList.remove('hidden');
+        showToast('Vehicle import failed', 'error');
         vehicleSelect.disabled = false;
         importVehicleButton.disabled = false;
         return false;
@@ -1986,6 +2034,115 @@ let otherMoved = 0;
     let selectedOriginalMaterial = null;
     let selectedHighlightMaterial = null;
 
+    let activeComponentDrag = null;
+
+    function getDraggableComponent(mesh) {
+      // First implementation: complete Sedan component groups only.
+      if (!mesh || activeVehicleId !== 'sedan' || !vehicle) return null;
+
+      const container = vehicle.getObjectByName('carBody_119');
+      if (!container) return null;
+
+      let component = mesh;
+
+      while (component.parent && component.parent !== container) {
+        component = component.parent;
+      }
+
+      return component.parent === container ? component : null;
+    }
+
+    function getPinchPointer(points) {
+      const thumb = points?.[4];
+      const index = points?.[8];
+
+      if (!thumb || !index) return null;
+
+      return new THREE.Vector2(
+        1 - ((thumb.x + index.x) * 0.5) * 2,
+        1 - ((thumb.y + index.y) * 0.5) * 2
+      );
+    }
+
+    function beginComponentDrag(side, points) {
+      const component = getDraggableComponent(selectedInspectionMesh);
+      const pointer = getPinchPointer(points);
+
+      if (!component || !component.parent || !pointer) return null;
+
+      camera.updateMatrixWorld(true);
+      component.parent.updateMatrixWorld(true);
+
+      const worldPosition = component.getWorldPosition(
+        new THREE.Vector3()
+      );
+
+      const planeNormal = camera.getWorldDirection(
+        new THREE.Vector3()
+      );
+
+      const plane = new THREE.Plane().setFromNormalAndCoplanarPoint(
+        planeNormal,
+        worldPosition
+      );
+
+      raycaster.setFromCamera(pointer, camera);
+
+      const intersection = raycaster.ray.intersectPlane(
+        plane,
+        new THREE.Vector3()
+      );
+
+      if (!intersection) return null;
+
+      const offset = worldPosition.clone().sub(intersection);
+
+      console.info('MorphDrive: component grabbed', {
+        side,
+        component: component.name || component.type
+      });
+
+      return { side, component, plane, offset };
+    }
+
+    function updateComponentDrag(points) {
+      if (!activeComponentDrag || !vehicle) return;
+
+      const pointer = getPinchPointer(points);
+      if (!pointer) return;
+
+      const component = activeComponentDrag.component;
+      if (!component.parent) {
+        activeComponentDrag = null;
+        return;
+      }
+
+      camera.updateMatrixWorld(true);
+      component.parent.updateMatrixWorld(true);
+
+      raycaster.setFromCamera(pointer, camera);
+
+      const intersection = raycaster.ray.intersectPlane(
+        activeComponentDrag.plane,
+        new THREE.Vector3()
+      );
+
+      if (!intersection) return;
+
+      const targetWorld = intersection.add(
+        activeComponentDrag.offset
+      );
+
+      const targetLocal = component.parent.worldToLocal(
+        targetWorld.clone()
+      );
+
+      component.position.copy(targetLocal);
+      component.updateMatrixWorld(true);
+      hoverDirty = true;
+    }
+
+
     function disposeInspectionMaterial(material) {
       if (Array.isArray(material)) {
         material.forEach(item => item?.dispose());
@@ -2025,7 +2182,243 @@ let otherMoved = 0;
       overflow-y: auto;
     `;
 
+
+    // MORPHDRIVE: Advanced inspection actions
+    let isolatedVisibility = null;
+
+    const inspectionActions = document.createElement('div');
+    inspectionActions.id = 'inspection-actions';
+    inspectionActions.style.cssText = `
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(0,207,255,0.16);
+    `;
+
+    function createInspectionButton(label, action) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = label;
+      button.disabled = true;
+      button.style.cssText = `
+        min-height: 34px;
+        padding: 7px 9px;
+        border: 1px solid rgba(0,207,255,0.28);
+        border-radius: 5px;
+        background: #081b2b;
+        color: #bdeeff;
+        font: 10px inherit;
+        cursor: pointer;
+        transition: background 150ms ease, border-color 150ms ease;
+      `;
+      button.addEventListener('mouseenter', () => {
+        if (!button.disabled) {
+          button.style.background = '#10334a';
+          button.style.borderColor = '#00cfff';
+        }
+      });
+      button.addEventListener('mouseleave', () => {
+        button.style.background = '#081b2b';
+        button.style.borderColor = 'rgba(0,207,255,0.28)';
+      });
+      button.addEventListener('click', action);
+      inspectionActions.appendChild(button);
+      return button;
+    }
+
+    function getInspectionTarget() {
+      if (!selectedInspectionMesh) return null;
+      return getDraggableComponent(selectedInspectionMesh) ||
+        selectedInspectionMesh;
+    }
+
+    function restoreInspectionVisibility() {
+      if (!isolatedVisibility) return;
+
+      for (const [object, visible] of isolatedVisibility) {
+        object.visible = visible;
+      }
+
+      isolatedVisibility = null;
+      restoreVisibilityButton.disabled = true;
+      isolateButton.disabled = !selectedInspectionMesh;
+      hoverDirty = true;
+      showToast('All component visibility restored', 'success');
+    }
+
+    const focusButton = createInspectionButton('◎  Focus Part', () => {
+      const target = getInspectionTarget();
+      if (!target || !vehicle) return;
+
+      vehicle.updateMatrixWorld(true);
+
+      const bounds = new THREE.Box3().setFromObject(target);
+      if (bounds.isEmpty()) return;
+
+      const center = bounds.getCenter(new THREE.Vector3());
+      const size = bounds.getSize(new THREE.Vector3());
+      const radius = Math.max(size.length() * 0.5, 0.5);
+
+      const direction = camera.position.clone().sub(controls.target);
+
+      if (direction.lengthSq() < 0.0001) {
+        direction.set(1, 0.65, 1);
+      }
+
+      direction.normalize();
+
+      const distance = Math.max(radius * 2.6, 1.5);
+
+      controls.target.copy(center);
+      camera.position.copy(center).addScaledVector(direction, distance);
+      camera.near = Math.max(0.01, distance / 1000);
+      camera.far = Math.max(camera.far, distance * 100);
+      camera.updateProjectionMatrix();
+      controls.update();
+
+      console.info('MorphDrive: focused inspection target', target.name);
+      showToast(`Focused: ${target.name || 'Selected component'}`, 'success');
+    });
+
+    const isolateButton = createInspectionButton('◈  Isolate Part', () => {
+      const target = getInspectionTarget();
+      if (!target || !vehicle) return;
+
+      if (isolatedVisibility) {
+        restoreInspectionVisibility();
+        return;
+      }
+
+      isolatedVisibility = new Map();
+
+      vehicle.traverse(object => {
+        isolatedVisibility.set(object, object.visible);
+
+        let insideTarget = false;
+        let current = object;
+
+        while (current) {
+          if (current === target) {
+            insideTarget = true;
+            break;
+          }
+          current = current.parent;
+        }
+
+        let targetAncestor = false;
+        current = target;
+
+        while (current) {
+          if (current === object) {
+            targetAncestor = true;
+            break;
+          }
+          current = current.parent;
+        }
+
+        object.visible = insideTarget || targetAncestor;
+      });
+
+      isolateButton.textContent = '◈  Show All Parts';
+      restoreVisibilityButton.disabled = false;
+      hoverDirty = true;
+
+      console.info('MorphDrive: isolated inspection target', target.name);
+      showToast(`Isolated: ${target.name || 'Selected component'}`, 'success');
+    });
+
+    const restoreVisibilityButton = createInspectionButton(
+      '↺  Restore Visibility',
+      restoreInspectionVisibility
+    );
+
+    const resetComponentButton = createInspectionButton(
+      '⟲  Reset Position',
+      () => {
+        const target = getInspectionTarget();
+        if (!target) return;
+
+        const originalPosition = target.userData.originalPosition;
+
+        if (!originalPosition) {
+          console.warn('MorphDrive: original position is unavailable.');
+          return;
+        }
+
+        activeComponentDrag = null;
+        target.position.copy(originalPosition);
+        target.updateMatrixWorld(true);
+        hoverDirty = true;
+
+        console.info('MorphDrive: component position restored', target.name);
+        showToast('Component position reset', 'success');
+      }
+    );
+
+    function updateInspectionActionState() {
+      const hasSelection = Boolean(selectedInspectionMesh);
+
+      focusButton.disabled = !hasSelection;
+      isolateButton.disabled = !hasSelection || Boolean(isolatedVisibility);
+      resetComponentButton.disabled = !hasSelection;
+
+      if (!isolatedVisibility) {
+        restoreVisibilityButton.disabled = true;
+      }
+
+      isolateButton.textContent = '◈  Isolate Part';
+    }
+
     propertiesPanel.appendChild(inspectionDetails);
+
+    propertiesPanel.insertBefore(inspectionActions, inspectionDetails);
+
+    document.addEventListener('keydown', event => {
+      const target = event.target;
+      const isTyping = target instanceof HTMLElement && (
+        target.isContentEditable ||
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)
+      );
+
+      if (event.key === 'Escape') {
+        if (!helpPanel.classList.contains('hidden')) {
+          helpPanel.classList.add('hidden');
+          return;
+        }
+      }
+
+      if (
+        isTyping ||
+        event.ctrlKey ||
+        event.altKey ||
+        event.metaKey ||
+        event.repeat
+      ) return;
+
+      const key = event.key.toLowerCase();
+
+      if (key === 'h') {
+        helpPanel.classList.toggle('hidden');
+        return;
+      }
+
+      if (helpPanel.classList.contains('hidden')) {
+        const shortcuts = {
+          f: focusButton,
+          i: isolateButton,
+          v: restoreVisibilityButton,
+          p: resetComponentButton
+        };
+
+        const button = shortcuts[key];
+        if (button && !button.disabled) {
+          button.click();
+        }
+      }
+    });
+
+    console.info('MorphDrive: keyboard shortcuts initialized');
 
     function inspectionRow(label, value) {
       const row = document.createElement('div');
@@ -2069,6 +2462,7 @@ let otherMoved = 0;
       selectedInspectionMesh = mesh;
       selectedOriginalMaterial = null;
       selectedHighlightMaterial = null;
+      updateInspectionActionState();
 
       if (!mesh) {
         inspectionDetails.replaceChildren();
@@ -2086,6 +2480,7 @@ let otherMoved = 0;
         createInspectionMaterial(selectedOriginalMaterial);
 
       mesh.material = selectedHighlightMaterial;
+      updateInspectionActionState();
 
       const box = new THREE.Box3().setFromObject(mesh);
       const dimensions = new THREE.Vector3();
@@ -2504,6 +2899,14 @@ function animate(now = 0) {
   requestAnimationFrame(animate);
 
   const cameraChanged = controls.update();
+
+  // MORPHDRIVE: subtle showroom stage lighting animation.
+  if (showroomMode) {
+    const pulse = Math.sin(now * 0.0007);
+
+    stageTopRing.material.opacity = 0.68 + pulse * 0.12;
+    stageInnerRing.material.opacity = 0.34 + pulse * 0.08;
+  }
   vehicleScanner.update(now);
 
   // Process only newly detected hand frames, not every render frame.
@@ -2590,10 +2993,15 @@ function animate(now = 0) {
             gesture === 'POINT' &&
             gestureActionReady('select', now, 650)
           ) {
-            const pointers = handController.getTrackedPointers();
-            const pointer = pointers[0];
+            const points = gestureFrame.hands.get(side);
+            const indexTip = points?.[8];
 
-            if (pointer && raycaster && vehicle) {
+            if (indexTip && raycaster && vehicle) {
+              const pointer = new THREE.Vector2(
+                1 - indexTip.x * 2,
+                1 - indexTip.y * 2
+              );
+
               camera.updateMatrixWorld(true);
               raycaster.setFromCamera(pointer, camera);
 
@@ -2616,6 +3024,43 @@ function animate(now = 0) {
         if (!gestureResult.hands[side]) {
           gestureActionState.previousStable.set(side, 'NONE');
         }
+      }
+
+      // ------------------------------------------------------
+      // PINCH-TO-DRAG COMPONENT MANIPULATION
+      // ------------------------------------------------------
+
+      if (activeComponentDrag) {
+        const dragData = gestureResult.hands[activeComponentDrag.side];
+
+        if (dragData?.gesture === 'PINCH') {
+          const points = gestureFrame.hands.get(activeComponentDrag.side);
+
+          if (points?.length === 21) {
+            updateComponentDrag(points);
+          }
+        } else {
+          activeComponentDrag = null;
+        }
+      } else {
+        const pinchHand = hands.find(([, data]) =>
+          data.stableGesture === 'PINCH' &&
+          data.gesture === 'PINCH'
+        );
+
+        if (pinchHand && selectedInspectionMesh) {
+          const [side] = pinchHand;
+          const points = gestureFrame.hands.get(side);
+
+          if (points?.length === 21) {
+            activeComponentDrag = beginComponentDrag(side, points);
+          }
+        }
+      }
+
+      if (activeComponentDrag && gestureStatus) {
+        gestureStatus.textContent =
+          `DRAGGING COMPONENT · ${activeComponentDrag.side.toUpperCase()}`;
       }
 
       // ------------------------------------------------------
